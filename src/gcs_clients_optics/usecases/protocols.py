@@ -247,10 +247,20 @@ class ProtocolsUseCase(BaseUseCase):
         output_csv: Optional[str] = None,
         output_json: Optional[str] = None,
         output_md: Optional[str] = None,
+        output_sqlite: Optional[str] = None,
         **kwargs,
     ) -> Dict[str, str]:
-        """Export protocol analysis in CSV, JSON, and Markdown formats."""
+        """Export protocol analysis in CSV, JSON, Markdown, and SQLite formats."""
         generated: Dict[str, str] = {}
+
+        if output_sqlite:
+            from gcs_clients_optics.storage.sqlite_store import ingest_protocol_reports
+            ingest_protocol_reports(
+                reports,
+                output_sqlite,
+                elapsed_seconds=kwargs.get("elapsed_seconds", 0.0),
+            )
+            generated["sqlite"] = output_sqlite
 
         if output_csv:
             self._export_csv(reports, output_csv)

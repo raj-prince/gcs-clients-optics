@@ -3,22 +3,22 @@
     "total_repositories": 1,
     "total_files_scanned": 201,
     "files_with_usages": 20,
-    "total_usages_found": 91,
+    "total_usages_found": 96,
     "cache_type_summary": {
-      "NOT_EXPLICIT": 88,
+      "NOT_EXPLICIT": 93,
       "parts": 3
     },
-    "elapsed_seconds": 5.82
+    "elapsed_seconds": 17.86
   },
   "per_repository": [
     {
       "target_source": "GitHub:dask/dask (main)",
       "total_files_scanned": 201,
       "files_with_usages": 20,
-      "total_usages_found": 91,
+      "total_usages_found": 96,
       "repo_url": "https://github.com/dask/dask",
       "cache_type_summary": {
-        "NOT_EXPLICIT": 88,
+        "NOT_EXPLICIT": 93,
         "parts": 3
       },
       "usages": [
@@ -606,6 +606,65 @@
         },
         {
           "file_path": "dask/dataframe/dask_expr/io/parquet.py",
+          "line_number": 520,
+          "end_line_number": 520,
+          "target_name": "fs.expand_path",
+          "enclosing_function": "to_parquet",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/dask_expr/io/parquet.py#L520",
+          "args": [
+            "'.'"
+          ],
+          "kwargs": {},
+          "code_snippet": "                working_dir = fs.expand_path(\".\")[0]",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/dask_expr/io/parquet.py",
+          "line_number": 527,
+          "end_line_number": 527,
+          "target_name": "fs.rm",
+          "enclosing_function": "to_parquet",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/dask_expr/io/parquet.py#L527",
+          "args": [
+            "path"
+          ],
+          "kwargs": {
+            "recursive": "True"
+          },
+          "code_snippet": "            fs.rm(path, recursive=True)",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/dask_expr/io/parquet.py",
+          "line_number": 1394,
+          "end_line_number": 1394,
+          "target_name": "fs.checksum",
+          "enclosing_function": "_dataset_info",
+          "enclosing_class": "ReadParquetFSSpec",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/dask_expr/io/parquet.py#L1394",
+          "args": [
+            "file"
+          ],
+          "kwargs": {},
+          "code_snippet": "            checksum.append(fs.checksum(file))",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/dask_expr/io/parquet.py",
           "line_number": 1781,
           "end_line_number": 1781,
           "target_name": "fs.open",
@@ -855,6 +914,25 @@
           ],
           "kwargs": {},
           "code_snippet": "        if len(paths) == 1 and not fs.isfile(paths[0]):",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/orc/arrow.py",
+          "line_number": 24,
+          "end_line_number": 24,
+          "target_name": "fs.find",
+          "enclosing_function": "read_metadata",
+          "enclosing_class": "ArrowORCEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/orc/arrow.py#L24",
+          "args": [
+            "paths[0]"
+          ],
+          "kwargs": {},
+          "code_snippet": "            paths = fs.find(paths[0])",
           "detection_method": "ast"
         },
         {
@@ -1464,6 +1542,25 @@
           ],
           "kwargs": {},
           "code_snippet": "            if not ignore_metadata_file and fs.exists(meta_path):",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/arrow.py",
+          "line_number": 961,
+          "end_line_number": 961,
+          "target_name": "fs.find",
+          "enclosing_function": "_collect_dataset_info",
+          "enclosing_class": "ArrowDatasetEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/arrow.py#L961",
+          "args": [
+            "paths"
+          ],
+          "kwargs": {},
+          "code_snippet": "                    for path in fs.find(paths)",
           "detection_method": "ast"
         },
         {

@@ -39,6 +39,9 @@ gcs-optics fsspec-methods --repo dask/dask --format json -o dask_methods.json
 # Output as CSV
 gcs-optics fsspec-methods --all --format csv -o reports/fsspec_methods.csv
 
+# Output directly into SQLite database
+gcs-optics fsspec-methods --all --format sqlite -o reports/optics.db
+
 # Scan local code directory as JSON
 gcs-optics fsspec-methods --local-dir /path/to/project --format json -o local_methods.json
 ```
@@ -55,8 +58,8 @@ gcs-optics cache-type --all --format json -o reports/cache_analysis.json
 # Output as CSV
 gcs-optics cache-type --all --format csv -o reports/cache_analysis.csv
 
-# Scan a single local file
-gcs-optics cache-type --local-file src/data_reader.py --format json -o reader_cache.json
+# Output directly into SQLite database
+gcs-optics cache-type --all --format sqlite -o reports/optics.db
 ```
 
 ---
@@ -70,6 +73,9 @@ gcs-optics issues --repo fsspec/gcsfs fsspec/s3fs --format json -o storage_issue
 
 # Output as CSV
 gcs-optics issues --all --format csv -o reports/all_issues.csv
+
+# Output directly into SQLite database
+gcs-optics issues --all --format sqlite -o reports/optics.db
 ```
 
 ---
@@ -83,11 +89,24 @@ gcs-optics protocols --all --format json -o reports/protocols.json
 
 # Output as CSV
 gcs-optics protocols --all --format csv -o reports/protocols.csv
+
+# Output directly into SQLite database
+gcs-optics protocols --all --format sqlite -o reports/optics.db
 ```
 
 ---
 
-### 5. In-Memory Filesystem Simulation (`simulate`)
+### 5. Ingesting Existing JSON Reports into SQLite (`ingest`)
+If you already have generated JSON reports, you can ingest them into SQLite at any time:
+
+```bash
+gcs-optics ingest --input reports/combined_fsspec_report.json --db reports/optics.db
+gcs-optics ingest --input reports/all_issues.json --db reports/optics.db
+```
+
+---
+
+### 6. In-Memory Filesystem Simulation (`simulate`)
 Runs a live in-memory verification of directory traversal, wildcards, metadata, and stream reading:
 
 ```bash
@@ -96,8 +115,8 @@ gcs-optics simulate
 
 ---
 
-### 6. Full Pipeline (`run-all`)
-Runs all use cases and exports reports to a directory:
+### 7. Full Pipeline (`run-all`)
+Runs all use cases and exports reports to a directory (including `optics.db`):
 
 ```bash
 gcs-optics run-all --output-dir reports
@@ -105,7 +124,7 @@ gcs-optics run-all --output-dir reports
 
 ---
 
-## 💾 Output Formats: JSON, CSV, Markdown
+## 💾 Output Formats: JSON, CSV, Markdown, SQLite
 
 You can specify the output format using `--format` (`-t`) and the output path with `--output` (`-o`):
 
@@ -114,8 +133,83 @@ You can specify the output format using `--format` (`-t`) and the output path wi
 | `--format json` | Output report in JSON format | `gcs-optics fsspec-methods --all --format json -o output.json` |
 | `--format csv` | Output report in CSV format | `gcs-optics cache-type --all --format csv -o output.csv` |
 | `--format md` | Output report in Markdown format | `gcs-optics cache-type --all --format md -o output.md` |
-| `--format all` | Output all formats (JSON, CSV, MD) | `gcs-optics fsspec-methods --all --format all -o reports/` |
-| `-o <path>` / `--output <path>` | Destination file or directory | `-o my_report.json` or `-o reports/` |
+| `--format sqlite` | Ingest and store data in SQLite database | `gcs-optics fsspec-methods --all --format sqlite -o reports/optics.db` |
+| `--format all` | Output all formats (JSON, CSV, MD, SQLite) | `gcs-optics fsspec-methods --all --format all -o reports/` |
+| `-o <path>` / `--output <path>` | Destination file (`.json`, `.csv`, `.md`, `.db`) or directory | `-o my_report.json` or `-o reports/optics.db` |
+
+---
+
+## 🗄️ Querying the SQLite Database (`.db`)
+
+When data is exported to SQLite (`optics.db`), other agents, scripts, or analytics tools can directly query the normalized relational tables without parsing JSON or CSV files.
+
+### 📋 Database Tables Schema
+
+- **`method_usages`**: Every AST method call (`repository`, `file_path`, `line_number`, `target_name`, `base_method`, `category`, `cache_type`, `code_snippet`, `file_url`)
+- **`cache_usages`**: Read-path caching strategies (`repository`, `file_path`, `line_number`, `target_name`, `cache_type`, `is_explicit`, `strategy_category`, `cache_options`, `code_snippet`)
+- **`protocol_usages`**: Storage protocols (`repository`, `file_path`, `line_number`, `protocol`, `provider`, `usage_type`, `context`, `code_snippet`)
+- **`issues`**: GitHub performance issues (`repository`, `issue_number`, `title`, `state`, `relevance_score`, `matched_keywords`, `categories`, `html_url`, `body_preview`)
+- **`scan_runs`**: Metadata for every scan (`scan_id`, `use_case`, `target_source`, `total_files_scanned`, `total_matches`, `elapsed_seconds`, `scanned_at`)
+
+---
+
+### 🐍 Python Example (for Downstream Agents)
+
+```python
+import sqlite3
+
+# Connect to database
+conn = sqlite3.connect("reports/optics.db")
+conn.row_factory = sqlite3.Row  # Dict-like row access
+cursor = conn.cursor()
+
+# 1. Query Top 10 Most Used Methods
+cursor.execute("""
+    SELECT target_name, category, COUNT(*) as call_count
+    FROM method_usages
+    GROUP BY target_name, category
+    ORDER BY call_count DESC
+    LIMIT 10;
+""")
+for row in cursor.fetchall():
+    print(f"{row['target_name']:20s} | {row['category']:30s} | {row['call_count']} calls")
+
+# 2. Query Read-Path Caching Distribution
+cursor.execute("""
+    SELECT cache_type, strategy_category, COUNT(*) as count
+    FROM cache_usages
+    GROUP BY cache_type, strategy_category
+    ORDER BY count DESC;
+""")
+for row in cursor.fetchall():
+    print(f"{row['cache_type']:15s} | {row['strategy_category']:25s} | {row['count']}")
+
+# 3. Find High-Relevance Performance Issues
+cursor.execute("""
+    SELECT repository, issue_number, title, relevance_score, html_url
+    FROM issues
+    WHERE relevance_score >= 0.6
+    ORDER BY relevance_score DESC
+    LIMIT 5;
+""")
+for row in cursor.fetchall():
+    print(f"[{row['repository']} #{row['issue_number']}] {row['title']} (Score: {row['relevance_score']})")
+
+conn.close()
+```
+
+---
+
+### 💻 Command Line SQLite Query Example
+
+```bash
+# Top 5 methods across repositories
+sqlite3 reports/optics.db "SELECT target_name, count(*) FROM method_usages GROUP BY 1 ORDER BY 2 DESC LIMIT 5;"
+
+# All readahead or mmap usages in Dask
+sqlite3 -header -column reports/optics.db \
+  "SELECT file_path, line_number, cache_type, code_snippet FROM cache_usages WHERE repository = 'dask/dask' AND cache_type != 'NOT_EXPLICIT';"
+```
 
 ---
 
@@ -137,8 +231,8 @@ class CompressionUseCase(BaseUseCase):
     def aggregate_report(self, target_source, total_files_scanned, files_with_usages, usages, repo_url=None):
         return {...}
 
-    def export_reports(self, reports, output_csv=None, output_json=None, output_md=None, **kwargs):
-        # Export JSON/CSV/MD
+    def export_reports(self, reports, output_csv=None, output_json=None, output_md=None, output_sqlite=None, **kwargs):
+        # Export JSON/CSV/MD/SQLite
         return {}
 
 # Register globally

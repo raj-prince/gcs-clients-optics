@@ -18,6 +18,12 @@ READ_METHODS = {
     "open_files",
     "open_local",
     "open_parquet_file",
+    "read",
+    "readinto",
+    "readinto1",
+    "readline",
+    "readlines",
+    "readuntil",
     "read_block",
     "cat",
     "cat_ranges",
@@ -236,10 +242,20 @@ class CacheTypeUseCase(BaseUseCase):
         output_csv: Optional[str] = None,
         output_json: Optional[str] = None,
         output_md: Optional[str] = None,
+        output_sqlite: Optional[str] = None,
         **kwargs,
     ) -> Dict[str, str]:
-        """Export cache analysis in CSV, JSON, and Markdown formats."""
+        """Export cache analysis in CSV, JSON, Markdown, and SQLite formats."""
         generated: Dict[str, str] = {}
+
+        if output_sqlite:
+            from gcs_clients_optics.storage.sqlite_store import ingest_cache_reports
+            ingest_cache_reports(
+                reports,
+                output_sqlite,
+                elapsed_seconds=kwargs.get("elapsed_seconds", 0.0),
+            )
+            generated["sqlite"] = output_sqlite
 
         if output_csv:
             self._export_csv(reports, output_csv)

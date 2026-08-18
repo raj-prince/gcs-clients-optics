@@ -23,6 +23,10 @@ from gcs_clients_optics.reporters.issue_reports import (
     export_issues_markdown,
 )
 from gcs_clients_optics.simulation.simulator import run_fsspec_simulation
+from gcs_clients_optics.storage.sqlite_store import (
+    ingest_issue_reports,
+    ingest_json_report,
+)
 from gcs_clients_optics.usecases import (
     CacheTypeUseCase,
     FsspecMethodsUseCase,
@@ -34,14 +38,15 @@ from gcs_clients_optics.usecases import (
 
 def _resolve_output_paths(
     args: argparse.Namespace, default_basename: str
-) -> Tuple[Optional[str], Optional[str], Optional[str]]:
+) -> Tuple[Optional[str], Optional[str], Optional[str], Optional[str]]:
     """
-    Resolve output paths based on --format (json/csv/md/all), --output (-o),
-    and specific flags (--output-csv, --output-json, --output-md).
+    Resolve output paths based on --format (json/csv/md/sqlite/db/all), --output (-o),
+    and specific flags (--output-csv, --output-json, --output-md, --output-sqlite).
     """
     out_csv = getattr(args, "output_csv", None)
     out_json = getattr(args, "output_json", None)
     out_md = getattr(args, "output_md", None)
+    out_sqlite = getattr(args, "output_sqlite", None)
     fmt = getattr(args, "format", None)
     out_target = getattr(args, "output", None)
 
@@ -54,6 +59,8 @@ def _resolve_output_paths(
             out_csv = str(p)
         elif p.suffix.lower() == ".md":
             out_md = str(p)
+        elif p.suffix.lower() in (".db", ".sqlite", ".sqlite3"):
+            out_sqlite = str(p)
         else:
             out_dir = p
 
@@ -65,12 +72,14 @@ def _resolve_output_paths(
             out_csv = str(out_dir / f"{default_basename}.csv")
         if fmt in ("md", "markdown", "all") and not out_md:
             out_md = str(out_dir / f"{default_basename}.md")
+        if fmt in ("sqlite", "db", "all") and not out_sqlite:
+            out_sqlite = str(out_dir / "optics.db")
 
     # If neither format nor specific output is given, default to markdown
-    if not (out_csv or out_json or out_md):
+    if not (out_csv or out_json or out_md or out_sqlite):
         out_md = str(out_dir / f"{default_basename}.md")
 
-    return out_csv, out_json, out_md
+    return out_csv, out_json, out_md, out_sqlite
 
 
 def _handle_use_case_scan(
@@ -161,7 +170,9 @@ def _handle_use_case_scan(
     use_case.print_summary(reports)
     print(f"\nScan completed across {len(reports)} target(s) in {elapsed:.2f} seconds.")
 
-    out_csv, out_json, out_md = _resolve_output_paths(args, default_basename)
+    out_csv, out_json, out_md, out_sqlite = _resolve_output_paths(
+        args, default_basename
+    )
     matrix_md = getattr(args, "matrix_md", None)
     summary_md = getattr(args, "summary_md", None)
 
@@ -170,12 +181,15 @@ def _handle_use_case_scan(
         output_csv=out_csv,
         output_json=out_json,
         output_md=out_md,
+        output_sqlite=out_sqlite,
         matrix_md=matrix_md,
         summary_md=summary_md,
         elapsed_seconds=elapsed,
         include_tests=args.include_tests,
     )
 
+    if out_sqlite:
+        print(f"  • SQLite database updated:  {out_sqlite}")
     if out_csv:
         print(f"  • CSV report exported:      {out_csv}")
     if out_json:
@@ -229,7 +243,13 @@ def _handle_issues(args: argparse.Namespace) -> int:
         f"\nCompleted issue crawling across {len(reports)} repository target(s) in {elapsed:.2f} seconds."
     )
 
-    out_csv, out_json, out_md = _resolve_output_paths(args, "all_issues")
+    out_csv, out_json, out_md, out_sqlite = _resolve_output_paths(
+        args, "all_issues"
+    )
+
+    if out_sqlite:
+        ingest_issue_reports(reports, out_sqlite, elapsed_seconds=elapsed)
+        print(f"  • SQLite database updated:  {out_sqlite}")
 
     if out_csv:
         export_issues_csv(reports, out_csv)
@@ -244,6 +264,25 @@ def _handle_issues(args: argparse.Namespace) -> int:
         print(f"  • Markdown report exported: {out_md}")
 
     return 0
+
+
+def _handle_ingest(args: argparse.Namespace) -> int:
+    """Ingest existing JSON report into SQLite database."""
+    input_file = args.input or getattr(args, "input_json", None)
+    db_file = args.db or args.output or "reports/optics.db"
+
+    if not input_file:
+        print("Error: Must specify --input <report.json>", file=sys.stderr)
+        return 1
+
+    print(f"\n[+] Ingesting {input_file} into SQLite database: {db_file}...")
+    try:
+        count = ingest_json_report(input_file, db_file)
+        print(f"🎉 Successfully ingested {count} record(s) into {db_file}.\n")
+        return 0
+    except Exception as e:
+        print(f"Error ingesting into SQLite: {e}", file=sys.stderr)
+        return 1
 
 
 def _handle_list_usecases(args: argparse.Namespace) -> int:
@@ -293,6 +332,7 @@ def _handle_simulate(args: argparse.Namespace) -> int:
 def _handle_run_all(args: argparse.Namespace) -> int:
     out_dir = Path(args.output_dir or "reports")
     out_dir.mkdir(parents=True, exist_ok=True)
+    db_path = str(out_dir / "optics.db")
     print("🚀 Running complete GCS Clients Optics multi-use-case pipeline...")
 
     # 1. fsspec-methods
@@ -308,6 +348,7 @@ def _handle_run_all(args: argparse.Namespace) -> int:
         github_token=args.github_token,
         format="all",
         output=str(out_dir),
+        output_sqlite=db_path,
         output_csv=str(out_dir / "fsspec_crawl_results.csv"),
         output_json=str(out_dir / "combined_fsspec_report.json"),
         output_md=str(out_dir / "combined_fsspec_report.md"),
@@ -329,6 +370,7 @@ def _handle_run_all(args: argparse.Namespace) -> int:
         github_token=args.github_token,
         format="all",
         output=str(out_dir),
+        output_sqlite=db_path,
         output_csv=str(out_dir / "cache_analysis.csv"),
         output_json=str(out_dir / "cache_analysis.json"),
         output_md=str(out_dir / "cache_analysis.md"),
@@ -348,6 +390,7 @@ def _handle_run_all(args: argparse.Namespace) -> int:
         github_token=args.github_token,
         format="all",
         output=str(out_dir),
+        output_sqlite=db_path,
         output_csv=str(out_dir / "protocols_analysis.csv"),
         output_json=str(out_dir / "protocols_analysis.json"),
         output_md=str(out_dir / "protocols_analysis.md"),
@@ -364,6 +407,7 @@ def _handle_run_all(args: argparse.Namespace) -> int:
         github_token=args.github_token,
         format="all",
         output=str(out_dir),
+        output_sqlite=db_path,
         output_csv=str(out_dir / "all_issues.csv"),
         output_json=str(out_dir / "all_issues.json"),
         output_md=str(out_dir / "all_issues.md"),
@@ -420,13 +464,13 @@ def _add_common_code_args(parser: argparse.ArgumentParser):
     parser.add_argument(
         "--format",
         "-t",
-        choices=["json", "csv", "md", "all"],
-        help="Output format: json, csv, md, or all (default: md)",
+        choices=["json", "csv", "md", "sqlite", "db", "all"],
+        help="Output format: json, csv, md, sqlite, or all (default: md)",
     )
     parser.add_argument(
         "--output",
         "-o",
-        help="Output file path (e.g. -o report.json / -o report.csv) or output directory",
+        help="Output file path (e.g. -o report.json / -o optics.db) or output directory",
     )
     parser.add_argument(
         "--output-csv", "-c", help="Specific path to write output CSV report"
@@ -436,6 +480,9 @@ def _add_common_code_args(parser: argparse.ArgumentParser):
     )
     parser.add_argument(
         "--output-md", "-m", help="Specific path to write output Markdown report"
+    )
+    parser.add_argument(
+        "--output-sqlite", help="Specific path to write SQLite database file"
     )
 
 
@@ -508,13 +555,13 @@ def build_parser() -> argparse.ArgumentParser:
     p_issues.add_argument(
         "--format",
         "-t",
-        choices=["json", "csv", "md", "all"],
-        help="Output format: json, csv, md, or all (default: md)",
+        choices=["json", "csv", "md", "sqlite", "db", "all"],
+        help="Output format: json, csv, md, sqlite, or all (default: md)",
     )
     p_issues.add_argument(
         "--output",
         "-o",
-        help="Output file path (e.g. -o issues.json / -o issues.csv) or directory",
+        help="Output file path (e.g. -o issues.json / -o optics.db) or directory",
     )
     p_issues.add_argument(
         "--output-csv", "-c", help="Specific path to write output CSV report"
@@ -525,6 +572,9 @@ def build_parser() -> argparse.ArgumentParser:
     p_issues.add_argument(
         "--output-md", "-m", help="Specific path to write output Markdown report"
     )
+    p_issues.add_argument(
+        "--output-sqlite", help="Specific path to write SQLite database file"
+    )
 
     # 4. Use Case 4: protocols
     p_proto = subparsers.add_parser(
@@ -534,14 +584,33 @@ def build_parser() -> argparse.ArgumentParser:
     )
     _add_common_code_args(p_proto)
 
-    # 5. List use cases
+    # 5. Ingest JSON to SQLite
+    p_ingest = subparsers.add_parser(
+        "ingest",
+        aliases=["load-db"],
+        help="Ingest pre-existing JSON report into SQLite database.",
+    )
+    p_ingest.add_argument(
+        "--input",
+        "-i",
+        required=True,
+        help="Path to input JSON report file (e.g. reports/combined_fsspec_report.json)",
+    )
+    p_ingest.add_argument(
+        "--db",
+        "-d",
+        default="reports/optics.db",
+        help="Path to SQLite DB file (default: reports/optics.db)",
+    )
+
+    # 6. List use cases
     subparsers.add_parser(
         "list-usecases",
         aliases=["usecases", "list"],
         help="List all registered analysis use cases.",
     )
 
-    # 6. Matrix & Summary utilities
+    # 7. Matrix & Summary utilities
     p_matrix = subparsers.add_parser(
         "matrix",
         help="Generate cross-repository method occurrence matrix markdown.",
@@ -572,7 +641,7 @@ def build_parser() -> argparse.ArgumentParser:
         help="Path to write summary markdown (default: reports/all_methods_summary_table.md)",
     )
 
-    # 7. Simulation
+    # 8. Simulation
     p_sim = subparsers.add_parser(
         "simulate",
         aliases=["sim"],
@@ -582,7 +651,7 @@ def build_parser() -> argparse.ArgumentParser:
         "--quiet", "-q", action="store_true", help="Suppress verbose logs"
     )
 
-    # 8. Run All
+    # 9. Run All
     p_all = subparsers.add_parser(
         "run-all",
         help="Run complete multi-use-case pipeline across all targets.",
@@ -624,6 +693,9 @@ def main(args: Optional[List[str]] = None) -> int:
 
     elif parsed.command in ("issues", "crawl-issues", "issues-performance"):
         return _handle_issues(parsed)
+
+    elif parsed.command in ("ingest", "load-db"):
+        return _handle_ingest(parsed)
 
     elif parsed.command in ("list-usecases", "usecases", "list"):
         return _handle_list_usecases(parsed)

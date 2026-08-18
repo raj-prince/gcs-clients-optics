@@ -63,10 +63,20 @@ class IssuesPerformanceUseCase(BaseUseCase):
         output_csv: Optional[str] = None,
         output_json: Optional[str] = None,
         output_md: Optional[str] = None,
+        output_sqlite: Optional[str] = None,
         **kwargs,
     ) -> Dict[str, str]:
-        """Export matched issues in CSV, JSON, and Markdown formats."""
+        """Export matched issues in CSV, JSON, Markdown, and SQLite formats."""
         generated: Dict[str, str] = {}
+
+        if output_sqlite:
+            from gcs_clients_optics.storage.sqlite_store import ingest_issue_reports
+            ingest_issue_reports(
+                reports,
+                output_sqlite,
+                elapsed_seconds=kwargs.get("elapsed_seconds", 0.0),
+            )
+            generated["sqlite"] = output_sqlite
 
         if output_csv:
             export_issues_csv(reports, output_csv)

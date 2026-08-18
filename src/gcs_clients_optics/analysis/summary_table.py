@@ -7,10 +7,7 @@ import json
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Union
 
-from gcs_clients_optics.analysis.categorization import (
-    USAGE_PATTERNS,
-    categorize_method,
-)
+from gcs_clients_optics.analysis.categorization import get_method_description
 
 
 def generate_summary_table(
@@ -65,10 +62,7 @@ def generate_summary_table(
     for name, m_data in sorted_methods:
         cnt = m_data["count"]
         top_repos = ", ".join([f"`{r}`" for r, _ in m_data["repos"].most_common(3)])
-        pattern = USAGE_PATTERNS.get(name)
-        if not pattern:
-            cat = categorize_method(name)
-            pattern = f"{cat} API method detected across repository storage interactions"
+        pattern = get_method_description(name)
         table_lines.append(
             f"| **`{name}`** | **{cnt}** | {top_repos} | {pattern} |"
         )
