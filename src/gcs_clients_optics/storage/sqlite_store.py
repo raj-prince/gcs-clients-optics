@@ -163,8 +163,42 @@ def init_db(db_path: Union[str, Path]) -> sqlite3.Connection:
         conn.execute(
             "CREATE INDEX IF NOT EXISTS idx_issues_score ON issues(relevance_score);"
         )
+        # 6. Async vs Sync Filesystem Calls
         conn.execute(
-            "CREATE INDEX IF NOT EXISTS idx_issues_number ON issues(repository, issue_number);"
+            """
+            CREATE TABLE IF NOT EXISTS async_sync_usages (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                scan_id TEXT,
+                repository TEXT NOT NULL,
+                file_path TEXT NOT NULL,
+                line_number INTEGER,
+                target_name TEXT NOT NULL,
+                base_method TEXT NOT NULL,
+                category TEXT NOT NULL,
+                execution_mode TEXT NOT NULL,
+                async_mechanism TEXT NOT NULL,
+                is_async_context INTEGER NOT NULL,
+                is_coroutine_call INTEGER NOT NULL,
+                potential_event_loop_block INTEGER NOT NULL,
+                enclosing_class TEXT,
+                enclosing_function TEXT,
+                file_url TEXT,
+                code_snippet TEXT,
+                FOREIGN KEY(scan_id) REFERENCES scan_runs(scan_id)
+            );
+            """
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_async_sync_repo ON async_sync_usages(repository);"
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_async_sync_mode ON async_sync_usages(execution_mode);"
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_async_sync_mech ON async_sync_usages(async_mechanism);"
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_async_sync_block ON async_sync_usages(potential_event_loop_block);"
         )
 
     return conn
@@ -445,6 +479,74 @@ def ingest_issue_reports(
     return total_inserted
 
 
+def ingest_async_sync_reports(
+    reports: List[Any],
+    db_path: Union[str, Path],
+    elapsed_seconds: float = 0.0,
+) -> int:
+    """Ingest Async vs Sync filesystem method usage reports into SQLite."""
+    conn = init_db(db_path)
+    total_inserted = 0
+
+    with conn:
+        for r in reports:
+            scan_id = str(uuid.uuid4())
+            repo_name = _clean_repo_name(r.target_source)
+            conn.execute(
+                """
+                INSERT INTO scan_runs (scan_id, use_case, target_source, repo_url, total_files_scanned, total_matches, elapsed_seconds)
+                VALUES (?, ?, ?, ?, ?, ?, ?);
+                """,
+                (
+                    scan_id,
+                    "async-sync",
+                    r.target_source,
+                    r.repo_url,
+                    r.total_files_scanned,
+                    r.total_usages_found,
+                    elapsed_seconds,
+                ),
+            )
+
+            rows = []
+            for item in r.items:
+                rows.append((
+                    scan_id,
+                    repo_name,
+                    getattr(item, "file_path", ""),
+                    getattr(item, "line_number", 0),
+                    getattr(item, "target_name", ""),
+                    getattr(item, "base_method", ""),
+                    getattr(item, "category", ""),
+                    getattr(item, "execution_mode", "sync"),
+                    getattr(item, "async_mechanism", "sync_blocking"),
+                    1 if getattr(item, "is_async_context", False) else 0,
+                    1 if getattr(item, "is_coroutine_call", False) else 0,
+                    1 if getattr(item, "potential_event_loop_block", False) else 0,
+                    getattr(item, "enclosing_class", None),
+                    getattr(item, "enclosing_function", None),
+                    getattr(item, "file_url", None),
+                    getattr(item, "code_snippet", ""),
+                ))
+
+            if rows:
+                conn.executemany(
+                    """
+                    INSERT INTO async_sync_usages (
+                        scan_id, repository, file_path, line_number, target_name,
+                        base_method, category, execution_mode, async_mechanism,
+                        is_async_context, is_coroutine_call, potential_event_loop_block,
+                        enclosing_class, enclosing_function, file_url, code_snippet
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+                    """,
+                    rows,
+                )
+                total_inserted += len(rows)
+
+    conn.close()
+    return total_inserted
+
+
 def ingest_json_report(
     json_path: Union[str, Path], db_path: Union[str, Path]
 ) -> int:
@@ -674,6 +776,56 @@ def ingest_json_report(
                                     scan_id, repository, file_path, line_number, protocol,
                                     provider, usage_type, context, file_url, code_snippet
                                 ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+                                """,
+                                rows,
+                            )
+                            total_inserted += len(rows)
+
+                    elif items and "execution_mode" in items[0]:
+                        conn.execute(
+                            """
+                            INSERT INTO scan_runs (scan_id, use_case, target_source, repo_url, total_files_scanned, total_matches, elapsed_seconds)
+                            VALUES (?, ?, ?, ?, ?, ?, ?);
+                            """,
+                            (
+                                scan_id,
+                                "async-sync",
+                                target_source,
+                                repo_url,
+                                repo_data.get("total_files_scanned", 0),
+                                len(items),
+                                0.0,
+                            ),
+                        )
+                        rows = []
+                        for it in items:
+                            rows.append((
+                                scan_id,
+                                repo_name,
+                                it.get("file_path", ""),
+                                it.get("line_number", 0),
+                                it.get("target_name", ""),
+                                it.get("base_method", ""),
+                                it.get("category", ""),
+                                it.get("execution_mode", "sync"),
+                                it.get("async_mechanism", "sync_blocking"),
+                                1 if it.get("is_async_context", False) else 0,
+                                1 if it.get("is_coroutine_call", False) else 0,
+                                1 if it.get("potential_event_loop_block", False) else 0,
+                                it.get("enclosing_class"),
+                                it.get("enclosing_function"),
+                                it.get("file_url"),
+                                it.get("code_snippet", ""),
+                            ))
+                        if rows:
+                            conn.executemany(
+                                """
+                                INSERT INTO async_sync_usages (
+                                    scan_id, repository, file_path, line_number, target_name,
+                                    base_method, category, execution_mode, async_mechanism,
+                                    is_async_context, is_coroutine_call, potential_event_loop_block,
+                                    enclosing_class, enclosing_function, file_url, code_snippet
+                                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
                                 """,
                                 rows,
                             )

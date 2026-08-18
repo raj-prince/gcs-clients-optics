@@ -110,7 +110,7 @@ class GitHubIssuesCrawler:
         self,
         target_repos: List[str],
         state: str = "open",
-        max_workers: int = 5,
+        max_workers: int = 16,
         progress_callback: Optional[Callable[[str, IssueCrawlReport], None]] = None,
     ) -> List[IssueCrawlReport]:
         """Crawl issues concurrently across multiple repositories."""

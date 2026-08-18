@@ -25,7 +25,7 @@ class FsspecCrawlerEngine:
         use_regex_fallback: bool = True,
         include_tests: bool = False,
         github_token: Optional[str] = None,
-        max_workers: int = 20,
+        max_workers: int = 16,
     ):
         self.use_regex_fallback = use_regex_fallback
         self.include_tests = include_tests

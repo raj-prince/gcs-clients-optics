@@ -20,6 +20,7 @@ from gcs_clients_optics.issues.models import GitHubIssue, IssueCrawlReport
 from gcs_clients_optics.simulation.simulator import run_fsspec_simulation
 from gcs_clients_optics.storage.sqlite_store import (
     init_db,
+    ingest_async_sync_reports,
     ingest_cache_reports,
     ingest_fsspec_reports,
     ingest_issue_reports,
@@ -27,6 +28,7 @@ from gcs_clients_optics.storage.sqlite_store import (
     ingest_protocol_reports,
 )
 from gcs_clients_optics.usecases import (
+    AsyncSyncUseCase,
     BaseUseCase,
     CacheTypeUseCase,
     FsspecMethodsUseCase,
@@ -45,6 +47,7 @@ __all__ = [
     "CacheTypeUseCase",
     "IssuesPerformanceUseCase",
     "ProtocolsUseCase",
+    "AsyncSyncUseCase",
     "register_use_case",
     "get_use_case",
     "list_use_cases",
@@ -66,5 +69,6 @@ __all__ = [
     "ingest_cache_reports",
     "ingest_protocol_reports",
     "ingest_issue_reports",
+    "ingest_async_sync_reports",
     "ingest_json_report",
 ]

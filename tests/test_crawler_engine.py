@@ -58,3 +58,50 @@ def test_scan_local_directory(tmp_path):
     assert report.total_files_scanned == 2
     assert report.files_with_usages == 2
     assert report.total_usages_found == 2
+
+
+def test_scan_local_directory_multi(tmp_path):
+    from gcs_clients_optics.engine.optics_engine import OpticsEngine
+    from gcs_clients_optics.usecases import (
+        AsyncSyncUseCase,
+        CacheTypeUseCase,
+        FsspecMethodsUseCase,
+        ProtocolsUseCase,
+    )
+
+    src_dir = tmp_path / "src"
+    src_dir.mkdir()
+    (src_dir / "worker.py").write_text(
+        "import fsspec\n"
+        "async def fetch():\n"
+        "    with fsspec.open('gs://my-bucket/data.csv', 'rb', cache_type='readahead') as f:\n"
+        "        pass\n"
+        "    await fs._cat_file('s3://backup/data.csv')\n",
+        encoding="utf-8",
+    )
+
+    use_cases = [
+        FsspecMethodsUseCase(),
+        CacheTypeUseCase(),
+        ProtocolsUseCase(),
+        AsyncSyncUseCase(),
+    ]
+    engine = OpticsEngine(use_case=use_cases[0])
+    reports = engine.scan_local_directory_multi(str(src_dir), use_cases)
+
+    assert "fsspec-methods" in reports
+    assert "cache-type" in reports
+    assert "protocols" in reports
+    assert "async-sync" in reports
+
+    # Check that fsspec methods were found
+    assert reports["fsspec-methods"].total_usages_found >= 1
+
+    # Check that cache_type was found
+    assert reports["cache-type"].total_read_calls >= 1
+
+    # Check that protocols were found (gs:// and s3://)
+    assert reports["protocols"].total_protocol_usages >= 2
+
+    # Check that async vs sync calls were found
+    assert reports["async-sync"].total_usages_found >= 2

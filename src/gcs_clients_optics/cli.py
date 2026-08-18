@@ -6,7 +6,7 @@ import argparse
 import sys
 import time
 from pathlib import Path
-from typing import List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 from gcs_clients_optics.analysis.matrix import generate_method_matrix
 from gcs_clients_optics.analysis.summary_table import generate_summary_table
@@ -28,6 +28,7 @@ from gcs_clients_optics.storage.sqlite_store import (
     ingest_json_report,
 )
 from gcs_clients_optics.usecases import (
+    AsyncSyncUseCase,
     CacheTypeUseCase,
     FsspecMethodsUseCase,
     ProtocolsUseCase,
@@ -133,32 +134,41 @@ def _handle_use_case_scan(
             if args.all
             else (args.repo or [])
         )
-        for repo in target_repos:
-            print(f"\n[+] [{use_case.name}] Crawling GitHub repo: {repo}...")
-            report = engine.scan_github_repo(repo, branch=args.branch)
+        concurrency = getattr(args, "concurrency", 16)
+        print(
+            f"\n[+] [{use_case.name}] Scanning {len(target_repos)} repository target(s) (concurrency={concurrency})..."
+        )
+
+        def _progress(repo: str, rep: Any):
             matches_count = getattr(
-                report,
+                rep,
                 "total_usages_found",
                 getattr(
-                    report,
+                    rep,
                     "total_read_calls",
-                    getattr(report, "total_protocol_usages", 0),
+                    getattr(rep, "total_protocol_usages", 0),
                 ),
             )
             files_count = getattr(
-                report,
+                rep,
                 "files_with_usages",
                 getattr(
-                    report,
+                    rep,
                     "files_with_read_calls",
-                    getattr(report, "files_with_protocols", 0),
+                    getattr(rep, "files_with_protocols", 0),
                 ),
             )
             print(
-                f"    - Scanned {report.total_files_scanned} files | "
+                f"    ✔ [{use_case.name}] {repo:<30s} | Scanned {rep.total_files_scanned} files | "
                 f"Found {matches_count} matches in {files_count} files."
             )
-            reports.append(report)
+
+        reports = engine.scan_multiple_repositories(
+            target_repos,
+            branch=args.branch,
+            max_repo_workers=concurrency,
+            progress_callback=_progress,
+        )
     else:
         print(
             "Error: Must specify --repo <owner/repo...>, --all, --local-dir, or --local-file",
@@ -231,10 +241,11 @@ def _handle_issues(args: argparse.Namespace) -> int:
             f"Found {report.matched_issues_count} matches."
         )
 
+    concurrency = getattr(args, "concurrency", 16)
     reports = crawler.crawl_multiple_repositories(
         target_repos=target_repos,
         state=args.state,
-        max_workers=5,
+        max_workers=concurrency,
         progress_callback=_progress,
     )
 
@@ -333,72 +344,100 @@ def _handle_run_all(args: argparse.Namespace) -> int:
     out_dir = Path(args.output_dir or "reports")
     out_dir.mkdir(parents=True, exist_ok=True)
     db_path = str(out_dir / "optics.db")
-    print("🚀 Running complete GCS Clients Optics multi-use-case pipeline...")
+    target_repos = [repo for _, repo in CODE_REPOS]
 
-    # 1. fsspec-methods
-    print("\n=== Use Case 1: FSSPEC Method Usages ===")
+    print("🚀 Running GCS Clients Optics Unified Single-Pass Multi-Use-Case Pipeline...")
+    print(
+        f"   Target Repositories: {len(target_repos)} | Output Dir: {out_dir}/ | SQLite: {db_path}"
+    )
+
+    # 1. Initialize all code analysis use cases
     methods_uc = FsspecMethodsUseCase()
-    code_args = argparse.Namespace(
-        all=True,
-        repo=None,
-        local_dir=None,
-        local_file=None,
-        branch="main",
+    cache_uc = CacheTypeUseCase()
+    proto_uc = ProtocolsUseCase()
+    async_uc = AsyncSyncUseCase()
+    code_use_cases = [methods_uc, cache_uc, proto_uc, async_uc]
+
+    engine = OpticsEngine(
+        use_case=methods_uc,
         include_tests=False,
         github_token=args.github_token,
-        format="all",
-        output=str(out_dir),
-        output_sqlite=db_path,
+        max_workers=16,
+    )
+
+    print(
+        f"\n[+] [Single-Pass Crawl] Scanning {len(target_repos)} repositories for 4 use cases simultaneously..."
+    )
+    start_time = time.time()
+
+    def _progress(repo: str, repo_reports: Dict[str, Any]):
+        fsspec_rep = repo_reports.get("fsspec-methods")
+        files = fsspec_rep.total_files_scanned if fsspec_rep else 0
+        matches = fsspec_rep.total_usages_found if fsspec_rep else 0
+        print(
+            f"    ✔ {repo:<30s} | Scanned {files} files | Found {matches} FSSPEC method calls"
+        )
+
+    multi_reports = engine.scan_multiple_repositories_multi(
+        target_repos,
+        code_use_cases,
+        branch="main",
+        max_repo_workers=16,
+        progress_callback=_progress,
+    )
+    crawl_elapsed = time.time() - start_time
+    print(
+        f"\n🎉 Completed single-pass code scan across all {len(target_repos)} repositories in {crawl_elapsed:.2f} seconds!"
+    )
+
+    # Export Use Case 1: fsspec-methods
+    print("\n[+] Exporting Use Case 1: FSSPEC Method Usages...")
+    methods_uc.export_reports(
+        multi_reports["fsspec-methods"],
         output_csv=str(out_dir / "fsspec_crawl_results.csv"),
         output_json=str(out_dir / "combined_fsspec_report.json"),
         output_md=str(out_dir / "combined_fsspec_report.md"),
+        output_sqlite=db_path,
         matrix_md=str(out_dir / "method_distribution_matrix.md"),
         summary_md=str(out_dir / "all_methods_summary_table.md"),
+        elapsed_seconds=crawl_elapsed,
     )
-    _handle_use_case_scan(methods_uc, code_args, "combined_fsspec_report")
 
-    # 2. cache-type
-    print("\n=== Use Case 2: Read-Path Caching & Cache_Type Optics ===")
-    cache_uc = CacheTypeUseCase()
-    cache_args = argparse.Namespace(
-        all=True,
-        repo=None,
-        local_dir=None,
-        local_file=None,
-        branch="main",
-        include_tests=False,
-        github_token=args.github_token,
-        format="all",
-        output=str(out_dir),
-        output_sqlite=db_path,
+    # Export Use Case 2: cache-type
+    print("[+] Exporting Use Case 2: Read-Path Caching & Cache_Type...")
+    cache_uc.export_reports(
+        multi_reports["cache-type"],
         output_csv=str(out_dir / "cache_analysis.csv"),
         output_json=str(out_dir / "cache_analysis.json"),
         output_md=str(out_dir / "cache_analysis.md"),
-    )
-    _handle_use_case_scan(cache_uc, cache_args, "cache_analysis")
-
-    # 3. protocols
-    print("\n=== Use Case 3: Storage Protocols & Cloud Backends ===")
-    proto_uc = ProtocolsUseCase()
-    proto_args = argparse.Namespace(
-        all=True,
-        repo=None,
-        local_dir=None,
-        local_file=None,
-        branch="main",
-        include_tests=False,
-        github_token=args.github_token,
-        format="all",
-        output=str(out_dir),
         output_sqlite=db_path,
+        elapsed_seconds=crawl_elapsed,
+    )
+
+    # Export Use Case 3: protocols
+    print("[+] Exporting Use Case 3: Storage Protocols & Cloud Backends...")
+    proto_uc.export_reports(
+        multi_reports["protocols"],
         output_csv=str(out_dir / "protocols_analysis.csv"),
         output_json=str(out_dir / "protocols_analysis.json"),
         output_md=str(out_dir / "protocols_analysis.md"),
+        output_sqlite=db_path,
+        elapsed_seconds=crawl_elapsed,
     )
-    _handle_use_case_scan(proto_uc, proto_args, "protocols_analysis")
 
-    # 4. issues
-    print("\n=== Use Case 4: GitHub Performance & Filesystem Issues ===")
+    # Export Use Case 4: async-sync
+    print("[+] Exporting Use Case 4: Async vs Sync Method Usages...")
+    async_uc.export_reports(
+        multi_reports["async-sync"],
+        output_csv=str(out_dir / "async_sync_analysis.csv"),
+        output_json=str(out_dir / "async_sync_analysis.json"),
+        output_md=str(out_dir / "async_sync_analysis.md"),
+        output_sqlite=db_path,
+        elapsed_seconds=crawl_elapsed,
+    )
+
+    # 5. issues
+    print("\n=== Use Case 5: GitHub Performance & Filesystem Issues ===")
     issues_args = argparse.Namespace(
         all=True,
         repo=None,
@@ -414,11 +453,14 @@ def _handle_run_all(args: argparse.Namespace) -> int:
     )
     _handle_issues(issues_args)
 
-    # 5. simulate
-    print("\n=== Use Case 5: In-Memory Filesystem Simulation ===")
+    # 6. simulate
+    print("\n=== Use Case 6: In-Memory Filesystem Simulation ===")
     run_fsspec_simulation(verbose=True)
 
-    print(f"\n🎉 Full pipeline completed! All reports generated in: {out_dir}/")
+    total_elapsed = time.time() - start_time
+    print(
+        f"\n🎉 Full single-pass pipeline completed in {total_elapsed:.2f} seconds! All reports and optics.db generated in: {out_dir}/"
+    )
     return 0
 
 
@@ -483,6 +525,13 @@ def _add_common_code_args(parser: argparse.ArgumentParser):
     )
     parser.add_argument(
         "--output-sqlite", help="Specific path to write SQLite database file"
+    )
+    parser.add_argument(
+        "--concurrency",
+        "-j",
+        type=int,
+        default=16,
+        help="Number of concurrent repositories to crawl (default: 16)",
     )
 
 
@@ -575,6 +624,13 @@ def build_parser() -> argparse.ArgumentParser:
     p_issues.add_argument(
         "--output-sqlite", help="Specific path to write SQLite database file"
     )
+    p_issues.add_argument(
+        "--concurrency",
+        "-j",
+        type=int,
+        default=16,
+        help="Number of concurrent repositories to crawl (default: 16)",
+    )
 
     # 4. Use Case 4: protocols
     p_proto = subparsers.add_parser(
@@ -584,7 +640,15 @@ def build_parser() -> argparse.ArgumentParser:
     )
     _add_common_code_args(p_proto)
 
-    # 5. Ingest JSON to SQLite
+    # 5. Use Case 5: async-sync
+    p_async = subparsers.add_parser(
+        "async-sync",
+        aliases=["async", "async-optics", "concurrency-modes", "sync-async"],
+        help="[Use Case 5] Analyze async vs sync filesystem method usage, coroutines, and bridges.",
+    )
+    _add_common_code_args(p_async)
+
+    # 6. Ingest JSON to SQLite
     p_ingest = subparsers.add_parser(
         "ingest",
         aliases=["load-db"],
@@ -690,6 +754,10 @@ def main(args: Optional[List[str]] = None) -> int:
     elif parsed.command in ("protocols", "storage", "backends", "cloud-providers"):
         use_case = get_use_case("protocols")
         return _handle_use_case_scan(use_case, parsed, "protocols_analysis")
+
+    elif parsed.command in ("async-sync", "async", "async-optics", "concurrency-modes", "sync-async"):
+        use_case = get_use_case("async-sync")
+        return _handle_use_case_scan(use_case, parsed, "async_sync_analysis")
 
     elif parsed.command in ("issues", "crawl-issues", "issues-performance"):
         return _handle_issues(parsed)

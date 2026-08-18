@@ -4,6 +4,8 @@ A simple, extensible CLI and analysis engine for **Google Cloud Storage (GCS) an
 
 `gcs-clients-optics` scans Python codebases (via AST) and GitHub issues across open-source ecosystems (Dask, Ray, Hugging Face Datasets, PyTorch, etc.) using a **generic engine with pluggable use cases**.
 
+📖 **[System Design Document](docs/DESIGN.md)**: High-level component diagrams, responsibilities, pipelining, and SQLite schema.
+
 ---
 
 ## ⚡ Quick Start & Installation
@@ -96,7 +98,23 @@ gcs-optics protocols --all --format sqlite -o reports/optics.db
 
 ---
 
-### 5. Ingesting Existing JSON Reports into SQLite (`ingest`)
+### 5. Async vs Sync Filesystem Method Usage (`async-sync` / `async`)
+Analyzes asynchronous coroutines (`await fs._cat_file()`, `open_async`, `asynchronous=True`, `fsspec.asyn.sync()`) versus synchronous blocking calls (`fs.open()`, `fs.ls()`, `fs.exists()`, `f.readinto()`), and detects potential event loop blocking anti-patterns:
+
+```bash
+# Output as JSON
+gcs-optics async-sync --all --format json -o reports/async_sync.json
+
+# Output as CSV
+gcs-optics async-sync --all --format csv -o reports/async_sync.csv
+
+# Output directly into SQLite database
+gcs-optics async-sync --all --format sqlite -o reports/optics.db
+```
+
+---
+
+### 6. Ingesting Existing JSON Reports into SQLite (`ingest`)
 If you already have generated JSON reports, you can ingest them into SQLite at any time:
 
 ```bash
@@ -106,7 +124,7 @@ gcs-optics ingest --input reports/all_issues.json --db reports/optics.db
 
 ---
 
-### 6. In-Memory Filesystem Simulation (`simulate`)
+### 7. In-Memory Filesystem Simulation (`simulate`)
 Runs a live in-memory verification of directory traversal, wildcards, metadata, and stream reading:
 
 ```bash
@@ -115,7 +133,7 @@ gcs-optics simulate
 
 ---
 
-### 7. Full Pipeline (`run-all`)
+### 8. Full Pipeline (`run-all`)
 Runs all use cases and exports reports to a directory (including `optics.db`):
 
 ```bash
@@ -148,6 +166,7 @@ When data is exported to SQLite (`optics.db`), other agents, scripts, or analyti
 - **`method_usages`**: Every AST method call (`repository`, `file_path`, `line_number`, `target_name`, `base_method`, `category`, `cache_type`, `code_snippet`, `file_url`)
 - **`cache_usages`**: Read-path caching strategies (`repository`, `file_path`, `line_number`, `target_name`, `cache_type`, `is_explicit`, `strategy_category`, `cache_options`, `code_snippet`)
 - **`protocol_usages`**: Storage protocols (`repository`, `file_path`, `line_number`, `protocol`, `provider`, `usage_type`, `context`, `code_snippet`)
+- **`async_sync_usages`**: Async vs Sync method calls (`repository`, `file_path`, `line_number`, `target_name`, `base_method`, `execution_mode`, `async_mechanism`, `is_async_context`, `potential_event_loop_block`, `code_snippet`)
 - **`issues`**: GitHub performance issues (`repository`, `issue_number`, `title`, `state`, `relevance_score`, `matched_keywords`, `categories`, `html_url`, `body_preview`)
 - **`scan_runs`**: Metadata for every scan (`scan_id`, `use_case`, `target_source`, `total_files_scanned`, `total_matches`, `elapsed_seconds`, `scanned_at`)
 

@@ -4,6 +4,7 @@ Optics Use Cases package and registry.
 
 from typing import Dict, List, Optional
 
+from gcs_clients_optics.usecases.async_sync import AsyncSyncUseCase
 from gcs_clients_optics.usecases.base import BaseUseCase
 from gcs_clients_optics.usecases.cache_type import CacheTypeUseCase
 from gcs_clients_optics.usecases.fsspec_methods import FsspecMethodsUseCase
@@ -43,6 +44,7 @@ register_use_case(FsspecMethodsUseCase())
 register_use_case(CacheTypeUseCase())
 register_use_case(IssuesPerformanceUseCase())
 register_use_case(ProtocolsUseCase())
+register_use_case(AsyncSyncUseCase())
 
 __all__ = [
     "BaseUseCase",
@@ -50,6 +52,7 @@ __all__ = [
     "CacheTypeUseCase",
     "IssuesPerformanceUseCase",
     "ProtocolsUseCase",
+    "AsyncSyncUseCase",
     "USE_CASES",
     "register_use_case",
     "get_use_case",

@@ -162,6 +162,30 @@ def run_demo(db_path: str) -> None:
         print(f"• {row['repository']} -> {row['file_path']}:{row['line_number']} (cache_type='{row['cache_type']}')")
         print(f"  Snippet: {row['code_snippet'].strip()}\n")
 
+    # --------------------------------------------------------------------------
+    # Query 6: Async vs Sync Execution & Potential Event Loop Blocks
+    # --------------------------------------------------------------------------
+    print("\n⚡ 6. Async vs Sync Execution Breakdown & Anti-Pattern Warnings:")
+    print("-" * 80)
+    cursor.execute("""
+        SELECT
+            execution_mode,
+            async_mechanism,
+            COUNT(*) AS count,
+            SUM(potential_event_loop_block) AS event_loop_blocks
+        FROM async_sync_usages
+        GROUP BY execution_mode, async_mechanism
+        ORDER BY count DESC;
+    """)
+    rows = cursor.fetchall()
+    if rows:
+        print(f"{'Execution Mode':<15} | {'Mechanism':<28} | {'Calls':<8} | {'Event Loop Blocks'}")
+        print("-" * 80)
+        for row in rows:
+            print(f"{row['execution_mode']:<15} | {row['async_mechanism']:<28} | {row['count']:<8} | {row['event_loop_blocks']}")
+    else:
+        print("  (Run `gcs-optics async-sync --all --format sqlite -o reports/optics.db` to populate async_sync_usages)")
+
     print("=" * 80)
     print("  ✅ Demo complete! Agents can execute any arbitrary SQL against the database.")
     print("=" * 80)
