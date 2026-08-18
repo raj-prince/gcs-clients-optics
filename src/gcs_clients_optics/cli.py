@@ -1,67 +1,121 @@
 """
-Unified Command Line Interface for GCS Clients Optics.
+Unified Command Line Interface for GCS Clients Optics with pluggable use cases.
 """
 
 import argparse
 import sys
 import time
 from pathlib import Path
-from typing import List, Optional
+from typing import List, Optional, Tuple
 
 from gcs_clients_optics.analysis.matrix import generate_method_matrix
 from gcs_clients_optics.analysis.summary_table import generate_summary_table
-from gcs_clients_optics.crawler.engine import FsspecCrawlerEngine
-from gcs_clients_optics.crawler.models import CrawlReport
 from gcs_clients_optics.crawler.repos import DEFAULT_TARGET_REPOS as CODE_REPOS
+from gcs_clients_optics.engine.optics_engine import OpticsEngine
 from gcs_clients_optics.issues.crawler import GitHubIssuesCrawler
 from gcs_clients_optics.issues.keywords import (
     DEFAULT_TARGET_REPOS as ISSUES_REPOS,
 )
 from gcs_clients_optics.issues.models import IssueCrawlReport
-from gcs_clients_optics.reporters.code_reports import (
-    export_csv_report,
-    export_json_report,
-    export_markdown_report,
-)
 from gcs_clients_optics.reporters.issue_reports import (
     export_issues_csv,
     export_issues_json,
     export_issues_markdown,
 )
 from gcs_clients_optics.simulation.simulator import run_fsspec_simulation
+from gcs_clients_optics.usecases import (
+    CacheTypeUseCase,
+    FsspecMethodsUseCase,
+    ProtocolsUseCase,
+    get_use_case,
+    list_use_cases,
+)
 
 
-def _handle_crawl_code(args: argparse.Namespace) -> int:
-    """Handle crawl-code command."""
-    engine = FsspecCrawlerEngine(
+def _resolve_output_paths(
+    args: argparse.Namespace, default_basename: str
+) -> Tuple[Optional[str], Optional[str], Optional[str]]:
+    """
+    Resolve output paths based on --format (json/csv/md/all), --output (-o),
+    and specific flags (--output-csv, --output-json, --output-md).
+    """
+    out_csv = getattr(args, "output_csv", None)
+    out_json = getattr(args, "output_json", None)
+    out_md = getattr(args, "output_md", None)
+    fmt = getattr(args, "format", None)
+    out_target = getattr(args, "output", None)
+
+    out_dir = Path("reports")
+    if out_target:
+        p = Path(out_target)
+        if p.suffix.lower() == ".json":
+            out_json = str(p)
+        elif p.suffix.lower() == ".csv":
+            out_csv = str(p)
+        elif p.suffix.lower() == ".md":
+            out_md = str(p)
+        else:
+            out_dir = p
+
+    if fmt:
+        fmt = fmt.lower()
+        if fmt in ("json", "all") and not out_json:
+            out_json = str(out_dir / f"{default_basename}.json")
+        if fmt in ("csv", "all") and not out_csv:
+            out_csv = str(out_dir / f"{default_basename}.csv")
+        if fmt in ("md", "markdown", "all") and not out_md:
+            out_md = str(out_dir / f"{default_basename}.md")
+
+    # If neither format nor specific output is given, default to markdown
+    if not (out_csv or out_json or out_md):
+        out_md = str(out_dir / f"{default_basename}.md")
+
+    return out_csv, out_json, out_md
+
+
+def _handle_use_case_scan(
+    use_case, args: argparse.Namespace, default_basename: str
+) -> int:
+    """Generic handler for running code-scanning use cases."""
+    engine = OpticsEngine(
+        use_case=use_case,
         include_tests=args.include_tests,
         github_token=args.github_token,
     )
-    reports: List[CrawlReport] = []
+    reports = []
     start_time = time.time()
 
     if args.local_dir:
-        print(f"\n[+] Scanning local directory: {args.local_dir}...")
+        print(f"\n[+] [{use_case.name}] Scanning local directory: {args.local_dir}...")
         report = engine.scan_local_directory(args.local_dir)
+        matches_count = getattr(
+            report,
+            "total_usages_found",
+            getattr(
+                report,
+                "total_read_calls",
+                getattr(report, "total_protocol_usages", 0),
+            ),
+        )
+        files_count = getattr(
+            report,
+            "files_with_usages",
+            getattr(
+                report,
+                "files_with_read_calls",
+                getattr(report, "files_with_protocols", 0),
+            ),
+        )
         print(
             f"    - Scanned {report.total_files_scanned} files | "
-            f"Found {report.total_usages_found} usages in {report.files_with_usages} files."
+            f"Found {matches_count} matches in {files_count} files."
         )
         reports.append(report)
 
     elif args.local_file:
-        print(f"\n[+] Scanning local file: {args.local_file}...")
-        usages = engine.scan_local_file(args.local_file)
-        summary = engine._build_cache_type_summary(usages)
-        report = CrawlReport(
-            target_source=f"Local:{Path(args.local_file).name}",
-            total_files_scanned=1,
-            files_with_usages=1 if usages else 0,
-            total_usages_found=len(usages),
-            cache_type_summary=summary,
-            usages=usages,
-        )
-        print(f"    - Found {len(usages)} usages.")
+        print(f"\n[+] [{use_case.name}] Scanning local file: {args.local_file}...")
+        report = engine.scan_local_file(args.local_file)
+        print(f"    - Completed scan for {args.local_file}.")
         reports.append(report)
 
     elif args.all or args.repo:
@@ -71,14 +125,30 @@ def _handle_crawl_code(args: argparse.Namespace) -> int:
             else (args.repo or [])
         )
         for repo in target_repos:
-            print(f"\n[+] Crawling GitHub repo: {repo}...")
+            print(f"\n[+] [{use_case.name}] Crawling GitHub repo: {repo}...")
             report = engine.scan_github_repo(repo, branch=args.branch)
+            matches_count = getattr(
+                report,
+                "total_usages_found",
+                getattr(
+                    report,
+                    "total_read_calls",
+                    getattr(report, "total_protocol_usages", 0),
+                ),
+            )
+            files_count = getattr(
+                report,
+                "files_with_usages",
+                getattr(
+                    report,
+                    "files_with_read_calls",
+                    getattr(report, "files_with_protocols", 0),
+                ),
+            )
             print(
                 f"    - Scanned {report.total_files_scanned} files | "
-                f"Found {report.total_usages_found} usages in {report.files_with_usages} files."
+                f"Found {matches_count} matches in {files_count} files."
             )
-            if report.cache_type_summary:
-                print(f"    - Cache_Type Summary: {report.cache_type_summary}")
             reports.append(report)
     else:
         print(
@@ -88,29 +158,40 @@ def _handle_crawl_code(args: argparse.Namespace) -> int:
         return 1
 
     elapsed = time.time() - start_time
-    print(
-        f"\nCompleted code scan across {len(reports)} target(s) in {elapsed:.2f} seconds."
+    use_case.print_summary(reports)
+    print(f"\nScan completed across {len(reports)} target(s) in {elapsed:.2f} seconds.")
+
+    out_csv, out_json, out_md = _resolve_output_paths(args, default_basename)
+    matrix_md = getattr(args, "matrix_md", None)
+    summary_md = getattr(args, "summary_md", None)
+
+    use_case.export_reports(
+        reports,
+        output_csv=out_csv,
+        output_json=out_json,
+        output_md=out_md,
+        matrix_md=matrix_md,
+        summary_md=summary_md,
+        elapsed_seconds=elapsed,
+        include_tests=args.include_tests,
     )
 
-    if args.output_csv:
-        export_csv_report(reports, args.output_csv)
-        print(f"CSV report exported to: {args.output_csv}")
-
-    if args.output_json:
-        export_json_report(reports, args.output_json, elapsed_seconds=elapsed)
-        print(f"JSON report exported to: {args.output_json}")
-
-    if args.output_md:
-        export_markdown_report(
-            reports, args.output_md, include_tests=args.include_tests
-        )
-        print(f"Markdown report exported to: {args.output_md}")
+    if out_csv:
+        print(f"  • CSV report exported:      {out_csv}")
+    if out_json:
+        print(f"  • JSON report exported:     {out_json}")
+    if out_md:
+        print(f"  • Markdown report exported: {out_md}")
+    if matrix_md:
+        print(f"  • Matrix exported:          {matrix_md}")
+    if summary_md:
+        print(f"  • Summary Table exported:   {summary_md}")
 
     return 0
 
 
-def _handle_crawl_issues(args: argparse.Namespace) -> int:
-    """Handle crawl-issues command."""
+def _handle_issues(args: argparse.Namespace) -> int:
+    """Handle issues crawling command."""
     crawler = GitHubIssuesCrawler(
         github_token=args.github_token,
         max_issues_per_repo=args.max_issues,
@@ -148,57 +229,61 @@ def _handle_crawl_issues(args: argparse.Namespace) -> int:
         f"\nCompleted issue crawling across {len(reports)} repository target(s) in {elapsed:.2f} seconds."
     )
 
-    if args.output_csv:
-        export_issues_csv(reports, args.output_csv)
-        print(f"CSV report exported to: {args.output_csv}")
+    out_csv, out_json, out_md = _resolve_output_paths(args, "all_issues")
 
-    if args.output_json:
-        export_issues_json(reports, args.output_json, elapsed_seconds=elapsed)
-        print(f"JSON report exported to: {args.output_json}")
+    if out_csv:
+        export_issues_csv(reports, out_csv)
+        print(f"  • CSV report exported:      {out_csv}")
 
-    if args.output_md:
-        export_issues_markdown(reports, args.output_md)
-        print(f"Markdown report exported to: {args.output_md}")
+    if out_json:
+        export_issues_json(reports, out_json, elapsed_seconds=elapsed)
+        print(f"  • JSON report exported:     {out_json}")
+
+    if out_md:
+        export_issues_markdown(reports, out_md)
+        print(f"  • Markdown report exported: {out_md}")
 
     return 0
 
 
+def _handle_list_usecases(args: argparse.Namespace) -> int:
+    """Print all available registered use-cases."""
+    usecases = list_use_cases()
+    print("\n" + "=" * 75)
+    print("  🚀 GCS CLIENTS OPTICS - REGISTERED USE CASES")
+    print("=" * 75)
+    for idx, uc in enumerate(usecases, start=1):
+        aliases_str = ", ".join([f"`{a}`" for a in uc.aliases]) if uc.aliases else "None"
+        print(f"\n{idx}. Command: gcs-optics {uc.name}")
+        print(f"   Aliases:     {aliases_str}")
+        print(f"   Description: {uc.description}")
+    print("\n" + "=" * 75)
+    return 0
+
+
 def _handle_matrix(args: argparse.Namespace) -> int:
-    """Handle matrix generation command."""
     input_path = args.input_json or "reports/combined_fsspec_report.json"
     output_path = args.output_md or "reports/method_distribution_matrix.md"
-
     if not Path(input_path).exists():
-        print(
-            f"Error: Input JSON report '{input_path}' not found.",
-            file=sys.stderr,
-        )
+        print(f"Error: Input JSON report '{input_path}' not found.", file=sys.stderr)
         return 1
-
     generate_method_matrix(input_path, output_path=output_path)
     print(f"Matrix report written to: {output_path}")
     return 0
 
 
 def _handle_summary(args: argparse.Namespace) -> int:
-    """Handle summary table generation command."""
     input_path = args.input_json or "reports/combined_fsspec_report.json"
     output_path = args.output_md or "reports/all_methods_summary_table.md"
-
     if not Path(input_path).exists():
-        print(
-            f"Error: Input JSON report '{input_path}' not found.",
-            file=sys.stderr,
-        )
+        print(f"Error: Input JSON report '{input_path}' not found.", file=sys.stderr)
         return 1
-
     generate_summary_table(input_path, output_path=output_path)
     print(f"Summary table report written to: {output_path}")
     return 0
 
 
 def _handle_simulate(args: argparse.Namespace) -> int:
-    """Handle simulation command."""
     results = run_fsspec_simulation(verbose=not args.quiet)
     if args.quiet:
         print(f"Simulation completed successfully: {results}")
@@ -206,14 +291,13 @@ def _handle_simulate(args: argparse.Namespace) -> int:
 
 
 def _handle_run_all(args: argparse.Namespace) -> int:
-    """Handle run-all pipeline command."""
     out_dir = Path(args.output_dir or "reports")
     out_dir.mkdir(parents=True, exist_ok=True)
+    print("🚀 Running complete GCS Clients Optics multi-use-case pipeline...")
 
-    print("🚀 Running full GCS Clients Optics analysis pipeline...")
-
-    # Step 1: Code Crawl
-    print("\n--- Step 1: Crawling Code Usages ---")
+    # 1. fsspec-methods
+    print("\n=== Use Case 1: FSSPEC Method Usages ===")
+    methods_uc = FsspecMethodsUseCase()
     code_args = argparse.Namespace(
         all=True,
         repo=None,
@@ -222,113 +306,176 @@ def _handle_run_all(args: argparse.Namespace) -> int:
         branch="main",
         include_tests=False,
         github_token=args.github_token,
+        format="all",
+        output=str(out_dir),
         output_csv=str(out_dir / "fsspec_crawl_results.csv"),
         output_json=str(out_dir / "combined_fsspec_report.json"),
         output_md=str(out_dir / "combined_fsspec_report.md"),
+        matrix_md=str(out_dir / "method_distribution_matrix.md"),
+        summary_md=str(out_dir / "all_methods_summary_table.md"),
     )
-    _handle_crawl_code(code_args)
+    _handle_use_case_scan(methods_uc, code_args, "combined_fsspec_report")
 
-    # Step 2: Matrix & Summary
-    print("\n--- Step 2: Generating Matrix & Summary Tables ---")
-    generate_method_matrix(
-        out_dir / "combined_fsspec_report.json",
-        output_path=out_dir / "method_distribution_matrix.md",
+    # 2. cache-type
+    print("\n=== Use Case 2: Read-Path Caching & Cache_Type Optics ===")
+    cache_uc = CacheTypeUseCase()
+    cache_args = argparse.Namespace(
+        all=True,
+        repo=None,
+        local_dir=None,
+        local_file=None,
+        branch="main",
+        include_tests=False,
+        github_token=args.github_token,
+        format="all",
+        output=str(out_dir),
+        output_csv=str(out_dir / "cache_analysis.csv"),
+        output_json=str(out_dir / "cache_analysis.json"),
+        output_md=str(out_dir / "cache_analysis.md"),
     )
-    generate_summary_table(
-        out_dir / "combined_fsspec_report.json",
-        output_path=out_dir / "all_methods_summary_table.md",
-    )
+    _handle_use_case_scan(cache_uc, cache_args, "cache_analysis")
 
-    # Step 3: Issues Crawl
-    print("\n--- Step 3: Crawling Performance & Filesystem Issues ---")
+    # 3. protocols
+    print("\n=== Use Case 3: Storage Protocols & Cloud Backends ===")
+    proto_uc = ProtocolsUseCase()
+    proto_args = argparse.Namespace(
+        all=True,
+        repo=None,
+        local_dir=None,
+        local_file=None,
+        branch="main",
+        include_tests=False,
+        github_token=args.github_token,
+        format="all",
+        output=str(out_dir),
+        output_csv=str(out_dir / "protocols_analysis.csv"),
+        output_json=str(out_dir / "protocols_analysis.json"),
+        output_md=str(out_dir / "protocols_analysis.md"),
+    )
+    _handle_use_case_scan(proto_uc, proto_args, "protocols_analysis")
+
+    # 4. issues
+    print("\n=== Use Case 4: GitHub Performance & Filesystem Issues ===")
     issues_args = argparse.Namespace(
         all=True,
         repo=None,
         state="open",
         max_issues=200,
         github_token=args.github_token,
+        format="all",
+        output=str(out_dir),
         output_csv=str(out_dir / "all_issues.csv"),
         output_json=str(out_dir / "all_issues.json"),
         output_md=str(out_dir / "all_issues.md"),
     )
-    _handle_crawl_issues(issues_args)
+    _handle_issues(issues_args)
 
-    # Step 4: Simulation
-    print("\n--- Step 4: Running In-Memory Verification Simulation ---")
+    # 5. simulate
+    print("\n=== Use Case 5: In-Memory Filesystem Simulation ===")
     run_fsspec_simulation(verbose=True)
 
     print(f"\n🎉 Full pipeline completed! All reports generated in: {out_dir}/")
     return 0
 
 
-def build_parser() -> argparse.ArgumentParser:
-    """Build root CLI argument parser with subcommands."""
-    parser = argparse.ArgumentParser(
-        prog="gcs-optics",
-        description="GCS Clients Optics - AST code crawler, GitHub issues tracker, and filesystem analytics.",
-    )
-    subparsers = parser.add_subparsers(
-        dest="command", title="Commands", help="Available subcommands"
-    )
-
-    # crawl-code
-    p_code = subparsers.add_parser(
-        "crawl-code",
-        aliases=["code"],
-        help="Crawl repositories or local files for filesystem / fsspec AST usages.",
-    )
-    p_code.add_argument(
+def _add_common_code_args(parser: argparse.ArgumentParser):
+    """Add standard arguments for code-crawling commands."""
+    parser.add_argument(
         "--repo",
         "-r",
         nargs="+",
         help="One or more GitHub repositories (e.g. --repo dask/dask)",
     )
-    p_code.add_argument(
+    parser.add_argument(
         "--all",
         "-a",
         action="store_true",
         help="Crawl all default open-source repositories",
     )
-    p_code.add_argument(
+    parser.add_argument(
         "--local-dir",
         "-d",
         help="Path to local directory to scan recursively",
     )
-    p_code.add_argument(
+    parser.add_argument(
         "--local-file",
         "-f",
         help="Path to a single local Python file to scan",
     )
-    p_code.add_argument(
+    parser.add_argument(
         "--branch",
         "-b",
         default="main",
         help="GitHub branch (default: main)",
     )
-    p_code.add_argument(
+    parser.add_argument(
         "--include-tests",
         action="store_true",
         help="Include test Python files",
     )
-    p_code.add_argument(
+    parser.add_argument(
         "--github-token",
         help="GitHub API token (or set GITHUB_TOKEN env var)",
     )
-    p_code.add_argument(
-        "--output-csv", "-c", help="Path to write output CSV report"
+    parser.add_argument(
+        "--format",
+        "-t",
+        choices=["json", "csv", "md", "all"],
+        help="Output format: json, csv, md, or all (default: md)",
     )
-    p_code.add_argument(
-        "--output-json", "-o", help="Path to write output JSON report"
+    parser.add_argument(
+        "--output",
+        "-o",
+        help="Output file path (e.g. -o report.json / -o report.csv) or output directory",
     )
-    p_code.add_argument(
-        "--output-md", "-m", help="Path to write output Markdown report"
+    parser.add_argument(
+        "--output-csv", "-c", help="Specific path to write output CSV report"
+    )
+    parser.add_argument(
+        "--output-json", help="Specific path to write output JSON report"
+    )
+    parser.add_argument(
+        "--output-md", "-m", help="Specific path to write output Markdown report"
     )
 
-    # crawl-issues
+
+def build_parser() -> argparse.ArgumentParser:
+    """Build root CLI argument parser with use-case subcommands."""
+    parser = argparse.ArgumentParser(
+        prog="gcs-optics",
+        description="GCS Clients Optics - Extensible multi-use-case analysis suite for cloud filesystems.",
+    )
+    subparsers = parser.add_subparsers(
+        dest="command", title="Commands", help="Available subcommands & use cases"
+    )
+
+    # 1. Use Case 1: fsspec-methods
+    p_methods = subparsers.add_parser(
+        "fsspec-methods",
+        aliases=["methods", "crawl-code", "code"],
+        help="[Use Case 1] Analyze abstract filesystem / fsspec method usage across codebases.",
+    )
+    _add_common_code_args(p_methods)
+    p_methods.add_argument(
+        "--matrix-md", help="Path to write method distribution matrix markdown"
+    )
+    p_methods.add_argument(
+        "--summary-md", help="Path to write method summary table markdown"
+    )
+
+    # 2. Use Case 2: cache-type
+    p_cache = subparsers.add_parser(
+        "cache-type",
+        aliases=["caching", "cache-usage", "cache"],
+        help="[Use Case 2] Analyze cache_type and cache_options in the read/stream path.",
+    )
+    _add_common_code_args(p_cache)
+
+    # 3. Use Case 3: issues
     p_issues = subparsers.add_parser(
-        "crawl-issues",
-        aliases=["issues"],
-        help="Crawl GitHub issues for performance bottlenecks and filesystem topics.",
+        "issues",
+        aliases=["crawl-issues", "issues-performance"],
+        help="[Use Case 3] Crawl GitHub issues for performance bottlenecks and storage topics.",
     )
     p_issues.add_argument(
         "--repo",
@@ -359,16 +506,42 @@ def build_parser() -> argparse.ArgumentParser:
         help="GitHub API token (or set GITHUB_TOKEN env var)",
     )
     p_issues.add_argument(
-        "--output-csv", "-c", help="Path to write output CSV report"
+        "--format",
+        "-t",
+        choices=["json", "csv", "md", "all"],
+        help="Output format: json, csv, md, or all (default: md)",
     )
     p_issues.add_argument(
-        "--output-json", "-o", help="Path to write output JSON report"
+        "--output",
+        "-o",
+        help="Output file path (e.g. -o issues.json / -o issues.csv) or directory",
     )
     p_issues.add_argument(
-        "--output-md", "-m", help="Path to write output Markdown report"
+        "--output-csv", "-c", help="Specific path to write output CSV report"
+    )
+    p_issues.add_argument(
+        "--output-json", help="Specific path to write output JSON report"
+    )
+    p_issues.add_argument(
+        "--output-md", "-m", help="Specific path to write output Markdown report"
     )
 
-    # matrix
+    # 4. Use Case 4: protocols
+    p_proto = subparsers.add_parser(
+        "protocols",
+        aliases=["storage", "backends", "cloud-providers"],
+        help="[Use Case 4] Analyze cloud storage protocols (gs://, s3://, abfs://) and drivers.",
+    )
+    _add_common_code_args(p_proto)
+
+    # 5. List use cases
+    subparsers.add_parser(
+        "list-usecases",
+        aliases=["usecases", "list"],
+        help="List all registered analysis use cases.",
+    )
+
+    # 6. Matrix & Summary utilities
     p_matrix = subparsers.add_parser(
         "matrix",
         help="Generate cross-repository method occurrence matrix markdown.",
@@ -384,7 +557,6 @@ def build_parser() -> argparse.ArgumentParser:
         help="Path to write matrix markdown (default: reports/method_distribution_matrix.md)",
     )
 
-    # summary
     p_summary = subparsers.add_parser(
         "summary",
         help="Generate comprehensive 4-column method summary table markdown.",
@@ -400,7 +572,7 @@ def build_parser() -> argparse.ArgumentParser:
         help="Path to write summary markdown (default: reports/all_methods_summary_table.md)",
     )
 
-    # simulate
+    # 7. Simulation
     p_sim = subparsers.add_parser(
         "simulate",
         aliases=["sim"],
@@ -410,10 +582,10 @@ def build_parser() -> argparse.ArgumentParser:
         "--quiet", "-q", action="store_true", help="Suppress verbose logs"
     )
 
-    # run-all
+    # 8. Run All
     p_all = subparsers.add_parser(
         "run-all",
-        help="Run complete pipeline: code crawl + issues crawl + matrix + summary + simulation.",
+        help="Run complete multi-use-case pipeline across all targets.",
     )
     p_all.add_argument(
         "--output-dir",
@@ -438,19 +610,41 @@ def main(args: Optional[List[str]] = None) -> int:
         parser.print_help()
         return 0
 
-    if parsed.command in ("crawl-code", "code"):
-        return _handle_crawl_code(parsed)
-    elif parsed.command in ("crawl-issues", "issues"):
-        return _handle_crawl_issues(parsed)
+    if parsed.command in ("fsspec-methods", "methods", "crawl-code", "code"):
+        use_case = get_use_case("fsspec-methods")
+        return _handle_use_case_scan(use_case, parsed, "fsspec_methods")
+
+    elif parsed.command in ("cache-type", "caching", "cache-usage", "cache"):
+        use_case = get_use_case("cache-type")
+        return _handle_use_case_scan(use_case, parsed, "cache_analysis")
+
+    elif parsed.command in ("protocols", "storage", "backends", "cloud-providers"):
+        use_case = get_use_case("protocols")
+        return _handle_use_case_scan(use_case, parsed, "protocols_analysis")
+
+    elif parsed.command in ("issues", "crawl-issues", "issues-performance"):
+        return _handle_issues(parsed)
+
+    elif parsed.command in ("list-usecases", "usecases", "list"):
+        return _handle_list_usecases(parsed)
+
     elif parsed.command == "matrix":
         return _handle_matrix(parsed)
+
     elif parsed.command == "summary":
         return _handle_summary(parsed)
+
     elif parsed.command in ("simulate", "sim"):
         return _handle_simulate(parsed)
+
     elif parsed.command == "run-all":
         return _handle_run_all(parsed)
+
     else:
+        # Check if it matches any other dynamically registered use case
+        uc = get_use_case(parsed.command)
+        if uc:
+            return _handle_use_case_scan(uc, parsed, uc.name)
         parser.print_help()
         return 0
 

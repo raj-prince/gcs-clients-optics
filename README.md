@@ -1,146 +1,103 @@
 # GCS Clients Optics (`gcs-clients-optics`)
 
-[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+A simple, extensible CLI and analysis engine for **Google Cloud Storage (GCS) and `fsspec` filesystem optics**.
 
-A modular, production-grade Python analysis suite and crawler tool designed for **Google Cloud Storage (GCS) and `fsspec` abstract filesystem optics**.
-
-`gcs-clients-optics` inspects AST codebases, tracks GitHub performance issues, generates cross-repository method usage matrices, and simulates filesystem operations across top Python data science, machine learning, and MLOps open-source ecosystems (e.g., Dask, Ray, Hugging Face Datasets, PyTorch, pandas, DVC, etc.).
+`gcs-clients-optics` scans Python codebases (via AST) and GitHub issues across open-source ecosystems (Dask, Ray, Hugging Face Datasets, PyTorch, etc.) using a **generic engine with pluggable use cases**.
 
 ---
 
-## 🏗️ Architecture & Modules
-
-```
-gcs-clients-optics/
-├── pyproject.toml              # Packaging, build system & CLI entry point
-├── README.md                   # Repository documentation
-├── reports/                    # Generated datasets, matrices & markdown reports
-│   ├── all_issues.csv / .json / .md
-│   ├── all_methods_summary_table.md
-│   ├── combined_fsspec_report.json / .md
-│   ├── fsspec_crawl_results.csv
-│   └── method_distribution_matrix.md
-├── src/
-│   └── gcs_clients_optics/     # Core Python package
-│       ├── __init__.py         # Package exports & version
-│       ├── cli.py              # Unified CLI (`gcs-optics`)
-│       ├── crawler/            # AST Code Crawler & GitHub Trees API scanner
-│       │   ├── ast_visitor.py  # FsspecASTVisitor (AST parsing & cache_type extraction)
-│       │   ├── engine.py       # FsspecCrawlerEngine (local & remote scanner)
-│       │   ├── models.py       # FsspecUsage, CrawlReport dataclasses
-│       │   ├── regex_scanner.py# Fallback regex scanner
-│       │   └── repos.py        # Default target repositories configuration
-│       ├── issues/             # GitHub Issues Crawler & Performance Analyzer
-│       │   ├── analyzer.py     # IssuePerformanceAnalyzer (scoring & filtering)
-│       │   ├── crawler.py      # GitHubIssuesCrawler (REST API pagination)
-│       │   ├── keywords.py     # Filesystem & performance keyword sets
-│       │   └── models.py       # GitHubIssue, IssueCrawlReport dataclasses
-│       ├── analysis/           # Analytics, Matrices & Summary Tables
-│       │   ├── categorization.py# 8 functional categories & pattern dictionary
-│       │   ├── matrix.py       # Cross-repository occurrence matrix generator
-│       │   └── summary_table.py# 4-column method summary table generator
-│       ├── reporters/          # Export Formatters
-│       │   ├── code_reports.py # CSV, JSON, Markdown exporters for AST crawl
-│       │   └── issue_reports.py# CSV, JSON, Markdown exporters for issues crawl
-│       └── simulation/         # In-Memory Simulation Suite
-│           └── simulator.py    # Live in-memory filesystem validation engine
-└── tests/                      # Comprehensive pytest test suite
-    ├── test_ast_visitor.py
-    ├── test_crawler_engine.py
-    ├── test_issues_analyzer.py
-    ├── test_issues_crawler.py
-    ├── test_reports_and_matrix.py
-    ├── test_simulation.py
-    └── test_cli.py
-```
-
----
-
-## ⚡ Installation
-
-Clone the repository and install in editable mode:
+## ⚡ Quick Start & Installation
 
 ```bash
 git clone https://github.com/raj-prince/gcs-clients-optics.git
 cd gcs-clients-optics
 
-# Option A: Install globally to ~/.local/bin via uv tool (available everywhere):
+# Option 1: Install globally via uv tool (available directly in your PATH):
 uv tool install --editable .
 
-# Option B: Install inside a virtual environment:
-uv venv && source .venv/bin/activate
-uv pip install -e ".[dev]"
-
-# Option C: Using standard pip:
+# Option 2: Install with standard pip in a virtual environment:
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
 ```
 
 ---
 
-## 🚀 CLI Usage (`gcs-optics`)
+## 🚀 CLI Commands & Use Cases
 
-The package provides a unified CLI `gcs-optics` (or `python -m gcs_clients_optics`):
-
-### 1. AST Code Crawler (`crawl-code` / `code`)
-Crawl remote GitHub repositories or local directories to detect filesystem/fsspec calls, extract `cache_type` options, and build line-level GitHub links:
-
+List all available use cases:
 ```bash
-# Crawl all 12 default open-source repositories
-gcs-optics crawl-code --all \
-  --output-csv reports/fsspec_crawl_results.csv \
-  --output-json reports/combined_fsspec_report.json \
-  --output-md reports/combined_fsspec_report.md
-
-# Crawl specific repositories
-gcs-optics crawl-code --repo dask/dask huggingface/datasets --output-md dask_report.md
-
-# Scan a local repository or directory tree
-gcs-optics crawl-code --local-dir /path/to/repo --output-md local_report.md
+gcs-optics list-usecases
 ```
 
-### 2. GitHub Issues Tracker (`crawl-issues` / `issues`)
-Scan and score open GitHub issues related to filesystem performance, latency, and cloud storage bottlenecks:
+### 1. FSSPEC Method Usage Across Repos (`fsspec-methods` / `methods`)
+Scans code for all abstract filesystem calls (`open`, `exists`, `info`, `ls`, `glob`, `find`, `walk`, `makedirs`, `get`, `put`, etc.):
 
 ```bash
-# Crawl open issues across all default repositories
-gcs-optics crawl-issues --all \
-  --output-csv reports/all_issues.csv \
-  --output-json reports/all_issues.json \
-  --output-md reports/all_issues.md
+# Output as JSON
+gcs-optics fsspec-methods --repo dask/dask --format json -o dask_methods.json
 
-# Crawl specific storage repositories
-gcs-optics crawl-issues --repo fsspec/gcsfs fsspec/s3fs --output-md gcs_issues.md
+# Output as CSV
+gcs-optics fsspec-methods --all --format csv -o reports/fsspec_methods.csv
+
+# Scan local code directory as JSON
+gcs-optics fsspec-methods --local-dir /path/to/project --format json -o local_methods.json
 ```
 
-### 3. Generate Distribution Matrix (`matrix`)
-Generate a markdown cross-repository distribution matrix from crawl results:
+---
+
+### 2. Cache-Type Usage in the Read Path (`cache-type` / `caching`)
+Analyzes `cache_type` (`readahead`, `mmap`, `block`, `parts`, `none`, `bytes`, `background`, `file`), `cache_options`, and read-path buffering:
 
 ```bash
-gcs-optics matrix \
-  --input-json reports/combined_fsspec_report.json \
-  --output-md reports/method_distribution_matrix.md
+# Output as JSON
+gcs-optics cache-type --all --format json -o reports/cache_analysis.json
+
+# Output as CSV
+gcs-optics cache-type --all --format csv -o reports/cache_analysis.csv
+
+# Scan a single local file
+gcs-optics cache-type --local-file src/data_reader.py --format json -o reader_cache.json
 ```
 
-### 4. Generate Method Summary Table (`summary`)
-Generate a 4-column summary table categorized across 8 functional domains:
+---
+
+### 3. GitHub Issues Performance Tracker (`issues` / `crawl-issues`)
+Crawls and scores open GitHub issues for storage performance bottlenecks (latency, throughput, OOM, prefetching, chunk size):
 
 ```bash
-gcs-optics summary \
-  --input-json reports/combined_fsspec_report.json \
-  --output-md reports/all_methods_summary_table.md
+# Output as JSON
+gcs-optics issues --repo fsspec/gcsfs fsspec/s3fs --format json -o storage_issues.json
+
+# Output as CSV
+gcs-optics issues --all --format csv -o reports/all_issues.csv
 ```
 
-### 5. In-Memory Simulation (`simulate`)
-Execute a live in-memory simulation of all core filesystem operations:
+---
+
+### 4. Storage Protocols & Cloud Backends (`protocols` / `storage`)
+Analyzes cloud protocol URIs (`gs://`, `s3://`, `abfs://`, `hdfs://`, `memory://`, `file://`) and backend driver instantiations (`gcsfs`, `s3fs`, etc.):
+
+```bash
+# Output as JSON
+gcs-optics protocols --all --format json -o reports/protocols.json
+
+# Output as CSV
+gcs-optics protocols --all --format csv -o reports/protocols.csv
+```
+
+---
+
+### 5. In-Memory Filesystem Simulation (`simulate`)
+Runs a live in-memory verification of directory traversal, wildcards, metadata, and stream reading:
 
 ```bash
 gcs-optics simulate
 ```
 
+---
+
 ### 6. Full Pipeline (`run-all`)
-Run code crawl, issue crawl, matrix, summary tables, and simulation in one command:
+Runs all use cases and exports reports to a directory:
 
 ```bash
 gcs-optics run-all --output-dir reports
@@ -148,39 +105,53 @@ gcs-optics run-all --output-dir reports
 
 ---
 
-## 🐍 Python API Usage
+## 💾 Output Formats: JSON, CSV, Markdown
 
-You can also import and use `gcs_clients_optics` programmatically:
+You can specify the output format using `--format` (`-t`) and the output path with `--output` (`-o`):
+
+| Flag / Option | Description | Example |
+| :--- | :--- | :--- |
+| `--format json` | Output report in JSON format | `gcs-optics fsspec-methods --all --format json -o output.json` |
+| `--format csv` | Output report in CSV format | `gcs-optics cache-type --all --format csv -o output.csv` |
+| `--format md` | Output report in Markdown format | `gcs-optics cache-type --all --format md -o output.md` |
+| `--format all` | Output all formats (JSON, CSV, MD) | `gcs-optics fsspec-methods --all --format all -o reports/` |
+| `-o <path>` / `--output <path>` | Destination file or directory | `-o my_report.json` or `-o reports/` |
+
+---
+
+## 🧩 Adding a Custom Use Case
+
+Any new use case plugs directly into the generic `OpticsEngine`:
 
 ```python
-from gcs_clients_optics import (
-    FsspecCrawlerEngine,
-    GitHubIssuesCrawler,
-    generate_method_matrix,
-    generate_summary_table,
-    run_fsspec_simulation,
-)
+from gcs_clients_optics import BaseUseCase, OpticsEngine, register_use_case
 
-# 1. Scan code snippet or file
-engine = FsspecCrawlerEngine()
-usages = engine.scan_code("sample.py", "with fsspec.open('gs://bucket/data.parquet', 'rb', cache_type='mmap') as f: pass")
-for u in usages:
-    print(f"Call: {u.target_name}, cache_type: {u.cache_type}")
+class CompressionUseCase(BaseUseCase):
+    name = "compression"
+    description = "Analyze compression codec usage (gzip, snappy, zstd, lz4)"
 
-# 2. Crawl GitHub issues
-crawler = GitHubIssuesCrawler()
-report = crawler.crawl_repository_issues("fsspec/gcsfs")
-print(f"Found {report.matched_issues_count} performance issues in {report.target_repo}")
+    def scan_code(self, file_path, source_code, repo_url=None, branch="main"):
+        # Custom AST or regex inspection logic
+        return [...]
 
-# 3. Run in-memory simulation
-results = run_fsspec_simulation(verbose=True)
+    def aggregate_report(self, target_source, total_files_scanned, files_with_usages, usages, repo_url=None):
+        return {...}
+
+    def export_reports(self, reports, output_csv=None, output_json=None, output_md=None, **kwargs):
+        # Export JSON/CSV/MD
+        return {}
+
+# Register globally
+register_use_case(CompressionUseCase())
+
+# Run with generic engine
+engine = OpticsEngine(use_case=CompressionUseCase())
+report = engine.scan_local_directory("src/")
 ```
 
 ---
 
 ## 🧪 Running Tests
-
-Run the test suite with `pytest`:
 
 ```bash
 pytest
@@ -190,4 +161,4 @@ pytest
 
 ## 📄 License
 
-This project is licensed under the Apache 2.0 License.
+Apache 2.0

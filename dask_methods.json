@@ -1,0 +1,1871 @@
+{
+  "summary": {
+    "total_repositories": 1,
+    "total_files_scanned": 201,
+    "files_with_usages": 20,
+    "total_usages_found": 91,
+    "cache_type_summary": {
+      "NOT_EXPLICIT": 88,
+      "parts": 3
+    },
+    "elapsed_seconds": 5.82
+  },
+  "per_repository": [
+    {
+      "target_source": "GitHub:dask/dask (main)",
+      "total_files_scanned": 201,
+      "files_with_usages": 20,
+      "total_usages_found": 91,
+      "repo_url": "https://github.com/dask/dask",
+      "cache_type_summary": {
+        "NOT_EXPLICIT": 88,
+        "parts": 3
+      },
+      "usages": [
+        {
+          "file_path": "dask/array/core.py",
+          "line_number": 6112,
+          "end_line_number": 6112,
+          "target_name": "open",
+          "enclosing_function": "to_npy_stack",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/array/core.py#L6112",
+          "args": [
+            "os.path.join(dirname, 'info')",
+            "'wb'"
+          ],
+          "kwargs": {},
+          "code_snippet": "    with open(os.path.join(dirname, \"info\"), \"wb\") as f:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/array/core.py",
+          "line_number": 6139,
+          "end_line_number": 6139,
+          "target_name": "open",
+          "enclosing_function": "from_npy_stack",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/array/core.py#L6139",
+          "args": [
+            "os.path.join(dirname, 'info')",
+            "'rb'"
+          ],
+          "kwargs": {},
+          "code_snippet": "    with open(os.path.join(dirname, \"info\"), \"rb\") as f:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/bag/avro.py",
+          "line_number": 67,
+          "end_line_number": 67,
+          "target_name": "OpenFile",
+          "enclosing_function": "open_head",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/bag/avro.py#L67",
+          "args": [
+            "fs",
+            "path"
+          ],
+          "kwargs": {
+            "compression": "compression"
+          },
+          "code_snippet": "    with OpenFile(fs, path, compression=compression) as f:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/bag/avro.py",
+          "line_number": 69,
+          "end_line_number": 69,
+          "target_name": "fs.info",
+          "enclosing_function": "open_head",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/bag/avro.py#L69",
+          "args": [
+            "path"
+          ],
+          "kwargs": {},
+          "code_snippet": "    size = fs.info(path)[\"size\"]",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/bag/avro.py",
+          "line_number": 104,
+          "end_line_number": 106,
+          "target_name": "get_fs_token_paths",
+          "enclosing_function": "read_avro",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/bag/avro.py#L104",
+          "args": [
+            "urlpath"
+          ],
+          "kwargs": {
+            "mode": "'rb'",
+            "storage_options": "storage_options"
+          },
+          "code_snippet": "        fs, fs_token, paths = get_fs_token_paths(\n            urlpath, mode=\"rb\", storage_options=storage_options\n        )",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/bag/avro.py",
+          "line_number": 123,
+          "end_line_number": 123,
+          "target_name": "OpenFile",
+          "enclosing_function": "read_avro",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/bag/avro.py#L123",
+          "args": [
+            "fs",
+            "path"
+          ],
+          "kwargs": {
+            "compression": "compression"
+          },
+          "code_snippet": "            f = OpenFile(fs, path, compression=compression)",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/bag/avro.py",
+          "line_number": 124,
+          "end_line_number": 126,
+          "target_name": "fs_tokenize",
+          "enclosing_function": "read_avro",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/bag/avro.py#L124",
+          "args": [
+            "fs_token",
+            "delimiter",
+            "path",
+            "fs.ukey(path)",
+            "compression",
+            "offset"
+          ],
+          "kwargs": {},
+          "code_snippet": "            token = fs_tokenize(\n                fs_token, delimiter, path, fs.ukey(path), compression, offset\n            )",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/bag/avro.py",
+          "line_number": 125,
+          "end_line_number": 125,
+          "target_name": "fs.ukey",
+          "enclosing_function": "read_avro",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/bag/avro.py#L125",
+          "args": [
+            "path"
+          ],
+          "kwargs": {},
+          "code_snippet": "                fs_token, delimiter, path, fs.ukey(path), compression, offset",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/bag/avro.py",
+          "line_number": 136,
+          "end_line_number": 136,
+          "target_name": "open_files",
+          "enclosing_function": "read_avro",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/bag/avro.py#L136",
+          "args": [
+            "urlpath"
+          ],
+          "kwargs": {
+            "compression": "compression"
+          },
+          "code_snippet": "        files = open_files(urlpath, compression=compression, **storage_options)",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/bag/avro.py",
+          "line_number": 152,
+          "end_line_number": 152,
+          "target_name": "read_block",
+          "enclosing_function": "read_chunk",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/bag/avro.py#L152",
+          "args": [
+            "f",
+            "off",
+            "l",
+            "head['sync']"
+          ],
+          "kwargs": {},
+          "code_snippet": "        chunk = read_block(f, off, l, head[\"sync\"])",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/bag/avro.py",
+          "line_number": 256,
+          "end_line_number": 262,
+          "target_name": "open_files",
+          "enclosing_function": "to_avro",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/bag/avro.py#L256",
+          "args": [
+            "filename",
+            "'wb'"
+          ],
+          "kwargs": {
+            "name_function": "name_function",
+            "num": "b.npartitions"
+          },
+          "code_snippet": "    files = open_files(\n        filename,\n        \"wb\",\n        name_function=name_function,\n        num=b.npartitions,\n        **storage_options,\n    )",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/bag/core.py",
+          "line_number": 259,
+          "end_line_number": 267,
+          "target_name": "open_files",
+          "enclosing_function": "to_textfiles",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/bag/core.py#L259",
+          "args": [
+            "path"
+          ],
+          "kwargs": {
+            "compression": "compression",
+            "mode": "mode",
+            "encoding": "encoding",
+            "name_function": "name_function",
+            "num": "b.npartitions"
+          },
+          "code_snippet": "    files = open_files(\n        path,\n        compression=compression,\n        mode=mode,\n        encoding=encoding,\n        name_function=name_function,\n        num=b.npartitions,\n        **(storage_options or {}),\n    )",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/bag/text.py",
+          "line_number": 100,
+          "end_line_number": 108,
+          "target_name": "open_files",
+          "enclosing_function": "read_text",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/bag/text.py#L100",
+          "args": [
+            "urlpath"
+          ],
+          "kwargs": {
+            "mode": "'rt'",
+            "encoding": "encoding",
+            "errors": "errors",
+            "compression": "compression",
+            "newline": "newline"
+          },
+          "code_snippet": "        files = open_files(\n            urlpath,\n            mode=\"rt\",\n            encoding=encoding,\n            errors=errors,\n            compression=compression,\n            newline=newline,\n            **(storage_options or {}),\n        )",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/bytes/core.py",
+          "line_number": 83,
+          "end_line_number": 83,
+          "target_name": "get_fs_token_paths",
+          "enclosing_function": "read_bytes",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/bytes/core.py#L83",
+          "args": [
+            "urlpath"
+          ],
+          "kwargs": {
+            "mode": "'rb'",
+            "storage_options": "kwargs"
+          },
+          "code_snippet": "    fs, fs_token, paths = get_fs_token_paths(urlpath, mode=\"rb\", storage_options=kwargs)",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/bytes/core.py",
+          "line_number": 103,
+          "end_line_number": 103,
+          "target_name": "infer_compression",
+          "enclosing_function": "read_bytes",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/bytes/core.py#L103",
+          "args": [
+            "path"
+          ],
+          "kwargs": {},
+          "code_snippet": "                comp = infer_compression(path)",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/bytes/core.py",
+          "line_number": 111,
+          "end_line_number": 111,
+          "target_name": "fs.info",
+          "enclosing_function": "read_bytes",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/bytes/core.py#L111",
+          "args": [
+            "path"
+          ],
+          "kwargs": {},
+          "code_snippet": "            size = fs.info(path)[\"size\"]",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/bytes/core.py",
+          "line_number": 149,
+          "end_line_number": 149,
+          "target_name": "fs.ukey",
+          "enclosing_function": "read_bytes",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/bytes/core.py#L149",
+          "args": [
+            "path"
+          ],
+          "kwargs": {},
+          "code_snippet": "        token = tokenize(fs_token, delimiter, path, fs.ukey(path), compression, offset)",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/bytes/core.py",
+          "line_number": 153,
+          "end_line_number": 153,
+          "target_name": "OpenFile",
+          "enclosing_function": "read_bytes",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/bytes/core.py#L153",
+          "args": [
+            "fs",
+            "path"
+          ],
+          "kwargs": {
+            "compression": "compression"
+          },
+          "code_snippet": "                OpenFile(fs, path, compression=compression),",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/bytes/core.py",
+          "line_number": 168,
+          "end_line_number": 168,
+          "target_name": "OpenFile",
+          "enclosing_function": "read_bytes",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/bytes/core.py#L168",
+          "args": [
+            "fs",
+            "paths[0]"
+          ],
+          "kwargs": {
+            "compression": "compression"
+          },
+          "code_snippet": "        with OpenFile(fs, paths[0], compression=compression) as f:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/bytes/core.py",
+          "line_number": 194,
+          "end_line_number": 194,
+          "target_name": "read_block",
+          "enclosing_function": "read_block_from_file",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/bytes/core.py#L194",
+          "args": [
+            "f",
+            "off",
+            "bs",
+            "delimiter"
+          ],
+          "kwargs": {},
+          "code_snippet": "        return read_block(f, off, bs, delimiter)",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/config.py",
+          "line_number": 179,
+          "end_line_number": 179,
+          "target_name": "open",
+          "enclosing_function": "_load_config_file",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/config.py#L179",
+          "args": [
+            "path"
+          ],
+          "kwargs": {},
+          "code_snippet": "        with open(path) as f:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/config.py",
+          "line_number": 352,
+          "end_line_number": 352,
+          "target_name": "open",
+          "enclosing_function": "ensure_file",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/config.py#L352",
+          "args": [
+            "source"
+          ],
+          "kwargs": {},
+          "code_snippet": "            with open(source) as f:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/config.py",
+          "line_number": 361,
+          "end_line_number": 361,
+          "target_name": "open",
+          "enclosing_function": "ensure_file",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/config.py#L361",
+          "args": [
+            "tmp",
+            "'w'"
+          ],
+          "kwargs": {},
+          "code_snippet": "            with open(tmp, \"w\") as f:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/config.py",
+          "line_number": 888,
+          "end_line_number": 888,
+          "target_name": "open",
+          "enclosing_function": "_initialize",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/config.py#L888",
+          "args": [
+            "fn"
+          ],
+          "kwargs": {},
+          "code_snippet": "    with open(fn) as f:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/dask_expr/_collection.py",
+          "line_number": 5359,
+          "end_line_number": 5359,
+          "target_name": "stringify_path",
+          "enclosing_function": "read_parquet",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/dask_expr/_collection.py#L5359",
+          "args": [
+            "path"
+          ],
+          "kwargs": {},
+          "code_snippet": "        path = stringify_path(path)",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/dask_expr/io/parquet.py",
+          "line_number": 489,
+          "end_line_number": 489,
+          "target_name": "stringify_path",
+          "enclosing_function": "to_parquet",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/dask_expr/io/parquet.py#L489",
+          "args": [
+            "path"
+          ],
+          "kwargs": {},
+          "code_snippet": "        path = stringify_path(path)",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/dask_expr/io/parquet.py",
+          "line_number": 505,
+          "end_line_number": 505,
+          "target_name": "fs.exists",
+          "enclosing_function": "to_parquet",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/dask_expr/io/parquet.py#L505",
+          "args": [
+            "path"
+          ],
+          "kwargs": {},
+          "code_snippet": "        if fs.exists(path) and fs.isdir(path):",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/dask_expr/io/parquet.py",
+          "line_number": 505,
+          "end_line_number": 505,
+          "target_name": "fs.isdir",
+          "enclosing_function": "to_parquet",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/dask_expr/io/parquet.py#L505",
+          "args": [
+            "path"
+          ],
+          "kwargs": {},
+          "code_snippet": "        if fs.exists(path) and fs.isdir(path):",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/dask_expr/io/parquet.py",
+          "line_number": 1781,
+          "end_line_number": 1781,
+          "target_name": "fs.open",
+          "enclosing_function": "_read_partition_stats",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/dask_expr/io/parquet.py#L1781",
+          "args": [
+            "path"
+          ],
+          "kwargs": {
+            "default_cache": "'none'"
+          },
+          "code_snippet": "            with fs.open(path, default_cache=\"none\") as f:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/csv.py",
+          "line_number": 488,
+          "end_line_number": 488,
+          "target_name": "get_fs_token_paths",
+          "enclosing_function": "read_pandas",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/csv.py#L488",
+          "args": [
+            "urlpath"
+          ],
+          "kwargs": {
+            "mode": "'rb'",
+            "storage_options": "storage_options"
+          },
+          "code_snippet": "        paths = get_fs_token_paths(urlpath, mode=\"rb\", storage_options=storage_options)[",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/csv.py",
+          "line_number": 497,
+          "end_line_number": 497,
+          "target_name": "infer_compression",
+          "enclosing_function": "read_pandas",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/csv.py#L497",
+          "args": [
+            "paths[0]"
+          ],
+          "kwargs": {},
+          "code_snippet": "        compression = infer_compression(paths[0])",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/csv.py",
+          "line_number": 911,
+          "end_line_number": 911,
+          "target_name": "open_file",
+          "enclosing_function": "to_csv",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/csv.py#L911",
+          "args": [
+            "filename"
+          ],
+          "kwargs": {
+            "mode": "mode"
+          },
+          "code_snippet": "        first_file = open_file(filename, mode=mode, **file_options)",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/csv.py",
+          "line_number": 915,
+          "end_line_number": 915,
+          "target_name": "open_file",
+          "enclosing_function": "to_csv",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/csv.py#L915",
+          "args": [
+            "filename"
+          ],
+          "kwargs": {
+            "mode": "append_mode"
+          },
+          "code_snippet": "        append_file = open_file(filename, mode=append_mode, **file_options)",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/csv.py",
+          "line_number": 922,
+          "end_line_number": 928,
+          "target_name": "open_files",
+          "enclosing_function": "to_csv",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/csv.py#L922",
+          "args": [
+            "filename"
+          ],
+          "kwargs": {
+            "mode": "mode",
+            "name_function": "name_function",
+            "num": "df.npartitions"
+          },
+          "code_snippet": "        files = open_files(\n            filename,\n            mode=mode,\n            name_function=name_function,\n            num=df.npartitions,\n            **file_options,\n        )",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/hdf.py",
+          "line_number": 147,
+          "end_line_number": 147,
+          "target_name": "stringify_path",
+          "enclosing_function": "to_hdf",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/hdf.py#L147",
+          "args": [
+            "path"
+          ],
+          "kwargs": {},
+          "code_snippet": "    path = stringify_path(path)",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/hdf.py",
+          "line_number": 176,
+          "end_line_number": 176,
+          "target_name": "build_name_function",
+          "enclosing_function": "to_hdf",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/hdf.py#L176",
+          "args": [
+            "df.npartitions - 1"
+          ],
+          "kwargs": {},
+          "code_snippet": "        name_function = build_name_function(df.npartitions - 1)",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/hdf.py",
+          "line_number": 381,
+          "end_line_number": 381,
+          "target_name": "stringify_path",
+          "enclosing_function": "read_hdf",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/hdf.py#L381",
+          "args": [
+            "pattern"
+          ],
+          "kwargs": {},
+          "code_snippet": "    pattern = stringify_path(pattern)",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/json.py",
+          "line_number": 78,
+          "end_line_number": 87,
+          "target_name": "open_files",
+          "enclosing_function": "to_json",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/json.py#L78",
+          "args": [
+            "url_path",
+            "'wt'"
+          ],
+          "kwargs": {
+            "encoding": "encoding",
+            "errors": "errors",
+            "name_function": "name_function",
+            "num": "df.npartitions",
+            "compression": "compression"
+          },
+          "code_snippet": "    outfiles = open_files(\n        url_path,\n        \"wt\",\n        encoding=encoding,\n        errors=errors,\n        name_function=name_function,\n        num=df.npartitions,\n        compression=compression,\n        **(storage_options or {}),\n    )",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/json.py",
+          "line_number": 268,
+          "end_line_number": 275,
+          "target_name": "open_files",
+          "enclosing_function": "read_json",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/json.py#L268",
+          "args": [
+            "url_path",
+            "'rt'"
+          ],
+          "kwargs": {
+            "encoding": "encoding",
+            "errors": "errors",
+            "compression": "compression"
+          },
+          "code_snippet": "        files = open_files(\n            url_path,\n            \"rt\",\n            encoding=encoding,\n            errors=errors,\n            compression=compression,\n            **storage_options,\n        )",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/orc/arrow.py",
+          "line_number": 23,
+          "end_line_number": 23,
+          "target_name": "fs.isfile",
+          "enclosing_function": "read_metadata",
+          "enclosing_class": "ArrowORCEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/orc/arrow.py#L23",
+          "args": [
+            "paths[0]"
+          ],
+          "kwargs": {},
+          "code_snippet": "        if len(paths) == 1 and not fs.isfile(paths[0]):",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/orc/arrow.py",
+          "line_number": 39,
+          "end_line_number": 39,
+          "target_name": "fs.open",
+          "enclosing_function": "read_metadata",
+          "enclosing_class": "ArrowORCEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/orc/arrow.py#L39",
+          "args": [
+            "path",
+            "'rb'"
+          ],
+          "kwargs": {},
+          "code_snippet": "                with fs.open(path, \"rb\") as f:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/orc/arrow.py",
+          "line_number": 60,
+          "end_line_number": 60,
+          "target_name": "fs.open",
+          "enclosing_function": "read_metadata",
+          "enclosing_class": "ArrowORCEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/orc/arrow.py#L60",
+          "args": [
+            "paths[0]",
+            "'rb'"
+          ],
+          "kwargs": {},
+          "code_snippet": "                    with fs.open(paths[0], \"rb\") as f:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/orc/arrow.py",
+          "line_number": 111,
+          "end_line_number": 111,
+          "target_name": "fs.open",
+          "enclosing_function": "write_partition",
+          "enclosing_class": "ArrowORCEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/orc/arrow.py#L111",
+          "args": [
+            "fs.sep.join([path, filename])",
+            "'wb'"
+          ],
+          "kwargs": {},
+          "code_snippet": "        with fs.open(fs.sep.join([path, filename]), \"wb\") as f:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/orc/arrow.py",
+          "line_number": 111,
+          "end_line_number": 111,
+          "target_name": "fs.sep.join",
+          "enclosing_function": "write_partition",
+          "enclosing_class": "ArrowORCEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/orc/arrow.py#L111",
+          "args": [
+            "[path, filename]"
+          ],
+          "kwargs": {},
+          "code_snippet": "        with fs.open(fs.sep.join([path, filename]), \"wb\") as f:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/orc/arrow.py",
+          "line_number": 122,
+          "end_line_number": 122,
+          "target_name": "fs.open",
+          "enclosing_function": "_read_orc_stripes",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/orc/arrow.py#L122",
+          "args": [
+            "path",
+            "'rb'"
+          ],
+          "kwargs": {},
+          "code_snippet": "    with fs.open(path, \"rb\") as f:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/orc/core.py",
+          "line_number": 81,
+          "end_line_number": 83,
+          "target_name": "get_fs_token_paths",
+          "enclosing_function": "read_orc",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/orc/core.py#L81",
+          "args": [
+            "path"
+          ],
+          "kwargs": {
+            "mode": "'rb'",
+            "storage_options": "storage_options"
+          },
+          "code_snippet": "    fs, fs_token, paths = get_fs_token_paths(\n        path, mode=\"rb\", storage_options=storage_options\n    )",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/orc/core.py",
+          "line_number": 174,
+          "end_line_number": 174,
+          "target_name": "stringify_path",
+          "enclosing_function": "to_orc",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/orc/core.py#L174",
+          "args": [
+            "path"
+          ],
+          "kwargs": {},
+          "code_snippet": "        path = stringify_path(path)",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/orc/core.py",
+          "line_number": 175,
+          "end_line_number": 175,
+          "target_name": "get_fs_token_paths",
+          "enclosing_function": "to_orc",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/orc/core.py#L175",
+          "args": [
+            "path"
+          ],
+          "kwargs": {
+            "mode": "'wb'",
+            "storage_options": "storage_options"
+          },
+          "code_snippet": "    fs, _, _ = get_fs_token_paths(path, mode=\"wb\", storage_options=storage_options)",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/arrow.py",
+          "line_number": 141,
+          "end_line_number": 143,
+          "target_name": "fs.sep.join",
+          "enclosing_function": "_write_partitioned",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/arrow.py#L141",
+          "args": [
+            "[_hive_dirname(name, val) for name, val in zip(partition_cols, keys)]"
+          ],
+          "kwargs": {},
+          "code_snippet": "        subdir = fs.sep.join(\n            [_hive_dirname(name, val) for name, val in zip(partition_cols, keys)]\n        )",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/arrow.py",
+          "line_number": 147,
+          "end_line_number": 147,
+          "target_name": "fs.sep.join",
+          "enclosing_function": "_write_partitioned",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/arrow.py#L147",
+          "args": [
+            "[root_path, subdir]"
+          ],
+          "kwargs": {},
+          "code_snippet": "        prefix = fs.sep.join([root_path, subdir])",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/arrow.py",
+          "line_number": 149,
+          "end_line_number": 149,
+          "target_name": "fs.sep.join",
+          "enclosing_function": "_write_partitioned",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/arrow.py#L149",
+          "args": [
+            "[prefix, filename]"
+          ],
+          "kwargs": {},
+          "code_snippet": "        full_path = fs.sep.join([prefix, filename])",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/arrow.py",
+          "line_number": 150,
+          "end_line_number": 150,
+          "target_name": "fs.open",
+          "enclosing_function": "_write_partitioned",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/arrow.py#L150",
+          "args": [
+            "full_path",
+            "'wb'"
+          ],
+          "kwargs": {},
+          "code_snippet": "        with fs.open(full_path, \"wb\") as f:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/arrow.py",
+          "line_number": 158,
+          "end_line_number": 158,
+          "target_name": "fs.sep.join",
+          "enclosing_function": "_write_partitioned",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/arrow.py#L158",
+          "args": [
+            "[subdir, filename]"
+          ],
+          "kwargs": {},
+          "code_snippet": "            md_list[-1].set_file_path(fs.sep.join([subdir, filename]))",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/arrow.py",
+          "line_number": 470,
+          "end_line_number": 470,
+          "target_name": "stringify_path",
+          "enclosing_function": "extract_filesystem",
+          "enclosing_class": "ArrowDatasetEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/arrow.py#L470",
+          "args": [
+            "u"
+          ],
+          "kwargs": {},
+          "code_snippet": "                urlpath = [stringify_path(u) for u in urlpath]",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/arrow.py",
+          "line_number": 472,
+          "end_line_number": 472,
+          "target_name": "stringify_path",
+          "enclosing_function": "extract_filesystem",
+          "enclosing_class": "ArrowDatasetEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/arrow.py#L472",
+          "args": [
+            "urlpath"
+          ],
+          "kwargs": {},
+          "code_snippet": "                urlpath = [stringify_path(urlpath)]",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/arrow.py",
+          "line_number": 483,
+          "end_line_number": 483,
+          "target_name": "ArrowFSWrapper",
+          "enclosing_function": "extract_filesystem",
+          "enclosing_class": "ArrowDatasetEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/arrow.py#L483",
+          "args": [
+            "fs"
+          ],
+          "kwargs": {},
+          "code_snippet": "            fsspec_fs = ArrowFSWrapper(fs)",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/arrow.py",
+          "line_number": 489,
+          "end_line_number": 489,
+          "target_name": "LocalFileSystem",
+          "enclosing_function": "extract_filesystem",
+          "enclosing_class": "ArrowDatasetEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/arrow.py#L489",
+          "args": [],
+          "kwargs": {},
+          "code_snippet": "                fs_strip = LocalFileSystem()",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/arrow.py",
+          "line_number": 492,
+          "end_line_number": 492,
+          "target_name": "expand_paths_if_needed",
+          "enclosing_function": "extract_filesystem",
+          "enclosing_class": "ArrowDatasetEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/arrow.py#L492",
+          "args": [
+            "urlpath",
+            "'rb'",
+            "1",
+            "fsspec_fs",
+            "None"
+          ],
+          "kwargs": {},
+          "code_snippet": "            paths = expand_paths_if_needed(urlpath, \"rb\", 1, fsspec_fs, None)",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/arrow.py",
+          "line_number": 684,
+          "end_line_number": 684,
+          "target_name": "fs.open",
+          "enclosing_function": "initialize_write",
+          "enclosing_class": "ArrowDatasetEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/arrow.py#L684",
+          "args": [
+            "fs.sep.join([path, '_metadata'])"
+          ],
+          "kwargs": {
+            "mode": "'rb'"
+          },
+          "code_snippet": "                    with fs.open(fs.sep.join([path, \"_metadata\"]), mode=\"rb\") as fil:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/arrow.py",
+          "line_number": 684,
+          "end_line_number": 684,
+          "target_name": "fs.sep.join",
+          "enclosing_function": "initialize_write",
+          "enclosing_class": "ArrowDatasetEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/arrow.py#L684",
+          "args": [
+            "[path, '_metadata']"
+          ],
+          "kwargs": {},
+          "code_snippet": "                    with fs.open(fs.sep.join([path, \"_metadata\"]), mode=\"rb\") as fil:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/arrow.py",
+          "line_number": 690,
+          "end_line_number": 692,
+          "target_name": "fs.open",
+          "enclosing_function": "initialize_write",
+          "enclosing_class": "ArrowDatasetEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/arrow.py#L690",
+          "args": [
+            "sorted(ds.files, key=natural_sort_key)[-1]"
+          ],
+          "kwargs": {
+            "mode": "'rb'"
+          },
+          "code_snippet": "                        with fs.open(\n                            sorted(ds.files, key=natural_sort_key)[-1], mode=\"rb\"\n                        ) as fil:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/arrow.py",
+          "line_number": 851,
+          "end_line_number": 851,
+          "target_name": "fs.open",
+          "enclosing_function": "write_partition",
+          "enclosing_class": "ArrowDatasetEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/arrow.py#L851",
+          "args": [
+            "fs.sep.join([path, filename])",
+            "'wb'"
+          ],
+          "kwargs": {},
+          "code_snippet": "            with fs.open(fs.sep.join([path, filename]), \"wb\") as fil:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/arrow.py",
+          "line_number": 851,
+          "end_line_number": 851,
+          "target_name": "fs.sep.join",
+          "enclosing_function": "write_partition",
+          "enclosing_class": "ArrowDatasetEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/arrow.py#L851",
+          "args": [
+            "[path, filename]"
+          ],
+          "kwargs": {},
+          "code_snippet": "            with fs.open(fs.sep.join([path, filename]), \"wb\") as fil:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/arrow.py",
+          "line_number": 879,
+          "end_line_number": 879,
+          "target_name": "fs.sep.join",
+          "enclosing_function": "write_metadata",
+          "enclosing_class": "ArrowDatasetEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/arrow.py#L879",
+          "args": [
+            "[path, '_common_metadata']"
+          ],
+          "kwargs": {},
+          "code_snippet": "                common_metadata_path = fs.sep.join([path, \"_common_metadata\"])",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/arrow.py",
+          "line_number": 882,
+          "end_line_number": 882,
+          "target_name": "fs.open",
+          "enclosing_function": "write_metadata",
+          "enclosing_class": "ArrowDatasetEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/arrow.py#L882",
+          "args": [
+            "common_metadata_path",
+            "'wb'"
+          ],
+          "kwargs": {},
+          "code_snippet": "                with fs.open(common_metadata_path, \"wb\") as fil:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/arrow.py",
+          "line_number": 886,
+          "end_line_number": 886,
+          "target_name": "fs.sep.join",
+          "enclosing_function": "write_metadata",
+          "enclosing_class": "ArrowDatasetEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/arrow.py#L886",
+          "args": [
+            "[path, '_metadata']"
+          ],
+          "kwargs": {},
+          "code_snippet": "            metadata_path = fs.sep.join([path, \"_metadata\"])",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/arrow.py",
+          "line_number": 895,
+          "end_line_number": 895,
+          "target_name": "fs.open",
+          "enclosing_function": "write_metadata",
+          "enclosing_class": "ArrowDatasetEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/arrow.py#L895",
+          "args": [
+            "metadata_path",
+            "'wb'"
+          ],
+          "kwargs": {},
+          "code_snippet": "            with fs.open(metadata_path, \"wb\") as fil:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/arrow.py",
+          "line_number": 940,
+          "end_line_number": 940,
+          "target_name": "fs.isdir",
+          "enclosing_function": "_collect_dataset_info",
+          "enclosing_class": "ArrowDatasetEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/arrow.py#L940",
+          "args": [
+            "paths[0]"
+          ],
+          "kwargs": {},
+          "code_snippet": "        if len(paths) == 1 and fs.isdir(paths[0]):",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/arrow.py",
+          "line_number": 944,
+          "end_line_number": 944,
+          "target_name": "fs.sep.join",
+          "enclosing_function": "_collect_dataset_info",
+          "enclosing_class": "ArrowDatasetEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/arrow.py#L944",
+          "args": [
+            "[base, fns[0]]"
+          ],
+          "kwargs": {},
+          "code_snippet": "            paths = fs.sep.join([base, fns[0]])",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/arrow.py",
+          "line_number": 946,
+          "end_line_number": 946,
+          "target_name": "fs.sep.join",
+          "enclosing_function": "_collect_dataset_info",
+          "enclosing_class": "ArrowDatasetEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/arrow.py#L946",
+          "args": [
+            "[paths, '_metadata']"
+          ],
+          "kwargs": {},
+          "code_snippet": "            meta_path = fs.sep.join([paths, \"_metadata\"])",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/arrow.py",
+          "line_number": 947,
+          "end_line_number": 947,
+          "target_name": "fs.exists",
+          "enclosing_function": "_collect_dataset_info",
+          "enclosing_class": "ArrowDatasetEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/arrow.py#L947",
+          "args": [
+            "meta_path"
+          ],
+          "kwargs": {},
+          "code_snippet": "            if not ignore_metadata_file and fs.exists(meta_path):",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/arrow.py",
+          "line_number": 972,
+          "end_line_number": 972,
+          "target_name": "fs.sep.join",
+          "enclosing_function": "_collect_dataset_info",
+          "enclosing_class": "ArrowDatasetEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/arrow.py#L972",
+          "args": [
+            "[base, '_metadata']"
+          ],
+          "kwargs": {},
+          "code_snippet": "            meta_path = fs.sep.join([base, \"_metadata\"])",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/arrow.py",
+          "line_number": 1618,
+          "end_line_number": 1618,
+          "target_name": "fs.sep.join",
+          "enclosing_function": "_make_part",
+          "enclosing_class": "ArrowDatasetEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/arrow.py#L1618",
+          "args": [
+            "[p for p in [data_path, filename] if p != '']"
+          ],
+          "kwargs": {},
+          "code_snippet": "        full_path = fs.sep.join([p for p in [data_path, filename] if p != \"\"])",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/arrow.py",
+          "line_number": 1820,
+          "end_line_number": 1820,
+          "target_name": "fs.open",
+          "enclosing_function": "collect_file_metadata",
+          "enclosing_class": "ArrowDatasetEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/arrow.py#L1820",
+          "args": [
+            "path",
+            "'rb'"
+          ],
+          "kwargs": {},
+          "code_snippet": "        with fs.open(path, \"rb\") as f:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/arrow.py",
+          "line_number": 1835,
+          "end_line_number": 1835,
+          "target_name": "fs.sep.join",
+          "enclosing_function": "aggregate_metadata",
+          "enclosing_class": "ArrowDatasetEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/arrow.py#L1835",
+          "args": [
+            "[out_path, '_metadata']"
+          ],
+          "kwargs": {},
+          "code_snippet": "            metadata_path = fs.sep.join([out_path, \"_metadata\"])",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/arrow.py",
+          "line_number": 1836,
+          "end_line_number": 1836,
+          "target_name": "fs.open",
+          "enclosing_function": "aggregate_metadata",
+          "enclosing_class": "ArrowDatasetEngine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/arrow.py#L1836",
+          "args": [
+            "metadata_path",
+            "'wb'"
+          ],
+          "kwargs": {},
+          "code_snippet": "            with fs.open(metadata_path, \"wb\") as fil:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/core.py",
+          "line_number": 289,
+          "end_line_number": 291,
+          "target_name": "get_fs_token_paths",
+          "enclosing_function": "create_metadata_file",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/core.py#L289",
+          "args": [
+            "paths"
+          ],
+          "kwargs": {
+            "mode": "'rb'",
+            "storage_options": "storage_options"
+          },
+          "code_snippet": "        fs, _, paths = get_fs_token_paths(\n            paths, mode=\"rb\", storage_options=storage_options\n        )",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/utils.py",
+          "line_number": 72,
+          "end_line_number": 74,
+          "target_name": "get_fs_token_paths",
+          "enclosing_function": "extract_filesystem",
+          "enclosing_class": "Engine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/utils.py#L72",
+          "args": [
+            "urlpath"
+          ],
+          "kwargs": {
+            "mode": "'rb'",
+            "storage_options": "storage_options"
+          },
+          "code_snippet": "            fs, _, paths = get_fs_token_paths(\n                urlpath, mode=\"rb\", storage_options=storage_options\n            )",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/utils.py",
+          "line_number": 95,
+          "end_line_number": 95,
+          "target_name": "stringify_path",
+          "enclosing_function": "extract_filesystem",
+          "enclosing_class": "Engine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/utils.py#L95",
+          "args": [
+            "u"
+          ],
+          "kwargs": {},
+          "code_snippet": "                urlpath = [stringify_path(u) for u in urlpath]",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/utils.py",
+          "line_number": 97,
+          "end_line_number": 97,
+          "target_name": "stringify_path",
+          "enclosing_function": "extract_filesystem",
+          "enclosing_class": "Engine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/utils.py#L97",
+          "args": [
+            "urlpath"
+          ],
+          "kwargs": {},
+          "code_snippet": "                urlpath = [stringify_path(urlpath)]",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/parquet/utils.py",
+          "line_number": 99,
+          "end_line_number": 99,
+          "target_name": "expand_paths_if_needed",
+          "enclosing_function": "extract_filesystem",
+          "enclosing_class": "Engine",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/parquet/utils.py#L99",
+          "args": [
+            "urlpath",
+            "'rb'",
+            "1",
+            "fs",
+            "None"
+          ],
+          "kwargs": {},
+          "code_snippet": "            paths = expand_paths_if_needed(urlpath, \"rb\", 1, fs, None)",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/utils.py",
+          "line_number": 210,
+          "end_line_number": 215,
+          "target_name": "fsspec_parquet.open_parquet_file",
+          "enclosing_function": "_open_input_files",
+          "enclosing_class": null,
+          "cache_type": "parts",
+          "is_specified_cache_keyword": true,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/utils.py#L210",
+          "args": [
+            "path"
+          ],
+          "kwargs": {
+            "fs": "fs",
+            "row_groups": "rgs"
+          },
+          "code_snippet": "                fsspec_parquet.open_parquet_file(\n                    path,\n                    fs=fs,\n                    row_groups=rgs,\n                    **kwargs,\n                ),",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/utils.py",
+          "line_number": 221,
+          "end_line_number": 221,
+          "target_name": "fs.open",
+          "enclosing_function": "_open_input_files",
+          "enclosing_class": null,
+          "cache_type": "parts",
+          "is_specified_cache_keyword": true,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/utils.py#L221",
+          "args": [
+            "path"
+          ],
+          "kwargs": {},
+          "code_snippet": "        return [_set_context(fs.open(path, **kwargs), context_stack) for path in paths]",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dataframe/io/utils.py",
+          "line_number": 222,
+          "end_line_number": 222,
+          "target_name": "open",
+          "enclosing_function": "_open_input_files",
+          "enclosing_class": null,
+          "cache_type": "parts",
+          "is_specified_cache_keyword": true,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dataframe/io/utils.py#L222",
+          "args": [
+            "path"
+          ],
+          "kwargs": {},
+          "code_snippet": "    return [_set_context(open(path, **kwargs), context_stack) for path in paths]",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/dot.py",
+          "line_number": 312,
+          "end_line_number": 312,
+          "target_name": "open",
+          "enclosing_function": "graphviz_to_file",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/dot.py#L312",
+          "args": [
+            "full_filename",
+            "'wb'"
+          ],
+          "kwargs": {},
+          "code_snippet": "    with open(full_filename, \"wb\") as f:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/system.py",
+          "line_number": 22,
+          "end_line_number": 22,
+          "target_name": "open",
+          "enclosing_function": "_try_extract_cgroup_cpu_quota",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/system.py#L22",
+          "args": [
+            "f'/sys/fs/cgroup/{dirname}/cpu.cfs_quota_us'"
+          ],
+          "kwargs": {},
+          "code_snippet": "            with open(f\"/sys/fs/cgroup/{dirname}/cpu.cfs_quota_us\") as f:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/system.py",
+          "line_number": 24,
+          "end_line_number": 24,
+          "target_name": "open",
+          "enclosing_function": "_try_extract_cgroup_cpu_quota",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/system.py#L24",
+          "args": [
+            "f'/sys/fs/cgroup/{dirname}/cpu.cfs_period_us'"
+          ],
+          "kwargs": {},
+          "code_snippet": "            with open(f\"/sys/fs/cgroup/{dirname}/cpu.cfs_period_us\") as f:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/system.py",
+          "line_number": 32,
+          "end_line_number": 32,
+          "target_name": "open",
+          "enclosing_function": "_try_extract_cgroup_cpu_quota",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/system.py#L32",
+          "args": [
+            "'/proc/self/cgroup'"
+          ],
+          "kwargs": {},
+          "code_snippet": "        with open(\"/proc/self/cgroup\") as f:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/system.py",
+          "line_number": 36,
+          "end_line_number": 36,
+          "target_name": "open",
+          "enclosing_function": "_try_extract_cgroup_cpu_quota",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/system.py#L36",
+          "args": [
+            "f'/sys/fs/cgroup{group_path}cpu.max'"
+          ],
+          "kwargs": {},
+          "code_snippet": "        with open(f\"/sys/fs/cgroup{group_path}cpu.max\") as f:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/utils.py",
+          "line_number": 415,
+          "end_line_number": 415,
+          "target_name": "open",
+          "enclosing_function": "filetext",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/utils.py#L415",
+          "args": [
+            "filename"
+          ],
+          "kwargs": {
+            "mode": "mode"
+          },
+          "code_snippet": "        f = open(filename, mode=mode)",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "dask/utils.py",
+          "line_number": 483,
+          "end_line_number": 483,
+          "target_name": "open",
+          "enclosing_function": "filetexts",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/dask/dask",
+          "file_url": "https://github.com/dask/dask/blob/main/dask/utils.py#L483",
+          "args": [
+            "filename",
+            "f'w{mode}'"
+          ],
+          "kwargs": {},
+          "code_snippet": "            f = open(filename, f\"w{mode}\")",
+          "detection_method": "ast"
+        }
+      ]
+    }
+  ]
+}
