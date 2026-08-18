@@ -6,7 +6,7 @@ import json
 import sqlite3
 import uuid
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, List, Optional, Union
 
 from gcs_clients_optics.analysis.categorization import categorize_method
 

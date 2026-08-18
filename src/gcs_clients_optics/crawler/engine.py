@@ -15,6 +15,10 @@ from typing import Dict, List, Optional
 from gcs_clients_optics.crawler.ast_visitor import FsspecASTVisitor
 from gcs_clients_optics.crawler.models import CrawlReport, FsspecUsage
 from gcs_clients_optics.crawler.regex_scanner import RegexFallbackScanner
+from gcs_clients_optics.engine.optics_engine import (
+    fetch_raw_github_content,
+    is_relevant_python_file,
+)
 
 
 class FsspecCrawlerEngine:
@@ -25,7 +29,7 @@ class FsspecCrawlerEngine:
         use_regex_fallback: bool = True,
         include_tests: bool = False,
         github_token: Optional[str] = None,
-        max_workers: int = 16,
+        max_workers: int = 32,
     ):
         self.use_regex_fallback = use_regex_fallback
         self.include_tests = include_tests
@@ -79,11 +83,9 @@ class FsspecCrawlerEngine:
         root = Path(dir_path).resolve()
         py_files = []
         for p in root.rglob("*.py"):
-            if not self.include_tests and (
-                p.name.startswith("test_") or p.name.endswith("_test.py")
-            ):
-                continue
-            py_files.append(p)
+            rel_str = str(p.relative_to(root))
+            if is_relevant_python_file(rel_str, include_tests=self.include_tests):
+                py_files.append(p)
 
         all_usages: List[FsspecUsage] = []
         files_with_usages = 0
@@ -163,10 +165,8 @@ class FsspecCrawlerEngine:
         py_files = [
             f["path"]
             for f in tree
-            if f.get("path", "").endswith(".py")
-            and (
-                self.include_tests
-                or not Path(f.get("path", "")).name.startswith("test_")
+            if is_relevant_python_file(
+                f.get("path", ""), include_tests=self.include_tests
             )
         ]
 
@@ -175,21 +175,17 @@ class FsspecCrawlerEngine:
         files_with_matches = 0
 
         def _fetch_and_scan(rel_path: str):
-            raw_url = (
-                f"https://raw.githubusercontent.com/{repo_name}/{branch}/{rel_path}"
+            content = fetch_raw_github_content(
+                repo_name,
+                branch,
+                rel_path,
+                github_token=self.github_token,
             )
-            try:
-                raw_req = urllib.request.Request(
-                    raw_url,
-                    headers={"User-Agent": "GCS-Clients-Optics-Crawler"},
-                )
-                with urllib.request.urlopen(raw_req, timeout=10) as raw_resp:
-                    content = raw_resp.read().decode("utf-8", errors="ignore")
-                return self.scan_code(
-                    rel_path, content, repo_url=repo_url, branch=branch
-                )
-            except Exception:
+            if not content:
                 return []
+            return self.scan_code(
+                rel_path, content, repo_url=repo_url, branch=branch
+            )
 
         with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
             file_usages = executor.map(_fetch_and_scan, py_files)

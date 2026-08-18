@@ -2,7 +2,7 @@
 Runnable simulation suite validating and exercising empirical fsspec and abstract filesystem methods.
 """
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 import fsspec
 from fsspec.core import url_to_fs
 

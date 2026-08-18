@@ -153,6 +153,9 @@ You can specify the output format using `--format` (`-t`) and the output path wi
 | `--format md` | Output report in Markdown format | `gcs-optics cache-type --all --format md -o output.md` |
 | `--format sqlite` | Ingest and store data in SQLite database | `gcs-optics fsspec-methods --all --format sqlite -o reports/optics.db` |
 | `--format all` | Output all formats (JSON, CSV, MD, SQLite) | `gcs-optics fsspec-methods --all --format all -o reports/` |
+| `--subpath <path>` / `-p` | Scope scan to a specific subdirectory in repo | `gcs-optics fsspec-methods --repo ray-project/ray -p python/ray/data` |
+| `--file-workers <N>` / `-w` | File download/parsing worker threads (default: 32) | `gcs-optics fsspec-methods --repo ray-project/ray -w 32` |
+| `--concurrency <N>` / `-j` | Concurrent repositories to crawl (default: 16) | `gcs-optics fsspec-methods --all -j 16` |
 | `-o <path>` / `--output <path>` | Destination file (`.json`, `.csv`, `.md`, `.db`) or directory | `-o my_report.json` or `-o reports/optics.db` |
 
 ---

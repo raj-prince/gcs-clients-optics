@@ -5,7 +5,6 @@ Use Case 3: GitHub Issues Performance & Filesystem Bottleneck Tracking.
 from typing import Any, Dict, List, Optional
 
 from gcs_clients_optics.issues.analyzer import IssuePerformanceAnalyzer
-from gcs_clients_optics.issues.crawler import GitHubIssuesCrawler
 from gcs_clients_optics.issues.models import GitHubIssue, IssueCrawlReport
 from gcs_clients_optics.reporters.issue_reports import (
     export_issues_csv,

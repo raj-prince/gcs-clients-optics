@@ -5,7 +5,7 @@ Use Case 1: FSSPEC & Abstract Filesystem Method Usage Analysis across codebases.
 import ast
 import json
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Dict, List, Optional
 
 from gcs_clients_optics.analysis.matrix import generate_method_matrix
 from gcs_clients_optics.analysis.summary_table import generate_summary_table

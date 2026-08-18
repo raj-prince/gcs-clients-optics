@@ -6,7 +6,7 @@ import argparse
 import sys
 import time
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import Any, Dict, List, Optional, Tuple
 
 from gcs_clients_optics.analysis.matrix import generate_method_matrix
 from gcs_clients_optics.analysis.summary_table import generate_summary_table
@@ -87,17 +87,21 @@ def _handle_use_case_scan(
     use_case, args: argparse.Namespace, default_basename: str
 ) -> int:
     """Generic handler for running code-scanning use cases."""
+    file_workers = getattr(args, "file_workers", 32)
+    subpath = getattr(args, "subpath", None)
     engine = OpticsEngine(
         use_case=use_case,
         include_tests=args.include_tests,
         github_token=args.github_token,
+        max_workers=file_workers,
     )
     reports = []
     start_time = time.time()
 
     if args.local_dir:
-        print(f"\n[+] [{use_case.name}] Scanning local directory: {args.local_dir}...")
-        report = engine.scan_local_directory(args.local_dir)
+        target_desc = f"{args.local_dir} (subpath: {subpath})" if subpath else args.local_dir
+        print(f"\n[+] [{use_case.name}] Scanning local directory: {target_desc}...")
+        report = engine.scan_local_directory(args.local_dir, subpath=subpath)
         matches_count = getattr(
             report,
             "total_usages_found",
@@ -135,8 +139,9 @@ def _handle_use_case_scan(
             else (args.repo or [])
         )
         concurrency = getattr(args, "concurrency", 16)
+        subpath_desc = f", subpath={subpath}" if subpath else ""
         print(
-            f"\n[+] [{use_case.name}] Scanning {len(target_repos)} repository target(s) (concurrency={concurrency})..."
+            f"\n[+] [{use_case.name}] Scanning {len(target_repos)} repository target(s) (repo_workers={concurrency}, file_workers={file_workers}{subpath_desc})..."
         )
 
         def _progress(repo: str, rep: Any):
@@ -168,6 +173,7 @@ def _handle_use_case_scan(
             branch=args.branch,
             max_repo_workers=concurrency,
             progress_callback=_progress,
+            subpath=subpath,
         )
     else:
         print(
@@ -362,7 +368,7 @@ def _handle_run_all(args: argparse.Namespace) -> int:
         use_case=methods_uc,
         include_tests=False,
         github_token=args.github_token,
-        max_workers=16,
+        max_workers=32,
     )
 
     print(
@@ -525,6 +531,19 @@ def _add_common_code_args(parser: argparse.ArgumentParser):
     )
     parser.add_argument(
         "--output-sqlite", help="Specific path to write SQLite database file"
+    )
+    parser.add_argument(
+        "--subpath",
+        "--path",
+        "-p",
+        help="Subdirectory or subpath to scan within repository or local dir (e.g. --subpath python/ray)",
+    )
+    parser.add_argument(
+        "--file-workers",
+        "-w",
+        type=int,
+        default=32,
+        help="Number of concurrent file download/parsing workers per repository (default: 32)",
     )
     parser.add_argument(
         "--concurrency",

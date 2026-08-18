@@ -5,7 +5,7 @@ This module maps all methods implemented in `fsspec.spec.AbstractFileSystem`,
 `fsspec.asyn.AsyncFileSystem`, and `fsspec.core` into 8 standard functional domains.
 """
 
-from typing import Dict, List, Optional, Set
+from typing import Dict, List, Set
 
 # ==============================================================================
 # 8 STANDARD FUNCTIONAL CATEGORIES IN FSSPEC BASE SPEC

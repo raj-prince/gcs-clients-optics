@@ -8,7 +8,7 @@ import sys
 import urllib.error
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
-from typing import Any, Callable, Dict, List, Optional, Set
+from typing import Any, Callable, List, Optional, Set
 
 from gcs_clients_optics.issues.analyzer import IssuePerformanceAnalyzer
 from gcs_clients_optics.issues.models import GitHubIssue, IssueCrawlReport
