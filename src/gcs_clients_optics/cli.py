@@ -10,7 +10,14 @@ from typing import Any, Dict, List, Optional, Tuple
 
 from gcs_clients_optics.analysis.matrix import generate_method_matrix
 from gcs_clients_optics.analysis.summary_table import generate_summary_table
-from gcs_clients_optics.crawler.repos import DEFAULT_TARGET_REPOS as CODE_REPOS
+from gcs_clients_optics.crawler.dependents import (
+    fetch_github_dependents_html,
+    load_repos_from_file,
+)
+from gcs_clients_optics.crawler.repos import (
+    DEFAULT_TARGET_REPOS as CODE_REPOS,
+    get_default_target_repos,
+)
 from gcs_clients_optics.engine.optics_engine import OpticsEngine
 from gcs_clients_optics.issues.crawler import GitHubIssuesCrawler
 from gcs_clients_optics.issues.keywords import (
@@ -83,6 +90,113 @@ def _resolve_output_paths(
     return out_csv, out_json, out_md, out_sqlite
 
 
+def _resolve_target_repos(
+    args: argparse.Namespace, default_repos: List[Tuple[str, str]]
+) -> List[str]:
+    """
+    Resolve target repositories from:
+    1. --repo <owner/repo... or path/to/dependents.json / repos.txt>
+    2. --dependents-file / --repos-file
+    3. --dependents-of <owner/repo>
+    4. --all or default repo list (from get_default_target_repos)
+    """
+    min_stars = getattr(args, "min_stars", 0)
+    limit = getattr(args, "limit", None)
+
+    # 1. Check explicit --repo arguments (which may contain repo names or file paths)
+    repo_args = getattr(args, "repo", None)
+    if repo_args:
+        resolved: List[str] = []
+        for item in repo_args:
+            item_path = Path(item)
+            if item_path.is_file() or item.endswith((".json", ".txt", ".csv")):
+                if item_path.exists():
+                    loaded = load_repos_from_file(
+                        item_path, min_stars=min_stars, limit=limit
+                    )
+                    print(
+                        f"\n[+] Loaded {len(loaded)} repositories from file: {item} (min_stars={min_stars})"
+                    )
+                    resolved.extend([repo for _, repo in loaded])
+                else:
+                    print(
+                        f"Error: File '{item}' specified in --repo does not exist.",
+                        file=sys.stderr,
+                    )
+            else:
+                resolved.append(item)
+        if resolved:
+            return resolved
+
+    # 2. Check --dependents-file / --repos-file
+    dep_file = getattr(args, "dependents_file", None) or getattr(
+        args, "repos_file", None
+    )
+    if dep_file:
+        loaded = load_repos_from_file(dep_file, min_stars=min_stars, limit=limit)
+        print(
+            f"\n[+] Loaded {len(loaded)} repositories from file: {dep_file} (min_stars={min_stars})"
+        )
+        return [repo for _, repo in loaded]
+
+    # 3. Check --dependents-of
+    dep_of = getattr(args, "dependents_of", None)
+    if dep_of:
+        dep_limit = limit or 50
+        print(
+            f"\n[+] Discovering dependents of '{dep_of}' on GitHub (min_stars={min_stars}, limit={dep_limit})..."
+        )
+        loaded = fetch_github_dependents_html(
+            dep_of,
+            min_stars=min_stars,
+            limit=dep_limit,
+            github_token=getattr(args, "github_token", None),
+        )
+        print(f"    ✔ Discovered {len(loaded)} dependent repositories.")
+        return [repo for _, repo in loaded]
+
+    # 4. Check --all (or default repos)
+    if getattr(args, "all", False):
+        loaded_defaults = get_default_target_repos(
+            min_stars=min_stars, limit=limit
+        )
+        return [repo for _, repo in loaded_defaults]
+
+    return []
+
+
+def _handle_discover_dependents(args: argparse.Namespace) -> int:
+    """Discover dependents for a repository and output JSON or text."""
+    repo = args.repo or "fsspec/filesystem_spec"
+    min_stars = getattr(args, "min_stars", 10)
+    limit = getattr(args, "limit", 50) or 50
+    print(
+        f"\n[+] Discovering dependents of '{repo}' on GitHub (min_stars={min_stars}, limit={limit})..."
+    )
+    dependents = fetch_github_dependents_html(
+        repo,
+        min_stars=min_stars,
+        limit=limit,
+        github_token=args.github_token,
+    )
+    print(f"    ✔ Found {len(dependents)} dependent repositories:")
+    for name, full_repo in dependents:
+        print(f"      - {full_repo}")
+
+    if args.output:
+        out_p = Path(args.output)
+        out_p.parent.mkdir(parents=True, exist_ok=True)
+        if out_p.suffix.lower() == ".json":
+            data = [{"name": r, "stars": 0} for _, r in dependents]
+            out_p.write_text(json.dumps(data, indent=2), encoding="utf-8")
+        else:
+            out_p.write_text(
+                "\n".join(r for _, r in dependents) + "\n", encoding="utf-8"
+            )
+        print(f"\n  • Saved dependents list to: {args.output}")
+    return 0
+
+
 def _handle_use_case_scan(
     use_case, args: argparse.Namespace, default_basename: str
 ) -> int:
@@ -132,12 +246,18 @@ def _handle_use_case_scan(
         print(f"    - Completed scan for {args.local_file}.")
         reports.append(report)
 
-    elif args.all or args.repo:
-        target_repos = (
-            [repo for _, repo in CODE_REPOS]
-            if args.all
-            else (args.repo or [])
-        )
+    elif (
+        getattr(args, "all", False)
+        or getattr(args, "repo", None)
+        or getattr(args, "dependents_file", None)
+        or getattr(args, "repos_file", None)
+        or getattr(args, "dependents_of", None)
+    ):
+        target_repos = _resolve_target_repos(args, CODE_REPOS)
+        if not target_repos:
+            print("Error: No target repositories resolved.", file=sys.stderr)
+            return 1
+
         concurrency = getattr(args, "concurrency", 16)
         subpath_desc = f", subpath={subpath}" if subpath else ""
         print(
@@ -177,7 +297,7 @@ def _handle_use_case_scan(
         )
     else:
         print(
-            "Error: Must specify --repo <owner/repo...>, --all, --local-dir, or --local-file",
+            "Error: Must specify --repo <owner/repo...>, --all, --dependents-file, --dependents-of, --local-dir, or --local-file",
             file=sys.stderr,
         )
         return 1
@@ -227,13 +347,10 @@ def _handle_issues(args: argparse.Namespace) -> int:
         max_issues_per_repo=args.max_issues,
     )
 
-    if args.all:
-        target_repos = [repo for _, repo in ISSUES_REPOS]
-    elif args.repo:
-        target_repos = args.repo
-    else:
+    target_repos = _resolve_target_repos(args, ISSUES_REPOS)
+    if not target_repos:
         print(
-            "Error: Must specify --repo <owner/repo...> or --all",
+            "Error: Must specify --repo <owner/repo...>, --all, --dependents-file, or --dependents-of",
             file=sys.stderr,
         )
         return 1
@@ -350,7 +467,15 @@ def _handle_run_all(args: argparse.Namespace) -> int:
     out_dir = Path(args.output_dir or "reports")
     out_dir.mkdir(parents=True, exist_ok=True)
     db_path = str(out_dir / "optics.db")
-    target_repos = [repo for _, repo in CODE_REPOS]
+    target_repos = _resolve_target_repos(args, CODE_REPOS)
+    if not target_repos:
+        target_repos = [
+            repo
+            for _, repo in get_default_target_repos(
+                min_stars=getattr(args, "min_stars", 0),
+                limit=getattr(args, "limit", None),
+            )
+        ]
 
     print("🚀 Running GCS Clients Optics Unified Single-Pass Multi-Use-Case Pipeline...")
     print(
@@ -364,11 +489,12 @@ def _handle_run_all(args: argparse.Namespace) -> int:
     async_uc = AsyncSyncUseCase()
     code_use_cases = [methods_uc, cache_uc, proto_uc, async_uc]
 
+    file_workers = getattr(args, "file_workers", 32)
     engine = OpticsEngine(
         use_case=methods_uc,
         include_tests=False,
         github_token=args.github_token,
-        max_workers=32,
+        max_workers=file_workers,
     )
 
     print(
@@ -384,12 +510,15 @@ def _handle_run_all(args: argparse.Namespace) -> int:
             f"    ✔ {repo:<30s} | Scanned {files} files | Found {matches} FSSPEC method calls"
         )
 
+    concurrency = getattr(args, "concurrency", 16)
+    subpath = getattr(args, "subpath", None)
     multi_reports = engine.scan_multiple_repositories_multi(
         target_repos,
         code_use_cases,
         branch="main",
-        max_repo_workers=16,
+        max_repo_workers=concurrency,
         progress_callback=_progress,
+        subpath=subpath,
     )
     crawl_elapsed = time.time() - start_time
     print(
@@ -539,6 +668,29 @@ def _add_common_code_args(parser: argparse.ArgumentParser):
         help="Subdirectory or subpath to scan within repository or local dir (e.g. --subpath python/ray)",
     )
     parser.add_argument(
+        "--dependents-file",
+        "--repos-file",
+        "-D",
+        help="Path to JSON or text file containing repository dependents (e.g. from github-dependents-info)",
+    )
+    parser.add_argument(
+        "--dependents-of",
+        help="Discover downstream dependents directly from GitHub (e.g. --dependents-of fsspec/filesystem_spec)",
+    )
+    parser.add_argument(
+        "--min-stars",
+        type=int,
+        default=0,
+        help="Minimum GitHub stars threshold when loading dependents (default: 0)",
+    )
+    parser.add_argument(
+        "--limit",
+        "-n",
+        type=int,
+        default=None,
+        help="Maximum number of repositories to scan from dependents",
+    )
+    parser.add_argument(
         "--file-workers",
         "-w",
         type=int,
@@ -603,6 +755,29 @@ def build_parser() -> argparse.ArgumentParser:
         "-a",
         action="store_true",
         help="Crawl open issues across all default repositories",
+    )
+    p_issues.add_argument(
+        "--dependents-file",
+        "--repos-file",
+        "-D",
+        help="Path to JSON or text file containing repository dependents",
+    )
+    p_issues.add_argument(
+        "--dependents-of",
+        help="Discover downstream dependents directly from GitHub (e.g. --dependents-of fsspec/filesystem_spec)",
+    )
+    p_issues.add_argument(
+        "--min-stars",
+        type=int,
+        default=0,
+        help="Minimum GitHub stars threshold (default: 0)",
+    )
+    p_issues.add_argument(
+        "--limit",
+        "-n",
+        type=int,
+        default=None,
+        help="Maximum number of repositories to scan from dependents",
     )
     p_issues.add_argument(
         "--state",
@@ -686,14 +861,49 @@ def build_parser() -> argparse.ArgumentParser:
         help="Path to SQLite DB file (default: reports/optics.db)",
     )
 
-    # 6. List use cases
+    # 7. List use cases
     subparsers.add_parser(
         "list-usecases",
         aliases=["usecases", "list"],
         help="List all registered analysis use cases.",
     )
 
-    # 7. Matrix & Summary utilities
+    # 8. Dependents discovery command
+    p_dep = subparsers.add_parser(
+        "discover-dependents",
+        aliases=["dependents", "find-dependents"],
+        help="Discover downstream dependents of a package/repository from GitHub.",
+    )
+    p_dep.add_argument(
+        "--repo",
+        "-r",
+        default="fsspec/filesystem_spec",
+        help="Repository to find dependents for (default: fsspec/filesystem_spec)",
+    )
+    p_dep.add_argument(
+        "--min-stars",
+        type=int,
+        default=10,
+        help="Minimum stars threshold (default: 10)",
+    )
+    p_dep.add_argument(
+        "--limit",
+        "-n",
+        type=int,
+        default=50,
+        help="Maximum number of dependents to discover (default: 50)",
+    )
+    p_dep.add_argument(
+        "--output",
+        "-o",
+        help="Path to save discovered dependents list (.json or .txt)",
+    )
+    p_dep.add_argument(
+        "--github-token",
+        help="GitHub API token (or set GITHUB_TOKEN env var)",
+    )
+
+    # 9. Matrix & Summary utilities
     p_matrix = subparsers.add_parser(
         "matrix",
         help="Generate cross-repository method occurrence matrix markdown.",
@@ -724,7 +934,7 @@ def build_parser() -> argparse.ArgumentParser:
         help="Path to write summary markdown (default: reports/all_methods_summary_table.md)",
     )
 
-    # 8. Simulation
+    # 10. Simulation
     p_sim = subparsers.add_parser(
         "simulate",
         aliases=["sim"],
@@ -734,10 +944,59 @@ def build_parser() -> argparse.ArgumentParser:
         "--quiet", "-q", action="store_true", help="Suppress verbose logs"
     )
 
-    # 9. Run All
+    # 11. Run All
     p_all = subparsers.add_parser(
         "run-all",
         help="Run complete multi-use-case pipeline across all targets.",
+    )
+    p_all.add_argument(
+        "--repo",
+        "-r",
+        nargs="+",
+        help="One or more GitHub repositories (e.g. --repo dask/dask fsspec/gcsfs)",
+    )
+    p_all.add_argument(
+        "--dependents-file",
+        "--repos-file",
+        "-D",
+        help="Path to JSON or text file containing repository dependents (e.g. from github-dependents-info)",
+    )
+    p_all.add_argument(
+        "--dependents-of",
+        help="Discover downstream dependents directly from GitHub (e.g. --dependents-of fsspec/filesystem_spec)",
+    )
+    p_all.add_argument(
+        "--min-stars",
+        type=int,
+        default=0,
+        help="Minimum GitHub stars threshold when loading dependents (default: 0)",
+    )
+    p_all.add_argument(
+        "--limit",
+        "-n",
+        type=int,
+        default=None,
+        help="Maximum number of repositories to scan from dependents",
+    )
+    p_all.add_argument(
+        "--subpath",
+        "--path",
+        "-p",
+        help="Subdirectory or subpath to scan within repository (e.g. --subpath python/ray)",
+    )
+    p_all.add_argument(
+        "--file-workers",
+        "-w",
+        type=int,
+        default=32,
+        help="Number of concurrent file download/parsing workers per repository (default: 32)",
+    )
+    p_all.add_argument(
+        "--concurrency",
+        "-j",
+        type=int,
+        default=16,
+        help="Number of concurrent repositories to crawl (default: 16)",
     )
     p_all.add_argument(
         "--output-dir",
@@ -780,6 +1039,9 @@ def main(args: Optional[List[str]] = None) -> int:
 
     elif parsed.command in ("issues", "crawl-issues", "issues-performance"):
         return _handle_issues(parsed)
+
+    elif parsed.command in ("discover-dependents", "dependents", "find-dependents"):
+        return _handle_discover_dependents(parsed)
 
     elif parsed.command in ("ingest", "load-db"):
         return _handle_ingest(parsed)

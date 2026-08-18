@@ -4,7 +4,9 @@ GitHub Issues REST API Crawler and batch scanner.
 
 import json
 import os
+import random
 import sys
+import time
 import urllib.error
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
@@ -31,8 +33,8 @@ class GitHubIssuesCrawler:
             fs_keywords, perf_keywords, perf_labels
         )
 
-    def _make_request(self, url: str) -> Optional[Any]:
-        """Execute HTTP GET request to GitHub API with headers."""
+    def _make_request(self, url: str, max_retries: int = 3) -> Optional[Any]:
+        """Execute HTTP GET request to GitHub API with headers and backoff retry."""
         headers = {
             "User-Agent": "GCS-Clients-Optics-Issues-Crawler",
             "Accept": "application/vnd.github.v3+json",
@@ -41,24 +43,49 @@ class GitHubIssuesCrawler:
             headers["Authorization"] = f"token {self.github_token}"
 
         req = urllib.request.Request(url, headers=headers)
-        try:
-            with urllib.request.urlopen(req, timeout=15) as resp:
-                return json.loads(resp.read().decode("utf-8"))
-        except urllib.error.HTTPError as e:
-            if e.code == 403:
-                print(
-                    f"GitHub API Rate Limit Exceeded or Forbidden for {url}",
-                    file=sys.stderr,
-                )
-            elif e.code != 404:
-                print(
-                    f"HTTP Error {e.code} for {url}: {e.reason}",
-                    file=sys.stderr,
-                )
-            return None
-        except Exception as e:
-            print(f"Failed to fetch {url}: {e}", file=sys.stderr)
-            return None
+        for attempt in range(max_retries):
+            try:
+                with urllib.request.urlopen(req, timeout=15) as resp:
+                    return json.loads(resp.read().decode("utf-8"))
+            except urllib.error.HTTPError as e:
+                if e.code in (403, 429):
+                    retry_after = e.headers.get("Retry-After")
+                    remaining = e.headers.get("x-ratelimit-remaining")
+                    if remaining == "0" and not self.github_token:
+                        print(
+                            f"[!] GitHub API rate limit exceeded (60 req/hr). Set GITHUB_TOKEN for 5,000 req/hr.",
+                            file=sys.stderr,
+                        )
+                        return None
+                    sleep_time = (
+                        float(retry_after) + random.uniform(0.1, 0.5)
+                        if retry_after
+                        else min(2 ** attempt + random.uniform(0.5, 1.5), 10.0)
+                    )
+                    if attempt < max_retries - 1:
+                        time.sleep(sleep_time)
+                        continue
+                    print(
+                        f"GitHub API Rate Limit Exceeded or Forbidden for {url}",
+                        file=sys.stderr,
+                    )
+                    return None
+                elif e.code in (500, 502, 503, 504) and attempt < max_retries - 1:
+                    time.sleep(min(2 ** attempt + random.uniform(0.5, 1.5), 10.0))
+                    continue
+                elif e.code != 404:
+                    print(
+                        f"HTTP Error {e.code} for {url}: {e.reason}",
+                        file=sys.stderr,
+                    )
+                return None
+            except Exception as e:
+                if attempt < max_retries - 1:
+                    time.sleep(min(2 ** attempt + random.uniform(0.5, 1.5), 10.0))
+                    continue
+                print(f"Failed to fetch {url}: {e}", file=sys.stderr)
+                return None
+        return None
 
     def crawl_repository_issues(
         self, repo_name: str, state: str = "open"

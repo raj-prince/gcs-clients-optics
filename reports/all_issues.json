@@ -1,73 +1,53 @@
 {
   "summary": {
-    "total_repositories": 8,
-    "total_issues_scanned": 1600,
-    "matched_issues_count": 85,
-    "elapsed_seconds": 2.71
+    "total_repositories": 24,
+    "total_issues_scanned": 1000,
+    "matched_issues_count": 52,
+    "elapsed_seconds": 1.73
   },
   "per_repository": [
     {
-      "target_repo": "dask/dask",
-      "total_issues_scanned": 200,
-      "matched_issues_count": 2,
-      "repo_url": "https://github.com/dask/dask",
+      "target_repo": "pytorch/pytorch",
+      "total_issues_scanned": 100,
+      "matched_issues_count": 1,
+      "repo_url": "https://github.com/pytorch/pytorch",
       "issues": [
         {
-          "repo_name": "dask/dask",
-          "issue_number": 12060,
-          "title": "Significant slowdown in loading remote xarray dataset since 2025.5.0",
-          "html_url": "https://github.com/dask/dask/issues/12060",
+          "repo_name": "pytorch/pytorch",
+          "issue_number": 193915,
+          "title": "[AOTInductor] mmap-backed constant mappings survive runner destruction",
+          "html_url": "https://github.com/pytorch/pytorch/issues/193915",
           "state": "open",
-          "created_at": "2025-09-01T17:06:06Z",
-          "updated_at": "2025-10-13T02:08:43Z",
-          "author": "Metamess",
+          "created_at": "2026-08-18T07:33:04Z",
+          "updated_at": "2026-08-18T07:34:35Z",
+          "author": "sujuyu",
           "labels": [
-            "needs attention",
-            "needs triage"
-          ],
-          "matched_fs_keywords": [
-            "gcsfs"
-          ],
-          "matched_perf_keywords": [
-            "i/o",
-            "io",
-            "slow",
-            "stall"
-          ],
-          "relevance_score": 24,
-          "body_snippet": "**Describe the issue**: Calling `.load()` or `.compute()` on an xarray dataset created by concatenating and slicing zarr datasets from a cloud bucket has seen a severe (factor ~50) slowdown between dask 2025.4.1 and 2025.5.0. I have not been able to replicate this slowdown with zarrs stored locally,..."
-        },
-        {
-          "repo_name": "dask/dask",
-          "issue_number": 12359,
-          "title": "'cumsum' results differ from 'cumsum' on a pure numpy array",
-          "html_url": "https://github.com/dask/dask/issues/12359",
-          "state": "open",
-          "created_at": "2026-04-23T09:02:47Z",
-          "updated_at": "2026-07-09T16:42:56Z",
-          "author": "muttener",
-          "labels": [
-            "array",
-            "needs attention",
-            "bug"
+            "module: memory usage",
+            "triaged",
+            "oncall: pt2",
+            "oncall: export",
+            "module: aotinductor",
+            "bot-triaged"
           ],
           "matched_fs_keywords": [
             "mmap"
           ],
           "matched_perf_keywords": [
-            "chunk_size",
+            "cache",
+            "caching",
+            "hang",
             "io",
-            "stall"
+            "prefetch"
           ],
-          "relevance_score": 21,
-          "body_snippet": "<!-- Please include a self-contained copy-pastable example that generates the issue if possible. Please be concise with code posted. See guidelines below on how to provide a good bug report: - Craft Minimal Bug Reports http://matthewrocklin.com/blog/work/2018/02/28/minimal-bug-reports - Minimal Comp..."
+          "relevance_score": 27,
+          "body_snippet": "### \ud83d\udc1b Describe the bug <!-- Suggested title: [AOTInductor] mmap-backed constant mappings survive runner destruction --> I reproduced this behavior in a rolling AOTInductor model-loading workload. I reviewed the report below and confirmed that the `/proc/self/maps` behavior matches my local testing. ..."
         }
       ]
     },
     {
       "target_repo": "pandas-dev/pandas",
-      "total_issues_scanned": 200,
-      "matched_issues_count": 17,
+      "total_issues_scanned": 100,
+      "matched_issues_count": 5,
       "repo_url": "https://github.com/pandas-dev/pandas",
       "issues": [
         {
@@ -131,177 +111,6 @@
         },
         {
           "repo_name": "pandas-dev/pandas",
-          "issue_number": 65915,
-          "title": "BUG: Plotting with timezone-aware and normalized `DatetimeIndex` drops tz-info",
-          "html_url": "https://github.com/pandas-dev/pandas/issues/65915",
-          "state": "open",
-          "created_at": "2026-06-20T02:57:28Z",
-          "updated_at": "2026-07-27T20:54:34Z",
-          "author": "Julian-Harbeck",
-          "labels": [
-            "Bug",
-            "Visualization",
-            "Needs Discussion"
-          ],
-          "matched_fs_keywords": [
-            "fsspec",
-            "gcsfs",
-            "s3fs"
-          ],
-          "matched_perf_keywords": [
-            "bottleneck",
-            "hang",
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 31,
-          "body_snippet": "### Pandas version checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this bug exists on the [latest version](https://pandas.pydata.org/docs/whatsnew/index.html) of pandas. - [x] I have confirmed this bug exists on the [main branch](https://pandas.pydat..."
-        },
-        {
-          "repo_name": "pandas-dev/pandas",
-          "issue_number": 66378,
-          "title": "DOC: `read_{csv,excel}` skip rows (columns) above (before) header (index columns)",
-          "html_url": "https://github.com/pandas-dev/pandas/issues/66378",
-          "state": "open",
-          "created_at": "2026-07-19T13:03:43Z",
-          "updated_at": "2026-08-07T03:28:06Z",
-          "author": "kuraga",
-          "labels": [
-            "Docs",
-            "IO CSV",
-            "IO Excel"
-          ],
-          "matched_fs_keywords": [
-            "fsspec",
-            "gcsfs",
-            "s3fs"
-          ],
-          "matched_perf_keywords": [
-            "bottleneck",
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 28,
-          "body_snippet": "- [x] I have checked that the issue still exists on the latest versions of the docs on main [here](https://pandas.pydata.org/docs/dev/). (Part of #34766.) [test.csv](https://github.com/user-attachments/files/30165155/test.csv) [test.xlsx](https://github.com/user-attachments/files/30165203/test.xlsx)..."
-        },
-        {
-          "repo_name": "pandas-dev/pandas",
-          "issue_number": 66377,
-          "title": "API: `read_excel`: `.index.names` vs `.columns.names`",
-          "html_url": "https://github.com/pandas-dev/pandas/issues/66377",
-          "state": "open",
-          "created_at": "2026-07-19T12:38:33Z",
-          "updated_at": "2026-08-09T16:46:59Z",
-          "author": "kuraga",
-          "labels": [
-            "API Design",
-            "IO CSV",
-            "IO Excel",
-            "API - Consistency"
-          ],
-          "matched_fs_keywords": [
-            "fsspec",
-            "gcsfs",
-            "s3fs"
-          ],
-          "matched_perf_keywords": [
-            "bottleneck",
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 28,
-          "body_snippet": "### Pandas version checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this bug exists on the [latest version](https://pandas.pydata.org/docs/whatsnew/index.html) of pandas. - [ ] I have confirmed this bug exists on the [main branch](https://pandas.pydat..."
-        },
-        {
-          "repo_name": "pandas-dev/pandas",
-          "issue_number": 66376,
-          "title": "BUG: `read_{csv,excel}(<...>, header=[0,1], index_col=[0,1])` take different `.columns.names`",
-          "html_url": "https://github.com/pandas-dev/pandas/issues/66376",
-          "state": "open",
-          "created_at": "2026-07-19T11:20:45Z",
-          "updated_at": "2026-08-07T03:28:11Z",
-          "author": "kuraga",
-          "labels": [
-            "Bug",
-            "IO CSV",
-            "IO Excel",
-            "MultiIndex",
-            "API - Consistency"
-          ],
-          "matched_fs_keywords": [
-            "fsspec",
-            "gcsfs",
-            "s3fs"
-          ],
-          "matched_perf_keywords": [
-            "bottleneck",
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 28,
-          "body_snippet": "### Pandas version checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this bug exists on the [latest version](https://pandas.pydata.org/docs/whatsnew/index.html) of pandas. - [ ] I have confirmed this bug exists on the [main branch](https://pandas.pydat..."
-        },
-        {
-          "repo_name": "pandas-dev/pandas",
-          "issue_number": 66372,
-          "title": "BUG: `read_excel`: `ValueError: Length of new names must be 1, got 2`",
-          "html_url": "https://github.com/pandas-dev/pandas/issues/66372",
-          "state": "open",
-          "created_at": "2026-07-19T10:02:31Z",
-          "updated_at": "2026-08-07T00:22:03Z",
-          "author": "kuraga",
-          "labels": [
-            "Bug",
-            "IO Excel"
-          ],
-          "matched_fs_keywords": [
-            "fsspec",
-            "gcsfs",
-            "s3fs"
-          ],
-          "matched_perf_keywords": [
-            "bottleneck",
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 28,
-          "body_snippet": "### Pandas version checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this bug exists on the [latest version](https://pandas.pydata.org/docs/whatsnew/index.html) of pandas. - [ ] I have confirmed this bug exists on the [main branch](https://pandas.pydat..."
-        },
-        {
-          "repo_name": "pandas-dev/pandas",
-          "issue_number": 65805,
-          "title": "BUG:  DataFrame.add(fill_value=...) promotes nullable integer dtypes to Float64, inconsistent with Series",
-          "html_url": "https://github.com/pandas-dev/pandas/issues/65805",
-          "state": "open",
-          "created_at": "2026-06-03T17:01:53Z",
-          "updated_at": "2026-06-28T01:16:37Z",
-          "author": "arnaudlegout",
-          "labels": [
-            "Bug",
-            "Dtype Conversions",
-            "Numeric Operations"
-          ],
-          "matched_fs_keywords": [
-            "fsspec",
-            "gcsfs",
-            "s3fs"
-          ],
-          "matched_perf_keywords": [
-            "bottleneck",
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 28,
-          "body_snippet": "### Pandas version checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this bug exists on the [latest version](https://pandas.pydata.org/docs/whatsnew/index.html) of pandas. - [ ] I have confirmed this bug exists on the [main branch](https://pandas.pydat..."
-        },
-        {
-          "repo_name": "pandas-dev/pandas",
           "issue_number": 66605,
           "title": "BUG: cumsum/cumprod raises ArrowInvalid: overflow on integer ArrowDtypes instead of upcasting",
           "html_url": "https://github.com/pandas-dev/pandas/issues/66605",
@@ -324,65 +133,6 @@
             "stalled"
           ],
           "relevance_score": 24,
-          "body_snippet": "### Pandas version checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this bug exists on the [latest version](https://pandas.pydata.org/docs/whatsnew/index.html) of pandas. - [x] I have confirmed this bug exists on the [main branch](https://pandas.pydat..."
-        },
-        {
-          "repo_name": "pandas-dev/pandas",
-          "issue_number": 66490,
-          "title": "BUG: `factorize(use_na_sentinel=True)` ignores `use_na_sentinel` for pre-encoded PyArrow `DictionaryArray`s",
-          "html_url": "https://github.com/pandas-dev/pandas/issues/66490",
-          "state": "open",
-          "created_at": "2026-07-27T20:11:43Z",
-          "updated_at": "2026-08-07T00:20:14Z",
-          "author": "camriddell",
-          "labels": [
-            "Bug",
-            "Algos",
-            "Arrow"
-          ],
-          "matched_fs_keywords": [
-            "fsspec",
-            "gcsfs",
-            "s3fs"
-          ],
-          "matched_perf_keywords": [
-            "bottleneck",
-            "hang",
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 21,
-          "body_snippet": "### Pandas version checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this bug exists on the [latest version](https://pandas.pydata.org/docs/whatsnew/index.html) of pandas. - [x] I have confirmed this bug exists on the [main branch](https://pandas.pydat..."
-        },
-        {
-          "repo_name": "pandas-dev/pandas",
-          "issue_number": 65892,
-          "title": "BUG: Inconsistent nan to None behaviour in replace() with scalar vs list value",
-          "html_url": "https://github.com/pandas-dev/pandas/issues/65892",
-          "state": "open",
-          "created_at": "2026-06-16T14:36:31Z",
-          "updated_at": "2026-06-28T01:10:06Z",
-          "author": "veenstrajelmer",
-          "labels": [
-            "Bug",
-            "Missing-data",
-            "Strings",
-            "replace"
-          ],
-          "matched_fs_keywords": [
-            "fsspec",
-            "gcsfs",
-            "s3fs"
-          ],
-          "matched_perf_keywords": [
-            "bottleneck",
-            "hang",
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 21,
           "body_snippet": "### Pandas version checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this bug exists on the [latest version](https://pandas.pydata.org/docs/whatsnew/index.html) of pandas. - [x] I have confirmed this bug exists on the [main branch](https://pandas.pydat..."
         },
         {
@@ -438,122 +188,877 @@
           ],
           "relevance_score": 18,
           "body_snippet": "### Pandas version checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this bug exists on the [latest version](https://pandas.pydata.org/docs/whatsnew/index.html) of pandas. - [x] I have confirmed this bug exists on the [main branch](https://pandas.pydat..."
-        },
+        }
+      ]
+    },
+    {
+      "target_repo": "ray-project/ray",
+      "total_issues_scanned": 100,
+      "matched_issues_count": 0,
+      "repo_url": "https://github.com/ray-project/ray",
+      "issues": []
+    },
+    {
+      "target_repo": "pola-rs/polars",
+      "total_issues_scanned": 100,
+      "matched_issues_count": 17,
+      "repo_url": "https://github.com/pola-rs/polars",
+      "issues": [
         {
-          "repo_name": "pandas-dev/pandas",
-          "issue_number": 66499,
-          "title": "BUG: DataFrame.eq() incorrectly rejects scalar strings in type annotations",
-          "html_url": "https://github.com/pandas-dev/pandas/issues/66499",
+          "repo_name": "pola-rs/polars",
+          "issue_number": 28647,
+          "title": "Speed up datetime parsing from NDJSON",
+          "html_url": "https://github.com/pola-rs/polars/issues/28647",
           "state": "open",
-          "created_at": "2026-07-28T06:11:08Z",
-          "updated_at": "2026-08-10T07:46:51Z",
-          "author": "Sascha1505",
+          "created_at": "2026-08-02T06:38:09Z",
+          "updated_at": "2026-08-05T14:55:22Z",
+          "author": "0guban0v",
           "labels": [
-            "Docs",
-            "Typing"
+            "enhancement",
+            "A-io-json"
           ],
           "matched_fs_keywords": [
-            "fsspec",
-            "gcsfs",
-            "s3fs"
+            "fsspec"
           ],
           "matched_perf_keywords": [
-            "bottleneck",
+            "benchmark",
+            "cache",
+            "io",
+            "slow",
+            "speed",
+            "stall",
+            "stalled"
+          ],
+          "relevance_score": 33,
+          "body_snippet": "### Checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this issue on latest release `polars==1.43.2`. ### Reproducible example Given `mgbench2.csv` from public [Brown University/MgBench dataset](https://clickhouse.com/docs/get-started/sample-datasets/br..."
+        },
+        {
+          "repo_name": "pola-rs/polars",
+          "issue_number": 28787,
+          "title": "read_parquet fails on a Parquet data page with concatenated gzip members",
+          "html_url": "https://github.com/pola-rs/polars/issues/28787",
+          "state": "open",
+          "created_at": "2026-08-12T14:29:38Z",
+          "updated_at": "2026-08-13T21:44:09Z",
+          "author": "sovsparrow",
+          "labels": [
+            "bug",
+            "python",
+            "accepted",
+            "P-medium",
+            "A-io-parquet"
+          ],
+          "matched_fs_keywords": [
+            "fsspec"
+          ],
+          "matched_perf_keywords": [
+            "chunk_size",
+            "concurrent",
+            "io",
+            "prefetch",
+            "stall",
+            "stalled"
+          ],
+          "relevance_score": 30,
+          "body_snippet": "### Checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this bug exists on the [latest version](https://pypi.org/project/polars/) of Polars. ### Reproducible example ```python from hashlib import sha256 from io import BytesIO from urllib.request import u..."
+        },
+        {
+          "repo_name": "pola-rs/polars",
+          "issue_number": 28593,
+          "title": "FilterExec's parallelism gate is inverted, leading to significant slowdown",
+          "html_url": "https://github.com/pola-rs/polars/issues/28593",
+          "state": "open",
+          "created_at": "2026-07-29T21:45:25Z",
+          "updated_at": "2026-07-30T18:53:36Z",
+          "author": "matthewbayer",
+          "labels": [
+            "python",
+            "performance",
+            "accepted",
+            "P-medium"
+          ],
+          "matched_fs_keywords": [
+            "fsspec"
+          ],
+          "matched_perf_keywords": [
+            "hang",
+            "io",
+            "slow",
+            "stall",
+            "stalled",
+            "throughput"
+          ],
+          "relevance_score": 30,
+          "body_snippet": "### Checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this bug exists on the [latest version](https://pypi.org/project/polars/) of Polars. ### Reproducible example ```python import time import numpy as np import polars as pl def t(f): f(); ts = [] for ..."
+        },
+        {
+          "repo_name": "pola-rs/polars",
+          "issue_number": 28774,
+          "title": "`Categorical.sort()` is slower than the equivalent `String.sort()` since the 1.32 lexical rework",
+          "html_url": "https://github.com/pola-rs/polars/issues/28774",
+          "state": "open",
+          "created_at": "2026-08-11T07:51:57Z",
+          "updated_at": "2026-08-13T07:37:20Z",
+          "author": "tommycarstensen",
+          "labels": [
+            "python",
+            "enhancement",
+            "performance",
+            "A-dtype-categorical"
+          ],
+          "matched_fs_keywords": [
+            "fsspec"
+          ],
+          "matched_perf_keywords": [
+            "cache",
+            "io",
+            "slow",
+            "stall",
+            "stalled"
+          ],
+          "relevance_score": 27,
+          "body_snippet": "### Checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this bug exists on the [latest version](https://pypi.org/project/polars/) of Polars. ### Reproducible example ```python #!/usr/bin/env python3 \"\"\"Repro: polars Categorical.sort() is slower than the ..."
+        },
+        {
+          "repo_name": "pola-rs/polars",
+          "issue_number": 28597,
+          "title": ".rolling(...).agg(...)  ~20\u201340x slower \u2265 64 threads",
+          "html_url": "https://github.com/pola-rs/polars/issues/28597",
+          "state": "open",
+          "created_at": "2026-07-30T01:16:19Z",
+          "updated_at": "2026-08-03T17:37:07Z",
+          "author": "rcliu623",
+          "labels": [
+            "bug",
+            "python",
+            "performance",
+            "P-medium",
+            "A-rolling"
+          ],
+          "matched_fs_keywords": [
+            "fsspec"
+          ],
+          "matched_perf_keywords": [
+            "io",
+            "performance",
+            "slow",
+            "stall",
+            "stalled"
+          ],
+          "relevance_score": 27,
+          "body_snippet": "### Checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this bug exists on the [latest version](https://pypi.org/project/polars/) of Polars. ### Reproducible example ```python import time import polars as pl # 250_000 rows: 1_000 groups x 250 rows. Group..."
+        },
+        {
+          "repo_name": "pola-rs/polars",
+          "issue_number": 28833,
+          "title": "Docs: clarify meaning of `ambiguous` in `str.to_datetime` (and other docstrings where `ambiguous` appears)",
+          "html_url": "https://github.com/pola-rs/polars/issues/28833",
+          "state": "open",
+          "created_at": "2026-08-17T07:38:00Z",
+          "updated_at": "2026-08-17T16:40:44Z",
+          "author": "gim-am",
+          "labels": [
+            "documentation",
+            "python",
+            "P-low"
+          ],
+          "matched_fs_keywords": [
+            "fsspec"
+          ],
+          "matched_perf_keywords": [
+            "concurrent",
             "io",
             "stall",
             "stalled"
           ],
-          "relevance_score": 18,
-          "body_snippet": "### Pandas version checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this bug exists on the [latest version](https://pandas.pydata.org/docs/whatsnew/index.html) of pandas. - [x] I have confirmed this bug exists on the [main branch](https://pandas.pydat..."
+          "relevance_score": 24,
+          "body_snippet": "### Checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this bug exists on the [latest version](https://pypi.org/project/polars/) of Polars. ### Reproducible example ```python import polars as pl df = pl.DataFrame({\"value\": [31216]}) df.filter( pl.col(\"v..."
         },
         {
-          "repo_name": "pandas-dev/pandas",
-          "issue_number": 66374,
-          "title": "BUG: `MultiIndex.__repr__`: inconsistent output",
-          "html_url": "https://github.com/pandas-dev/pandas/issues/66374",
+          "repo_name": "pola-rs/polars",
+          "issue_number": 28582,
+          "title": "Checking the emptyness of a lazyframe with pl.String as first column can cause OOM",
+          "html_url": "https://github.com/pola-rs/polars/issues/28582",
           "state": "open",
-          "created_at": "2026-07-19T10:28:33Z",
-          "updated_at": "2026-08-10T03:38:41Z",
-          "author": "kuraga",
+          "created_at": "2026-07-29T17:31:53Z",
+          "updated_at": "2026-07-29T20:51:08Z",
+          "author": "Hunterlige",
           "labels": [
-            "Output-Formatting",
-            "MultiIndex"
+            "python",
+            "enhancement",
+            "performance"
           ],
           "matched_fs_keywords": [
-            "fsspec",
-            "gcsfs",
-            "s3fs"
+            "fsspec"
           ],
           "matched_perf_keywords": [
-            "bottleneck",
+            "io",
+            "oom",
+            "stall",
+            "stalled"
+          ],
+          "relevance_score": 24,
+          "body_snippet": "### Checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this bug exists on the [latest version](https://pypi.org/project/polars/) of Polars. ### Reproducible example ```python \"\"\"Repro: \"does this frame have rows\" reads a data column on a union of cast s..."
+        },
+        {
+          "repo_name": "pola-rs/polars",
+          "issue_number": 28627,
+          "title": "ComputeError reading Parquet files with VARIANT LogicalType (field_id=16) entire file unreadable",
+          "html_url": "https://github.com/pola-rs/polars/issues/28627",
+          "state": "open",
+          "created_at": "2026-07-31T13:29:39Z",
+          "updated_at": "2026-07-31T13:29:52Z",
+          "author": "SzymonCogiel",
+          "labels": [
+            "bug",
+            "python",
+            "needs triage",
+            "A-io-parquet"
+          ],
+          "matched_fs_keywords": [
+            "fsspec"
+          ],
+          "matched_perf_keywords": [
             "io",
             "stall",
             "stalled"
           ],
-          "relevance_score": 18,
-          "body_snippet": "### Pandas version checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this bug exists on the [latest version](https://pandas.pydata.org/docs/whatsnew/index.html) of pandas. - [ ] I have confirmed this bug exists on the [main branch](https://pandas.pydat..."
+          "relevance_score": 21,
+          "body_snippet": "### Checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this bug exists on the [latest version](https://pypi.org/project/polars/) of Polars. ### Reproducible example ```python \"\"\" Generates a minimal Parquet file with a VARIANT LogicalType annotation by ..."
         },
         {
-          "repo_name": "pandas-dev/pandas",
-          "issue_number": 66368,
-          "title": "BUG: `str.split()`/`rsplit()` with no separator on `ArrowDtype` keeps empty whitespace tokens",
-          "html_url": "https://github.com/pandas-dev/pandas/issues/66368",
+          "repo_name": "pola-rs/polars",
+          "issue_number": 28766,
+          "title": "Datatypes have an inconsistent repr (not PEP 585-complaint?)",
+          "html_url": "https://github.com/pola-rs/polars/issues/28766",
           "state": "open",
-          "created_at": "2026-07-19T07:50:44Z",
-          "updated_at": "2026-08-16T23:55:48Z",
-          "author": "gautamvarmadatla",
+          "created_at": "2026-08-10T16:35:20Z",
+          "updated_at": "2026-08-10T20:10:27Z",
+          "author": "Fufs",
           "labels": [
-            "Bug",
-            "Strings",
-            "Arrow"
+            "bug",
+            "python",
+            "needs triage"
           ],
           "matched_fs_keywords": [
-            "fsspec",
-            "gcsfs",
-            "s3fs"
+            "fsspec"
           ],
           "matched_perf_keywords": [
-            "bottleneck",
+            "hang",
             "io",
             "stall",
             "stalled"
           ],
-          "relevance_score": 18,
-          "body_snippet": "### Pandas version checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this bug exists on the [latest version](https://pandas.pydata.org/docs/whatsnew/index.html) of pandas. - [x] I have confirmed this bug exists on the [main branch](https://pandas.pydat..."
+          "relevance_score": 14,
+          "body_snippet": "### Checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this bug exists on the [latest version](https://pypi.org/project/polars/) of Polars. ### Reproducible example ```python import polars as pl repr(pl.DataType) # DataType repr(pl.DataType | str) # pol..."
         },
         {
-          "repo_name": "pandas-dev/pandas",
-          "issue_number": 66255,
-          "title": "BUG: Float64 vs float64 incorrect result when using empty slice",
-          "html_url": "https://github.com/pandas-dev/pandas/issues/66255",
+          "repo_name": "pola-rs/polars",
+          "issue_number": 28845,
+          "title": "`~expr.is_nan()` raises `InvalidOperationError` on dtype `Null` since 1.43.1",
+          "html_url": "https://github.com/pola-rs/polars/issues/28845",
           "state": "open",
-          "created_at": "2026-07-09T23:48:50Z",
-          "updated_at": "2026-08-11T07:35:53Z",
-          "author": "konvica",
+          "created_at": "2026-08-18T01:45:33Z",
+          "updated_at": "2026-08-18T06:55:04Z",
+          "author": "knowecho",
           "labels": [
-            "Bug",
-            "Needs Triage"
+            "bug",
+            "python",
+            "accepted",
+            "P-high"
           ],
           "matched_fs_keywords": [
-            "fsspec",
-            "gcsfs",
-            "s3fs"
+            "fsspec"
           ],
           "matched_perf_keywords": [
-            "bottleneck",
             "io",
             "stall",
             "stalled"
           ],
-          "relevance_score": 18,
-          "body_snippet": "### Pandas version checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this bug exists on the [latest version](https://pandas.pydata.org/docs/whatsnew/index.html) of pandas. - [x] I have confirmed this bug exists on the [main branch](https://pandas.pydat..."
+          "relevance_score": 11,
+          "body_snippet": "### Checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this bug exists on the [latest version](https://pypi.org/project/polars/) of Polars. ### Reproducible example ```python import polars as pl print(pl.select(~pl.lit(None).is_nan())) ``` On 1.43.2 thi..."
+        },
+        {
+          "repo_name": "pola-rs/polars",
+          "issue_number": 28842,
+          "title": "`collect_async` and `collect_batches` silently run on the CPU when GPU is selected",
+          "html_url": "https://github.com/pola-rs/polars/issues/28842",
+          "state": "open",
+          "created_at": "2026-08-17T17:54:43Z",
+          "updated_at": "2026-08-17T17:55:02Z",
+          "author": "dancsi",
+          "labels": [
+            "bug",
+            "python",
+            "needs triage",
+            "A-gpu"
+          ],
+          "matched_fs_keywords": [
+            "fsspec"
+          ],
+          "matched_perf_keywords": [
+            "io",
+            "stall",
+            "stalled"
+          ],
+          "relevance_score": 11,
+          "body_snippet": "### Checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this bug exists on the [latest version](https://pypi.org/project/polars/) of Polars. ### Reproducible example ```python import asyncio import polars as pl engine = pl.GPUEngine(raise_on_fail=True) #..."
+        },
+        {
+          "repo_name": "pola-rs/polars",
+          "issue_number": 28831,
+          "title": "LazyFrame.set_sorted() with multiple columns returns wrong results with in-memory engine",
+          "html_url": "https://github.com/pola-rs/polars/issues/28831",
+          "state": "open",
+          "created_at": "2026-08-16T16:23:50Z",
+          "updated_at": "2026-08-16T16:27:24Z",
+          "author": "ndaskalovic",
+          "labels": [
+            "bug",
+            "python",
+            "needs triage"
+          ],
+          "matched_fs_keywords": [
+            "fsspec"
+          ],
+          "matched_perf_keywords": [
+            "io",
+            "stall",
+            "stalled"
+          ],
+          "relevance_score": 11,
+          "body_snippet": "### Checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this bug exists on the [latest version](https://pypi.org/project/polars/) of Polars. ### Reproducible example ```python import polars as pl # Lexicographically sorted by (a, b): `b` is sorted *withi..."
+        },
+        {
+          "repo_name": "pola-rs/polars",
+          "issue_number": 28777,
+          "title": "Inconsistent behavior when exporting to Arrow schema",
+          "html_url": "https://github.com/pola-rs/polars/issues/28777",
+          "state": "open",
+          "created_at": "2026-08-11T14:58:12Z",
+          "updated_at": "2026-08-11T14:58:12Z",
+          "author": "ng-23",
+          "labels": [
+            "bug",
+            "python",
+            "needs triage"
+          ],
+          "matched_fs_keywords": [
+            "fsspec"
+          ],
+          "matched_perf_keywords": [
+            "io",
+            "stall",
+            "stalled"
+          ],
+          "relevance_score": 11,
+          "body_snippet": "### Checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this bug exists on the [latest version](https://pypi.org/project/polars/) of Polars. ### Reproducible example ```python import csv import tempfile import polars as pl import pyarrow as pa import pya..."
+        },
+        {
+          "repo_name": "pola-rs/polars",
+          "issue_number": 28706,
+          "title": "CSE of list",
+          "html_url": "https://github.com/pola-rs/polars/issues/28706",
+          "state": "open",
+          "created_at": "2026-08-05T08:13:18Z",
+          "updated_at": "2026-08-05T08:17:05Z",
+          "author": "matthieubulte",
+          "labels": [
+            "bug",
+            "python",
+            "needs triage"
+          ],
+          "matched_fs_keywords": [
+            "fsspec"
+          ],
+          "matched_perf_keywords": [
+            "io",
+            "stall",
+            "stalled"
+          ],
+          "relevance_score": 11,
+          "body_snippet": "### Checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this bug exists on the [latest version](https://pypi.org/project/polars/) of Polars. ### Reproducible example ```python import polars as pl CALLS: list[int] = [] def instrumented_scalar_udf(s: pl.Se..."
+        },
+        {
+          "repo_name": "pola-rs/polars",
+          "issue_number": 28660,
+          "title": "Bug: `cum_sum` panics on Int64 overflow test_confirmed_bugswhile `sum()` and binary `+` wrap",
+          "html_url": "https://github.com/pola-rs/polars/issues/28660",
+          "state": "open",
+          "created_at": "2026-08-03T07:01:33Z",
+          "updated_at": "2026-08-03T18:38:04Z",
+          "author": "JasonHonKL",
+          "labels": [
+            "bug",
+            "python",
+            "P-medium",
+            "A-arithmetic",
+            "A-panic"
+          ],
+          "matched_fs_keywords": [
+            "fsspec"
+          ],
+          "matched_perf_keywords": [
+            "io",
+            "stall",
+            "stalled"
+          ],
+          "relevance_score": 11,
+          "body_snippet": "### Checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this bug exists on the [latest version](https://pypi.org/project/polars/) of Polars. ### Reproducible example ```python import polars as pl s = pl.Series([9223372036854775807, 1], dtype=pl.Int64) # ..."
+        },
+        {
+          "repo_name": "pola-rs/polars",
+          "issue_number": 28589,
+          "title": "`write_csv(quote_style=\"always\")` writes nulls as `\"\"`, silently turning them into empty strings on read",
+          "html_url": "https://github.com/pola-rs/polars/issues/28589",
+          "state": "open",
+          "created_at": "2026-07-29T17:55:02Z",
+          "updated_at": "2026-08-18T05:26:09Z",
+          "author": "matthewbayer",
+          "labels": [
+            "bug",
+            "python",
+            "needs triage"
+          ],
+          "matched_fs_keywords": [
+            "fsspec"
+          ],
+          "matched_perf_keywords": [
+            "io",
+            "stall",
+            "stalled"
+          ],
+          "relevance_score": 11,
+          "body_snippet": "### Checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this bug exists on the [latest version](https://pypi.org/project/polars/) of Polars. ### Reproducible example ```python import io import polars as pl buf = io.BytesIO() pl.DataFrame({\"s\": [\"a\", None..."
+        },
+        {
+          "repo_name": "pola-rs/polars",
+          "issue_number": 28587,
+          "title": "`cast(Struct{...}, strict=True)` to renamed fields silently nulls every value",
+          "html_url": "https://github.com/pola-rs/polars/issues/28587",
+          "state": "open",
+          "created_at": "2026-07-29T17:49:11Z",
+          "updated_at": "2026-08-05T07:42:26Z",
+          "author": "matthewbayer",
+          "labels": [
+            "bug",
+            "python",
+            "accepted",
+            "P-high",
+            "A-dtype-struct"
+          ],
+          "matched_fs_keywords": [
+            "fsspec"
+          ],
+          "matched_perf_keywords": [
+            "io",
+            "stall",
+            "stalled"
+          ],
+          "relevance_score": 11,
+          "body_snippet": "### Checks - [x] I have checked that this issue has not already been reported. - [x] I have confirmed this bug exists on the [latest version](https://pypi.org/project/polars/) of Polars. ### Reproducible example ```python import polars as pl s = pl.Series([{\"a\": 1, \"b\": 2}]) s.cast(pl.Struct({\"x\": p..."
+        }
+      ]
+    },
+    {
+      "target_repo": "Lightning-AI/pytorch-lightning",
+      "total_issues_scanned": 100,
+      "matched_issues_count": 6,
+      "repo_url": "https://github.com/Lightning-AI/pytorch-lightning",
+      "issues": [
+        {
+          "repo_name": "Lightning-AI/pytorch-lightning",
+          "issue_number": 21868,
+          "title": "Optimize remote checkpoint loading with parallel multiprocess downloads and zero-copy mmap",
+          "html_url": "https://github.com/Lightning-AI/pytorch-lightning/issues/21868",
+          "state": "open",
+          "created_at": "2026-07-30T07:58:48Z",
+          "updated_at": "2026-07-30T07:59:06Z",
+          "author": "yuxin00j",
+          "labels": [
+            "feature",
+            "needs triage"
+          ],
+          "matched_fs_keywords": [
+            "filesystem",
+            "mmap"
+          ],
+          "matched_perf_keywords": [
+            "bottleneck",
+            "cache",
+            "caching",
+            "concurrent",
+            "i/o",
+            "io",
+            "latency",
+            "oom",
+            "throughput"
+          ],
+          "relevance_score": 31,
+          "body_snippet": "### Description & Motivation Currently, loading monolithic, multi-gigabyte checkpoints from remote object stores (such as Google Cloud Storage gs://) via _load() suffers from two significant bottlenecks: 1. Sequential Main-Thread Streaming I/O: Upstream Lightning streams remote checkpoints sequentia..."
+        },
+        {
+          "repo_name": "Lightning-AI/pytorch-lightning",
+          "issue_number": 21905,
+          "title": "Unified storage_options support for FSDPStrategy, ModelParallelStrategy, and TorchCheckpointIO",
+          "html_url": "https://github.com/Lightning-AI/pytorch-lightning/issues/21905",
+          "state": "open",
+          "created_at": "2026-08-17T11:26:11Z",
+          "updated_at": "2026-08-17T11:26:29Z",
+          "author": "Yonghui-Lee",
+          "labels": [
+            "feature",
+            "needs triage"
+          ],
+          "matched_fs_keywords": [
+            "filesystem",
+            "fsspec"
+          ],
+          "matched_perf_keywords": [
+            "caching",
+            "concurrent",
+            "i/o",
+            "io",
+            "performance"
+          ],
+          "relevance_score": 19,
+          "body_snippet": "### Description & Motivation When saving and loading distributed checkpoints (e.g., via PyTorch Distributed Checkpoint / DCP with `FSDPStrategy` or `ModelParallelStrategy`), PyTorch allows configuring storage backend parameters such as: - `thread_count`: Number of concurrent I/O threads per rank to ..."
+        },
+        {
+          "repo_name": "Lightning-AI/pytorch-lightning",
+          "issue_number": 21900,
+          "title": "Deprecation warnings in lightning.pytorch.cli with jsonargparse 4.49+",
+          "html_url": "https://github.com/Lightning-AI/pytorch-lightning/issues/21900",
+          "state": "open",
+          "created_at": "2026-08-14T10:43:53Z",
+          "updated_at": "2026-08-17T19:42:18Z",
+          "author": "adamjstewart",
+          "labels": [
+            "bug",
+            "needs triage",
+            "ver: 2.6.x"
+          ],
+          "matched_fs_keywords": [
+            "fsspec"
+          ],
+          "matched_perf_keywords": [
+            "cache",
+            "hang",
+            "io"
+          ],
+          "relevance_score": 11,
+          "body_snippet": "### Bug description `lightning/pytorch/cli.py` uses a few features from jsonargparse that have recently been deprecated. ### What version are you seeing the problem on? v2.6 ### Reproduced in studio _No response_ ### How to reproduce the bug ```python ``` ### Error messages and logs ``` /Users/Adam/..."
+        },
+        {
+          "repo_name": "Lightning-AI/pytorch-lightning",
+          "issue_number": 21800,
+          "title": "Checkpoints silently fail to save due to swallowed PermissionError in `_atomic_save`",
+          "html_url": "https://github.com/Lightning-AI/pytorch-lightning/issues/21800",
+          "state": "open",
+          "created_at": "2026-07-03T10:10:35Z",
+          "updated_at": "2026-08-11T09:50:17Z",
+          "author": "zhixiangli",
+          "labels": [
+            "bug",
+            "checkpointing",
+            "ver: 2.6.x"
+          ],
+          "matched_fs_keywords": [
+            "fsspec"
+          ],
+          "matched_perf_keywords": [
+            "io",
+            "stall",
+            "stalled"
+          ],
+          "relevance_score": 11,
+          "body_snippet": "### Bug description `_atomic_save` was silently swallowing non-cross-device PermissionErrors, causing saves to report success while failing to write any checkpoints. Because training continues as if the process were successful, this is a data-loss risk. ### What version are you seeing the problem on..."
+        },
+        {
+          "repo_name": "Lightning-AI/pytorch-lightning",
+          "issue_number": 21813,
+          "title": "`ModelCheckpoint` deletes *previous run's* checkpoint when remote filesystem",
+          "html_url": "https://github.com/Lightning-AI/pytorch-lightning/issues/21813",
+          "state": "open",
+          "created_at": "2026-07-08T14:57:53Z",
+          "updated_at": "2026-07-29T07:24:51Z",
+          "author": "parhamfh",
+          "labels": [
+            "bug",
+            "callback: model checkpoint",
+            "ver: 2.6.x"
+          ],
+          "matched_fs_keywords": [
+            "filesystem",
+            "fsspec"
+          ],
+          "matched_perf_keywords": [
+            "hang",
+            "io"
+          ],
+          "relevance_score": 10,
+          "body_snippet": "### Bug description `ModelCheckpoint` deletes the *previous run's* checkpoint, including the exact file the trainer resumed from, when the checkpoint dirpath is on a remote (fsspec) filesystem. Authored with the help of an agent but I detected the bug myself. I continued a training using `Trainer.fi..."
+        },
+        {
+          "repo_name": "Lightning-AI/pytorch-lightning",
+          "issue_number": 21755,
+          "title": "Transformer Engine plugin fails to check weight exists for LayerNorm",
+          "html_url": "https://github.com/Lightning-AI/pytorch-lightning/issues/21755",
+          "state": "open",
+          "created_at": "2026-06-03T23:34:44Z",
+          "updated_at": "2026-06-10T11:31:45Z",
+          "author": "HenryJia",
+          "labels": [
+            "bug",
+            "ver: 2.6.x"
+          ],
+          "matched_fs_keywords": [
+            "fsspec",
+            "mmap"
+          ],
+          "matched_perf_keywords": [
+            "cache",
+            "io"
+          ],
+          "relevance_score": 10,
+          "body_snippet": "### Bug description At https://github.com/Lightning-AI/pytorch-lightning/blob/master/src/lightning/fabric/plugins/precision/transformer_engine.py#L173 There is no check that the weights of the LayerNorm layer are not None This means that if a LayerNorm layer is created using `elementwise_affine=Fals..."
+        }
+      ]
+    },
+    {
+      "target_repo": "duckdb/duckdb",
+      "total_issues_scanned": 0,
+      "matched_issues_count": 0,
+      "repo_url": "https://github.com/duckdb/duckdb",
+      "issues": []
+    },
+    {
+      "target_repo": "huggingface/datasets",
+      "total_issues_scanned": 0,
+      "matched_issues_count": 0,
+      "repo_url": "https://github.com/huggingface/datasets",
+      "issues": []
+    },
+    {
+      "target_repo": "mlflow/mlflow",
+      "total_issues_scanned": 100,
+      "matched_issues_count": 3,
+      "repo_url": "https://github.com/mlflow/mlflow",
+      "issues": [
+        {
+          "repo_name": "mlflow/mlflow",
+          "issue_number": 24789,
+          "title": "[BUG] A single unparseable filename in images/ silently discards every logged image for that run",
+          "html_url": "https://github.com/mlflow/mlflow/issues/24789",
+          "state": "open",
+          "created_at": "2026-07-31T08:38:58Z",
+          "updated_at": "2026-08-15T19:29:58Z",
+          "author": "sirzzang",
+          "labels": [
+            "Acknowledged"
+          ],
+          "matched_fs_keywords": [
+            "filesystem"
+          ],
+          "matched_perf_keywords": [
+            "hang",
+            "io"
+          ],
+          "relevance_score": 8,
+          "body_snippet": "<!-- issue-warning --> > [!WARNING] > Before submitting a PR, please make sure that: > - A maintainer has triaged this issue and applied the `ready` label > - This issue has no assignee > - No duplicate PR exists > > PRs not meeting these requirements may be automatically closed. ### MLflow version ..."
+        },
+        {
+          "repo_name": "mlflow/mlflow",
+          "issue_number": 25108,
+          "title": "[BUG] AI Gateway passthrough forwards the client Authorization header, shadowing the Vertex AI OAuth Bearer (401)",
+          "html_url": "https://github.com/mlflow/mlflow/issues/25108",
+          "state": "open",
+          "created_at": "2026-08-14T08:30:32Z",
+          "updated_at": "2026-08-15T16:07:04Z",
+          "author": "Nantina",
+          "labels": [
+            "bug",
+            "has-closing-pr",
+            "ready",
+            "area/gateway"
+          ],
+          "matched_fs_keywords": [
+            "parts"
+          ],
+          "matched_perf_keywords": [
+            "io"
+          ],
+          "relevance_score": 5,
+          "body_snippet": "<!-- issue-warning --> > [!WARNING] > Before submitting a PR, please make sure that: > - A maintainer has triaged this issue and applied the `ready` label > - This issue has no assignee > - No duplicate PR exists > > PRs not meeting these requirements may be automatically closed. ### Issues Policy a..."
+        },
+        {
+          "repo_name": "mlflow/mlflow",
+          "issue_number": 24848,
+          "title": "[FR] Support Hugging Face Storage Buckets as an artifact store",
+          "html_url": "https://github.com/mlflow/mlflow/issues/24848",
+          "state": "open",
+          "created_at": "2026-08-03T17:18:38Z",
+          "updated_at": "2026-08-03T17:20:53Z",
+          "author": "abidlabs",
+          "labels": [],
+          "matched_fs_keywords": [
+            "filesystem"
+          ],
+          "matched_perf_keywords": [
+            "io"
+          ],
+          "relevance_score": 5,
+          "body_snippet": "<!-- issue-warning --> > [!WARNING] > Before submitting a PR, please make sure that: > - A maintainer has triaged this issue and applied the `ready` label > - This issue has no assignee > - No duplicate PR exists > > PRs not meeting these requirements may be automatically closed. MLflow already supp..."
+        }
+      ]
+    },
+    {
+      "target_repo": "apache/arrow",
+      "total_issues_scanned": 0,
+      "matched_issues_count": 0,
+      "repo_url": "https://github.com/apache/arrow",
+      "issues": []
+    },
+    {
+      "target_repo": "iterative/dvc",
+      "total_issues_scanned": 0,
+      "matched_issues_count": 0,
+      "repo_url": "https://github.com/iterative/dvc",
+      "issues": []
+    },
+    {
+      "target_repo": "dask/dask",
+      "total_issues_scanned": 100,
+      "matched_issues_count": 1,
+      "repo_url": "https://github.com/dask/dask",
+      "issues": [
+        {
+          "repo_name": "dask/dask",
+          "issue_number": 12359,
+          "title": "'cumsum' results differ from 'cumsum' on a pure numpy array",
+          "html_url": "https://github.com/dask/dask/issues/12359",
+          "state": "open",
+          "created_at": "2026-04-23T09:02:47Z",
+          "updated_at": "2026-07-09T16:42:56Z",
+          "author": "muttener",
+          "labels": [
+            "array",
+            "needs attention",
+            "bug"
+          ],
+          "matched_fs_keywords": [
+            "mmap"
+          ],
+          "matched_perf_keywords": [
+            "chunk_size",
+            "io",
+            "stall"
+          ],
+          "relevance_score": 21,
+          "body_snippet": "<!-- Please include a self-contained copy-pastable example that generates the issue if possible. Please be concise with code posted. See guidelines below on how to provide a good bug report: - Craft Minimal Bug Reports http://matthewrocklin.com/blog/work/2018/02/28/minimal-bug-reports - Minimal Comp..."
+        }
+      ]
+    },
+    {
+      "target_repo": "great-expectations/great_expectations",
+      "total_issues_scanned": 0,
+      "matched_issues_count": 0,
+      "repo_url": "https://github.com/great-expectations/great_expectations",
+      "issues": []
+    },
+    {
+      "target_repo": "modin-project/modin",
+      "total_issues_scanned": 0,
+      "matched_issues_count": 0,
+      "repo_url": "https://github.com/modin-project/modin",
+      "issues": []
+    },
+    {
+      "target_repo": "flyteorg/flyte",
+      "total_issues_scanned": 100,
+      "matched_issues_count": 2,
+      "repo_url": "https://github.com/flyteorg/flyte",
+      "issues": [
+        {
+          "repo_name": "flyteorg/flyte",
+          "issue_number": 7558,
+          "title": "Fix typo: rename ActionMetadata.funtion_name \u2192 function_name (proto, backend, SDK stubs)",
+          "html_url": "https://github.com/flyteorg/flyte/issues/7558",
+          "state": "open",
+          "created_at": "2026-06-18T20:41:43Z",
+          "updated_at": "2026-07-22T03:24:43Z",
+          "author": "pingsutw",
+          "labels": [
+            "good first issue",
+            "flyte2"
+          ],
+          "matched_fs_keywords": [
+            "parts"
+          ],
+          "matched_perf_keywords": [
+            "hang",
+            "io",
+            "stall",
+            "stalled"
+          ],
+          "relevance_score": 14,
+          "body_snippet": "## Summary There's a typo in one of our protobuf fields: `funtion_name` should be `function_name` (missing the **c**). It lives on the `ActionMetadata` message and flows through the generated code in every language, the Go backend, and the published `flyteidl2` package that the Python SDK depends on..."
+        },
+        {
+          "repo_name": "flyteorg/flyte",
+          "issue_number": 6930,
+          "title": "Proposal: RAG workflow failure taxonomy guide using WFGY ProblemMap",
+          "html_url": "https://github.com/flyteorg/flyte/issues/6930",
+          "state": "open",
+          "created_at": "2026-02-21T13:59:41Z",
+          "updated_at": "2026-02-23T01:01:39Z",
+          "author": "onestardao",
+          "labels": [],
+          "matched_fs_keywords": [
+            "mmap"
+          ],
+          "matched_perf_keywords": [
+            "io"
+          ],
+          "relevance_score": 5,
+          "body_snippet": "Hi, and thanks for Flyte \u2013 the emphasis on strong typing and reproducible workflows is very helpful for production ML. I maintain an open-source project called **WFGY** (MIT-licensed, ~1.5k GitHub stars). We maintain a **16-problem \u201cProblemMap\u201d** that focuses on **RAG / LLM failure modes** across re..."
+        }
+      ]
+    },
+    {
+      "target_repo": "feast-dev/feast",
+      "total_issues_scanned": 100,
+      "matched_issues_count": 1,
+      "repo_url": "https://github.com/feast-dev/feast",
+      "issues": [
+        {
+          "repo_name": "feast-dev/feast",
+          "issue_number": 6665,
+          "title": "Remote registry gRPC client sets no deadline and no keepalive, and neither is configurable: a blackholed connection hangs the caller indefinitely",
+          "html_url": "https://github.com/feast-dev/feast/issues/6665",
+          "state": "open",
+          "created_at": "2026-07-30T08:58:24Z",
+          "updated_at": "2026-08-02T17:35:32Z",
+          "author": "BigyaPradhan",
+          "labels": [],
+          "matched_fs_keywords": [
+            "parts"
+          ],
+          "matched_perf_keywords": [
+            "hang",
+            "io",
+            "stall",
+            "timeout"
+          ],
+          "relevance_score": 14,
+          "body_snippet": "## Expected Behavior A registry RPC issued by `RemoteRegistry` should fail within a bounded time when the connection to the registry server stops making progress, and the bound should be configurable through `RemoteRegistryConfig`. ## Current Behavior `RemoteRegistry` builds a channel with no keepal..."
         }
       ]
     },
     {
       "target_repo": "pydata/xarray",
-      "total_issues_scanned": 200,
-      "matched_issues_count": 37,
+      "total_issues_scanned": 100,
+      "matched_issues_count": 16,
       "repo_url": "https://github.com/pydata/xarray",
       "issues": [
         {
@@ -639,137 +1144,6 @@
           ],
           "relevance_score": 27,
           "body_snippet": "### What happened? Constructing a `Variable` (or `Dataset`/`DataArray`) from an object-dtype numpy array of strings takes ~0.1ms per 10M elements under pandas' default settings, but **~500\u2013620ms** with `pd.options.future.infer_string = True` \u2014 the setting that becomes the default in pandas 3.0. Why:..."
-        },
-        {
-          "repo_name": "pydata/xarray",
-          "issue_number": 10891,
-          "title": "to_zarr with regions does not respect dim names -- only order.",
-          "html_url": "https://github.com/pydata/xarray/issues/10891",
-          "state": "open",
-          "created_at": "2025-11-03T02:37:32Z",
-          "updated_at": "2025-11-10T20:57:59Z",
-          "author": "oxinabox",
-          "labels": [
-            "topic-documentation",
-            "topic-zarr"
-          ],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "bottleneck",
-            "hang",
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 27,
-          "body_snippet": "### What happened? If i have 2 datasets with the same set of coords but in different orders then `to_zarr` writes them to a file in that order, rather than ensuring that the names agree. So reading them out things get swapped around. Oerhaps I am wrong and actually I am explictly opting out of this ..."
-        },
-        {
-          "repo_name": "pydata/xarray",
-          "issue_number": 10950,
-          "title": "xarray.load_dataarray fails when loading a DataArray with coordinates via zarr-fsspec",
-          "html_url": "https://github.com/pydata/xarray/issues/10950",
-          "state": "open",
-          "created_at": "2025-11-26T16:18:32Z",
-          "updated_at": "2025-11-27T13:54:01Z",
-          "author": "csubich",
-          "labels": [
-            "bug",
-            "needs triage"
-          ],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "block_size",
-            "bottleneck",
-            "cache",
-            "concurrent",
-            "io",
-            "stall",
-            "stalled",
-            "timeout"
-          ],
-          "relevance_score": 26,
-          "body_snippet": "### What happened? When loading a zarr-backed DataArray via a fsspec URL, if the DataArray has coordinates xarray appears to treat the load as a request for a Dataset, not a DataArray. It then seeks to load the coordinate as a distinct variable within the file, where it is not present. This issue do..."
-        },
-        {
-          "repo_name": "pydata/xarray",
-          "issue_number": 11275,
-          "title": "Units and calendar attributes of time_bnds are dropped by to_netcdf",
-          "html_url": "https://github.com/pydata/xarray/issues/11275",
-          "state": "open",
-          "created_at": "2026-04-01T13:18:02Z",
-          "updated_at": "2026-04-02T12:26:28Z",
-          "author": "briardew",
-          "labels": [
-            "topic-CF conventions",
-            "plan to close"
-          ],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "bottleneck",
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 24,
-          "body_snippet": "### What happened? If I define a `time_bnds` variable and denote it with the `bounds` attribute to the `time` variable, sometimes `to_netcdf` will drop the `units` and `calendar` attributes of the `time_bnds` variable. This seems like a bug to me. ### What did you expect to happen? I expected writte..."
-        },
-        {
-          "repo_name": "pydata/xarray",
-          "issue_number": 11178,
-          "title": "groupby multiple variables should include observed groups only",
-          "html_url": "https://github.com/pydata/xarray/issues/11178",
-          "state": "open",
-          "created_at": "2026-02-17T13:25:11Z",
-          "updated_at": "2026-02-17T19:07:42Z",
-          "author": "joshua-gould",
-          "labels": [
-            "topic-groupby",
-            "usage question",
-            "plan to close"
-          ],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "bottleneck",
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 24,
-          "body_snippet": "### What happened? Grouping more more than one variable includes combinations with no observations ### What did you expect to happen? Empty groups are not included ### Minimal Complete Verifiable Example ```Python # /// script # requires-python = \">=3.11\" # dependencies = [ # \"xarray[complete]@git+h..."
-        },
-        {
-          "repo_name": "pydata/xarray",
-          "issue_number": 11176,
-          "title": "Scalars coordinates have no memory on their DataArray",
-          "html_url": "https://github.com/pydata/xarray/issues/11176",
-          "state": "open",
-          "created_at": "2026-02-16T16:42:09Z",
-          "updated_at": "2026-03-18T13:50:08Z",
-          "author": "oloapinivad",
-          "labels": [
-            "design question",
-            "usage question"
-          ],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "bottleneck",
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 24,
-          "body_snippet": "### What happened? I am noticing an issue which might be a bug or a feature, but leaves me quite puzzled. I understand that scalar coordinates are transported all together when slicing/selection is operated to make smooth operations across datasets. However, when I have a dataset with two variables ..."
         },
         {
           "repo_name": "pydata/xarray",
@@ -875,163 +1249,6 @@
           ],
           "relevance_score": 17,
           "body_snippet": "### What happened? It appears that the High-Level Graph (HLG) optimization fails to correctly resolve dependencies when a variable (like `new_weight` in the example) is used both as an input for a subsequent calculation and as a replacement variable in an intermediate Dataset state. Raised exception..."
-        },
-        {
-          "repo_name": "pydata/xarray",
-          "issue_number": 11315,
-          "title": "Cannot call .chunk('auto') on DataTree.",
-          "html_url": "https://github.com/pydata/xarray/issues/11315",
-          "state": "open",
-          "created_at": "2026-04-29T11:24:08Z",
-          "updated_at": "2026-04-29T11:24:10Z",
-          "author": "BorisTheBrave",
-          "labels": [
-            "bug",
-            "needs triage"
-          ],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "bottleneck",
-            "cache",
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 17,
-          "body_snippet": "### What happened? Got an error when calling data_tree.chunk('auto') This is pretty frustrating, when `xr.open_datatree` supports it. I would expect both to be equivalent. ### What did you expect to happen? I expect it to succeed, and be equivalent to chunking the dataset, or opening the datatree wi..."
-        },
-        {
-          "repo_name": "pydata/xarray",
-          "issue_number": 11300,
-          "title": "`.idxmax()` fails if coordinates are intervals",
-          "html_url": "https://github.com/pydata/xarray/issues/11300",
-          "state": "open",
-          "created_at": "2026-04-16T08:35:08Z",
-          "updated_at": "2026-04-16T08:35:08Z",
-          "author": "j-haacker",
-          "labels": [
-            "bug",
-            "needs triage"
-          ],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "bottleneck",
-            "cache",
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 17,
-          "body_snippet": "### What happened? `<operation including groupby_bins>.idxmax()` raised `TypeError: len() of unsized object` ### What did you expect to happen? It should return the index of the greatest value. ### Minimal Complete Verifiable Example ```Python # /// script # requires-python = \">=3.11\" # dependencies..."
-        },
-        {
-          "repo_name": "pydata/xarray",
-          "issue_number": 11212,
-          "title": "Unable to run groupby, map after shuffle_to_chunks",
-          "html_url": "https://github.com/pydata/xarray/issues/11212",
-          "state": "open",
-          "created_at": "2026-03-03T22:02:07Z",
-          "updated_at": "2026-03-03T22:02:07Z",
-          "author": "joshua-gould",
-          "labels": [
-            "bug",
-            "needs triage"
-          ],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "bottleneck",
-            "chunk_size",
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 17,
-          "body_snippet": "### What happened? ValueError: Array chunk size or shape is unknown. Possible solution with x.compute_chunk_sizes() ### What did you expect to happen? Able to successfully iterate over groups and apply a function ### Minimal Complete Verifiable Example ```Python # /// script # requires-python = \">=3..."
-        },
-        {
-          "repo_name": "pydata/xarray",
-          "issue_number": 11188,
-          "title": "DataArray.groupby drops empty coordinates",
-          "html_url": "https://github.com/pydata/xarray/issues/11188",
-          "state": "open",
-          "created_at": "2026-02-20T19:10:44Z",
-          "updated_at": "2026-03-08T19:02:37Z",
-          "author": "eugene57",
-          "labels": [
-            "bug",
-            "topic-groupby"
-          ],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "bottleneck",
-            "hang",
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 17,
-          "body_snippet": "### What happened? When I run groupby on an empty `DataArray`, empty coordinates are dropped. This is is xarray version 2024.10.0. ``` import numpy as np import xarray as xr data = xr.DataArray(np.empty((0, 2)), dims=['x', 'y'], coords={'x': [], 'y': [1, 1]}) print(data.groupby('y').sum()) <xarray.D..."
-        },
-        {
-          "repo_name": "pydata/xarray",
-          "issue_number": 11101,
-          "title": "Appending to Zarr store on disk changes dimension metadata",
-          "html_url": "https://github.com/pydata/xarray/issues/11101",
-          "state": "open",
-          "created_at": "2026-01-23T14:45:48Z",
-          "updated_at": "2026-01-23T14:45:48Z",
-          "author": "jacobbieker",
-          "labels": [
-            "bug",
-            "needs triage"
-          ],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "bottleneck",
-            "hang",
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 17,
-          "body_snippet": "### What happened? I am writing lots of geo data to disk in Zarr and Icechunk, usually through appending to a given Zarr store on disk. I noticed that recently, some of the data values have seemed flipped compared to what the dimension says they should be. I've made a minimal example to show this, t..."
-        },
-        {
-          "repo_name": "pydata/xarray",
-          "issue_number": 10968,
-          "title": "String type casting error during concatenating",
-          "html_url": "https://github.com/pydata/xarray/issues/10968",
-          "state": "open",
-          "created_at": "2025-12-02T09:07:55Z",
-          "updated_at": "2025-12-03T23:31:41Z",
-          "author": "Pietervanhalem",
-          "labels": [
-            "bug",
-            "needs triage",
-            "topic-combine"
-          ],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "bottleneck",
-            "hang",
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 17,
-          "body_snippet": "### What happened? I have a very large number of data sets (6840) that I want to concat over 3 dimensions. An example of one of the dataset is showed below: <img width=\"1127\" height=\"633\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/63673f8d-b769-4b55-81ee-9befc6dd8177\" /> I concat wi..."
         },
         {
           "repo_name": "pydata/xarray",
@@ -1253,944 +1470,63 @@
           ],
           "relevance_score": 14,
           "body_snippet": "### What happened? This used to work (a few releases of xarray and/or pandas ago): ```python import xarray as xr import pandas as pd da = xr.DataArray([0], dims=[\"dim_a\"], coords=dict(dim_a=[\"a\"])) db = xr.DataArray([0]) # use concat to add a new dimension with coordinate db2 = xr.concat([db], pd.In..."
-        },
-        {
-          "repo_name": "pydata/xarray",
-          "issue_number": 11264,
-          "title": "Inconsistent and unexpected results when grouping by more than one coordinate",
-          "html_url": "https://github.com/pydata/xarray/issues/11264",
-          "state": "open",
-          "created_at": "2026-03-26T13:03:08Z",
-          "updated_at": "2026-08-09T13:45:55Z",
-          "author": "joshua-gould",
-          "labels": [
-            "bug",
-            "API design",
-            "topic-groupby"
-          ],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "bottleneck",
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 14,
-          "body_snippet": "### What happened? Grouping by more than one coordinate uses all combinations of coordinates. ### What did you expect to happen? I would expect only the observed combinations to be used. ### Minimal Complete Verifiable Example ```Python # /// script # requires-python = \">=3.11\" # dependencies = [ # ..."
-        },
-        {
-          "repo_name": "pydata/xarray",
-          "issue_number": 11221,
-          "title": "`chunks` argument is typed incorrected in `open_zarr`",
-          "html_url": "https://github.com/pydata/xarray/issues/11221",
-          "state": "open",
-          "created_at": "2026-03-09T20:30:10Z",
-          "updated_at": "2026-03-13T19:43:42Z",
-          "author": "C-Loftus",
-          "labels": [
-            "contrib-good-first-issue",
-            "topic-typing"
-          ],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "bottleneck",
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 14,
-          "body_snippet": "### What happened? If you try to type check a project that is using xarray there will be a failure when checking `open_zarr`. It is a best practice not to ignore this since if you do you generally have to ignore all type checking info on the open call which is otherwise useful. This error I believe ..."
-        },
-        {
-          "repo_name": "pydata/xarray",
-          "issue_number": 11099,
-          "title": ".swap_dims() loses indexes of non-dimension variables",
-          "html_url": "https://github.com/pydata/xarray/issues/11099",
-          "state": "open",
-          "created_at": "2026-01-22T17:47:58Z",
-          "updated_at": "2026-01-23T17:12:19Z",
-          "author": "Reshief",
-          "labels": [
-            "bug"
-          ],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "bottleneck",
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 14,
-          "body_snippet": "### What happened? A rather obscure issue this time: When trying to rename a few dimensions and variable names of an old dataset, the resulting xarray lost all attributes on other variables in the dataset. More specifically, I could narrow it down to a very specific sequence of steps: 1. We need a d..."
-        },
-        {
-          "repo_name": "pydata/xarray",
-          "issue_number": 11061,
-          "title": "`expand_dims` creates `object` dtype for string coordinates instead of inferring string dtype",
-          "html_url": "https://github.com/pydata/xarray/issues/11061",
-          "state": "open",
-          "created_at": "2025-12-30T22:25:02Z",
-          "updated_at": "2025-12-30T22:25:02Z",
-          "author": "dcherian",
-          "labels": [],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "bottleneck",
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 14,
-          "body_snippet": "### Discussed in https://github.com/pydata/xarray/discussions/11038 <div type='discussions-op-text'> <sup>Originally posted by **etienneschalk** December 19, 2025</sup> # `expand_dims` creates `object` dtype for string coordinates instead of inferring string dtype ## Summary When creating string coo..."
-        },
-        {
-          "repo_name": "pydata/xarray",
-          "issue_number": 10998,
-          "title": "Inconsistent behavior for `hue` between scatter and line",
-          "html_url": "https://github.com/pydata/xarray/issues/10998",
-          "state": "open",
-          "created_at": "2025-12-08T21:49:55Z",
-          "updated_at": "2026-02-13T14:28:40Z",
-          "author": "ianhi",
-          "labels": [
-            "bug",
-            "topic-plotting"
-          ],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "bottleneck",
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 14,
-          "body_snippet": "### What happened? The behavior of `hue` results in different colors `ds.plot.scatter` vs `ds.plot.line` Both docstrings describe hue as: > hue (Hashable, optional) \u2013 Dimension or coordinate for which you want multiple lines plotted. If plotting against a 2D coordinate, hue must be a dimension. Whic..."
-        },
-        {
-          "repo_name": "pydata/xarray",
-          "issue_number": 10975,
-          "title": "`.sel()` fails on `datetime64[s]` object",
-          "html_url": "https://github.com/pydata/xarray/issues/10975",
-          "state": "open",
-          "created_at": "2025-12-03T09:58:21Z",
-          "updated_at": "2025-12-04T13:10:42Z",
-          "author": "oloapinivad",
-          "labels": [
-            "bug",
-            "upstream issue"
-          ],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "bottleneck",
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 14,
-          "body_snippet": "### What happened? Hi there, sorry if this might be a duplicate, but I have been browsing the repo without finding anything specific which resemble this. So, I am exploring to the possibility of calling xarray with `CFDatetimeDecoder` on time period overshooting `pandas` threshold year 2262 Running ..."
-        },
-        {
-          "repo_name": "pydata/xarray",
-          "issue_number": 10956,
-          "title": "Variious tests fail on x86 (32-bit issues)?",
-          "html_url": "https://github.com/pydata/xarray/issues/10956",
-          "state": "open",
-          "created_at": "2025-11-28T16:48:58Z",
-          "updated_at": "2026-07-24T12:46:01Z",
-          "author": "eli-schwartz",
-          "labels": [
-            "bug",
-            "needs triage"
-          ],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "bottleneck",
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 14,
-          "body_snippet": "### What happened? ``` FAILED xarray/tests/test_formatting.py::TestFormatting::test_diff_datatree_repr_equals - assert \"Left and right DataTree objects are not equal\\n\\nData at node 'node' does not match:\\n Differing dimensions:\\n (y: 2) != (x: 1, y: 2)\\n Differing data variables:\\n L data (y) i... ..."
-        },
-        {
-          "repo_name": "pydata/xarray",
-          "issue_number": 10928,
-          "title": "Memory overflow when concatenating Dask-backed DataArrays with mixed dtypes (Boolean and Float)",
-          "html_url": "https://github.com/pydata/xarray/issues/10928",
-          "state": "open",
-          "created_at": "2025-11-18T14:45:23Z",
-          "updated_at": "2025-11-18T15:08:12Z",
-          "author": "josephnowak",
-          "labels": [
-            "bug",
-            "needs triage"
-          ],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "bottleneck",
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 14,
-          "body_snippet": "### What happened? I had a process that needed to concatenate a Boolean matrix with a 3D float tensor, and every time I try to run a sum operation over it, it killed all the workers of my cluster. After investigation, I found that the boolean matrix was being converted into an integer before being c..."
-        },
-        {
-          "repo_name": "pydata/xarray",
-          "issue_number": 10911,
-          "title": "Maximum value not always included in pcolormesh output when levels are requested",
-          "html_url": "https://github.com/pydata/xarray/issues/10911",
-          "state": "open",
-          "created_at": "2025-11-12T16:56:36Z",
-          "updated_at": "2025-12-02T09:58:04Z",
-          "author": "aulemahal",
-          "labels": [
-            "bug",
-            "contrib-help-wanted",
-            "topic-plotting"
-          ],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "bottleneck",
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 14,
-          "body_snippet": "### What happened? When plotting data with \"pcolormesh\" and requesting levels, if the calculated \"vmax\" if equal to the upper bound of the last bin, it is not included in the map, as if it was \"over\" or \"missing\". ### What did you expect to happen? I expected `values == vmax` to be painted with the ..."
-        },
-        {
-          "repo_name": "pydata/xarray",
-          "issue_number": 11088,
-          "title": "open_mfdataset segfaults when using engine=\"netcdf4\" and Prallel=Tru",
-          "html_url": "https://github.com/pydata/xarray/issues/11088",
-          "state": "open",
-          "created_at": "2026-01-15T15:02:36Z",
-          "updated_at": "2026-01-16T08:19:49Z",
-          "author": "ArielDeVora",
-          "labels": [
-            "bug"
-          ],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "bottleneck",
-            "hang",
-            "io"
-          ],
-          "relevance_score": 11,
-          "body_snippet": "### What happened? When opening a mf_dataset using netcdf4 engine and parallel=True a segmentation fault arises. The whole open_mfdataset and all operations are wrapped in a class inheriting from xr.Dataset. I would like to know whether netcdf4 engine is compatible with parallel=True, or if there ar..."
         }
       ]
+    },
+    {
+      "target_repo": "kedro-org/kedro",
+      "total_issues_scanned": 0,
+      "matched_issues_count": 0,
+      "repo_url": "https://github.com/kedro-org/kedro",
+      "issues": []
+    },
+    {
+      "target_repo": "pytorch/torchtitan",
+      "total_issues_scanned": 0,
+      "matched_issues_count": 0,
+      "repo_url": "https://github.com/pytorch/torchtitan",
+      "issues": []
+    },
+    {
+      "target_repo": "delta-io/delta-rs",
+      "total_issues_scanned": 0,
+      "matched_issues_count": 0,
+      "repo_url": "https://github.com/delta-io/delta-rs",
+      "issues": []
     },
     {
       "target_repo": "zarr-developers/zarr-python",
-      "total_issues_scanned": 200,
-      "matched_issues_count": 16,
-      "repo_url": "https://github.com/zarr-developers/zarr-python",
-      "issues": [
-        {
-          "repo_name": "zarr-developers/zarr-python",
-          "issue_number": 4029,
-          "title": "VerboseModule cannot be pickled",
-          "html_url": "https://github.com/zarr-developers/zarr-python/issues/4029",
-          "state": "open",
-          "created_at": "2026-06-03T20:43:01Z",
-          "updated_at": "2026-06-04T12:11:30Z",
-          "author": "vladidobro",
-          "labels": [
-            "bug"
-          ],
-          "matched_fs_keywords": [
-            "fsspec",
-            "gcsfs",
-            "s3fs"
-          ],
-          "matched_perf_keywords": [
-            "cache",
-            "hang",
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 21,
-          "body_snippet": "### Zarr version 3.2.1 ### Numcodecs version 0.16.5 ### Python Version 3.12.12 ### Operating System Mac ### Installation using uv run ### Description Hi, I was trying to send zarr.storage.ObjectStore-backed Dask arrays to Dask, and I hit this error. Apparently `zarr.storage`, the module, cannot be p..."
-        },
-        {
-          "repo_name": "zarr-developers/zarr-python",
-          "issue_number": 4217,
-          "title": "fully separate sync and async internal APIs",
-          "html_url": "https://github.com/zarr-developers/zarr-python/issues/4217",
-          "state": "open",
-          "created_at": "2026-07-30T08:37:57Z",
-          "updated_at": "2026-07-30T08:37:57Z",
-          "author": "d-v-b",
-          "labels": [],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "hang",
-            "io",
-            "latency",
-            "performance",
-            "slow"
-          ],
-          "relevance_score": 17,
-          "body_snippet": "## current state our `Store` API uses _async_ methods for doing IO. In Python today, this is ergonomic for high-latency storage (stuff stored on a server far away), and unergonomic for low-latency storage (stuff stored in memory). similarly, our `Codec` API uses async methods for encoding and decodi..."
-        },
-        {
-          "repo_name": "zarr-developers/zarr-python",
-          "issue_number": 3773,
-          "title": "Divergent behavior of memory store and localstore list prefix",
-          "html_url": "https://github.com/zarr-developers/zarr-python/issues/3773",
-          "state": "open",
-          "created_at": "2026-03-13T14:55:59Z",
-          "updated_at": "2026-04-28T09:37:29Z",
-          "author": "ianhi",
-          "labels": [
-            "bug"
-          ],
-          "matched_fs_keywords": [
-            "fsspec",
-            "gcsfs",
-            "s3fs"
-          ],
-          "matched_perf_keywords": [
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 15,
-          "body_snippet": "### Zarr version main ### Numcodecs version main ### Python Version 3.11 ### Operating System Mac ### Installation uv ### Description Memory Store and Fsspec file system store return different results for `list_prefix` I think that the localstore matches what I would expect ### Steps to reproduce ``..."
-        },
-        {
-          "repo_name": "zarr-developers/zarr-python",
-          "issue_number": 3487,
-          "title": "Explicitly using fsspec and zarr FsspecStore causes RuntimeError \"Task attached to a different loop\"",
-          "html_url": "https://github.com/zarr-developers/zarr-python/issues/3487",
-          "state": "open",
-          "created_at": "2025-09-23T19:30:30Z",
-          "updated_at": "2025-09-23T19:30:30Z",
-          "author": "dmitriyrepin",
-          "labels": [],
-          "matched_fs_keywords": [
-            "abstractfilesystem",
-            "filesystem",
-            "fsspec",
-            "gcsfs",
-            "url_to_fs"
-          ],
-          "matched_perf_keywords": [
-            "io"
-          ],
-          "relevance_score": 13,
-          "body_snippet": "## Summary Mixing explicit use of fsspec and zarr FsspecStore produces the following error: ```'RuntimeError: Task <Task pending ... > attached to a different loop. Task was destroyed but it is pending!'``` ## Reproducers: 1. When one explicitly creates fsspec.AbstractFileSystem and then uses it in ..."
-        },
-        {
-          "repo_name": "zarr-developers/zarr-python",
-          "issue_number": 3576,
-          "title": "Zarr over ssh fails with `unexpected keyword argument`",
-          "html_url": "https://github.com/zarr-developers/zarr-python/issues/3576",
-          "state": "open",
-          "created_at": "2025-11-09T18:15:44Z",
-          "updated_at": "2025-11-11T18:16:02Z",
-          "author": "b8raoult",
-          "labels": [
-            "bug"
-          ],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 11,
-          "body_snippet": "### Zarr version 3.1.3 ### Numcodecs version 0.15.1 ### Python Version 3.12.9 ### Operating System Linux ### Installation uv pip install ### Description Calling `zarr.open` with an `ssh://...` url fails with the following error: ``` File \".../python3.12/site-packages/fsspec/implementations/sftp.py\",..."
-        },
-        {
-          "repo_name": "zarr-developers/zarr-python",
-          "issue_number": 4223,
-          "title": "Monthly issue metrics report",
-          "html_url": "https://github.com/zarr-developers/zarr-python/issues/4223",
-          "state": "open",
-          "created_at": "2026-08-01T03:11:11Z",
-          "updated_at": "2026-08-01T03:11:11Z",
-          "author": "github-actions[bot]",
-          "labels": [],
-          "matched_fs_keywords": [
-            "filesystem",
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "benchmark",
-            "io"
-          ],
-          "relevance_score": 10,
-          "body_snippet": "# Issue Metrics | Metric | Average | Median | 90th percentile | | --- | --- | --- | ---: | | Time to first response | 11:44:43 | 4:18:47 | 1 day, 0:31:45 | | Time to first review | None | None | None | | Time to close | 5 days, 18:12:44 | 5 days, 19:32:26 | 11 days, 10:07:42 | | Time to answer | Non..."
-        },
-        {
-          "repo_name": "zarr-developers/zarr-python",
-          "issue_number": 4221,
-          "title": "FsspecStore.from_url() raises \"RuntimeError: Loop is not running\" during interpreter shutdown",
-          "html_url": "https://github.com/zarr-developers/zarr-python/issues/4221",
-          "state": "open",
-          "created_at": "2026-07-30T19:45:28Z",
-          "updated_at": "2026-08-05T14:43:43Z",
-          "author": "hginzel",
-          "labels": [
-            "bug"
-          ],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "io",
-            "stall"
-          ],
-          "relevance_score": 8,
-          "body_snippet": "### Zarr version v3.3.0 ### Numcodecs version v0.16.5 ### Python Version 3.12.11 ### Operating System Ubuntu 26.04 ### Installation uv add zarr ### Environment Python 3.12.11 zarr 3.3.0 fsspec 2026.7.0 adlfs 2026.5.0 azure-identity 1.25.3 ### Description Creating a FsspecStore backed by Azure Blob S..."
-        },
-        {
-          "repo_name": "zarr-developers/zarr-python",
-          "issue_number": 3983,
-          "title": "Regression in support for indexing into structured arrays within a Zarr store (v2 -> v3)",
-          "html_url": "https://github.com/zarr-developers/zarr-python/issues/3983",
-          "state": "open",
-          "created_at": "2026-05-18T23:09:07Z",
-          "updated_at": "2026-06-03T14:25:11Z",
-          "author": "rachitk",
-          "labels": [
-            "bug"
-          ],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "io",
-            "stall"
-          ],
-          "relevance_score": 8,
-          "body_snippet": "### Zarr version v3.2.1 ### Numcodecs version 0.16.5 ### Python Version 3.12.7 ### Operating System Linux ### Installation Pip into virtual environment ### Description In Zarr-Python 2, saving a structured array into a Zarr store enabled one to load the store and index into the structured array to l..."
-        },
-        {
-          "repo_name": "zarr-developers/zarr-python",
-          "issue_number": 3520,
-          "title": "Proposal: Make Obstore backend the default for s3/gcs/azure/https",
-          "html_url": "https://github.com/zarr-developers/zarr-python/issues/3520",
-          "state": "open",
-          "created_at": "2025-10-14T11:25:35Z",
-          "updated_at": "2025-10-14T13:37:48Z",
-          "author": "jhamman",
-          "labels": [],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "benchmark",
-            "performance"
-          ],
-          "relevance_score": 8,
-          "body_snippet": "The Obstore backend in Zarr for about 6 months. Its working great and is significantly more performant that the fsspec alternatives. See [maxrjones/zarr-obstore-performance](https://github.com/maxrjones/zarr-obstore-performance) for performance benchmarks. With this in mind, I'm proposing that we sw..."
-        },
-        {
-          "repo_name": "zarr-developers/zarr-python",
-          "issue_number": 3495,
-          "title": "Failure to list keys on remote HTTP store",
-          "html_url": "https://github.com/zarr-developers/zarr-python/issues/3495",
-          "state": "open",
-          "created_at": "2025-09-30T18:43:44Z",
-          "updated_at": "2025-10-01T07:23:55Z",
-          "author": "ianhi",
-          "labels": [
-            "bug"
-          ],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "io",
-            "stall"
-          ],
-          "relevance_score": 8,
-          "body_snippet": "### Zarr version main ### Numcodecs version 0.16.3 ### Python Version 3.13 ### Operating System mac ### Installation pep-723 ### Description Opening a remote zarr store over https can silently fails to list keys ### Steps to reproduce ```python # /// script # requires-python = \">=3.11\" # dependencie..."
-        },
-        {
-          "repo_name": "zarr-developers/zarr-python",
-          "issue_number": 3453,
-          "title": "make `remote` dependencies more precise",
-          "html_url": "https://github.com/zarr-developers/zarr-python/issues/3453",
-          "state": "open",
-          "created_at": "2025-09-14T18:27:11Z",
-          "updated_at": "2026-05-13T13:47:26Z",
-          "author": "d-v-b",
-          "labels": [
-            "chore"
-          ],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "io",
-            "stall"
-          ],
-          "relevance_score": 8,
-          "body_snippet": "We have an optional dependency called [`remote`](https://github.com/zarr-developers/zarr-python/blob/bce30dd3cc92a35038b88f80c4c42130670d4100/pyproject.toml#L64) that includes fsspec and obstore. But fsspec doesn't support http or s3 by default, so users who install `zarr[remote]` and try to open ht..."
-        },
-        {
-          "repo_name": "zarr-developers/zarr-python",
-          "issue_number": 3923,
-          "title": "newtype pattern to protect against sloppy path normalization",
-          "html_url": "https://github.com/zarr-developers/zarr-python/issues/3923",
-          "state": "open",
-          "created_at": "2026-04-23T16:32:01Z",
-          "updated_at": "2026-05-28T11:35:07Z",
-          "author": "d-v-b",
-          "labels": [
-            "enhancement"
-          ],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "io"
-          ],
-          "relevance_score": 5,
-          "body_snippet": "#3922 revealed that we don't normalize the `path` parameter when creating an instance of `FSSpecStore`. So `Store(path=\"foo/\")` and `Store(path=\"foo\")` end up with different `.path` attributes. One way to guard against this type of bug would be to introduce a new type that models \"strings that have ..."
-        },
-        {
-          "repo_name": "zarr-developers/zarr-python",
-          "issue_number": 3617,
-          "title": "Tolerate 403 HTTP codes in S3 stores as \"non existing\" objects",
-          "html_url": "https://github.com/zarr-developers/zarr-python/issues/3617",
-          "state": "open",
-          "created_at": "2025-12-09T15:13:53Z",
-          "updated_at": "2025-12-09T16:17:24Z",
-          "author": "jordi-domingo",
-          "labels": [],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "io"
-          ],
-          "relevance_score": 5,
-          "body_snippet": "Dear all, I have a request for Zarr-Python related to their S3 stores (fsspec, obstore). Under certain circumstances, accessing a Zarr datacube in S3 can lead to 403 responses, which is an expected and correct behaviour: 1. During the creation of the datacube, chunk files with no data are directly n..."
-        },
-        {
-          "repo_name": "zarr-developers/zarr-python",
-          "issue_number": 3471,
-          "title": "should the default path for the `FsspecStore` be `\"/\"` or `\"\"`",
-          "html_url": "https://github.com/zarr-developers/zarr-python/issues/3471",
-          "state": "open",
-          "created_at": "2025-09-18T14:17:54Z",
-          "updated_at": "2025-09-18T14:17:54Z",
-          "author": "d-v-b",
-          "labels": [],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "io"
-          ],
-          "relevance_score": 5,
-          "body_snippet": "The default path for `FsspecStore` is currently \"/\". I feel like this is less correct than the empty string \"\", and I suspect the leading \"/\" is removed internally by many of our path normalization routines."
-        },
-        {
-          "repo_name": "zarr-developers/zarr-python",
-          "issue_number": 3463,
-          "title": "Opening Icechunk using Zarr 3.0 in a flask context",
-          "html_url": "https://github.com/zarr-developers/zarr-python/issues/3463",
-          "state": "open",
-          "created_at": "2025-09-17T05:06:47Z",
-          "updated_at": "2025-09-17T05:31:14Z",
-          "author": "adanb13",
-          "labels": [],
-          "matched_fs_keywords": [
-            "filesystem"
-          ],
-          "matched_perf_keywords": [
-            "io"
-          ],
-          "relevance_score": 5,
-          "body_snippet": "I am trying to open a local `.icechunk` via: ``` import xarray as xr import logging from pathlib import Path logger = logging.getLogger(__name__) import icechunk import zarr def open_icechunk_dataset(file_path: Path, **kwargs) -> xr.Dataset: \"\"\" Load an Icechunk dataset using the Icechunk Python API..."
-        },
-        {
-          "repo_name": "zarr-developers/zarr-python",
-          "issue_number": 3433,
-          "title": "Certain extension points of zarr are not implemented",
-          "html_url": "https://github.com/zarr-developers/zarr-python/issues/3433",
-          "state": "open",
-          "created_at": "2025-09-04T14:42:12Z",
-          "updated_at": "2025-09-04T16:11:48Z",
-          "author": "remcofl",
-          "labels": [],
-          "matched_fs_keywords": [
-            "filesystem"
-          ],
-          "matched_perf_keywords": [
-            "io"
-          ],
-          "relevance_score": 5,
-          "body_snippet": "Zarr is built with extensibility in mind with several extension points defined in the spec. However, zarr-python does not yet implement all these extension points. Notably, chunk grid and chunk key encoding are not extendable yet, and I believe storage transformers aren't even implemented altogether..."
-        }
-      ]
-    },
-    {
-      "target_repo": "apache/arrow",
-      "total_issues_scanned": 200,
-      "matched_issues_count": 7,
-      "repo_url": "https://github.com/apache/arrow",
-      "issues": [
-        {
-          "repo_name": "apache/arrow",
-          "issue_number": 50667,
-          "title": "[C++][Python] Significant performance degradation after pyarrow 24.0.0 to 25.0.0 upgrade",
-          "html_url": "https://github.com/apache/arrow/issues/50667",
-          "state": "open",
-          "created_at": "2026-07-27T20:58:00Z",
-          "updated_at": "2026-08-10T17:11:56Z",
-          "author": "ghaarsma",
-          "labels": [
-            "Type: bug",
-            "Component: C++",
-            "Component: Python"
-          ],
-          "matched_fs_keywords": [
-            "filesystem",
-            "gcsfilesystem",
-            "s3filesystem"
-          ],
-          "matched_perf_keywords": [
-            "caching",
-            "hang",
-            "io",
-            "performance",
-            "stall"
-          ],
-          "relevance_score": 21,
-          "body_snippet": "### Describe the bug, including details regarding any error messages, version, and platform. In our application we implement a local TimeSeries caching implementation that stores TimeSeries data into Parquet files. We heavily read/write parquet files via the pandas to_parquet(engine=\"pyarrow\") and r..."
-        },
-        {
-          "repo_name": "apache/arrow",
-          "issue_number": 50888,
-          "title": "[Python] Bindings for GcsFileSystem FromServiceAccountCredentials",
-          "html_url": "https://github.com/apache/arrow/issues/50888",
-          "state": "open",
-          "created_at": "2026-08-16T21:08:16Z",
-          "updated_at": "2026-08-16T21:10:57Z",
-          "author": "hampsterx",
-          "labels": [],
-          "matched_fs_keywords": [
-            "filesystem",
-            "gcsfilesystem",
-            "gcsfs",
-            "pyarrow.fs",
-            "s3fs"
-          ],
-          "matched_perf_keywords": [
-            "io",
-            "latency"
-          ],
-          "relevance_score": 16,
-          "body_snippet": "### Describe the enhancement requested `GcsOptions::FromServiceAccountCredentials` (`cpp/src/arrow/filesystem/gcsfs.h:146`) is the one credential factory on `GcsOptions` with no Python binding, so a caller holding [aip/4112] service-account JSON has no way to construct a `GcsFileSystem` from it. `py..."
-        },
-        {
-          "repo_name": "apache/arrow",
-          "issue_number": 50512,
-          "title": "[C++][Compute] unique, value_counts and dictionary_encode have no kernel for float16 (halffloat)",
-          "html_url": "https://github.com/apache/arrow/issues/50512",
-          "state": "open",
-          "created_at": "2026-07-15T10:16:48Z",
-          "updated_at": "2026-07-15T10:55:45Z",
-          "author": "fornwall",
-          "labels": [
-            "Type: enhancement",
-            "Component: C++"
-          ],
-          "matched_fs_keywords": [
-            "parts"
-          ],
-          "matched_perf_keywords": [
-            "io",
-            "stall",
-            "stalled"
-          ],
-          "relevance_score": 11,
-          "body_snippet": "### Describe the enhancement requested The hash-based vector functions do not support `halffloat` input, while supporting all other numeric types: ```python >>> import pyarrow as pa >>> pa.array([1.5, 2.5], type=pa.float16()).dictionary_encode() ArrowNotImplementedError: Function 'dictionary_encode'..."
-        },
-        {
-          "repo_name": "apache/arrow",
-          "issue_number": 50868,
-          "title": "[C++] deprecated-declarations warnings in bundled google-cloud-cpp",
-          "html_url": "https://github.com/apache/arrow/issues/50868",
-          "state": "open",
-          "created_at": "2026-08-15T07:58:03Z",
-          "updated_at": "2026-08-17T04:48:04Z",
-          "author": "kou",
-          "labels": [
-            "Type: bug",
-            "Component: C++"
-          ],
-          "matched_fs_keywords": [
-            "filesystem",
-            "gcsfs"
-          ],
-          "matched_perf_keywords": [
-            "cache",
-            "io"
-          ],
-          "relevance_score": 10,
-          "body_snippet": "### Describe the bug, including details regarding any error messages, version, and platform. ARM64 macOS GLib & Ruby https://github.com/apache/arrow/actions/runs/31872547761/job/94983313575?pr=50799 : ```text [382/662] Building CXX object src/arrow/CMakeFiles/arrow_filesystem.dir/filesystem/gcsfs.cc..."
-        },
-        {
-          "repo_name": "apache/arrow",
-          "issue_number": 50665,
-          "title": "[Python] s3fs selector count is not asserted",
-          "html_url": "https://github.com/apache/arrow/issues/50665",
-          "state": "open",
-          "created_at": "2026-07-27T17:49:07Z",
-          "updated_at": "2026-07-27T17:57:33Z",
-          "author": "anxkhn",
-          "labels": [
-            "Component: Python"
-          ],
-          "matched_fs_keywords": [
-            "filesystem",
-            "fsspec",
-            "s3fs"
-          ],
-          "matched_perf_keywords": [
-            "io"
-          ],
-          "relevance_score": 9,
-          "body_snippet": "### Describe the bug, including details regarding any error messages, version, and platform. `test_get_file_info_with_selector` in `python/pyarrow/tests/test_fs.py` evaluates `len(infos) == 4` without asserting it for recursive listings through the fsspec S3 backend. The comparison result is discard..."
-        },
-        {
-          "repo_name": "apache/arrow",
-          "issue_number": 50599,
-          "title": "[Python] Debian job on i386 segfaults when running Python tests",
-          "html_url": "https://github.com/apache/arrow/issues/50599",
-          "state": "open",
-          "created_at": "2026-07-22T11:40:51Z",
-          "updated_at": "2026-07-22T11:41:55Z",
-          "author": "raulcd",
-          "labels": [
-            "Type: bug",
-            "Component: Python"
-          ],
-          "matched_fs_keywords": [
-            "gcsfs"
-          ],
-          "matched_perf_keywords": [
-            "hang",
-            "io"
-          ],
-          "relevance_score": 8,
-          "body_snippet": "### Describe the bug, including details regarding any error messages, version, and platform. The [test-debian-13-python-3-i386](https://github.com/ursacomputing/crossbow/actions/runs/29889191727/job/88826043097) nightly job is segfaulting with the following error when running tests: ``` + pytest -r ..."
-        },
-        {
-          "repo_name": "apache/arrow",
-          "issue_number": 50876,
-          "title": "[C++][FS][Azure] Azurite tests can race service startup",
-          "html_url": "https://github.com/apache/arrow/issues/50876",
-          "state": "open",
-          "created_at": "2026-08-15T16:22:12Z",
-          "updated_at": "2026-08-15T21:42:26Z",
-          "author": "booxter",
-          "labels": [
-            "Component: C++"
-          ],
-          "matched_fs_keywords": [
-            "filesystem"
-          ],
-          "matched_perf_keywords": [
-            "io"
-          ],
-          "relevance_score": 5,
-          "body_snippet": "`AzuriteEnv::Make()` returns immediately after spawning Azurite, without waiting for the Blob service to become ready. The first test setup request can therefore fail with: Fail to get a new connection for: http://127.0.0.1:10000. Could not connect to server Observed with Arrow 23.0.0 on aarch64 mac..."
-        }
-      ]
-    },
-    {
-      "target_repo": "huggingface/datasets",
-      "total_issues_scanned": 200,
-      "matched_issues_count": 4,
-      "repo_url": "https://github.com/huggingface/datasets",
-      "issues": [
-        {
-          "repo_name": "huggingface/datasets",
-          "issue_number": 8242,
-          "title": "\"eval_strategy\": \"no\" perform evaluation",
-          "html_url": "https://github.com/huggingface/datasets/issues/8242",
-          "state": "open",
-          "created_at": "2026-06-05T18:08:17Z",
-          "updated_at": "2026-06-20T14:48:43Z",
-          "author": "SamuelLarkin",
-          "labels": [],
-          "matched_fs_keywords": [
-            "fsspec",
-            "gcsfs",
-            "mmap",
-            "s3fs"
-          ],
-          "matched_perf_keywords": [
-            "cache",
-            "hang",
-            "io",
-            "performance",
-            "speed"
-          ],
-          "relevance_score": 23,
-          "body_snippet": "### Describe the bug Hi, I'm trying to train a diffusion model and I getting stuck with ``` strace -p 967873 strace: Process 967873 attached ioctl(9, _IOC(_IOC_READ|_IOC_WRITE, 0x46, 0x2a, 0x20), 0x7fff18579d90) = 0 ioctl(9, _IOC(_IOC_READ|_IOC_WRITE, 0x46, 0x2a, 0x20), 0x7fff18579d90) = 0 ``` But m..."
-        },
-        {
-          "repo_name": "huggingface/datasets",
-          "issue_number": 8491,
-          "title": "`Dataset.map(num_proc=N)` worker crashes with `ValueError: I/O operation on closed file` when `finalize()` is interrupted",
-          "html_url": "https://github.com/huggingface/datasets/issues/8491",
-          "state": "open",
-          "created_at": "2026-08-17T06:05:58Z",
-          "updated_at": "2026-08-17T06:55:02Z",
-          "author": "HowardZorn",
-          "labels": [],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "hang",
-            "i/o",
-            "io"
-          ],
-          "relevance_score": 11,
-          "body_snippet": "### Describe the bug We hit this while running Megatron-LM training through ms-swift, which uses `datasets` under the hood for preprocessing. Our preprocessing step calls `Dataset.map()` with a fairly aggressive `num_proc=512` on a ~25k-example JSONL file: ```bash swift --dataset_num_proc 512 --data..."
-        },
-        {
-          "repo_name": "huggingface/datasets",
-          "issue_number": 8256,
-          "title": "Dataset Viewer fails on TSFile datasets",
-          "html_url": "https://github.com/huggingface/datasets/issues/8256",
-          "state": "open",
-          "created_at": "2026-06-10T03:15:32Z",
-          "updated_at": "2026-07-06T01:52:51Z",
-          "author": "gengziyand",
-          "labels": [],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "io",
-            "stall"
-          ],
-          "relevance_score": 8,
-          "body_snippet": "### Describe the bug ## Description The Dataset Viewer fails when trying to display a dataset stored in TSFile format. The error shown by the viewer is: ```python ModuleNotFoundError: No module named 'tsfile' ### Steps to reproduce the bug # Dataset Viewer fails to load TSFile dataset due to missing..."
-        },
-        {
-          "repo_name": "huggingface/datasets",
-          "issue_number": 8375,
-          "title": "`PandasArrayExtensionDtype._metadata` should be a tuple, not a string",
-          "html_url": "https://github.com/huggingface/datasets/issues/8375",
-          "state": "open",
-          "created_at": "2026-07-31T01:50:02Z",
-          "updated_at": "2026-08-12T06:30:29Z",
-          "author": "kohankhaki",
-          "labels": [],
-          "matched_fs_keywords": [
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "io"
-          ],
-          "relevance_score": 5,
-          "body_snippet": "### Describe the bug There's a small typo in `PandasArrayExtensionDtype` (`src/datasets/features/features.py`): ```python _metadata = \"value_type\" ``` Pandas expects `_metadata` to be a tuple of attribute names, like `(\"value_type\",)`, not a plain string ([API documentation ref](https://pandas.pydat..."
-        }
-      ]
-    },
-    {
-      "target_repo": "pytorch/pytorch",
-      "total_issues_scanned": 200,
-      "matched_issues_count": 2,
-      "repo_url": "https://github.com/pytorch/pytorch",
-      "issues": [
-        {
-          "repo_name": "pytorch/pytorch",
-          "issue_number": 193915,
-          "title": "[AOTInductor] mmap-backed constant mappings survive runner destruction",
-          "html_url": "https://github.com/pytorch/pytorch/issues/193915",
-          "state": "open",
-          "created_at": "2026-08-18T07:33:04Z",
-          "updated_at": "2026-08-18T07:34:35Z",
-          "author": "sujuyu",
-          "labels": [
-            "module: memory usage",
-            "triaged",
-            "oncall: pt2",
-            "oncall: export",
-            "module: aotinductor",
-            "bot-triaged"
-          ],
-          "matched_fs_keywords": [
-            "mmap"
-          ],
-          "matched_perf_keywords": [
-            "cache",
-            "caching",
-            "hang",
-            "io",
-            "prefetch"
-          ],
-          "relevance_score": 27,
-          "body_snippet": "### \ud83d\udc1b Describe the bug <!-- Suggested title: [AOTInductor] mmap-backed constant mappings survive runner destruction --> I reproduced this behavior in a rolling AOTInductor model-loading workload. I reviewed the report below and confirmed that the `/proc/self/maps` behavior matches my local testing. ..."
-        },
-        {
-          "repo_name": "pytorch/pytorch",
-          "issue_number": 193804,
-          "title": "[DCP] Dynamic `thread_count` auto-tuning for Distributed Checkpoint writers",
-          "html_url": "https://github.com/pytorch/pytorch/issues/193804",
-          "state": "open",
-          "created_at": "2026-08-17T13:16:36Z",
-          "updated_at": "2026-08-17T13:16:36Z",
-          "author": "Yonghui-Lee",
-          "labels": [],
-          "matched_fs_keywords": [
-            "filesystem",
-            "fsspec"
-          ],
-          "matched_perf_keywords": [
-            "io",
-            "latency"
-          ],
-          "relevance_score": 10,
-          "body_snippet": "### \ud83d\ude80 The feature, motivation and pitch PyTorch Distributed Checkpoint (DCP) supports multi-threaded parallel file writing via `FileSystemWriter(thread_count=...)` and `FsspecWriter(thread_count=...)`. When saving sharded state dicts (e.g. in FSDP / TP / ModelParallel), `_split_by_size_and_type` par..."
-        }
-      ]
-    },
-    {
-      "target_repo": "ray-project/ray",
-      "total_issues_scanned": 200,
+      "total_issues_scanned": 0,
       "matched_issues_count": 0,
-      "repo_url": "https://github.com/ray-project/ray",
+      "repo_url": "https://github.com/zarr-developers/zarr-python",
+      "issues": []
+    },
+    {
+      "target_repo": "intake/intake",
+      "total_issues_scanned": 0,
+      "matched_issues_count": 0,
+      "repo_url": "https://github.com/intake/intake",
+      "issues": []
+    },
+    {
+      "target_repo": "fsspec/s3fs",
+      "total_issues_scanned": 0,
+      "matched_issues_count": 0,
+      "repo_url": "https://github.com/fsspec/s3fs",
+      "issues": []
+    },
+    {
+      "target_repo": "fsspec/gcsfs",
+      "total_issues_scanned": 0,
+      "matched_issues_count": 0,
+      "repo_url": "https://github.com/fsspec/gcsfs",
+      "issues": []
+    },
+    {
+      "target_repo": "fsspec/adlfs",
+      "total_issues_scanned": 0,
+      "matched_issues_count": 0,
+      "repo_url": "https://github.com/fsspec/adlfs",
       "issues": []
     }
   ]

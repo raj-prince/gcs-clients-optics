@@ -6,20 +6,20 @@ This report analyzes **storage protocols (`gs://`, `s3://`, `abfs://`, etc.) and
 
 ## 📊 Global Cloud Provider Breakdown
 
-- **Repositories/Targets Scanned:** `13`
-- **Total Files Scanned:** `9944`
-- **Total Protocol Usages Detected:** `4086`
+- **Repositories/Targets Scanned:** `24`
+- **Total Files Scanned:** `9357`
+- **Total Protocol Usages Detected:** `4486`
 
 | Cloud Provider / Backend | Total Usages | % Share |
 | :--- | :---: | :---: |
-| **Web / HTTP** | **3579** | `87.6%` |
-| **Amazon Web Services (S3)** | **337** | `8.2%` |
-| **In-Memory Storage** | **41** | `1.0%` |
-| **Google Cloud Storage (GCS)** | **40** | `1.0%` |
-| **Local Filesystem** | **33** | `0.8%` |
-| **Microsoft Azure (Blob/ADLS)** | **26** | `0.6%` |
-| **Other / Chained Protocol** | **19** | `0.5%` |
-| **Hadoop HDFS** | **11** | `0.3%` |
+| **Web / HTTP** | **3937** | `87.8%` |
+| **Amazon Web Services (S3)** | **328** | `7.3%` |
+| **Local Filesystem** | **62** | `1.4%` |
+| **Google Cloud Storage (GCS)** | **48** | `1.1%` |
+| **In-Memory Storage** | **41** | `0.9%` |
+| **Microsoft Azure (Blob/ADLS)** | **38** | `0.8%` |
+| **Other / Chained Protocol** | **19** | `0.4%` |
+| **Hadoop HDFS** | **13** | `0.3%` |
 
 ---
 
@@ -27,16 +27,17 @@ This report analyzes **storage protocols (`gs://`, `s3://`, `abfs://`, etc.) and
 
 | Protocol Scheme | Occurrences | % Share | Description |
 | :--- | :---: | :---: | :--- |
-| **`https`** | **3285** | `80.4%` | HTTPS Secure Remote Stream (`https://`) |
-| **`s3`** | **337** | `8.2%` | Amazon S3 (`s3://`) |
-| **`http`** | **294** | `7.2%` | HTTP Remote Stream (`http://`) |
-| **`memory`** | **41** | `1.0%` | In-Memory Filesystem (`memory://`) |
-| **`gs`** | **36** | `0.9%` | Google Cloud Storage (`gs://`) |
-| **`file`** | **33** | `0.8%` | Local Disk (`file://`) |
-| **`abfss`** | **20** | `0.5%` | Azure Data Lake Gen2 (`abfss://`) |
-| **`zip`** | **15** | `0.4%` | Zip Archive Chained (`zip://`) |
-| **`hdfs`** | **11** | `0.3%` | Hadoop Distributed FS (`hdfs://`) |
-| **`gcs`** | **4** | `0.1%` | Google Cloud Storage (`gcs://`) |
+| **`https`** | **3713** | `82.8%` | HTTPS Secure Remote Stream (`https://`) |
+| **`s3`** | **326** | `7.3%` | Amazon S3 (`s3://`) |
+| **`http`** | **224** | `5.0%` | HTTP Remote Stream (`http://`) |
+| **`file`** | **62** | `1.4%` | Local Disk (`file://`) |
+| **`gs`** | **42** | `0.9%` | Google Cloud Storage (`gs://`) |
+| **`memory`** | **41** | `0.9%` | In-Memory Filesystem (`memory://`) |
+| **`abfss`** | **19** | `0.4%` | Azure Data Lake Gen2 (`abfss://`) |
+| **`zip`** | **15** | `0.3%` | Zip Archive Chained (`zip://`) |
+| **`hdfs`** | **13** | `0.3%` | Hadoop Distributed FS (`hdfs://`) |
+| **`abfs`** | **11** | `0.2%` | Azure Blob Storage (`abfs://`) |
+| **`az`** | **8** | `0.2%` | Azure Storage (`az://`) |
+| **`gcs`** | **6** | `0.1%` | Google Cloud Storage (`gcs://`) |
 | **`azureblob`** | **4** | `0.1%` | Custom protocol (azureblob://) |
-| **`abfs`** | **4** | `0.1%` | Azure Blob Storage (`abfs://`) |
-| **`az`** | **2** | `0.0%` | Azure Storage (`az://`) |
+| **`s3a`** | **2** | `0.0%` | Amazon S3A (`s3a://`) |

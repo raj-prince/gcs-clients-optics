@@ -1,0 +1,49 @@
+{
+  "public_dependents_number": 4500,
+  "public_dependents_stars": 350000,
+  "packages": [
+    {
+      "name": "fsspec",
+      "public_dependents_number": 3500,
+      "public_dependents_stars": 300000,
+      "public_dependents": [
+        {"name": "pytorch/pytorch", "stars": 85000},
+        {"name": "pandas-dev/pandas", "stars": 44000},
+        {"name": "ray-project/ray", "stars": 34000},
+        {"name": "pola-rs/polars", "stars": 31000},
+        {"name": "Lightning-AI/pytorch-lightning", "stars": 27000},
+        {"name": "duckdb/duckdb", "stars": 24000},
+        {"name": "huggingface/datasets", "stars": 19000},
+        {"name": "mlflow/mlflow", "stars": 19000},
+        {"name": "apache/arrow", "stars": 15000},
+        {"name": "iterative/dvc", "stars": 14000},
+        {"name": "dask/dask", "stars": 12500},
+        {"name": "great-expectations/great_expectations", "stars": 10000},
+        {"name": "modin-project/modin", "stars": 9500},
+        {"name": "flyteorg/flyte", "stars": 5500},
+        {"name": "feast-dev/feast", "stars": 5400},
+        {"name": "pydata/xarray", "stars": 4200},
+        {"name": "kedro-org/kedro", "stars": 4000},
+        {"name": "pytorch/torchtitan", "stars": 3500},
+        {"name": "delta-io/delta-rs", "stars": 3200},
+        {"name": "zarr-developers/zarr-python", "stars": 1500},
+        {"name": "intake/intake", "stars": 1100},
+        {"name": "fsspec/s3fs", "stars": 1100},
+        {"name": "fsspec/gcsfs", "stars": 550},
+        {"name": "fsspec/adlfs", "stars": 350}
+      ]
+    },
+    {
+      "name": "gcsfs",
+      "public_dependents_number": 800,
+      "public_dependents_stars": 50000,
+      "public_dependents": [
+        {"name": "huggingface/datasets", "stars": 19000},
+        {"name": "iterative/dvc", "stars": 14000},
+        {"name": "dask/dask", "stars": 12500},
+        {"name": "kedro-org/kedro", "stars": 4000},
+        {"name": "intake/intake", "stars": 1100}
+      ]
+    }
+  ]
+}

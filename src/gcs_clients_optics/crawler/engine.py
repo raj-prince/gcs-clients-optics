@@ -3,22 +3,14 @@ Crawling and analysis engine for local files, directories, and remote GitHub rep
 """
 
 import ast
-import json
 import os
-import sys
-import urllib.error
-import urllib.request
-from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from typing import Dict, List, Optional
 
 from gcs_clients_optics.crawler.ast_visitor import FsspecASTVisitor
 from gcs_clients_optics.crawler.models import CrawlReport, FsspecUsage
 from gcs_clients_optics.crawler.regex_scanner import RegexFallbackScanner
-from gcs_clients_optics.engine.optics_engine import (
-    fetch_raw_github_content,
-    is_relevant_python_file,
-)
+from gcs_clients_optics.engine.optics_engine import is_relevant_python_file
 
 
 class FsspecCrawlerEngine:
@@ -115,94 +107,16 @@ class FsspecCrawlerEngine:
     def scan_github_repo(self, repo_name: str, branch: str = "main") -> CrawlReport:
         """
         Crawl a remote GitHub repository via GitHub Trees API and scan all Python files.
-        Example repo_name: 'dask/dask' or 'pytorch/pytorch'
+        Automatically uses exponential backoff and zero-quota archive fallback on rate limits.
         """
-        repo_url = f"https://github.com/{repo_name}"
-        tree_url = (
-            f"https://api.github.com/repos/{repo_name}/git/trees/{branch}?recursive=1"
+        from gcs_clients_optics.engine.optics_engine import OpticsEngine
+        from gcs_clients_optics.usecases.fsspec_methods import FsspecMethodsUseCase
+
+        engine = OpticsEngine(
+            use_case=FsspecMethodsUseCase(),
+            include_tests=self.include_tests,
+            github_token=self.github_token,
+            max_workers=self.max_workers,
         )
-        headers = {
-            "User-Agent": "GCS-Clients-Optics-Crawler",
-            "Accept": "application/vnd.github.v3+json",
-        }
-        if self.github_token:
-            headers["Authorization"] = f"token {self.github_token}"
+        return engine.scan_github_repo(repo_name, branch=branch)
 
-        req = urllib.request.Request(tree_url, headers=headers)
-
-        try:
-            with urllib.request.urlopen(req, timeout=20) as resp:
-                data = json.loads(resp.read().decode("utf-8"))
-        except urllib.error.HTTPError as e:
-            if e.code == 404 and branch == "main":
-                # Try fallback to 'master' branch
-                return self.scan_github_repo(repo_name, branch="master")
-            print(
-                f"HTTP Error {e.code} fetching GitHub tree for {repo_name}: {e.reason}",
-                file=sys.stderr,
-            )
-            return CrawlReport(
-                target_source=repo_name,
-                total_files_scanned=0,
-                files_with_usages=0,
-                total_usages_found=0,
-                repo_url=repo_url,
-            )
-        except Exception as e:
-            print(
-                f"Failed to fetch GitHub repository tree for {repo_name}: {e}",
-                file=sys.stderr,
-            )
-            return CrawlReport(
-                target_source=repo_name,
-                total_files_scanned=0,
-                files_with_usages=0,
-                total_usages_found=0,
-                repo_url=repo_url,
-            )
-
-        tree = data.get("tree", [])
-        py_files = [
-            f["path"]
-            for f in tree
-            if is_relevant_python_file(
-                f.get("path", ""), include_tests=self.include_tests
-            )
-        ]
-
-        all_usages: List[FsspecUsage] = []
-        scanned_count = len(py_files)
-        files_with_matches = 0
-
-        def _fetch_and_scan(rel_path: str):
-            content = fetch_raw_github_content(
-                repo_name,
-                branch,
-                rel_path,
-                github_token=self.github_token,
-            )
-            if not content:
-                return []
-            return self.scan_code(
-                rel_path, content, repo_url=repo_url, branch=branch
-            )
-
-        with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
-            file_usages = executor.map(_fetch_and_scan, py_files)
-
-        for usages in file_usages:
-            if usages:
-                files_with_matches += 1
-                all_usages.extend(usages)
-
-        summary = self._build_cache_type_summary(all_usages)
-
-        return CrawlReport(
-            target_source=f"GitHub:{repo_name} ({branch})",
-            total_files_scanned=scanned_count,
-            files_with_usages=files_with_matches,
-            total_usages_found=len(all_usages),
-            repo_url=repo_url,
-            cache_type_summary=summary,
-            usages=all_usages,
-        )

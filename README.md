@@ -112,9 +112,36 @@ gcs-optics async-sync --all --format csv -o reports/async_sync.csv
 gcs-optics async-sync --all --format sqlite -o reports/optics.db
 ```
 
+### 6. Targeting Downstream Dependents (`github-dependents-info` & `discover-dependents`)
+
+You can scan the hundreds of downstream projects that depend on `fsspec` or `gcsfs`:
+
+#### Option A: Ingest `github-dependents-info` JSON:
+```bash
+# 1. Collect dependents of fsspec or gcsfs
+github-dependents-info --repo fsspec/filesystem_spec --minstars 100 --json > dependents.json
+github-dependents-info --repo fsspec/gcsfs --minstars 50 --json > gcsfs_dependents.json
+
+# 2. Run single-pass scan across all discovered dependents into SQLite:
+gcs-optics run-all --dependents-file dependents.json --min-stars 100 --output-dir reports/
+
+# 3. Or run specific use case on dependents:
+gcs-optics fsspec-methods -D dependents.json --min-stars 100 --format sqlite -o reports/optics.db
+gcs-optics async-sync -D gcsfs_dependents.json --format md -o reports/gcsfs_dependents_async.md
+```
+
+#### Option B: Built-in Dependents Discovery:
+```bash
+# Discover top dependents and save to file:
+gcs-optics discover-dependents --repo fsspec/filesystem_spec --min-stars 100 --limit 50 -o dependents.json
+
+# Or scan discovered dependents directly on the fly:
+gcs-optics fsspec-methods --dependents-of fsspec/filesystem_spec --limit 30 --format md -o reports/fsspec_deps.md
+```
+
 ---
 
-### 6. Ingesting Existing JSON Reports into SQLite (`ingest`)
+### 7. Ingesting Existing JSON Reports into SQLite (`ingest`)
 If you already have generated JSON reports, you can ingest them into SQLite at any time:
 
 ```bash
@@ -124,7 +151,7 @@ gcs-optics ingest --input reports/all_issues.json --db reports/optics.db
 
 ---
 
-### 7. In-Memory Filesystem Simulation (`simulate`)
+### 8. In-Memory Filesystem Simulation (`simulate`)
 Runs a live in-memory verification of directory traversal, wildcards, metadata, and stream reading:
 
 ```bash
@@ -133,7 +160,7 @@ gcs-optics simulate
 
 ---
 
-### 8. Full Pipeline (`run-all`)
+### 9. Full Pipeline (`run-all`)
 Runs all use cases and exports reports to a directory (including `optics.db`):
 
 ```bash
@@ -153,6 +180,10 @@ You can specify the output format using `--format` (`-t`) and the output path wi
 | `--format md` | Output report in Markdown format | `gcs-optics cache-type --all --format md -o output.md` |
 | `--format sqlite` | Ingest and store data in SQLite database | `gcs-optics fsspec-methods --all --format sqlite -o reports/optics.db` |
 | `--format all` | Output all formats (JSON, CSV, MD, SQLite) | `gcs-optics fsspec-methods --all --format all -o reports/` |
+| `--dependents-file <file>` / `-D` | Load target repositories from dependents JSON / text file | `gcs-optics fsspec-methods -D dependents.json --min-stars 100` |
+| `--dependents-of <owner/repo>` | Discover & scan downstream dependents from GitHub | `gcs-optics fsspec-methods --dependents-of fsspec/filesystem_spec` |
+| `--min-stars <N>` | Filter repositories by minimum GitHub stars | `gcs-optics run-all -D dependents.json --min-stars 100` |
+| `--limit <N>` / `-n` | Limit number of repositories to scan from dependents | `gcs-optics fsspec-methods -D dependents.json -n 50` |
 | `--subpath <path>` / `-p` | Scope scan to a specific subdirectory in repo | `gcs-optics fsspec-methods --repo ray-project/ray -p python/ray/data` |
 | `--file-workers <N>` / `-w` | File download/parsing worker threads (default: 32) | `gcs-optics fsspec-methods --repo ray-project/ray -w 32` |
 | `--concurrency <N>` / `-j` | Concurrent repositories to crawl (default: 16) | `gcs-optics fsspec-methods --all -j 16` |

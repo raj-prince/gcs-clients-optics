@@ -1,12 +1,12 @@
-"""
-Generic crawling and analysis engine for executing Optics use cases against local code and remote GitHub repositories.
-"""
-
 import http.client
+import io
 import json
 import os
+import random
 import sys
+import tarfile
 import threading
+import time
 import urllib.error
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor
@@ -91,36 +91,108 @@ def fetch_raw_github_content(
     rel_path: str,
     github_token: Optional[str] = None,
     timeout: int = 15,
+    max_retries: int = 3,
 ) -> str:
     """
-    Fetch raw file content from GitHub using thread-local HTTPS persistent connection pooling (Keep-Alive).
+    Fetch raw file content from GitHub using thread-local HTTPS persistent connection pooling (Keep-Alive)
+    with exponential backoff retries for transient throttling and connection drops.
     """
-    conn = getattr(_thread_local, "conn", None)
-    if conn is None:
-        conn = http.client.HTTPSConnection("raw.githubusercontent.com", timeout=timeout)
-        _thread_local.conn = conn
-
     headers = {"User-Agent": "GCS-Clients-Optics-Engine"}
     if github_token:
         headers["Authorization"] = f"token {github_token}"
 
     path = f"/{repo_name}/{branch}/{rel_path}"
-    try:
-        conn.request("GET", path, headers=headers)
-        resp = conn.getresponse()
-        if resp.status == 200:
-            return resp.read().decode("utf-8", errors="ignore")
-        resp.read()
-        return ""
-    except Exception:
+
+    for attempt in range(max_retries):
+        conn = getattr(_thread_local, "conn", None)
+        if conn is None:
+            conn = http.client.HTTPSConnection(
+                "raw.githubusercontent.com", timeout=timeout
+            )
+            _thread_local.conn = conn
+
         try:
-            conn.close()
+            conn.request("GET", path, headers=headers)
+            resp = conn.getresponse()
+            if resp.status == 200:
+                return resp.read().decode("utf-8", errors="ignore")
+            elif resp.status in (403, 429, 500, 502, 503, 504) and attempt < max_retries - 1:
+                resp.read()
+                time.sleep(0.4 * (2 ** attempt) + random.uniform(0.1, 0.3))
+                continue
+            resp.read()
+            return ""
         except Exception:
-            pass
-        _thread_local.conn = http.client.HTTPSConnection(
-            "raw.githubusercontent.com", timeout=timeout
-        )
-        return ""
+            try:
+                conn.close()
+            except Exception:
+                pass
+            _thread_local.conn = http.client.HTTPSConnection(
+                "raw.githubusercontent.com", timeout=timeout
+            )
+            if attempt < max_retries - 1:
+                time.sleep(0.4 * (2 ** attempt) + random.uniform(0.1, 0.3))
+                continue
+            return ""
+    return ""
+
+
+def _fetch_github_tree_with_backoff(
+    repo_name: str,
+    branch: str,
+    github_token: Optional[str] = None,
+    max_retries: int = 3,
+    timeout: int = 20,
+) -> Tuple[Optional[List[Dict[str, Any]]], Optional[int]]:
+    """
+    Fetch GitHub Git Tree API with exponential backoff for rate limits and server errors.
+    Returns (tree_list, status_code).
+    """
+    tree_url = (
+        f"https://api.github.com/repos/{repo_name}/git/trees/{branch}?recursive=1"
+    )
+    headers = {
+        "User-Agent": "GCS-Clients-Optics-Engine",
+        "Accept": "application/vnd.github.v3+json",
+    }
+    if github_token:
+        headers["Authorization"] = f"token {github_token}"
+
+    req = urllib.request.Request(tree_url, headers=headers)
+
+    for attempt in range(max_retries):
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+                return data.get("tree", []), 200
+        except urllib.error.HTTPError as e:
+            if e.code == 404:
+                return None, 404
+            elif e.code in (403, 429):
+                retry_after = e.headers.get("Retry-After")
+                remaining = e.headers.get("x-ratelimit-remaining")
+                if remaining == "0" and not github_token:
+                    # Unauthenticated rate limit exhausted; return immediately to use archive fallback
+                    return None, 403
+                sleep_time = (
+                    float(retry_after) + random.uniform(0.1, 0.5)
+                    if retry_after
+                    else min(2 ** attempt + random.uniform(0.5, 1.5), 10.0)
+                )
+                if attempt < max_retries - 1:
+                    time.sleep(sleep_time)
+                    continue
+                return None, e.code
+            elif e.code in (500, 502, 503, 504) and attempt < max_retries - 1:
+                time.sleep(min(2 ** attempt + random.uniform(0.5, 1.5), 10.0))
+                continue
+            return None, e.code
+        except Exception:
+            if attempt < max_retries - 1:
+                time.sleep(min(2 ** attempt + random.uniform(0.5, 1.5), 10.0))
+                continue
+            return None, 500
+    return None, 500
 
 
 class OpticsEngine:
@@ -219,6 +291,106 @@ class OpticsEngine:
             repo_url=None,
         )
 
+    def _scan_github_repo_via_archive(
+        self,
+        repo_name: str,
+        use_cases: List[BaseUseCase],
+        branch: str = "main",
+        subpath: Optional[str] = None,
+    ) -> Optional[Dict[str, Any]]:
+        """
+        Fallback repository scanner that downloads a single compressed tarball from
+        codeload.github.com without consuming GitHub REST API rate limits.
+        """
+        repo_url = f"https://github.com/{repo_name}"
+        branches_to_try = [branch]
+        if "main" not in branches_to_try:
+            branches_to_try.append("main")
+        if "master" not in branches_to_try:
+            branches_to_try.append("master")
+
+        headers = {"User-Agent": "GCS-Clients-Optics-Engine"}
+        if self.github_token:
+            headers["Authorization"] = f"token {self.github_token}"
+
+        tar_bytes = None
+        successful_branch = branch
+
+        for b in branches_to_try:
+            archive_url = (
+                f"https://codeload.github.com/{repo_name}/tar.gz/refs/heads/{b}"
+            )
+            req = urllib.request.Request(archive_url, headers=headers)
+            try:
+                with urllib.request.urlopen(req, timeout=30) as resp:
+                    if resp.status == 200:
+                        tar_bytes = resp.read()
+                        successful_branch = b
+                        break
+            except Exception:
+                continue
+
+        if not tar_bytes:
+            return None
+
+        uc_data: Dict[str, Dict[str, Any]] = {
+            uc.name: {"files_with": 0, "usages": []} for uc in use_cases
+        }
+        scanned_count = 0
+
+        try:
+            with tarfile.open(fileobj=io.BytesIO(tar_bytes), mode="r:gz") as tar:
+                for member in tar.getmembers():
+                    if not member.isfile() or not member.name.endswith(".py"):
+                        continue
+                    # Strip archive root directory (e.g. 'repo-main/path/to/file.py' -> 'path/to/file.py')
+                    parts = member.name.split("/", 1)
+                    rel_path = parts[1] if len(parts) > 1 else parts[0]
+
+                    if not is_relevant_python_file(
+                        rel_path,
+                        include_tests=self.include_tests,
+                        subpath=subpath,
+                    ):
+                        continue
+
+                    f = tar.extractfile(member)
+                    if f is None:
+                        continue
+
+                    scanned_count += 1
+                    try:
+                        content = f.read().decode("utf-8", errors="ignore")
+                        for uc in use_cases:
+                            usages = uc.scan_code(
+                                rel_path,
+                                content,
+                                repo_url=repo_url,
+                                branch=successful_branch,
+                            )
+                            if usages:
+                                uc_data[uc.name]["files_with"] += 1
+                                uc_data[uc.name]["usages"].extend(usages)
+                    except Exception:
+                        continue
+        except Exception as e:
+            print(
+                f"Error extracting archive for {repo_name}: {e}",
+                file=sys.stderr,
+            )
+            return None
+
+        reports: Dict[str, Any] = {}
+        for uc in use_cases:
+            reports[uc.name] = uc.aggregate_report(
+                target_source=f"GitHub:{repo_name} ({successful_branch})",
+                total_files_scanned=scanned_count,
+                files_with_usages=uc_data[uc.name]["files_with"],
+                usages=uc_data[uc.name]["usages"],
+                repo_url=repo_url,
+            )
+        return reports
+
     def scan_github_repo(
         self,
         repo_name: str,
@@ -227,96 +399,20 @@ class OpticsEngine:
     ) -> Any:
         """
         Crawl a remote GitHub repository via GitHub Trees API and scan all Python files
-        using the active use case.
+        using the active use case, with automatic backoff and zero-quota archive stream fallback.
         """
-        repo_url = f"https://github.com/{repo_name}"
-        tree_url = (
-            f"https://api.github.com/repos/{repo_name}/git/trees/{branch}?recursive=1"
+        multi_rep = self.scan_github_repo_multi(
+            repo_name, [self.use_case], branch=branch, subpath=subpath
         )
-        headers = {
-            "User-Agent": "GCS-Clients-Optics-Engine",
-            "Accept": "application/vnd.github.v3+json",
-        }
-        if self.github_token:
-            headers["Authorization"] = f"token {self.github_token}"
-
-        req = urllib.request.Request(tree_url, headers=headers)
-
-        try:
-            with urllib.request.urlopen(req, timeout=20) as resp:
-                data = json.loads(resp.read().decode("utf-8"))
-        except urllib.error.HTTPError as e:
-            if e.code == 404 and branch == "main":
-                # Fallback to master branch
-                return self.scan_github_repo(
-                    repo_name, branch="master", subpath=subpath
-                )
-            print(
-                f"HTTP Error {e.code} fetching GitHub tree for {repo_name}: {e.reason}",
-                file=sys.stderr,
-            )
-            return self.use_case.aggregate_report(
+        return multi_rep.get(
+            self.use_case.name,
+            self.use_case.aggregate_report(
                 target_source=repo_name,
                 total_files_scanned=0,
                 files_with_usages=0,
                 usages=[],
-                repo_url=repo_url,
-            )
-        except Exception as e:
-            print(
-                f"Failed to fetch GitHub repository tree for {repo_name}: {e}",
-                file=sys.stderr,
-            )
-            return self.use_case.aggregate_report(
-                target_source=repo_name,
-                total_files_scanned=0,
-                files_with_usages=0,
-                usages=[],
-                repo_url=repo_url,
-            )
-
-        tree = data.get("tree", [])
-        py_files = [
-            f["path"]
-            for f in tree
-            if is_relevant_python_file(
-                f.get("path", ""),
-                include_tests=self.include_tests,
-                subpath=subpath,
-            )
-        ]
-
-        all_usages: List[Any] = []
-        scanned_count = len(py_files)
-        files_with_matches = 0
-
-        def _fetch_and_scan(rel_path: str):
-            content = fetch_raw_github_content(
-                repo_name,
-                branch,
-                rel_path,
-                github_token=self.github_token,
-            )
-            if not content:
-                return []
-            return self.scan_code(
-                rel_path, content, repo_url=repo_url, branch=branch
-            )
-
-        with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
-            file_usages = executor.map(_fetch_and_scan, py_files)
-
-        for usages in file_usages:
-            if usages:
-                files_with_matches += 1
-                all_usages.extend(usages)
-
-        return self.use_case.aggregate_report(
-            target_source=f"GitHub:{repo_name} ({branch})",
-            total_files_scanned=scanned_count,
-            files_with_usages=files_with_matches,
-            usages=all_usages,
-            repo_url=repo_url,
+                repo_url=f"https://github.com/{repo_name}",
+            ),
         )
 
     def scan_local_directory_multi(
@@ -375,47 +471,28 @@ class OpticsEngine:
         """
         Crawl a remote GitHub repository tree once, download each Python file once
         using Keep-Alive connection pooling, and evaluate all use cases simultaneously in a single pass.
+        Falls back to codeload archive streaming if the GitHub REST API is rate limited.
         """
         repo_url = f"https://github.com/{repo_name}"
-        tree_url = (
-            f"https://api.github.com/repos/{repo_name}/git/trees/{branch}?recursive=1"
+        tree_list, status_code = _fetch_github_tree_with_backoff(
+            repo_name, branch, github_token=self.github_token
         )
-        headers = {
-            "User-Agent": "GCS-Clients-Optics-Engine",
-            "Accept": "application/vnd.github.v3+json",
-        }
-        if self.github_token:
-            headers["Authorization"] = f"token {self.github_token}"
 
-        req = urllib.request.Request(tree_url, headers=headers)
+        if tree_list is None and branch == "main" and status_code == 404:
+            tree_list, status_code = _fetch_github_tree_with_backoff(
+                repo_name, "master", github_token=self.github_token
+            )
+            if tree_list is not None:
+                branch = "master"
 
-        try:
-            with urllib.request.urlopen(req, timeout=20) as resp:
-                data = json.loads(resp.read().decode("utf-8"))
-        except urllib.error.HTTPError as e:
-            if e.code == 404 and branch == "main":
-                return self.scan_github_repo_multi(
-                    repo_name, use_cases, branch="master", subpath=subpath
-                )
-            print(
-                f"HTTP Error {e.code} fetching GitHub tree for {repo_name}: {e.reason}",
-                file=sys.stderr,
+        # If API rate limited (403/429) or unavailable, use the zero-quota archive fallback
+        if tree_list is None:
+            archive_reports = self._scan_github_repo_via_archive(
+                repo_name, use_cases, branch=branch, subpath=subpath
             )
-            return {
-                uc.name: uc.aggregate_report(
-                    target_source=repo_name,
-                    total_files_scanned=0,
-                    files_with_usages=0,
-                    usages=[],
-                    repo_url=repo_url,
-                )
-                for uc in use_cases
-            }
-        except Exception as e:
-            print(
-                f"Failed to fetch GitHub repository tree for {repo_name}: {e}",
-                file=sys.stderr,
-            )
+            if archive_reports:
+                return archive_reports
+
             return {
                 uc.name: uc.aggregate_report(
                     target_source=repo_name,
@@ -427,10 +504,9 @@ class OpticsEngine:
                 for uc in use_cases
             }
 
-        tree = data.get("tree", [])
         py_files = [
             f["path"]
-            for f in tree
+            for f in tree_list
             if is_relevant_python_file(
                 f.get("path", ""),
                 include_tests=self.include_tests,
