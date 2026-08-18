@@ -462,7 +462,11 @@ def ingest_json_report(
         with conn:
             for repo_data in data["per_repository"]:
                 scan_id = str(uuid.uuid4())
-                target_source = repo_data.get("target_source", "")
+                target_source = (
+                    repo_data.get("target_source")
+                    or repo_data.get("target_repo")
+                    or ""
+                )
                 repo_name = _clean_repo_name(target_source)
                 repo_url = repo_data.get("repo_url")
 
