@@ -4,7 +4,7 @@ This reference summary table documents **every single distinct method call** ide
 
 | Target Call | Occurrences | Major Repositories | Primary Usage Pattern |
 | :--- | :---: | :--- | :--- |
-| **`open`** | **1218** | `pytorch/pytorch`, `ray-project/ray`, `mlflow/mlflow` | Return a file-like object from the filesystem (`fs.open(path, mode)`) |
+| **`open`** | **1229** | `pytorch/pytorch`, `ray-project/ray`, `mlflow/mlflow` | Return a file-like object from the filesystem (`fs.open(path, mode)`) |
 | **`fsspec.open`** | **56** | `intake/intake`, `huggingface/datasets`, `pandas-dev/pandas` | fsspec module: Return a file-like object from the filesystem (`fs.open(path, mode)`) |
 | **`fs.open`** | **42** | `dask/dask`, `Lightning-AI/pytorch-lightning`, `huggingface/datasets` | Return a file-like object from the filesystem (`fs.open(path, mode)`) |
 | **`sync_wrapper`** | **35** | `fsspec/s3fs`, `fsspec/adlfs` | Driver Instances & Wrapper Bridges API method detected across storage interactions |

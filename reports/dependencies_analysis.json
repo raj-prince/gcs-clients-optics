@@ -1,0 +1,1255 @@
+{
+  "total_targets": 24,
+  "total_dependencies": 91,
+  "elapsed_seconds": 269.53191208839417,
+  "targets": [
+    {
+      "target_source": "GitHub:pytorch/pytorch (main)",
+      "total_files_scanned": 2554,
+      "files_with_usages": 2,
+      "total_dependencies_found": 2,
+      "items": [
+        {
+          "package_name": "fsspec",
+          "specifier": ">=0.8.5",
+          "constraint_type": "minimum",
+          "manifest_path": "pyproject.toml",
+          "line_number": 332,
+          "raw_entry": "\"fsspec>=0.8.5\",",
+          "file_url": "https://github.com/pytorch/pytorch/blob/main/pyproject.toml#L332"
+        },
+        {
+          "package_name": "fsspec",
+          "specifier": ">=0.8.5",
+          "constraint_type": "minimum",
+          "manifest_path": "requirements.txt",
+          "line_number": 10,
+          "raw_entry": "fsspec>=0.8.5",
+          "file_url": "https://github.com/pytorch/pytorch/blob/main/requirements.txt#L10"
+        }
+      ],
+      "package_summary": {
+        "fsspec": [
+          ">=0.8.5",
+          ">=0.8.5"
+        ]
+      },
+      "repo_url": "https://github.com/pytorch/pytorch"
+    },
+    {
+      "target_source": "GitHub:pandas-dev/pandas (main)",
+      "total_files_scanned": 300,
+      "files_with_usages": 2,
+      "total_dependencies_found": 14,
+      "items": [
+        {
+          "package_name": "pyarrow",
+          "specifier": "= ['pyarrow>=16.0.0']",
+          "constraint_type": "minimum",
+          "manifest_path": "pyproject.toml",
+          "line_number": 90,
+          "raw_entry": "pyarrow = ['pyarrow>=16.0.0']",
+          "file_url": "https://github.com/pandas-dev/pandas/blob/main/pyproject.toml#L90"
+        },
+        {
+          "package_name": "fsspec",
+          "specifier": ">=2025.7.0",
+          "constraint_type": "minimum",
+          "manifest_path": "pyproject.toml",
+          "line_number": 93,
+          "raw_entry": "fss = ['fsspec>=2025.7.0']",
+          "file_url": "https://github.com/pandas-dev/pandas/blob/main/pyproject.toml#L93"
+        },
+        {
+          "package_name": "s3fs",
+          "specifier": ">=2025.7.0",
+          "constraint_type": "minimum",
+          "manifest_path": "pyproject.toml",
+          "line_number": 94,
+          "raw_entry": "aws = ['s3fs>=2025.7.0']",
+          "file_url": "https://github.com/pandas-dev/pandas/blob/main/pyproject.toml#L94"
+        },
+        {
+          "package_name": "gcsfs",
+          "specifier": ">=2025.7.0",
+          "constraint_type": "minimum",
+          "manifest_path": "pyproject.toml",
+          "line_number": 95,
+          "raw_entry": "gcp = ['gcsfs>=2025.7.0']",
+          "file_url": "https://github.com/pandas-dev/pandas/blob/main/pyproject.toml#L95"
+        },
+        {
+          "package_name": "pyarrow",
+          "specifier": ">=13.0.0",
+          "constraint_type": "minimum",
+          "manifest_path": "pyproject.toml",
+          "line_number": 97,
+          "raw_entry": "parquet = ['pyarrow>=13.0.0']",
+          "file_url": "https://github.com/pandas-dev/pandas/blob/main/pyproject.toml#L97"
+        },
+        {
+          "package_name": "pyarrow",
+          "specifier": ">=13.0.0",
+          "constraint_type": "minimum",
+          "manifest_path": "pyproject.toml",
+          "line_number": 98,
+          "raw_entry": "feather = ['pyarrow>=13.0.0']",
+          "file_url": "https://github.com/pandas-dev/pandas/blob/main/pyproject.toml#L98"
+        },
+        {
+          "package_name": "fsspec",
+          "specifier": ">=2025.7.0",
+          "constraint_type": "minimum",
+          "manifest_path": "pyproject.toml",
+          "line_number": 117,
+          "raw_entry": "'fsspec>=2025.7.0',",
+          "file_url": "https://github.com/pandas-dev/pandas/blob/main/pyproject.toml#L117"
+        },
+        {
+          "package_name": "gcsfs",
+          "specifier": ">=2025.7.0",
+          "constraint_type": "minimum",
+          "manifest_path": "pyproject.toml",
+          "line_number": 118,
+          "raw_entry": "'gcsfs>=2025.7.0',",
+          "file_url": "https://github.com/pandas-dev/pandas/blob/main/pyproject.toml#L118"
+        },
+        {
+          "package_name": "pyarrow",
+          "specifier": ">=16.0.0",
+          "constraint_type": "minimum",
+          "manifest_path": "pyproject.toml",
+          "line_number": 129,
+          "raw_entry": "'pyarrow>=16.0.0',",
+          "file_url": "https://github.com/pandas-dev/pandas/blob/main/pyproject.toml#L129"
+        },
+        {
+          "package_name": "s3fs",
+          "specifier": ">=2025.7.0",
+          "constraint_type": "minimum",
+          "manifest_path": "pyproject.toml",
+          "line_number": 141,
+          "raw_entry": "'s3fs>=2025.7.0',",
+          "file_url": "https://github.com/pandas-dev/pandas/blob/main/pyproject.toml#L141"
+        },
+        {
+          "package_name": "fsspec",
+          "specifier": ">=2025.7.0",
+          "constraint_type": "minimum",
+          "manifest_path": "requirements-dev.txt",
+          "line_number": 23,
+          "raw_entry": "fsspec>=2025.7.0",
+          "file_url": "https://github.com/pandas-dev/pandas/blob/main/requirements-dev.txt#L23"
+        },
+        {
+          "package_name": "gcsfs",
+          "specifier": ">=2025.7.0",
+          "constraint_type": "minimum",
+          "manifest_path": "requirements-dev.txt",
+          "line_number": 26,
+          "raw_entry": "gcsfs>=2025.7.0",
+          "file_url": "https://github.com/pandas-dev/pandas/blob/main/requirements-dev.txt#L26"
+        },
+        {
+          "package_name": "pyarrow",
+          "specifier": ">=16.0.0,!=24.*",
+          "constraint_type": "minimum",
+          "manifest_path": "requirements-dev.txt",
+          "line_number": 35,
+          "raw_entry": "pyarrow>=16.0.0,!=24.*",
+          "file_url": "https://github.com/pandas-dev/pandas/blob/main/requirements-dev.txt#L35"
+        },
+        {
+          "package_name": "s3fs",
+          "specifier": ">=2025.7.0",
+          "constraint_type": "minimum",
+          "manifest_path": "requirements-dev.txt",
+          "line_number": 43,
+          "raw_entry": "s3fs>=2025.7.0",
+          "file_url": "https://github.com/pandas-dev/pandas/blob/main/requirements-dev.txt#L43"
+        }
+      ],
+      "package_summary": {
+        "pyarrow": [
+          "= ['pyarrow>=16.0.0']",
+          ">=13.0.0",
+          ">=13.0.0",
+          ">=16.0.0",
+          ">=16.0.0,!=24.*"
+        ],
+        "fsspec": [
+          ">=2025.7.0",
+          ">=2025.7.0",
+          ">=2025.7.0"
+        ],
+        "s3fs": [
+          ">=2025.7.0",
+          ">=2025.7.0",
+          ">=2025.7.0"
+        ],
+        "gcsfs": [
+          ">=2025.7.0",
+          ">=2025.7.0",
+          ">=2025.7.0"
+        ]
+      },
+      "repo_url": "https://github.com/pandas-dev/pandas"
+    },
+    {
+      "target_source": "GitHub:ray-project/ray (master)",
+      "total_files_scanned": 2018,
+      "files_with_usages": 4,
+      "total_dependencies_found": 15,
+      "items": [
+        {
+          "package_name": "pyarrow",
+          "specifier": ">= 17.0.0",
+          "constraint_type": "minimum",
+          "manifest_path": "python/requirements.txt",
+          "line_number": 24,
+          "raw_entry": "pyarrow >= 17.0.0",
+          "file_url": "https://github.com/ray-project/ray/blob/master/python/requirements.txt#L24"
+        },
+        {
+          "package_name": "fsspec",
+          "specifier": "*",
+          "constraint_type": "unconstrained",
+          "manifest_path": "python/requirements.txt",
+          "line_number": 52,
+          "raw_entry": "fsspec",
+          "file_url": "https://github.com/ray-project/ray/blob/master/python/requirements.txt#L52"
+        },
+        {
+          "package_name": "adlfs",
+          "specifier": "==2026.4.0",
+          "constraint_type": "pinned",
+          "manifest_path": "python/requirements_compiled.txt",
+          "line_number": 31,
+          "raw_entry": "adlfs==2026.4.0",
+          "file_url": "https://github.com/ray-project/ray/blob/master/python/requirements_compiled.txt#L31"
+        },
+        {
+          "package_name": "fsspec",
+          "specifier": "==2023.12.1",
+          "constraint_type": "pinned",
+          "manifest_path": "python/requirements_compiled.txt",
+          "line_number": 594,
+          "raw_entry": "fsspec==2023.12.1",
+          "file_url": "https://github.com/ray-project/ray/blob/master/python/requirements_compiled.txt#L594"
+        },
+        {
+          "package_name": "google-cloud-storage",
+          "specifier": "==2.14.0",
+          "constraint_type": "pinned",
+          "manifest_path": "python/requirements_compiled.txt",
+          "line_number": 677,
+          "raw_entry": "google-cloud-storage==2.14.0",
+          "file_url": "https://github.com/ray-project/ray/blob/master/python/requirements_compiled.txt#L677"
+        },
+        {
+          "package_name": "pyarrow",
+          "specifier": "==23.0.1",
+          "constraint_type": "pinned",
+          "manifest_path": "python/requirements_compiled.txt",
+          "line_number": 1691,
+          "raw_entry": "pyarrow==23.0.1",
+          "file_url": "https://github.com/ray-project/ray/blob/master/python/requirements_compiled.txt#L1691"
+        },
+        {
+          "package_name": "s3fs",
+          "specifier": "==2023.12.1",
+          "constraint_type": "pinned",
+          "manifest_path": "python/requirements_compiled.txt",
+          "line_number": 2089,
+          "raw_entry": "s3fs==2023.12.1",
+          "file_url": "https://github.com/ray-project/ray/blob/master/python/requirements_compiled.txt#L2089"
+        },
+        {
+          "package_name": "adlfs",
+          "specifier": "==2026.4.0",
+          "constraint_type": "pinned",
+          "manifest_path": "python/requirements_compiled_py3.14.txt",
+          "line_number": 31,
+          "raw_entry": "adlfs==2026.4.0",
+          "file_url": "https://github.com/ray-project/ray/blob/master/python/requirements_compiled_py3.14.txt#L31"
+        },
+        {
+          "package_name": "fsspec",
+          "specifier": "==2023.12.1",
+          "constraint_type": "pinned",
+          "manifest_path": "python/requirements_compiled_py3.14.txt",
+          "line_number": 601,
+          "raw_entry": "fsspec==2023.12.1",
+          "file_url": "https://github.com/ray-project/ray/blob/master/python/requirements_compiled_py3.14.txt#L601"
+        },
+        {
+          "package_name": "google-cloud-storage",
+          "specifier": "==2.14.0",
+          "constraint_type": "pinned",
+          "manifest_path": "python/requirements_compiled_py3.14.txt",
+          "line_number": 684,
+          "raw_entry": "google-cloud-storage==2.14.0",
+          "file_url": "https://github.com/ray-project/ray/blob/master/python/requirements_compiled_py3.14.txt#L684"
+        },
+        {
+          "package_name": "pyarrow",
+          "specifier": "==23.0.1",
+          "constraint_type": "pinned",
+          "manifest_path": "python/requirements_compiled_py3.14.txt",
+          "line_number": 1690,
+          "raw_entry": "pyarrow==23.0.1",
+          "file_url": "https://github.com/ray-project/ray/blob/master/python/requirements_compiled_py3.14.txt#L1690"
+        },
+        {
+          "package_name": "s3fs",
+          "specifier": "==2023.12.1",
+          "constraint_type": "pinned",
+          "manifest_path": "python/requirements_compiled_py3.14.txt",
+          "line_number": 2085,
+          "raw_entry": "s3fs==2023.12.1",
+          "file_url": "https://github.com/ray-project/ray/blob/master/python/requirements_compiled_py3.14.txt#L2085"
+        },
+        {
+          "package_name": "pyarrow",
+          "specifier": ">= 17.0.0",
+          "constraint_type": "minimum",
+          "manifest_path": "python/setup.py",
+          "line_number": 228,
+          "raw_entry": "\"pyarrow >= 17.0.0\",",
+          "file_url": "https://github.com/ray-project/ray/blob/master/python/setup.py#L228"
+        },
+        {
+          "package_name": "fsspec",
+          "specifier": "*",
+          "constraint_type": "unconstrained",
+          "manifest_path": "python/setup.py",
+          "line_number": 239,
+          "raw_entry": "\"fsspec\",",
+          "file_url": "https://github.com/ray-project/ray/blob/master/python/setup.py#L239"
+        },
+        {
+          "package_name": "fsspec",
+          "specifier": "*",
+          "constraint_type": "unconstrained",
+          "manifest_path": "python/setup.py",
+          "line_number": 256,
+          "raw_entry": "\"fsspec\",",
+          "file_url": "https://github.com/ray-project/ray/blob/master/python/setup.py#L256"
+        }
+      ],
+      "package_summary": {
+        "pyarrow": [
+          ">= 17.0.0",
+          "==23.0.1",
+          "==23.0.1",
+          ">= 17.0.0"
+        ],
+        "fsspec": [
+          "*",
+          "==2023.12.1",
+          "==2023.12.1",
+          "*",
+          "*"
+        ],
+        "adlfs": [
+          "==2026.4.0",
+          "==2026.4.0"
+        ],
+        "google-cloud-storage": [
+          "==2.14.0",
+          "==2.14.0"
+        ],
+        "s3fs": [
+          "==2023.12.1",
+          "==2023.12.1"
+        ]
+      },
+      "repo_url": "https://github.com/ray-project/ray"
+    },
+    {
+      "target_source": "GitHub:pola-rs/polars (main)",
+      "total_files_scanned": 212,
+      "files_with_usages": 2,
+      "total_dependencies_found": 5,
+      "items": [
+        {
+          "package_name": "pyarrow",
+          "specifier": "= [\"pyarrow >= 7.0.0\"]",
+          "constraint_type": "minimum",
+          "manifest_path": "py-polars/pyproject.toml",
+          "line_number": 55,
+          "raw_entry": "pyarrow = [\"pyarrow >= 7.0.0\"]",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/pyproject.toml#L55"
+        },
+        {
+          "package_name": "fsspec",
+          "specifier": "= [\"fsspec\"]",
+          "constraint_type": "custom",
+          "manifest_path": "py-polars/pyproject.toml",
+          "line_number": 72,
+          "raw_entry": "fsspec = [\"fsspec\"]",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/pyproject.toml#L72"
+        },
+        {
+          "package_name": "pyarrow",
+          "specifier": "*",
+          "constraint_type": "unconstrained",
+          "manifest_path": "py-polars/requirements-dev.txt",
+          "line_number": 23,
+          "raw_entry": "pyarrow",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/requirements-dev.txt#L23"
+        },
+        {
+          "package_name": "fsspec",
+          "specifier": "*",
+          "constraint_type": "unconstrained",
+          "manifest_path": "py-polars/requirements-dev.txt",
+          "line_number": 38,
+          "raw_entry": "fsspec",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/requirements-dev.txt#L38"
+        },
+        {
+          "package_name": "s3fs",
+          "specifier": ">=2026.2.0",
+          "constraint_type": "minimum",
+          "manifest_path": "py-polars/requirements-dev.txt",
+          "line_number": 41,
+          "raw_entry": "s3fs>=2026.2.0",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/requirements-dev.txt#L41"
+        }
+      ],
+      "package_summary": {
+        "pyarrow": [
+          "= [\"pyarrow >= 7.0.0\"]",
+          "*"
+        ],
+        "fsspec": [
+          "= [\"fsspec\"]",
+          "*"
+        ],
+        "s3fs": [
+          ">=2026.2.0"
+        ]
+      },
+      "repo_url": "https://github.com/pola-rs/polars"
+    },
+    {
+      "target_source": "GitHub:Lightning-AI/pytorch-lightning (main)",
+      "total_files_scanned": 457,
+      "files_with_usages": 0,
+      "total_dependencies_found": 0,
+      "items": [],
+      "package_summary": {},
+      "repo_url": "https://github.com/Lightning-AI/pytorch-lightning"
+    },
+    {
+      "target_source": "GitHub:duckdb/duckdb (main)",
+      "total_files_scanned": 15,
+      "files_with_usages": 0,
+      "total_dependencies_found": 0,
+      "items": [],
+      "package_summary": {},
+      "repo_url": "https://github.com/duckdb/duckdb"
+    },
+    {
+      "target_source": "GitHub:huggingface/datasets (main)",
+      "total_files_scanned": 141,
+      "files_with_usages": 2,
+      "total_dependencies_found": 3,
+      "items": [
+        {
+          "package_name": "pyarrow",
+          "specifier": ">=21.0.0",
+          "constraint_type": "minimum",
+          "manifest_path": "setup.py",
+          "line_number": 114,
+          "raw_entry": "\"pyarrow>=21.0.0\",",
+          "file_url": "https://github.com/huggingface/datasets/blob/main/setup.py#L114"
+        },
+        {
+          "package_name": "fsspec",
+          "specifier": ">=2023.1.0,<=2026.6.0",
+          "constraint_type": "range",
+          "manifest_path": "setup.py",
+          "line_number": 130,
+          "raw_entry": "\"fsspec[http]>=2023.1.0,<=2026.6.0\",",
+          "file_url": "https://github.com/huggingface/datasets/blob/main/setup.py#L130"
+        },
+        {
+          "package_name": "pyarrow",
+          "specifier": "*",
+          "constraint_type": "unconstrained",
+          "manifest_path": "src/datasets/formatting/__init__.py",
+          "line_number": 77,
+          "raw_entry": "_register_formatter(ArrowFormatter, \"arrow\", aliases=[\"pa\", \"pyarrow\"])",
+          "file_url": "https://github.com/huggingface/datasets/blob/main/src/datasets/formatting/__init__.py#L77"
+        }
+      ],
+      "package_summary": {
+        "pyarrow": [
+          ">=21.0.0",
+          "*"
+        ],
+        "fsspec": [
+          ">=2023.1.0,<=2026.6.0"
+        ]
+      },
+      "repo_url": "https://github.com/huggingface/datasets"
+    },
+    {
+      "target_source": "GitHub:mlflow/mlflow (master)",
+      "total_files_scanned": 1300,
+      "files_with_usages": 2,
+      "total_dependencies_found": 7,
+      "items": [
+        {
+          "package_name": "pyarrow",
+          "specifier": "*",
+          "constraint_type": "unconstrained",
+          "manifest_path": "libs/skinny/pyproject.toml",
+          "line_number": 62,
+          "raw_entry": "\"pyarrow\",",
+          "file_url": "https://github.com/mlflow/mlflow/blob/master/libs/skinny/pyproject.toml#L62"
+        },
+        {
+          "package_name": "google-cloud-storage",
+          "specifier": ">=1.30.0",
+          "constraint_type": "minimum",
+          "manifest_path": "libs/skinny/pyproject.toml",
+          "line_number": 66,
+          "raw_entry": "\"google-cloud-storage>=1.30.0\",",
+          "file_url": "https://github.com/mlflow/mlflow/blob/master/libs/skinny/pyproject.toml#L66"
+        },
+        {
+          "package_name": "google-cloud-storage",
+          "specifier": ">=1.30.0",
+          "constraint_type": "minimum",
+          "manifest_path": "libs/skinny/pyproject.toml",
+          "line_number": 75,
+          "raw_entry": "\"google-cloud-storage>=1.30.0\",",
+          "file_url": "https://github.com/mlflow/mlflow/blob/master/libs/skinny/pyproject.toml#L75"
+        },
+        {
+          "package_name": "pyarrow",
+          "specifier": "<26,>=4.0.0",
+          "constraint_type": "range",
+          "manifest_path": "pyproject.toml",
+          "line_number": 58,
+          "raw_entry": "\"pyarrow<26,>=4.0.0\",",
+          "file_url": "https://github.com/mlflow/mlflow/blob/master/pyproject.toml#L58"
+        },
+        {
+          "package_name": "pyarrow",
+          "specifier": "*",
+          "constraint_type": "unconstrained",
+          "manifest_path": "pyproject.toml",
+          "line_number": 82,
+          "raw_entry": "\"pyarrow\",",
+          "file_url": "https://github.com/mlflow/mlflow/blob/master/pyproject.toml#L82"
+        },
+        {
+          "package_name": "google-cloud-storage",
+          "specifier": ">=1.30.0",
+          "constraint_type": "minimum",
+          "manifest_path": "pyproject.toml",
+          "line_number": 86,
+          "raw_entry": "\"google-cloud-storage>=1.30.0\",",
+          "file_url": "https://github.com/mlflow/mlflow/blob/master/pyproject.toml#L86"
+        },
+        {
+          "package_name": "google-cloud-storage",
+          "specifier": ">=1.30.0",
+          "constraint_type": "minimum",
+          "manifest_path": "pyproject.toml",
+          "line_number": 95,
+          "raw_entry": "\"google-cloud-storage>=1.30.0\",",
+          "file_url": "https://github.com/mlflow/mlflow/blob/master/pyproject.toml#L95"
+        }
+      ],
+      "package_summary": {
+        "pyarrow": [
+          "*",
+          "<26,>=4.0.0",
+          "*"
+        ],
+        "google-cloud-storage": [
+          ">=1.30.0",
+          ">=1.30.0",
+          ">=1.30.0",
+          ">=1.30.0"
+        ]
+      },
+      "repo_url": "https://github.com/mlflow/mlflow"
+    },
+    {
+      "target_source": "GitHub:apache/arrow (main)",
+      "total_files_scanned": 80,
+      "files_with_usages": 1,
+      "total_dependencies_found": 5,
+      "items": [
+        {
+          "package_name": "pyarrow",
+          "specifier": "*",
+          "constraint_type": "unconstrained",
+          "manifest_path": "python/pyproject.toml",
+          "line_number": 30,
+          "raw_entry": "name = \"pyarrow\"",
+          "file_url": "https://github.com/apache/arrow/blob/main/python/pyproject.toml#L30"
+        },
+        {
+          "package_name": "pyarrow",
+          "specifier": "*",
+          "constraint_type": "unconstrained",
+          "manifest_path": "python/pyproject.toml",
+          "line_number": 85,
+          "raw_entry": "wheel.packages = [\"pyarrow\"]",
+          "file_url": "https://github.com/apache/arrow/blob/main/python/pyproject.toml#L85"
+        },
+        {
+          "package_name": "pyarrow",
+          "specifier": "*",
+          "constraint_type": "unconstrained",
+          "manifest_path": "python/pyproject.toml",
+          "line_number": 86,
+          "raw_entry": "wheel.install-dir = \"pyarrow\"",
+          "file_url": "https://github.com/apache/arrow/blob/main/python/pyproject.toml#L86"
+        },
+        {
+          "package_name": "pyarrow",
+          "specifier": "*",
+          "constraint_type": "unconstrained",
+          "manifest_path": "python/pyproject.toml",
+          "line_number": 129,
+          "raw_entry": "\"pyarrow\",",
+          "file_url": "https://github.com/apache/arrow/blob/main/python/pyproject.toml#L129"
+        },
+        {
+          "package_name": "pyarrow",
+          "specifier": "*",
+          "constraint_type": "unconstrained",
+          "manifest_path": "python/pyproject.toml",
+          "line_number": 145,
+          "raw_entry": "\"pyarrow\",",
+          "file_url": "https://github.com/apache/arrow/blob/main/python/pyproject.toml#L145"
+        }
+      ],
+      "package_summary": {
+        "pyarrow": [
+          "*",
+          "*",
+          "*",
+          "*",
+          "*"
+        ]
+      },
+      "repo_url": "https://github.com/apache/arrow"
+    },
+    {
+      "target_source": "GitHub:iterative/dvc (main)",
+      "total_files_scanned": 258,
+      "files_with_usages": 1,
+      "total_dependencies_found": 1,
+      "items": [
+        {
+          "package_name": "fsspec",
+          "specifier": ">=2024.2.0",
+          "constraint_type": "minimum",
+          "manifest_path": "pyproject.toml",
+          "line_number": 52,
+          "raw_entry": "\"fsspec>=2024.2.0\",",
+          "file_url": "https://github.com/iterative/dvc/blob/main/pyproject.toml#L52"
+        }
+      ],
+      "package_summary": {
+        "fsspec": [
+          ">=2024.2.0"
+        ]
+      },
+      "repo_url": "https://github.com/iterative/dvc"
+    },
+    {
+      "target_source": "GitHub:dask/dask (main)",
+      "total_files_scanned": 184,
+      "files_with_usages": 1,
+      "total_dependencies_found": 2,
+      "items": [
+        {
+          "package_name": "fsspec",
+          "specifier": ">= 2021.09.0",
+          "constraint_type": "minimum",
+          "manifest_path": "pyproject.toml",
+          "line_number": 40,
+          "raw_entry": "\"fsspec >= 2021.09.0\",",
+          "file_url": "https://github.com/dask/dask/blob/main/pyproject.toml#L40"
+        },
+        {
+          "package_name": "pyarrow",
+          "specifier": ">= 16.0",
+          "constraint_type": "minimum",
+          "manifest_path": "pyproject.toml",
+          "line_number": 61,
+          "raw_entry": "\"pyarrow >= 16.0\",",
+          "file_url": "https://github.com/dask/dask/blob/main/pyproject.toml#L61"
+        }
+      ],
+      "package_summary": {
+        "fsspec": [
+          ">= 2021.09.0"
+        ],
+        "pyarrow": [
+          ">= 16.0"
+        ]
+      },
+      "repo_url": "https://github.com/dask/dask"
+    },
+    {
+      "target_source": "great-expectations/great_expectations",
+      "total_files_scanned": 0,
+      "files_with_usages": 0,
+      "total_dependencies_found": 0,
+      "items": [],
+      "package_summary": {},
+      "repo_url": "https://github.com/great-expectations/great_expectations"
+    },
+    {
+      "target_source": "GitHub:modin-project/modin (main)",
+      "total_files_scanned": 283,
+      "files_with_usages": 2,
+      "total_dependencies_found": 5,
+      "items": [
+        {
+          "package_name": "fsspec",
+          "specifier": ">=2022.11.0",
+          "constraint_type": "minimum",
+          "manifest_path": "requirements-dev.txt",
+          "line_number": 4,
+          "raw_entry": "fsspec>=2022.11.0",
+          "file_url": "https://github.com/modin-project/modin/blob/main/requirements-dev.txt#L4"
+        },
+        {
+          "package_name": "pyarrow",
+          "specifier": ">=10.0.1",
+          "constraint_type": "minimum",
+          "manifest_path": "requirements-dev.txt",
+          "line_number": 10,
+          "raw_entry": "pyarrow>=10.0.1",
+          "file_url": "https://github.com/modin-project/modin/blob/main/requirements-dev.txt#L10"
+        },
+        {
+          "package_name": "s3fs",
+          "specifier": ">=2022.11.0",
+          "constraint_type": "minimum",
+          "manifest_path": "requirements-dev.txt",
+          "line_number": 16,
+          "raw_entry": "s3fs>=2022.11.0",
+          "file_url": "https://github.com/modin-project/modin/blob/main/requirements-dev.txt#L16"
+        },
+        {
+          "package_name": "pyarrow",
+          "specifier": ">=10.0.1",
+          "constraint_type": "minimum",
+          "manifest_path": "setup.py",
+          "line_number": 9,
+          "raw_entry": "ray_deps = [\"ray>=2.10.0,<3\", \"pyarrow>=10.0.1\"]",
+          "file_url": "https://github.com/modin-project/modin/blob/main/setup.py#L9"
+        },
+        {
+          "package_name": "fsspec",
+          "specifier": ">=2022.11.0",
+          "constraint_type": "minimum",
+          "manifest_path": "setup.py",
+          "line_number": 57,
+          "raw_entry": "\"fsspec>=2022.11.0\",",
+          "file_url": "https://github.com/modin-project/modin/blob/main/setup.py#L57"
+        }
+      ],
+      "package_summary": {
+        "fsspec": [
+          ">=2022.11.0",
+          ">=2022.11.0"
+        ],
+        "pyarrow": [
+          ">=10.0.1",
+          ">=10.0.1"
+        ],
+        "s3fs": [
+          ">=2022.11.0"
+        ]
+      },
+      "repo_url": "https://github.com/modin-project/modin"
+    },
+    {
+      "target_source": "GitHub:flyteorg/flyte (main)",
+      "total_files_scanned": 242,
+      "files_with_usages": 0,
+      "total_dependencies_found": 0,
+      "items": [],
+      "package_summary": {},
+      "repo_url": "https://github.com/flyteorg/flyte"
+    },
+    {
+      "target_source": "GitHub:feast-dev/feast (master)",
+      "total_files_scanned": 599,
+      "files_with_usages": 1,
+      "total_dependencies_found": 5,
+      "items": [
+        {
+          "package_name": "pyarrow",
+          "specifier": ">=16.1.0",
+          "constraint_type": "minimum",
+          "manifest_path": "pyproject.toml",
+          "line_number": 26,
+          "raw_entry": "\"pyarrow>=16.1.0\",",
+          "file_url": "https://github.com/feast-dev/feast/blob/master/pyproject.toml#L26"
+        },
+        {
+          "package_name": "fsspec",
+          "specifier": ">=2024.1.0",
+          "constraint_type": "minimum",
+          "manifest_path": "pyproject.toml",
+          "line_number": 55,
+          "raw_entry": "aws = [\"boto3>=1.38.27\", \"fsspec>=2024.1.0\", \"aiobotocore>=2\"]",
+          "file_url": "https://github.com/feast-dev/feast/blob/master/pyproject.toml#L55"
+        },
+        {
+          "package_name": "pyarrow",
+          "specifier": "<21.0.0",
+          "constraint_type": "maximum",
+          "manifest_path": "pyproject.toml",
+          "line_number": 71,
+          "raw_entry": "flink = [\"apache-flink>=2.2.1,<3\", \"pyarrow<21.0.0\"]",
+          "file_url": "https://github.com/feast-dev/feast/blob/master/pyproject.toml#L71"
+        },
+        {
+          "package_name": "google-cloud-storage",
+          "specifier": ">=1.34.0,<3",
+          "constraint_type": "range",
+          "manifest_path": "pyproject.toml",
+          "line_number": 78,
+          "raw_entry": "\"google-cloud-storage>=1.34.0,<3\",",
+          "file_url": "https://github.com/feast-dev/feast/blob/master/pyproject.toml#L78"
+        },
+        {
+          "package_name": "fsspec",
+          "specifier": ">=2024.1.0",
+          "constraint_type": "minimum",
+          "manifest_path": "pyproject.toml",
+          "line_number": 80,
+          "raw_entry": "\"fsspec>=2024.1.0\",",
+          "file_url": "https://github.com/feast-dev/feast/blob/master/pyproject.toml#L80"
+        }
+      ],
+      "package_summary": {
+        "pyarrow": [
+          ">=16.1.0",
+          "<21.0.0"
+        ],
+        "fsspec": [
+          ">=2024.1.0",
+          ">=2024.1.0"
+        ],
+        "google-cloud-storage": [
+          ">=1.34.0,<3"
+        ]
+      },
+      "repo_url": "https://github.com/feast-dev/feast"
+    },
+    {
+      "target_source": "GitHub:pydata/xarray (main)",
+      "total_files_scanned": 123,
+      "files_with_usages": 1,
+      "total_dependencies_found": 1,
+      "items": [
+        {
+          "package_name": "fsspec",
+          "specifier": "*",
+          "constraint_type": "unconstrained",
+          "manifest_path": "pyproject.toml",
+          "line_number": 46,
+          "raw_entry": "\"fsspec\",",
+          "file_url": "https://github.com/pydata/xarray/blob/main/pyproject.toml#L46"
+        }
+      ],
+      "package_summary": {
+        "fsspec": [
+          "*"
+        ]
+      },
+      "repo_url": "https://github.com/pydata/xarray"
+    },
+    {
+      "target_source": "GitHub:kedro-org/kedro (main)",
+      "total_files_scanned": 104,
+      "files_with_usages": 1,
+      "total_dependencies_found": 2,
+      "items": [
+        {
+          "package_name": "fsspec",
+          "specifier": ">=2021.4",
+          "constraint_type": "minimum",
+          "manifest_path": "pyproject.toml",
+          "line_number": 20,
+          "raw_entry": "\"fsspec>=2021.4\",",
+          "file_url": "https://github.com/kedro-org/kedro/blob/main/pyproject.toml#L20"
+        },
+        {
+          "package_name": "s3fs",
+          "specifier": ">=2021.4,<2026.8",
+          "constraint_type": "range",
+          "manifest_path": "pyproject.toml",
+          "line_number": 74,
+          "raw_entry": "\"s3fs>=2021.4,<2026.8\",",
+          "file_url": "https://github.com/kedro-org/kedro/blob/main/pyproject.toml#L74"
+        }
+      ],
+      "package_summary": {
+        "fsspec": [
+          ">=2021.4"
+        ],
+        "s3fs": [
+          ">=2021.4,<2026.8"
+        ]
+      },
+      "repo_url": "https://github.com/kedro-org/kedro"
+    },
+    {
+      "target_source": "GitHub:pytorch/torchtitan (main)",
+      "total_files_scanned": 313,
+      "files_with_usages": 0,
+      "total_dependencies_found": 0,
+      "items": [],
+      "package_summary": {},
+      "repo_url": "https://github.com/pytorch/torchtitan"
+    },
+    {
+      "target_source": "GitHub:delta-io/delta-rs (main)",
+      "total_files_scanned": 18,
+      "files_with_usages": 1,
+      "total_dependencies_found": 1,
+      "items": [
+        {
+          "package_name": "pyarrow",
+          "specifier": "= [\"pyarrow>=21\"]",
+          "constraint_type": "minimum",
+          "manifest_path": "python/pyproject.toml",
+          "line_number": 25,
+          "raw_entry": "pyarrow = [\"pyarrow>=21\"]",
+          "file_url": "https://github.com/delta-io/delta-rs/blob/main/python/pyproject.toml#L25"
+        }
+      ],
+      "package_summary": {
+        "pyarrow": [
+          "= [\"pyarrow>=21\"]"
+        ]
+      },
+      "repo_url": "https://github.com/delta-io/delta-rs"
+    },
+    {
+      "target_source": "GitHub:zarr-developers/zarr-python (main)",
+      "total_files_scanned": 173,
+      "files_with_usages": 3,
+      "total_dependencies_found": 10,
+      "items": [
+        {
+          "package_name": "fsspec",
+          "specifier": "*",
+          "constraint_type": "unconstrained",
+          "manifest_path": "packages/zarr-http-server/pyproject.toml",
+          "line_number": 62,
+          "raw_entry": "\"fsspec[http]\",",
+          "file_url": "https://github.com/zarr-developers/zarr-python/blob/main/packages/zarr-http-server/pyproject.toml#L62"
+        },
+        {
+          "package_name": "fsspec",
+          "specifier": ">=2023.10.0",
+          "constraint_type": "minimum",
+          "manifest_path": "pyproject.toml",
+          "line_number": 78,
+          "raw_entry": "\"fsspec>=2023.10.0\",",
+          "file_url": "https://github.com/zarr-developers/zarr-python/blob/main/pyproject.toml#L78"
+        },
+        {
+          "package_name": "fsspec",
+          "specifier": ">=2023.10.0",
+          "constraint_type": "minimum",
+          "manifest_path": "pyproject.toml",
+          "line_number": 125,
+          "raw_entry": "\"fsspec>=2023.10.0\",",
+          "file_url": "https://github.com/zarr-developers/zarr-python/blob/main/pyproject.toml#L125"
+        },
+        {
+          "package_name": "s3fs",
+          "specifier": ">=2023.10.0",
+          "constraint_type": "minimum",
+          "manifest_path": "pyproject.toml",
+          "line_number": 128,
+          "raw_entry": "\"s3fs>=2023.10.0\",",
+          "file_url": "https://github.com/zarr-developers/zarr-python/blob/main/pyproject.toml#L128"
+        },
+        {
+          "package_name": "s3fs",
+          "specifier": ">=2023.10.0",
+          "constraint_type": "minimum",
+          "manifest_path": "pyproject.toml",
+          "line_number": 150,
+          "raw_entry": "\"s3fs>=2023.10.0\",",
+          "file_url": "https://github.com/zarr-developers/zarr-python/blob/main/pyproject.toml#L150"
+        },
+        {
+          "package_name": "fsspec",
+          "specifier": "==2023.10.0",
+          "constraint_type": "pinned",
+          "manifest_path": "pyproject.toml",
+          "line_number": 279,
+          "raw_entry": "'fsspec==2023.10.0',",
+          "file_url": "https://github.com/zarr-developers/zarr-python/blob/main/pyproject.toml#L279"
+        },
+        {
+          "package_name": "s3fs",
+          "specifier": "==2023.10.0",
+          "constraint_type": "pinned",
+          "manifest_path": "pyproject.toml",
+          "line_number": 280,
+          "raw_entry": "'s3fs==2023.10.0',",
+          "file_url": "https://github.com/zarr-developers/zarr-python/blob/main/pyproject.toml#L280"
+        },
+        {
+          "package_name": "fsspec",
+          "specifier": "*",
+          "constraint_type": "unconstrained",
+          "manifest_path": "src/zarr/__init__.py",
+          "line_number": 76,
+          "raw_entry": "\"fsspec\",",
+          "file_url": "https://github.com/zarr-developers/zarr-python/blob/main/src/zarr/__init__.py#L76"
+        },
+        {
+          "package_name": "s3fs",
+          "specifier": "*",
+          "constraint_type": "unconstrained",
+          "manifest_path": "src/zarr/__init__.py",
+          "line_number": 78,
+          "raw_entry": "\"s3fs\",",
+          "file_url": "https://github.com/zarr-developers/zarr-python/blob/main/src/zarr/__init__.py#L78"
+        },
+        {
+          "package_name": "gcsfs",
+          "specifier": "*",
+          "constraint_type": "unconstrained",
+          "manifest_path": "src/zarr/__init__.py",
+          "line_number": 79,
+          "raw_entry": "\"gcsfs\",",
+          "file_url": "https://github.com/zarr-developers/zarr-python/blob/main/src/zarr/__init__.py#L79"
+        }
+      ],
+      "package_summary": {
+        "fsspec": [
+          "*",
+          ">=2023.10.0",
+          ">=2023.10.0",
+          "==2023.10.0",
+          "*"
+        ],
+        "s3fs": [
+          ">=2023.10.0",
+          ">=2023.10.0",
+          "==2023.10.0",
+          "*"
+        ],
+        "gcsfs": [
+          "*"
+        ]
+      },
+      "repo_url": "https://github.com/zarr-developers/zarr-python"
+    },
+    {
+      "target_source": "GitHub:intake/intake (master)",
+      "total_files_scanned": 52,
+      "files_with_usages": 1,
+      "total_dependencies_found": 1,
+      "items": [
+        {
+          "package_name": "fsspec",
+          "specifier": ">=2023.0.0",
+          "constraint_type": "minimum",
+          "manifest_path": "pyproject.toml",
+          "line_number": 37,
+          "raw_entry": "\"fsspec >=2023.0.0\",",
+          "file_url": "https://github.com/intake/intake/blob/master/pyproject.toml#L37"
+        }
+      ],
+      "package_summary": {
+        "fsspec": [
+          ">=2023.0.0"
+        ]
+      },
+      "repo_url": "https://github.com/intake/intake"
+    },
+    {
+      "target_source": "GitHub:fsspec/s3fs (main)",
+      "total_files_scanned": 10,
+      "files_with_usages": 2,
+      "total_dependencies_found": 3,
+      "items": [
+        {
+          "package_name": "fsspec",
+          "specifier": ">=2026.7.0,<2026.7.1",
+          "constraint_type": "range",
+          "manifest_path": "requirements.txt",
+          "line_number": 2,
+          "raw_entry": "fsspec>=2026.7.0,<2026.7.1",
+          "file_url": "https://github.com/fsspec/s3fs/blob/main/requirements.txt#L2"
+        },
+        {
+          "package_name": "s3fs",
+          "specifier": "*",
+          "constraint_type": "unconstrained",
+          "manifest_path": "setup.py",
+          "line_number": 7,
+          "raw_entry": "name=\"s3fs\",",
+          "file_url": "https://github.com/fsspec/s3fs/blob/main/setup.py#L7"
+        },
+        {
+          "package_name": "s3fs",
+          "specifier": "*",
+          "constraint_type": "unconstrained",
+          "manifest_path": "setup.py",
+          "line_number": 27,
+          "raw_entry": "packages=[\"s3fs\"],",
+          "file_url": "https://github.com/fsspec/s3fs/blob/main/setup.py#L27"
+        }
+      ],
+      "package_summary": {
+        "fsspec": [
+          ">=2026.7.0,<2026.7.1"
+        ],
+        "s3fs": [
+          "*",
+          "*"
+        ]
+      },
+      "repo_url": "https://github.com/fsspec/s3fs"
+    },
+    {
+      "target_source": "GitHub:fsspec/gcsfs (main)",
+      "total_files_scanned": 30,
+      "files_with_usages": 3,
+      "total_dependencies_found": 7,
+      "items": [
+        {
+          "package_name": "google-cloud-storage",
+          "specifier": "*",
+          "constraint_type": "unconstrained",
+          "manifest_path": "cloudbuild/macrobenchmarks/metrics/requirements.txt",
+          "line_number": 4,
+          "raw_entry": "google-cloud-storage",
+          "file_url": "https://github.com/fsspec/gcsfs/blob/main/cloudbuild/macrobenchmarks/metrics/requirements.txt#L4"
+        },
+        {
+          "package_name": "gcsfs",
+          "specifier": "*",
+          "constraint_type": "unconstrained",
+          "manifest_path": "gcsfs/__init__.py",
+          "line_number": 10,
+          "raw_entry": "__version__ = version(\"gcsfs\")",
+          "file_url": "https://github.com/fsspec/gcsfs/blob/main/gcsfs/__init__.py#L10"
+        },
+        {
+          "package_name": "gcsfs",
+          "specifier": "*",
+          "constraint_type": "unconstrained",
+          "manifest_path": "pyproject.toml",
+          "line_number": 6,
+          "raw_entry": "name = \"gcsfs\"",
+          "file_url": "https://github.com/fsspec/gcsfs/blob/main/pyproject.toml#L6"
+        },
+        {
+          "package_name": "google-cloud-storage",
+          "specifier": "*",
+          "constraint_type": "unconstrained",
+          "manifest_path": "pyproject.toml",
+          "line_number": 14,
+          "raw_entry": "keywords = [\"google-cloud-storage\", \"gcloud\", \"file-system\"]",
+          "file_url": "https://github.com/fsspec/gcsfs/blob/main/pyproject.toml#L14"
+        },
+        {
+          "package_name": "fsspec",
+          "specifier": ">=2026.7.0",
+          "constraint_type": "minimum",
+          "manifest_path": "pyproject.toml",
+          "line_number": 29,
+          "raw_entry": "\"fsspec>=2026.7.0\",",
+          "file_url": "https://github.com/fsspec/gcsfs/blob/main/pyproject.toml#L29"
+        },
+        {
+          "package_name": "google-cloud-storage",
+          "specifier": ">=3.11.0",
+          "constraint_type": "minimum",
+          "manifest_path": "pyproject.toml",
+          "line_number": 32,
+          "raw_entry": "\"google-cloud-storage>=3.11.0\",",
+          "file_url": "https://github.com/fsspec/gcsfs/blob/main/pyproject.toml#L32"
+        },
+        {
+          "package_name": "fsspec",
+          "specifier": "*",
+          "constraint_type": "unconstrained",
+          "manifest_path": "pyproject.toml",
+          "line_number": 82,
+          "raw_entry": "known_third_party = [\"aiohttp\", \"click\", \"datasets\", \"decorator\", \"fsspec\", \"fuse\", \"google\", \"google_auth_oauthlib\", \"lightning\", \"metrics\", \"numpy\", \"prettytable\", \"psutil\", \"pytest\", \"pytest_asyncio\", \"requests\", \"torch\", \"torchdata\", \"transformers\", \"yaml\"]",
+          "file_url": "https://github.com/fsspec/gcsfs/blob/main/pyproject.toml#L82"
+        }
+      ],
+      "package_summary": {
+        "google-cloud-storage": [
+          "*",
+          "*",
+          ">=3.11.0"
+        ],
+        "gcsfs": [
+          "*",
+          "*"
+        ],
+        "fsspec": [
+          ">=2026.7.0",
+          "*"
+        ]
+      },
+      "repo_url": "https://github.com/fsspec/gcsfs"
+    },
+    {
+      "target_source": "GitHub:fsspec/adlfs (main)",
+      "total_files_scanned": 6,
+      "files_with_usages": 1,
+      "total_dependencies_found": 2,
+      "items": [
+        {
+          "package_name": "adlfs",
+          "specifier": "*",
+          "constraint_type": "unconstrained",
+          "manifest_path": "pyproject.toml",
+          "line_number": 9,
+          "raw_entry": "name = \"adlfs\"",
+          "file_url": "https://github.com/fsspec/adlfs/blob/main/pyproject.toml#L9"
+        },
+        {
+          "package_name": "fsspec",
+          "specifier": ">=2023.12.0",
+          "constraint_type": "minimum",
+          "manifest_path": "pyproject.toml",
+          "line_number": 31,
+          "raw_entry": "\"fsspec>=2023.12.0\",",
+          "file_url": "https://github.com/fsspec/adlfs/blob/main/pyproject.toml#L31"
+        }
+      ],
+      "package_summary": {
+        "adlfs": [
+          "*"
+        ],
+        "fsspec": [
+          ">=2023.12.0"
+        ]
+      },
+      "repo_url": "https://github.com/fsspec/adlfs"
+    }
+  ]
+}

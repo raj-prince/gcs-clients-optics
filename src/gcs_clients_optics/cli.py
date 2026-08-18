@@ -37,8 +37,10 @@ from gcs_clients_optics.storage.sqlite_store import (
 from gcs_clients_optics.usecases import (
     AsyncSyncUseCase,
     CacheTypeUseCase,
+    DependencyVersionsUseCase,
     FsspecMethodsUseCase,
     ProtocolsUseCase,
+    ReadViewUseCase,
     get_use_case,
     list_use_cases,
 )
@@ -487,7 +489,9 @@ def _handle_run_all(args: argparse.Namespace) -> int:
     cache_uc = CacheTypeUseCase()
     proto_uc = ProtocolsUseCase()
     async_uc = AsyncSyncUseCase()
-    code_use_cases = [methods_uc, cache_uc, proto_uc, async_uc]
+    readview_uc = ReadViewUseCase()
+    deps_uc = DependencyVersionsUseCase()
+    code_use_cases = [methods_uc, cache_uc, proto_uc, async_uc, readview_uc, deps_uc]
 
     file_workers = getattr(args, "file_workers", 32)
     engine = OpticsEngine(
@@ -498,7 +502,7 @@ def _handle_run_all(args: argparse.Namespace) -> int:
     )
 
     print(
-        f"\n[+] [Single-Pass Crawl] Scanning {len(target_repos)} repositories for 4 use cases simultaneously..."
+        f"\n[+] [Single-Pass Crawl] Scanning {len(target_repos)} repositories for 6 use cases simultaneously..."
     )
     start_time = time.time()
 
@@ -571,8 +575,30 @@ def _handle_run_all(args: argparse.Namespace) -> int:
         elapsed_seconds=crawl_elapsed,
     )
 
-    # 5. issues
-    print("\n=== Use Case 5: GitHub Performance & Filesystem Issues ===")
+    # Export Use Case 5: readview
+    print("[+] Exporting Use Case 5: ReadView & Zero-Copy Buffer Ownership...")
+    readview_uc.export_reports(
+        multi_reports["readview"],
+        output_csv=str(out_dir / "readview_analysis.csv"),
+        output_json=str(out_dir / "readview_analysis.json"),
+        output_md=str(out_dir / "readview_analysis.md"),
+        output_sqlite=db_path,
+        elapsed_seconds=crawl_elapsed,
+    )
+
+    # Export Use Case 6: dependencies
+    print("[+] Exporting Use Case 6: Downstream Dependency Versions...")
+    deps_uc.export_reports(
+        multi_reports["dependencies"],
+        output_csv=str(out_dir / "dependencies_analysis.csv"),
+        output_json=str(out_dir / "dependencies_analysis.json"),
+        output_md=str(out_dir / "dependencies_analysis.md"),
+        output_sqlite=db_path,
+        elapsed_seconds=crawl_elapsed,
+    )
+
+    # 7. issues
+    print("\n=== Use Case 7: GitHub Performance & Filesystem Issues ===")
     issues_args = argparse.Namespace(
         all=True,
         repo=None,
@@ -588,8 +614,8 @@ def _handle_run_all(args: argparse.Namespace) -> int:
     )
     _handle_issues(issues_args)
 
-    # 6. simulate
-    print("\n=== Use Case 6: In-Memory Filesystem Simulation ===")
+    # 8. simulate
+    print("\n=== Use Case 8: In-Memory Filesystem Simulation ===")
     run_fsspec_simulation(verbose=True)
 
     total_elapsed = time.time() - start_time
@@ -842,7 +868,23 @@ def build_parser() -> argparse.ArgumentParser:
     )
     _add_common_code_args(p_async)
 
-    # 6. Ingest JSON to SQLite
+    # 6. Use Case 6: readview (zero-copy)
+    p_readview = subparsers.add_parser(
+        "readview",
+        aliases=["zero-copy", "memoryview", "buffer-ownership", "read-view"],
+        help="[Use Case 6] Audit read paths for zero-copy readview & buffer ownership descoping.",
+    )
+    _add_common_code_args(p_readview)
+
+    # 7. Use Case 7: dependencies
+    p_deps = subparsers.add_parser(
+        "dependencies",
+        aliases=["versions", "deps", "package-versions"],
+        help="[Use Case 7] Audit fsspec & gcsfs package version constraints in repository manifests.",
+    )
+    _add_common_code_args(p_deps)
+
+    # 8. Ingest JSON to SQLite
     p_ingest = subparsers.add_parser(
         "ingest",
         aliases=["load-db"],

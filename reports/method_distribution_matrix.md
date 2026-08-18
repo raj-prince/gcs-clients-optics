@@ -4,7 +4,7 @@ This document provides the exact occurrence count of **every single filesystem/f
 
 | Rank | Target Method Name | Total Calls | pytorch | pandas | ray | polars | pytorch-lightning | duckdb | datasets | mlflow | arrow | dvc | dask | great_expectations | modin | flyte | feast | xarray | kedro | torchtitan | delta-rs | zarr-python | intake | s3fs | gcsfs | adlfs |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **1** | `open` | **1218** | 402 | 22 | 253 | - | 78 | 4 | 46 | 224 | 17 | 14 | 14 | - | 18 | - | 44 | 2 | 18 | 19 | - | 1 | 6 | 20 | 14 | 2 |
+| **1** | `open` | **1229** | 402 | 22 | 257 | - | 81 | 4 | 47 | 224 | 17 | 14 | 14 | - | 19 | - | 45 | 2 | 18 | 19 | - | 1 | 6 | 21 | 14 | 2 |
 | **2** | `fsspec.open` | **56** | - | 4 | 1 | 1 | 1 | - | 6 | - | - | - | - | - | 3 | - | - | - | - | - | - | - | 40 | - | - | - |
 | **3** | `fs.open` | **42** | - | - | 2 | - | 9 | - | 8 | - | - | 8 | 14 | - | - | - | - | 1 | - | - | - | - | - | - | - | - |
 | **4** | `sync_wrapper` | **35** | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | 24 | - | 11 |

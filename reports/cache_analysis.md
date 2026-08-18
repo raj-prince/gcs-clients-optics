@@ -7,10 +7,10 @@ This report analyzes **caching strategies and `cache_type` configurations** in t
 ## 📊 Global Cache Strategy Summary
 
 - **Repositories/Targets Scanned:** `24`
-- **Total Files Scanned:** `9357`
-- **Total Read/Stream Calls Detected:** `1386`
+- **Total Files Scanned:** `9472`
+- **Total Read/Stream Calls Detected:** `1397`
 - **Explicit Cache Configurations:** `3` (0.2%)
-- **Implicit Default Caching:** `1383` (99.8%)
+- **Implicit Default Caching:** `1394` (99.8%)
 
 ---
 
@@ -18,7 +18,7 @@ This report analyzes **caching strategies and `cache_type` configurations** in t
 
 | Cache_Type | Occurrences | % Share | Category | Workload Recommendation |
 | :--- | :---: | :---: | :--- | :--- |
-| **`NOT_EXPLICIT`** | **1382** | `99.7%` | Implicit Default | Uses fsspec default ('readahead'). Explicit configuration recommended for high-performance workloads. |
+| **`NOT_EXPLICIT`** | **1393** | `99.7%` | Implicit Default | Uses fsspec default ('readahead'). Explicit configuration recommended for high-performance workloads. |
 | **`parts`** | **3** | `0.2%` | Columnar / Section Caching | Required for fsspec.parquet precaching and columnar pruning. |
 | **`self.cache_type`** | **1** | `0.1%` | Custom Strategy | Custom application caching strategy |
 
@@ -30,26 +30,26 @@ This report analyzes **caching strategies and `cache_type` configurations** in t
 | :--- | :---: | :---: | :---: | :--- |
 | [pytorch/pytorch](https://github.com/pytorch/pytorch) | `403` | `0` | `403` | `Implicit Default` |
 | [pandas-dev/pandas](https://github.com/pandas-dev/pandas) | `27` | `0` | `27` | `Implicit Default` |
-| [ray-project/ray](https://github.com/ray-project/ray) | `259` | `0` | `259` | `Implicit Default` |
+| [ray-project/ray](https://github.com/ray-project/ray) | `263` | `0` | `263` | `Implicit Default` |
 | [pola-rs/polars](https://github.com/pola-rs/polars) | `1` | `0` | `1` | `Implicit Default` |
-| [Lightning-AI/pytorch-lightning](https://github.com/Lightning-AI/pytorch-lightning) | `92` | `0` | `92` | `Implicit Default` |
+| [Lightning-AI/pytorch-lightning](https://github.com/Lightning-AI/pytorch-lightning) | `95` | `0` | `95` | `Implicit Default` |
 | [duckdb/duckdb](https://github.com/duckdb/duckdb) | `4` | `0` | `4` | `Implicit Default` |
-| [huggingface/datasets](https://github.com/huggingface/datasets) | `71` | `0` | `71` | `Implicit Default` |
+| [huggingface/datasets](https://github.com/huggingface/datasets) | `72` | `0` | `72` | `Implicit Default` |
 | [mlflow/mlflow](https://github.com/mlflow/mlflow) | `224` | `0` | `224` | `Implicit Default` |
 | [apache/arrow](https://github.com/apache/arrow) | `21` | `0` | `21` | `Implicit Default` |
 | [iterative/dvc](https://github.com/iterative/dvc) | `27` | `0` | `27` | `Implicit Default` |
 | [dask/dask](https://github.com/dask/dask) | `44` | `3` | `41` | `Implicit Default` |
 | [great-expectations/great_expectations](https://github.com/great-expectations/great_expectations) | `0` | `0` | `0` | `None` |
-| [modin-project/modin](https://github.com/modin-project/modin) | `23` | `0` | `23` | `Implicit Default` |
+| [modin-project/modin](https://github.com/modin-project/modin) | `24` | `0` | `24` | `Implicit Default` |
 | [flyteorg/flyte](https://github.com/flyteorg/flyte) | `0` | `0` | `0` | `None` |
-| [feast-dev/feast](https://github.com/feast-dev/feast) | `44` | `0` | `44` | `Implicit Default` |
+| [feast-dev/feast](https://github.com/feast-dev/feast) | `45` | `0` | `45` | `Implicit Default` |
 | [pydata/xarray](https://github.com/pydata/xarray) | `3` | `0` | `3` | `Implicit Default` |
 | [kedro-org/kedro](https://github.com/kedro-org/kedro) | `19` | `0` | `19` | `Implicit Default` |
 | [pytorch/torchtitan](https://github.com/pytorch/torchtitan) | `19` | `0` | `19` | `Implicit Default` |
 | [delta-io/delta-rs](https://github.com/delta-io/delta-rs) | `0` | `0` | `0` | `None` |
 | [zarr-developers/zarr-python](https://github.com/zarr-developers/zarr-python) | `1` | `0` | `1` | `Implicit Default` |
 | [intake/intake](https://github.com/intake/intake) | `66` | `0` | `66` | `Implicit Default` |
-| [fsspec/s3fs](https://github.com/fsspec/s3fs) | `21` | `0` | `21` | `Implicit Default` |
+| [fsspec/s3fs](https://github.com/fsspec/s3fs) | `22` | `0` | `22` | `Implicit Default` |
 | [fsspec/gcsfs](https://github.com/fsspec/gcsfs) | `15` | `0` | `15` | `Implicit Default` |
 | [fsspec/adlfs](https://github.com/fsspec/adlfs) | `2` | `0` | `2` | `Implicit Default` |
 

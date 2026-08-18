@@ -1,0 +1,92 @@
+Target,Package Name,Version Specifier,Constraint Type,Manifest File,Line,Raw Entry,File URL
+GitHub:pytorch/pytorch (main),fsspec,>=0.8.5,minimum,pyproject.toml,332,"""fsspec>=0.8.5"",",https://github.com/pytorch/pytorch/blob/main/pyproject.toml#L332
+GitHub:pytorch/pytorch (main),fsspec,>=0.8.5,minimum,requirements.txt,10,fsspec>=0.8.5,https://github.com/pytorch/pytorch/blob/main/requirements.txt#L10
+GitHub:pandas-dev/pandas (main),pyarrow,= ['pyarrow>=16.0.0'],minimum,pyproject.toml,90,pyarrow = ['pyarrow>=16.0.0'],https://github.com/pandas-dev/pandas/blob/main/pyproject.toml#L90
+GitHub:pandas-dev/pandas (main),fsspec,>=2025.7.0,minimum,pyproject.toml,93,fss = ['fsspec>=2025.7.0'],https://github.com/pandas-dev/pandas/blob/main/pyproject.toml#L93
+GitHub:pandas-dev/pandas (main),s3fs,>=2025.7.0,minimum,pyproject.toml,94,aws = ['s3fs>=2025.7.0'],https://github.com/pandas-dev/pandas/blob/main/pyproject.toml#L94
+GitHub:pandas-dev/pandas (main),gcsfs,>=2025.7.0,minimum,pyproject.toml,95,gcp = ['gcsfs>=2025.7.0'],https://github.com/pandas-dev/pandas/blob/main/pyproject.toml#L95
+GitHub:pandas-dev/pandas (main),pyarrow,>=13.0.0,minimum,pyproject.toml,97,parquet = ['pyarrow>=13.0.0'],https://github.com/pandas-dev/pandas/blob/main/pyproject.toml#L97
+GitHub:pandas-dev/pandas (main),pyarrow,>=13.0.0,minimum,pyproject.toml,98,feather = ['pyarrow>=13.0.0'],https://github.com/pandas-dev/pandas/blob/main/pyproject.toml#L98
+GitHub:pandas-dev/pandas (main),fsspec,>=2025.7.0,minimum,pyproject.toml,117,"'fsspec>=2025.7.0',",https://github.com/pandas-dev/pandas/blob/main/pyproject.toml#L117
+GitHub:pandas-dev/pandas (main),gcsfs,>=2025.7.0,minimum,pyproject.toml,118,"'gcsfs>=2025.7.0',",https://github.com/pandas-dev/pandas/blob/main/pyproject.toml#L118
+GitHub:pandas-dev/pandas (main),pyarrow,>=16.0.0,minimum,pyproject.toml,129,"'pyarrow>=16.0.0',",https://github.com/pandas-dev/pandas/blob/main/pyproject.toml#L129
+GitHub:pandas-dev/pandas (main),s3fs,>=2025.7.0,minimum,pyproject.toml,141,"'s3fs>=2025.7.0',",https://github.com/pandas-dev/pandas/blob/main/pyproject.toml#L141
+GitHub:pandas-dev/pandas (main),fsspec,>=2025.7.0,minimum,requirements-dev.txt,23,fsspec>=2025.7.0,https://github.com/pandas-dev/pandas/blob/main/requirements-dev.txt#L23
+GitHub:pandas-dev/pandas (main),gcsfs,>=2025.7.0,minimum,requirements-dev.txt,26,gcsfs>=2025.7.0,https://github.com/pandas-dev/pandas/blob/main/requirements-dev.txt#L26
+GitHub:pandas-dev/pandas (main),pyarrow,">=16.0.0,!=24.*",minimum,requirements-dev.txt,35,"pyarrow>=16.0.0,!=24.*",https://github.com/pandas-dev/pandas/blob/main/requirements-dev.txt#L35
+GitHub:pandas-dev/pandas (main),s3fs,>=2025.7.0,minimum,requirements-dev.txt,43,s3fs>=2025.7.0,https://github.com/pandas-dev/pandas/blob/main/requirements-dev.txt#L43
+GitHub:ray-project/ray (master),pyarrow,>= 17.0.0,minimum,python/requirements.txt,24,pyarrow >= 17.0.0,https://github.com/ray-project/ray/blob/master/python/requirements.txt#L24
+GitHub:ray-project/ray (master),fsspec,*,unconstrained,python/requirements.txt,52,fsspec,https://github.com/ray-project/ray/blob/master/python/requirements.txt#L52
+GitHub:ray-project/ray (master),adlfs,==2026.4.0,pinned,python/requirements_compiled.txt,31,adlfs==2026.4.0,https://github.com/ray-project/ray/blob/master/python/requirements_compiled.txt#L31
+GitHub:ray-project/ray (master),fsspec,==2023.12.1,pinned,python/requirements_compiled.txt,594,fsspec==2023.12.1,https://github.com/ray-project/ray/blob/master/python/requirements_compiled.txt#L594
+GitHub:ray-project/ray (master),google-cloud-storage,==2.14.0,pinned,python/requirements_compiled.txt,677,google-cloud-storage==2.14.0,https://github.com/ray-project/ray/blob/master/python/requirements_compiled.txt#L677
+GitHub:ray-project/ray (master),pyarrow,==23.0.1,pinned,python/requirements_compiled.txt,1691,pyarrow==23.0.1,https://github.com/ray-project/ray/blob/master/python/requirements_compiled.txt#L1691
+GitHub:ray-project/ray (master),s3fs,==2023.12.1,pinned,python/requirements_compiled.txt,2089,s3fs==2023.12.1,https://github.com/ray-project/ray/blob/master/python/requirements_compiled.txt#L2089
+GitHub:ray-project/ray (master),adlfs,==2026.4.0,pinned,python/requirements_compiled_py3.14.txt,31,adlfs==2026.4.0,https://github.com/ray-project/ray/blob/master/python/requirements_compiled_py3.14.txt#L31
+GitHub:ray-project/ray (master),fsspec,==2023.12.1,pinned,python/requirements_compiled_py3.14.txt,601,fsspec==2023.12.1,https://github.com/ray-project/ray/blob/master/python/requirements_compiled_py3.14.txt#L601
+GitHub:ray-project/ray (master),google-cloud-storage,==2.14.0,pinned,python/requirements_compiled_py3.14.txt,684,google-cloud-storage==2.14.0,https://github.com/ray-project/ray/blob/master/python/requirements_compiled_py3.14.txt#L684
+GitHub:ray-project/ray (master),pyarrow,==23.0.1,pinned,python/requirements_compiled_py3.14.txt,1690,pyarrow==23.0.1,https://github.com/ray-project/ray/blob/master/python/requirements_compiled_py3.14.txt#L1690
+GitHub:ray-project/ray (master),s3fs,==2023.12.1,pinned,python/requirements_compiled_py3.14.txt,2085,s3fs==2023.12.1,https://github.com/ray-project/ray/blob/master/python/requirements_compiled_py3.14.txt#L2085
+GitHub:ray-project/ray (master),pyarrow,>= 17.0.0,minimum,python/setup.py,228,"""pyarrow >= 17.0.0"",",https://github.com/ray-project/ray/blob/master/python/setup.py#L228
+GitHub:ray-project/ray (master),fsspec,*,unconstrained,python/setup.py,239,"""fsspec"",",https://github.com/ray-project/ray/blob/master/python/setup.py#L239
+GitHub:ray-project/ray (master),fsspec,*,unconstrained,python/setup.py,256,"""fsspec"",",https://github.com/ray-project/ray/blob/master/python/setup.py#L256
+GitHub:pola-rs/polars (main),pyarrow,"= [""pyarrow >= 7.0.0""]",minimum,py-polars/pyproject.toml,55,"pyarrow = [""pyarrow >= 7.0.0""]",https://github.com/pola-rs/polars/blob/main/py-polars/pyproject.toml#L55
+GitHub:pola-rs/polars (main),fsspec,"= [""fsspec""]",custom,py-polars/pyproject.toml,72,"fsspec = [""fsspec""]",https://github.com/pola-rs/polars/blob/main/py-polars/pyproject.toml#L72
+GitHub:pola-rs/polars (main),pyarrow,*,unconstrained,py-polars/requirements-dev.txt,23,pyarrow,https://github.com/pola-rs/polars/blob/main/py-polars/requirements-dev.txt#L23
+GitHub:pola-rs/polars (main),fsspec,*,unconstrained,py-polars/requirements-dev.txt,38,fsspec,https://github.com/pola-rs/polars/blob/main/py-polars/requirements-dev.txt#L38
+GitHub:pola-rs/polars (main),s3fs,>=2026.2.0,minimum,py-polars/requirements-dev.txt,41,s3fs>=2026.2.0,https://github.com/pola-rs/polars/blob/main/py-polars/requirements-dev.txt#L41
+GitHub:huggingface/datasets (main),pyarrow,>=21.0.0,minimum,setup.py,114,"""pyarrow>=21.0.0"",",https://github.com/huggingface/datasets/blob/main/setup.py#L114
+GitHub:huggingface/datasets (main),fsspec,">=2023.1.0,<=2026.6.0",range,setup.py,130,"""fsspec[http]>=2023.1.0,<=2026.6.0"",",https://github.com/huggingface/datasets/blob/main/setup.py#L130
+GitHub:huggingface/datasets (main),pyarrow,*,unconstrained,src/datasets/formatting/__init__.py,77,"_register_formatter(ArrowFormatter, ""arrow"", aliases=[""pa"", ""pyarrow""])",https://github.com/huggingface/datasets/blob/main/src/datasets/formatting/__init__.py#L77
+GitHub:mlflow/mlflow (master),pyarrow,*,unconstrained,libs/skinny/pyproject.toml,62,"""pyarrow"",",https://github.com/mlflow/mlflow/blob/master/libs/skinny/pyproject.toml#L62
+GitHub:mlflow/mlflow (master),google-cloud-storage,>=1.30.0,minimum,libs/skinny/pyproject.toml,66,"""google-cloud-storage>=1.30.0"",",https://github.com/mlflow/mlflow/blob/master/libs/skinny/pyproject.toml#L66
+GitHub:mlflow/mlflow (master),google-cloud-storage,>=1.30.0,minimum,libs/skinny/pyproject.toml,75,"""google-cloud-storage>=1.30.0"",",https://github.com/mlflow/mlflow/blob/master/libs/skinny/pyproject.toml#L75
+GitHub:mlflow/mlflow (master),pyarrow,"<26,>=4.0.0",range,pyproject.toml,58,"""pyarrow<26,>=4.0.0"",",https://github.com/mlflow/mlflow/blob/master/pyproject.toml#L58
+GitHub:mlflow/mlflow (master),pyarrow,*,unconstrained,pyproject.toml,82,"""pyarrow"",",https://github.com/mlflow/mlflow/blob/master/pyproject.toml#L82
+GitHub:mlflow/mlflow (master),google-cloud-storage,>=1.30.0,minimum,pyproject.toml,86,"""google-cloud-storage>=1.30.0"",",https://github.com/mlflow/mlflow/blob/master/pyproject.toml#L86
+GitHub:mlflow/mlflow (master),google-cloud-storage,>=1.30.0,minimum,pyproject.toml,95,"""google-cloud-storage>=1.30.0"",",https://github.com/mlflow/mlflow/blob/master/pyproject.toml#L95
+GitHub:apache/arrow (main),pyarrow,*,unconstrained,python/pyproject.toml,30,"name = ""pyarrow""",https://github.com/apache/arrow/blob/main/python/pyproject.toml#L30
+GitHub:apache/arrow (main),pyarrow,*,unconstrained,python/pyproject.toml,85,"wheel.packages = [""pyarrow""]",https://github.com/apache/arrow/blob/main/python/pyproject.toml#L85
+GitHub:apache/arrow (main),pyarrow,*,unconstrained,python/pyproject.toml,86,"wheel.install-dir = ""pyarrow""",https://github.com/apache/arrow/blob/main/python/pyproject.toml#L86
+GitHub:apache/arrow (main),pyarrow,*,unconstrained,python/pyproject.toml,129,"""pyarrow"",",https://github.com/apache/arrow/blob/main/python/pyproject.toml#L129
+GitHub:apache/arrow (main),pyarrow,*,unconstrained,python/pyproject.toml,145,"""pyarrow"",",https://github.com/apache/arrow/blob/main/python/pyproject.toml#L145
+GitHub:iterative/dvc (main),fsspec,>=2024.2.0,minimum,pyproject.toml,52,"""fsspec>=2024.2.0"",",https://github.com/iterative/dvc/blob/main/pyproject.toml#L52
+GitHub:dask/dask (main),fsspec,>= 2021.09.0,minimum,pyproject.toml,40,"""fsspec >= 2021.09.0"",",https://github.com/dask/dask/blob/main/pyproject.toml#L40
+GitHub:dask/dask (main),pyarrow,>= 16.0,minimum,pyproject.toml,61,"""pyarrow >= 16.0"",",https://github.com/dask/dask/blob/main/pyproject.toml#L61
+GitHub:modin-project/modin (main),fsspec,>=2022.11.0,minimum,requirements-dev.txt,4,fsspec>=2022.11.0,https://github.com/modin-project/modin/blob/main/requirements-dev.txt#L4
+GitHub:modin-project/modin (main),pyarrow,>=10.0.1,minimum,requirements-dev.txt,10,pyarrow>=10.0.1,https://github.com/modin-project/modin/blob/main/requirements-dev.txt#L10
+GitHub:modin-project/modin (main),s3fs,>=2022.11.0,minimum,requirements-dev.txt,16,s3fs>=2022.11.0,https://github.com/modin-project/modin/blob/main/requirements-dev.txt#L16
+GitHub:modin-project/modin (main),pyarrow,>=10.0.1,minimum,setup.py,9,"ray_deps = [""ray>=2.10.0,<3"", ""pyarrow>=10.0.1""]",https://github.com/modin-project/modin/blob/main/setup.py#L9
+GitHub:modin-project/modin (main),fsspec,>=2022.11.0,minimum,setup.py,57,"""fsspec>=2022.11.0"",",https://github.com/modin-project/modin/blob/main/setup.py#L57
+GitHub:feast-dev/feast (master),pyarrow,>=16.1.0,minimum,pyproject.toml,26,"""pyarrow>=16.1.0"",",https://github.com/feast-dev/feast/blob/master/pyproject.toml#L26
+GitHub:feast-dev/feast (master),fsspec,>=2024.1.0,minimum,pyproject.toml,55,"aws = [""boto3>=1.38.27"", ""fsspec>=2024.1.0"", ""aiobotocore>=2""]",https://github.com/feast-dev/feast/blob/master/pyproject.toml#L55
+GitHub:feast-dev/feast (master),pyarrow,<21.0.0,maximum,pyproject.toml,71,"flink = [""apache-flink>=2.2.1,<3"", ""pyarrow<21.0.0""]",https://github.com/feast-dev/feast/blob/master/pyproject.toml#L71
+GitHub:feast-dev/feast (master),google-cloud-storage,">=1.34.0,<3",range,pyproject.toml,78,"""google-cloud-storage>=1.34.0,<3"",",https://github.com/feast-dev/feast/blob/master/pyproject.toml#L78
+GitHub:feast-dev/feast (master),fsspec,>=2024.1.0,minimum,pyproject.toml,80,"""fsspec>=2024.1.0"",",https://github.com/feast-dev/feast/blob/master/pyproject.toml#L80
+GitHub:pydata/xarray (main),fsspec,*,unconstrained,pyproject.toml,46,"""fsspec"",",https://github.com/pydata/xarray/blob/main/pyproject.toml#L46
+GitHub:kedro-org/kedro (main),fsspec,>=2021.4,minimum,pyproject.toml,20,"""fsspec>=2021.4"",",https://github.com/kedro-org/kedro/blob/main/pyproject.toml#L20
+GitHub:kedro-org/kedro (main),s3fs,">=2021.4,<2026.8",range,pyproject.toml,74,"""s3fs>=2021.4,<2026.8"",",https://github.com/kedro-org/kedro/blob/main/pyproject.toml#L74
+GitHub:delta-io/delta-rs (main),pyarrow,"= [""pyarrow>=21""]",minimum,python/pyproject.toml,25,"pyarrow = [""pyarrow>=21""]",https://github.com/delta-io/delta-rs/blob/main/python/pyproject.toml#L25
+GitHub:zarr-developers/zarr-python (main),fsspec,*,unconstrained,packages/zarr-http-server/pyproject.toml,62,"""fsspec[http]"",",https://github.com/zarr-developers/zarr-python/blob/main/packages/zarr-http-server/pyproject.toml#L62
+GitHub:zarr-developers/zarr-python (main),fsspec,>=2023.10.0,minimum,pyproject.toml,78,"""fsspec>=2023.10.0"",",https://github.com/zarr-developers/zarr-python/blob/main/pyproject.toml#L78
+GitHub:zarr-developers/zarr-python (main),fsspec,>=2023.10.0,minimum,pyproject.toml,125,"""fsspec>=2023.10.0"",",https://github.com/zarr-developers/zarr-python/blob/main/pyproject.toml#L125
+GitHub:zarr-developers/zarr-python (main),s3fs,>=2023.10.0,minimum,pyproject.toml,128,"""s3fs>=2023.10.0"",",https://github.com/zarr-developers/zarr-python/blob/main/pyproject.toml#L128
+GitHub:zarr-developers/zarr-python (main),s3fs,>=2023.10.0,minimum,pyproject.toml,150,"""s3fs>=2023.10.0"",",https://github.com/zarr-developers/zarr-python/blob/main/pyproject.toml#L150
+GitHub:zarr-developers/zarr-python (main),fsspec,==2023.10.0,pinned,pyproject.toml,279,"'fsspec==2023.10.0',",https://github.com/zarr-developers/zarr-python/blob/main/pyproject.toml#L279
+GitHub:zarr-developers/zarr-python (main),s3fs,==2023.10.0,pinned,pyproject.toml,280,"'s3fs==2023.10.0',",https://github.com/zarr-developers/zarr-python/blob/main/pyproject.toml#L280
+GitHub:zarr-developers/zarr-python (main),fsspec,*,unconstrained,src/zarr/__init__.py,76,"""fsspec"",",https://github.com/zarr-developers/zarr-python/blob/main/src/zarr/__init__.py#L76
+GitHub:zarr-developers/zarr-python (main),s3fs,*,unconstrained,src/zarr/__init__.py,78,"""s3fs"",",https://github.com/zarr-developers/zarr-python/blob/main/src/zarr/__init__.py#L78
+GitHub:zarr-developers/zarr-python (main),gcsfs,*,unconstrained,src/zarr/__init__.py,79,"""gcsfs"",",https://github.com/zarr-developers/zarr-python/blob/main/src/zarr/__init__.py#L79
+GitHub:intake/intake (master),fsspec,>=2023.0.0,minimum,pyproject.toml,37,"""fsspec >=2023.0.0"",",https://github.com/intake/intake/blob/master/pyproject.toml#L37
+GitHub:fsspec/s3fs (main),fsspec,">=2026.7.0,<2026.7.1",range,requirements.txt,2,"fsspec>=2026.7.0,<2026.7.1",https://github.com/fsspec/s3fs/blob/main/requirements.txt#L2
+GitHub:fsspec/s3fs (main),s3fs,*,unconstrained,setup.py,7,"name=""s3fs"",",https://github.com/fsspec/s3fs/blob/main/setup.py#L7
+GitHub:fsspec/s3fs (main),s3fs,*,unconstrained,setup.py,27,"packages=[""s3fs""],",https://github.com/fsspec/s3fs/blob/main/setup.py#L27
+GitHub:fsspec/gcsfs (main),google-cloud-storage,*,unconstrained,cloudbuild/macrobenchmarks/metrics/requirements.txt,4,google-cloud-storage,https://github.com/fsspec/gcsfs/blob/main/cloudbuild/macrobenchmarks/metrics/requirements.txt#L4
+GitHub:fsspec/gcsfs (main),gcsfs,*,unconstrained,gcsfs/__init__.py,10,"__version__ = version(""gcsfs"")",https://github.com/fsspec/gcsfs/blob/main/gcsfs/__init__.py#L10
+GitHub:fsspec/gcsfs (main),gcsfs,*,unconstrained,pyproject.toml,6,"name = ""gcsfs""",https://github.com/fsspec/gcsfs/blob/main/pyproject.toml#L6
+GitHub:fsspec/gcsfs (main),google-cloud-storage,*,unconstrained,pyproject.toml,14,"keywords = [""google-cloud-storage"", ""gcloud"", ""file-system""]",https://github.com/fsspec/gcsfs/blob/main/pyproject.toml#L14
+GitHub:fsspec/gcsfs (main),fsspec,>=2026.7.0,minimum,pyproject.toml,29,"""fsspec>=2026.7.0"",",https://github.com/fsspec/gcsfs/blob/main/pyproject.toml#L29
+GitHub:fsspec/gcsfs (main),google-cloud-storage,>=3.11.0,minimum,pyproject.toml,32,"""google-cloud-storage>=3.11.0"",",https://github.com/fsspec/gcsfs/blob/main/pyproject.toml#L32
+GitHub:fsspec/gcsfs (main),fsspec,*,unconstrained,pyproject.toml,82,"known_third_party = [""aiohttp"", ""click"", ""datasets"", ""decorator"", ""fsspec"", ""fuse"", ""google"", ""google_auth_oauthlib"", ""lightning"", ""metrics"", ""numpy"", ""prettytable"", ""psutil"", ""pytest"", ""pytest_asyncio"", ""requests"", ""torch"", ""torchdata"", ""transformers"", ""yaml""]",https://github.com/fsspec/gcsfs/blob/main/pyproject.toml#L82
+GitHub:fsspec/adlfs (main),adlfs,*,unconstrained,pyproject.toml,9,"name = ""adlfs""",https://github.com/fsspec/adlfs/blob/main/pyproject.toml#L9
+GitHub:fsspec/adlfs (main),fsspec,>=2023.12.0,minimum,pyproject.toml,31,"""fsspec>=2023.12.0"",",https://github.com/fsspec/adlfs/blob/main/pyproject.toml#L31

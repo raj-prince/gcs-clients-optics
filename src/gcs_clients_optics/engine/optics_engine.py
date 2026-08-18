@@ -50,6 +50,18 @@ EXCLUDED_DIR_NAMES = {
     "docker",
 }
 
+MANIFEST_FILENAMES = {
+    "pyproject.toml",
+    "setup.py",
+    "setup.cfg",
+    "requirements.txt",
+    "requirements-dev.txt",
+    "requirements_dev.txt",
+    "environment.yml",
+    "environment.yaml",
+    "pipfile",
+}
+
 
 def is_relevant_python_file(
     path_str: str,
@@ -83,6 +95,23 @@ def is_relevant_python_file(
             return False
 
     return True
+
+
+def is_relevant_source_or_manifest_file(
+    path_str: str,
+    include_tests: bool = False,
+    subpath: Optional[str] = None,
+) -> bool:
+    """Check if a file path is a relevant Python source file or dependency manifest."""
+    p = Path(path_str)
+    fn = p.name.lower()
+    if fn in MANIFEST_FILENAMES or fn.startswith("requirements"):
+        for part in p.parts[:-1]:
+            part_lower = part.lower()
+            if part_lower in EXCLUDED_DIR_NAMES:
+                return False
+        return True
+    return is_relevant_python_file(path_str, include_tests=include_tests, subpath=subpath)
 
 
 def fetch_raw_github_content(
@@ -341,13 +370,13 @@ class OpticsEngine:
         try:
             with tarfile.open(fileobj=io.BytesIO(tar_bytes), mode="r:gz") as tar:
                 for member in tar.getmembers():
-                    if not member.isfile() or not member.name.endswith(".py"):
+                    if not member.isfile():
                         continue
                     # Strip archive root directory (e.g. 'repo-main/path/to/file.py' -> 'path/to/file.py')
                     parts = member.name.split("/", 1)
                     rel_path = parts[1] if len(parts) > 1 else parts[0]
 
-                    if not is_relevant_python_file(
+                    if not is_relevant_source_or_manifest_file(
                         rel_path,
                         include_tests=self.include_tests,
                         subpath=subpath,
@@ -426,19 +455,21 @@ class OpticsEngine:
         on each file.
         """
         root = Path(dir_path).resolve()
-        py_files = []
-        for p in root.rglob("*.py"):
+        candidate_files = []
+        for p in root.rglob("*"):
+            if not p.is_file():
+                continue
             rel_str = str(p.relative_to(root))
-            if is_relevant_python_file(
+            if is_relevant_source_or_manifest_file(
                 rel_str, include_tests=self.include_tests, subpath=subpath
             ):
-                py_files.append(p)
+                candidate_files.append(p)
 
         uc_data: Dict[str, Dict[str, Any]] = {
             uc.name: {"files_with": 0, "usages": []} for uc in use_cases
         }
 
-        for p in py_files:
+        for p in candidate_files:
             rel_path = str(p.relative_to(root))
             try:
                 content = p.read_text(encoding="utf-8", errors="ignore")
@@ -454,7 +485,7 @@ class OpticsEngine:
         for uc in use_cases:
             reports[uc.name] = uc.aggregate_report(
                 target_source=f"Local:{root.name}",
-                total_files_scanned=len(py_files),
+                total_files_scanned=len(candidate_files),
                 files_with_usages=uc_data[uc.name]["files_with"],
                 usages=uc_data[uc.name]["usages"],
                 repo_url=None,
@@ -507,7 +538,7 @@ class OpticsEngine:
         py_files = [
             f["path"]
             for f in tree_list
-            if is_relevant_python_file(
+            if is_relevant_source_or_manifest_file(
                 f.get("path", ""),
                 include_tests=self.include_tests,
                 subpath=subpath,

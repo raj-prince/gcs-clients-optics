@@ -1,26 +1,26 @@
 {
   "summary": {
     "total_targets": 24,
-    "total_files_scanned": 9357,
-    "total_read_calls": 1386,
+    "total_files_scanned": 9472,
+    "total_read_calls": 1397,
     "explicit_cache_count": 3,
-    "implicit_default_count": 1383,
+    "implicit_default_count": 1394,
     "global_cache_types": {
-      "NOT_EXPLICIT": 1382,
+      "NOT_EXPLICIT": 1393,
       "parts": 3,
       "self.cache_type": 1
     },
     "global_strategies": {
-      "Implicit Default": 1382,
+      "Implicit Default": 1393,
       "Columnar / Section Caching": 3,
       "Custom Cache Strategy": 1
     },
-    "elapsed_seconds": 199.78
+    "elapsed_seconds": 269.53
   },
   "per_repository": [
     {
       "target_source": "GitHub:pytorch/pytorch (main)",
-      "total_files_scanned": 2546,
+      "total_files_scanned": 2554,
       "files_with_read_calls": 201,
       "total_read_calls": 403,
       "explicit_cache_count": 0,
@@ -2611,7 +2611,7 @@
         },
         {
           "file_path": "torch/_inductor/codegen/triton.py",
-          "line_number": 8469,
+          "line_number": 8470,
           "target_name": "open",
           "cache_type": "NOT_EXPLICIT",
           "is_explicit": false,
@@ -2619,13 +2619,13 @@
           "enclosing_function": "load_cache",
           "enclosing_class": "TritonScheduling",
           "repo_url": "https://github.com/pytorch/pytorch",
-          "file_url": "https://github.com/pytorch/pytorch/blob/main/torch/_inductor/codegen/triton.py#L8469",
+          "file_url": "https://github.com/pytorch/pytorch/blob/main/torch/_inductor/codegen/triton.py#L8470",
           "code_snippet": "                    with open(path) as fd:",
           "strategy_category": "Implicit Default"
         },
         {
           "file_path": "torch/_inductor/codegen/triton.py",
-          "line_number": 8641,
+          "line_number": 8642,
           "target_name": "open",
           "cache_type": "NOT_EXPLICIT",
           "is_explicit": false,
@@ -2633,7 +2633,7 @@
           "enclosing_function": "load_cache",
           "enclosing_class": "TritonScheduling",
           "repo_url": "https://github.com/pytorch/pytorch",
-          "file_url": "https://github.com/pytorch/pytorch/blob/main/torch/_inductor/codegen/triton.py#L8641",
+          "file_url": "https://github.com/pytorch/pytorch/blob/main/torch/_inductor/codegen/triton.py#L8642",
           "code_snippet": "                with open(path) as fd:",
           "strategy_category": "Implicit Default"
         },
@@ -5131,7 +5131,7 @@
         },
         {
           "file_path": "torch/utils/_triton.py",
-          "line_number": 269,
+          "line_number": 285,
           "target_name": "open",
           "cache_type": "NOT_EXPLICIT",
           "is_explicit": false,
@@ -5139,7 +5139,7 @@
           "enclosing_function": "_extern_libs_key",
           "enclosing_class": null,
           "repo_url": "https://github.com/pytorch/pytorch",
-          "file_url": "https://github.com/pytorch/pytorch/blob/main/torch/utils/_triton.py#L269",
+          "file_url": "https://github.com/pytorch/pytorch/blob/main/torch/utils/_triton.py#L285",
           "code_snippet": "            with open(path, \"rb\") as f:",
           "strategy_category": "Implicit Default"
         },
@@ -5679,7 +5679,7 @@
     },
     {
       "target_source": "GitHub:pandas-dev/pandas (main)",
-      "total_files_scanned": 297,
+      "total_files_scanned": 300,
       "files_with_read_calls": 11,
       "total_read_calls": 27,
       "explicit_cache_count": 0,
@@ -6074,16 +6074,16 @@
     },
     {
       "target_source": "GitHub:ray-project/ray (master)",
-      "total_files_scanned": 2003,
-      "files_with_read_calls": 111,
-      "total_read_calls": 259,
+      "total_files_scanned": 2018,
+      "files_with_read_calls": 112,
+      "total_read_calls": 263,
       "explicit_cache_count": 0,
-      "implicit_default_count": 259,
+      "implicit_default_count": 263,
       "cache_type_breakdown": {
-        "NOT_EXPLICIT": 259
+        "NOT_EXPLICIT": 263
       },
       "strategy_breakdown": {
-        "Implicit Default": 259
+        "Implicit Default": 263
       },
       "repo_url": "https://github.com/ray-project/ray",
       "items": [
@@ -9462,6 +9462,62 @@
           "strategy_category": "Implicit Default"
         },
         {
+          "file_path": "python/setup.py",
+          "line_number": 62,
+          "target_name": "open",
+          "cache_type": "NOT_EXPLICIT",
+          "is_explicit": false,
+          "cache_options": null,
+          "enclosing_function": "find_version",
+          "enclosing_class": null,
+          "repo_url": "https://github.com/ray-project/ray",
+          "file_url": "https://github.com/ray-project/ray/blob/master/python/setup.py#L62",
+          "code_snippet": "    with open(os.path.join(ROOT_DIR, *filepath)) as fp:",
+          "strategy_category": "Implicit Default"
+        },
+        {
+          "file_path": "python/setup.py",
+          "line_number": 513,
+          "target_name": "open",
+          "cache_type": "NOT_EXPLICIT",
+          "is_explicit": false,
+          "cache_options": null,
+          "enclosing_function": "replace_symlinks_with_junctions",
+          "enclosing_class": null,
+          "repo_url": "https://github.com/ray-project/ray",
+          "file_url": "https://github.com/ray-project/ray/blob/master/python/setup.py#L513",
+          "code_snippet": "                with open(path) as inp:",
+          "strategy_category": "Implicit Default"
+        },
+        {
+          "file_path": "python/setup.py",
+          "line_number": 805,
+          "target_name": "open",
+          "cache_type": "NOT_EXPLICIT",
+          "is_explicit": false,
+          "cache_options": null,
+          "enclosing_function": null,
+          "enclosing_class": null,
+          "repo_url": "https://github.com/ray-project/ray",
+          "file_url": "https://github.com/ray-project/ray/blob/master/python/setup.py#L805",
+          "code_snippet": "    with open(\n        os.path.join(ROOT_DIR, os.path.pardir, \"README.rst\"), \"r\", encoding=\"utf-8\"\n    ) as f:",
+          "strategy_category": "Implicit Default"
+        },
+        {
+          "file_path": "python/setup.py",
+          "line_number": 810,
+          "target_name": "open",
+          "cache_type": "NOT_EXPLICIT",
+          "is_explicit": false,
+          "cache_options": null,
+          "enclosing_function": null,
+          "enclosing_class": null,
+          "repo_url": "https://github.com/ray-project/ray",
+          "file_url": "https://github.com/ray-project/ray/blob/master/python/setup.py#L810",
+          "code_snippet": "    with open(os.path.join(ROOT_DIR, \"LICENSE.txt\"), \"r\", encoding=\"utf-8\") as f:",
+          "strategy_category": "Implicit Default"
+        },
+        {
           "file_path": "rllib/algorithms/algorithm.py",
           "line_number": 3141,
           "target_name": "open",
@@ -9717,7 +9773,7 @@
     },
     {
       "target_source": "GitHub:pola-rs/polars (main)",
-      "total_files_scanned": 204,
+      "total_files_scanned": 212,
       "files_with_read_calls": 1,
       "total_read_calls": 1,
       "explicit_cache_count": 0,
@@ -9748,16 +9804,16 @@
     },
     {
       "target_source": "GitHub:Lightning-AI/pytorch-lightning (main)",
-      "total_files_scanned": 446,
-      "files_with_read_calls": 47,
-      "total_read_calls": 92,
+      "total_files_scanned": 457,
+      "files_with_read_calls": 49,
+      "total_read_calls": 95,
       "explicit_cache_count": 0,
-      "implicit_default_count": 92,
+      "implicit_default_count": 95,
       "cache_type_breakdown": {
-        "NOT_EXPLICIT": 92
+        "NOT_EXPLICIT": 95
       },
       "strategy_breakdown": {
-        "Implicit Default": 92
+        "Implicit Default": 95
       },
       "repo_url": "https://github.com/Lightning-AI/pytorch-lightning",
       "items": [
@@ -9899,6 +9955,34 @@
           "repo_url": "https://github.com/Lightning-AI/pytorch-lightning",
           "file_url": "https://github.com/Lightning-AI/pytorch-lightning/blob/main/.actions/assistant.py#L518",
           "code_snippet": "        with open(ver_file, \"w\") as fo:",
+          "strategy_category": "Implicit Default"
+        },
+        {
+          "file_path": "setup.py",
+          "line_number": 98,
+          "target_name": "open",
+          "cache_type": "NOT_EXPLICIT",
+          "is_explicit": false,
+          "cache_options": null,
+          "enclosing_function": "_set_manifest_path",
+          "enclosing_class": null,
+          "repo_url": "https://github.com/Lightning-AI/pytorch-lightning",
+          "file_url": "https://github.com/Lightning-AI/pytorch-lightning/blob/main/setup.py#L98",
+          "code_snippet": "                with open(pkg_manifest) as fh:",
+          "strategy_category": "Implicit Default"
+        },
+        {
+          "file_path": "setup.py",
+          "line_number": 107,
+          "target_name": "open",
+          "cache_type": "NOT_EXPLICIT",
+          "is_explicit": false,
+          "cache_options": null,
+          "enclosing_function": "_set_manifest_path",
+          "enclosing_class": null,
+          "repo_url": "https://github.com/Lightning-AI/pytorch-lightning",
+          "file_url": "https://github.com/Lightning-AI/pytorch-lightning/blob/main/setup.py#L107",
+          "code_snippet": "        with open(manifest_path, mode=\"w\") as fp:",
           "strategy_category": "Implicit Default"
         },
         {
@@ -10235,6 +10319,20 @@
           "repo_url": "https://github.com/Lightning-AI/pytorch-lightning",
           "file_url": "https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L343",
           "code_snippet": "                with open(std_out_out, \"wb\") as stdout:",
+          "strategy_category": "Implicit Default"
+        },
+        {
+          "file_path": "src/lightning/app/cli/pl-app-template/setup.py",
+          "line_number": 11,
+          "target_name": "open",
+          "cache_type": "NOT_EXPLICIT",
+          "is_explicit": false,
+          "cache_options": null,
+          "enclosing_function": "_load_requirements",
+          "enclosing_class": null,
+          "repo_url": "https://github.com/Lightning-AI/pytorch-lightning",
+          "file_url": "https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/pl-app-template/setup.py#L11",
+          "code_snippet": "    with open(os.path.join(path_dir, file_name)) as file:",
           "strategy_category": "Implicit Default"
         },
         {
@@ -11053,7 +11151,7 @@
     },
     {
       "target_source": "GitHub:duckdb/duckdb (main)",
-      "total_files_scanned": 14,
+      "total_files_scanned": 15,
       "files_with_read_calls": 2,
       "total_read_calls": 4,
       "explicit_cache_count": 0,
@@ -11126,19 +11224,33 @@
     },
     {
       "target_source": "GitHub:huggingface/datasets (main)",
-      "total_files_scanned": 139,
-      "files_with_read_calls": 29,
-      "total_read_calls": 71,
+      "total_files_scanned": 141,
+      "files_with_read_calls": 30,
+      "total_read_calls": 72,
       "explicit_cache_count": 0,
-      "implicit_default_count": 71,
+      "implicit_default_count": 72,
       "cache_type_breakdown": {
-        "NOT_EXPLICIT": 71
+        "NOT_EXPLICIT": 72
       },
       "strategy_breakdown": {
-        "Implicit Default": 71
+        "Implicit Default": 72
       },
       "repo_url": "https://github.com/huggingface/datasets",
       "items": [
+        {
+          "file_path": "setup.py",
+          "line_number": 249,
+          "target_name": "open",
+          "cache_type": "NOT_EXPLICIT",
+          "is_explicit": false,
+          "cache_options": null,
+          "enclosing_function": null,
+          "enclosing_class": null,
+          "repo_url": "https://github.com/huggingface/datasets",
+          "file_url": "https://github.com/huggingface/datasets/blob/main/setup.py#L249",
+          "code_snippet": "    long_description=open(\"README.md\", encoding=\"utf-8\").read(),",
+          "strategy_category": "Implicit Default"
+        },
         {
           "file_path": "src/datasets/arrow_dataset.py",
           "line_number": 1931,
@@ -12137,7 +12249,7 @@
     },
     {
       "target_source": "GitHub:mlflow/mlflow (master)",
-      "total_files_scanned": 1291,
+      "total_files_scanned": 1300,
       "files_with_read_calls": 102,
       "total_read_calls": 224,
       "explicit_cache_count": 0,
@@ -15290,7 +15402,7 @@
     },
     {
       "target_source": "GitHub:apache/arrow (main)",
-      "total_files_scanned": 70,
+      "total_files_scanned": 80,
       "files_with_read_calls": 11,
       "total_read_calls": 21,
       "explicit_cache_count": 0,
@@ -15601,7 +15713,7 @@
     },
     {
       "target_source": "GitHub:iterative/dvc (main)",
-      "total_files_scanned": 257,
+      "total_files_scanned": 258,
       "files_with_read_calls": 17,
       "total_read_calls": 27,
       "explicit_cache_count": 0,
@@ -15996,7 +16108,7 @@
     },
     {
       "target_source": "GitHub:dask/dask (main)",
-      "total_files_scanned": 182,
+      "total_files_scanned": 184,
       "files_with_read_calls": 15,
       "total_read_calls": 44,
       "explicit_cache_count": 3,
@@ -16643,16 +16755,16 @@
     },
     {
       "target_source": "GitHub:modin-project/modin (main)",
-      "total_files_scanned": 278,
-      "files_with_read_calls": 6,
-      "total_read_calls": 23,
+      "total_files_scanned": 283,
+      "files_with_read_calls": 7,
+      "total_read_calls": 24,
       "explicit_cache_count": 0,
-      "implicit_default_count": 23,
+      "implicit_default_count": 24,
       "cache_type_breakdown": {
-        "NOT_EXPLICIT": 23
+        "NOT_EXPLICIT": 24
       },
       "strategy_breakdown": {
-        "Implicit Default": 23
+        "Implicit Default": 24
       },
       "repo_url": "https://github.com/modin-project/modin",
       "items": [
@@ -16752,6 +16864,20 @@
           "repo_url": "https://github.com/modin-project/modin",
           "file_url": "https://github.com/modin-project/modin/blob/main/modin/core/storage_formats/pandas/parsers.py#L809",
           "code_snippet": "                context = fsspec.open(file_for_parser.path, **storage_options)",
+          "strategy_category": "Implicit Default"
+        },
+        {
+          "file_path": "setup.py",
+          "line_number": 5,
+          "target_name": "open",
+          "cache_type": "NOT_EXPLICIT",
+          "is_explicit": false,
+          "cache_options": null,
+          "enclosing_function": null,
+          "enclosing_class": null,
+          "repo_url": "https://github.com/modin-project/modin",
+          "file_url": "https://github.com/modin-project/modin/blob/main/setup.py#L5",
+          "code_snippet": "with open(\"README.md\", \"r\", encoding=\"utf-8\") as fh:",
           "strategy_category": "Implicit Default"
         },
         {
@@ -16982,7 +17108,7 @@
     },
     {
       "target_source": "GitHub:flyteorg/flyte (main)",
-      "total_files_scanned": 236,
+      "total_files_scanned": 242,
       "files_with_read_calls": 0,
       "total_read_calls": 0,
       "explicit_cache_count": 0,
@@ -16994,16 +17120,16 @@
     },
     {
       "target_source": "GitHub:feast-dev/feast (master)",
-      "total_files_scanned": 593,
-      "files_with_read_calls": 28,
-      "total_read_calls": 44,
+      "total_files_scanned": 599,
+      "files_with_read_calls": 29,
+      "total_read_calls": 45,
       "explicit_cache_count": 0,
-      "implicit_default_count": 44,
+      "implicit_default_count": 45,
       "cache_type_breakdown": {
-        "NOT_EXPLICIT": 44
+        "NOT_EXPLICIT": 45
       },
       "strategy_breakdown": {
-        "Implicit Default": 44
+        "Implicit Default": 45
       },
       "repo_url": "https://github.com/feast-dev/feast",
       "items": [
@@ -17019,6 +17145,20 @@
           "repo_url": "https://github.com/feast-dev/feast",
           "file_url": "https://github.com/feast-dev/feast/blob/master/sdk/python/feast/cli/dbt_import.py#L298",
           "code_snippet": "        with open(output, \"w\") as f:",
+          "strategy_category": "Implicit Default"
+        },
+        {
+          "file_path": "sdk/python/feast/credentials.py",
+          "line_number": 323,
+          "target_name": "open",
+          "cache_type": "NOT_EXPLICIT",
+          "is_explicit": false,
+          "cache_options": null,
+          "enclosing_function": "_current_namespace",
+          "enclosing_class": "KubernetesSecretProvider",
+          "repo_url": "https://github.com/feast-dev/feast",
+          "file_url": "https://github.com/feast-dev/feast/blob/master/sdk/python/feast/credentials.py#L323",
+          "code_snippet": "            with open(ns_path) as f:",
           "strategy_category": "Implicit Default"
         },
         {
@@ -17611,7 +17751,7 @@
         },
         {
           "file_path": "sdk/python/feast/ui_server.py",
-          "line_number": 1174,
+          "line_number": 1178,
           "target_name": "open",
           "cache_type": "NOT_EXPLICIT",
           "is_explicit": false,
@@ -17619,7 +17759,7 @@
           "enclosing_function": "_serve_index",
           "enclosing_class": null,
           "repo_url": "https://github.com/feast-dev/feast",
-          "file_url": "https://github.com/feast-dev/feast/blob/master/sdk/python/feast/ui_server.py#L1174",
+          "file_url": "https://github.com/feast-dev/feast/blob/master/sdk/python/feast/ui_server.py#L1178",
           "code_snippet": "            with open(filename) as f:",
           "strategy_category": "Implicit Default"
         }
@@ -17627,7 +17767,7 @@
     },
     {
       "target_source": "GitHub:pydata/xarray (main)",
-      "total_files_scanned": 121,
+      "total_files_scanned": 123,
       "files_with_read_calls": 3,
       "total_read_calls": 3,
       "explicit_cache_count": 0,
@@ -17686,7 +17826,7 @@
     },
     {
       "target_source": "GitHub:kedro-org/kedro (main)",
-      "total_files_scanned": 98,
+      "total_files_scanned": 104,
       "files_with_read_calls": 9,
       "total_read_calls": 19,
       "explicit_cache_count": 0,
@@ -17969,7 +18109,7 @@
     },
     {
       "target_source": "GitHub:pytorch/torchtitan (main)",
-      "total_files_scanned": 308,
+      "total_files_scanned": 313,
       "files_with_read_calls": 10,
       "total_read_calls": 19,
       "explicit_cache_count": 0,
@@ -18252,7 +18392,7 @@
     },
     {
       "target_source": "GitHub:delta-io/delta-rs (main)",
-      "total_files_scanned": 17,
+      "total_files_scanned": 18,
       "files_with_read_calls": 0,
       "total_read_calls": 0,
       "explicit_cache_count": 0,
@@ -18264,7 +18404,7 @@
     },
     {
       "target_source": "GitHub:zarr-developers/zarr-python (main)",
-      "total_files_scanned": 169,
+      "total_files_scanned": 173,
       "files_with_read_calls": 1,
       "total_read_calls": 1,
       "explicit_cache_count": 0,
@@ -18295,7 +18435,7 @@
     },
     {
       "target_source": "GitHub:intake/intake (master)",
-      "total_files_scanned": 51,
+      "total_files_scanned": 52,
       "files_with_read_calls": 11,
       "total_read_calls": 66,
       "explicit_cache_count": 0,
@@ -19236,16 +19376,16 @@
     },
     {
       "target_source": "GitHub:fsspec/s3fs (main)",
-      "total_files_scanned": 7,
-      "files_with_read_calls": 3,
-      "total_read_calls": 21,
+      "total_files_scanned": 10,
+      "files_with_read_calls": 4,
+      "total_read_calls": 22,
       "explicit_cache_count": 0,
-      "implicit_default_count": 21,
+      "implicit_default_count": 22,
       "cache_type_breakdown": {
-        "NOT_EXPLICIT": 21
+        "NOT_EXPLICIT": 22
       },
       "strategy_breakdown": {
-        "Implicit Default": 21
+        "Implicit Default": 22
       },
       "repo_url": "https://github.com/fsspec/s3fs",
       "items": [
@@ -19317,6 +19457,20 @@
           "repo_url": "https://github.com/fsspec/s3fs",
           "file_url": "https://github.com/fsspec/s3fs/blob/main/s3fs/core.py#L2609",
           "code_snippet": "                self.write(self.fs.cat(self.path))",
+          "strategy_category": "Implicit Default"
+        },
+        {
+          "file_path": "setup.py",
+          "line_number": 29,
+          "target_name": "open",
+          "cache_type": "NOT_EXPLICIT",
+          "is_explicit": false,
+          "cache_options": null,
+          "enclosing_function": null,
+          "enclosing_class": null,
+          "repo_url": "https://github.com/fsspec/s3fs",
+          "file_url": "https://github.com/fsspec/s3fs/blob/main/setup.py#L29",
+          "code_snippet": "    install_requires=[open(\"requirements.txt\").read().strip().split(\"\\n\")],",
           "strategy_category": "Implicit Default"
         },
         {
@@ -19547,7 +19701,7 @@
     },
     {
       "target_source": "GitHub:fsspec/gcsfs (main)",
-      "total_files_scanned": 27,
+      "total_files_scanned": 30,
       "files_with_read_calls": 6,
       "total_read_calls": 15,
       "explicit_cache_count": 0,
@@ -19776,7 +19930,7 @@
     },
     {
       "target_source": "GitHub:fsspec/adlfs (main)",
-      "total_files_scanned": 3,
+      "total_files_scanned": 6,
       "files_with_read_calls": 1,
       "total_read_calls": 2,
       "explicit_cache_count": 0,

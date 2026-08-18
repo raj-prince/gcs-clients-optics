@@ -1,20 +1,20 @@
 {
   "summary": {
     "total_repositories": 24,
-    "total_files_scanned": 9357,
-    "files_with_usages": 755,
-    "total_usages_found": 2251,
+    "total_files_scanned": 9472,
+    "files_with_usages": 762,
+    "total_usages_found": 2262,
     "cache_type_summary": {
-      "NOT_EXPLICIT": 2247,
+      "NOT_EXPLICIT": 2258,
       "parts": 3,
       "self.cache_type": 1
     },
-    "elapsed_seconds": 199.78
+    "elapsed_seconds": 269.53
   },
   "per_repository": [
     {
       "target_source": "GitHub:pytorch/pytorch (main)",
-      "total_files_scanned": 2546,
+      "total_files_scanned": 2554,
       "files_with_usages": 219,
       "total_usages_found": 459,
       "repo_url": "https://github.com/pytorch/pytorch",
@@ -4018,8 +4018,8 @@
         },
         {
           "file_path": "torch/_inductor/codegen/triton.py",
-          "line_number": 8469,
-          "end_line_number": 8469,
+          "line_number": 8470,
+          "end_line_number": 8470,
           "target_name": "open",
           "enclosing_function": "load_cache",
           "enclosing_class": "TritonScheduling",
@@ -4027,7 +4027,7 @@
           "is_specified_cache_keyword": false,
           "cache_options": null,
           "repo_url": "https://github.com/pytorch/pytorch",
-          "file_url": "https://github.com/pytorch/pytorch/blob/main/torch/_inductor/codegen/triton.py#L8469",
+          "file_url": "https://github.com/pytorch/pytorch/blob/main/torch/_inductor/codegen/triton.py#L8470",
           "args": [
             "path"
           ],
@@ -4037,8 +4037,8 @@
         },
         {
           "file_path": "torch/_inductor/codegen/triton.py",
-          "line_number": 8641,
-          "end_line_number": 8641,
+          "line_number": 8642,
+          "end_line_number": 8642,
           "target_name": "open",
           "enclosing_function": "load_cache",
           "enclosing_class": "TritonScheduling",
@@ -4046,7 +4046,7 @@
           "is_specified_cache_keyword": false,
           "cache_options": null,
           "repo_url": "https://github.com/pytorch/pytorch",
-          "file_url": "https://github.com/pytorch/pytorch/blob/main/torch/_inductor/codegen/triton.py#L8641",
+          "file_url": "https://github.com/pytorch/pytorch/blob/main/torch/_inductor/codegen/triton.py#L8642",
           "args": [
             "path"
           ],
@@ -8221,8 +8221,8 @@
         },
         {
           "file_path": "torch/utils/_triton.py",
-          "line_number": 269,
-          "end_line_number": 269,
+          "line_number": 285,
+          "end_line_number": 285,
           "target_name": "open",
           "enclosing_function": "_extern_libs_key",
           "enclosing_class": null,
@@ -8230,7 +8230,7 @@
           "is_specified_cache_keyword": false,
           "cache_options": null,
           "repo_url": "https://github.com/pytorch/pytorch",
-          "file_url": "https://github.com/pytorch/pytorch/blob/main/torch/utils/_triton.py#L269",
+          "file_url": "https://github.com/pytorch/pytorch/blob/main/torch/utils/_triton.py#L285",
           "args": [
             "path",
             "'rb'"
@@ -9096,7 +9096,7 @@
     },
     {
       "target_source": "GitHub:pandas-dev/pandas (main)",
-      "total_files_scanned": 297,
+      "total_files_scanned": 300,
       "files_with_usages": 12,
       "total_usages_found": 29,
       "repo_url": "https://github.com/pandas-dev/pandas",
@@ -9710,12 +9710,12 @@
     },
     {
       "target_source": "GitHub:ray-project/ray (master)",
-      "total_files_scanned": 2003,
-      "files_with_usages": 130,
-      "total_usages_found": 319,
+      "total_files_scanned": 2018,
+      "files_with_usages": 131,
+      "total_usages_found": 323,
       "repo_url": "https://github.com/ray-project/ray",
       "cache_type_summary": {
-        "NOT_EXPLICIT": 319
+        "NOT_EXPLICIT": 323
       },
       "usages": [
         {
@@ -15581,6 +15581,88 @@
           "detection_method": "ast"
         },
         {
+          "file_path": "python/setup.py",
+          "line_number": 62,
+          "end_line_number": 62,
+          "target_name": "open",
+          "enclosing_function": "find_version",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/ray-project/ray",
+          "file_url": "https://github.com/ray-project/ray/blob/master/python/setup.py#L62",
+          "args": [
+            "os.path.join(ROOT_DIR, *filepath)"
+          ],
+          "kwargs": {},
+          "code_snippet": "    with open(os.path.join(ROOT_DIR, *filepath)) as fp:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "python/setup.py",
+          "line_number": 513,
+          "end_line_number": 513,
+          "target_name": "open",
+          "enclosing_function": "replace_symlinks_with_junctions",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/ray-project/ray",
+          "file_url": "https://github.com/ray-project/ray/blob/master/python/setup.py#L513",
+          "args": [
+            "path"
+          ],
+          "kwargs": {},
+          "code_snippet": "                with open(path) as inp:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "python/setup.py",
+          "line_number": 805,
+          "end_line_number": 807,
+          "target_name": "open",
+          "enclosing_function": null,
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/ray-project/ray",
+          "file_url": "https://github.com/ray-project/ray/blob/master/python/setup.py#L805",
+          "args": [
+            "os.path.join(ROOT_DIR, os.path.pardir, 'README.rst')",
+            "'r'"
+          ],
+          "kwargs": {
+            "encoding": "'utf-8'"
+          },
+          "code_snippet": "    with open(\n        os.path.join(ROOT_DIR, os.path.pardir, \"README.rst\"), \"r\", encoding=\"utf-8\"\n    ) as f:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "python/setup.py",
+          "line_number": 810,
+          "end_line_number": 810,
+          "target_name": "open",
+          "enclosing_function": null,
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/ray-project/ray",
+          "file_url": "https://github.com/ray-project/ray/blob/master/python/setup.py#L810",
+          "args": [
+            "os.path.join(ROOT_DIR, 'LICENSE.txt')",
+            "'r'"
+          ],
+          "kwargs": {
+            "encoding": "'utf-8'"
+          },
+          "code_snippet": "    with open(os.path.join(ROOT_DIR, \"LICENSE.txt\"), \"r\", encoding=\"utf-8\") as f:",
+          "detection_method": "ast"
+        },
+        {
           "file_path": "rllib/algorithms/algorithm.py",
           "line_number": 3141,
           "end_line_number": 3141,
@@ -15978,7 +16060,7 @@
     },
     {
       "target_source": "GitHub:pola-rs/polars (main)",
-      "total_files_scanned": 204,
+      "total_files_scanned": 212,
       "files_with_usages": 2,
       "total_usages_found": 4,
       "repo_url": "https://github.com/pola-rs/polars",
@@ -16045,8 +16127,8 @@
         },
         {
           "file_path": "py-polars/src/polars/io/delta/_dataset.py",
-          "line_number": 335,
-          "end_line_number": 351,
+          "line_number": 334,
+          "end_line_number": 350,
           "target_name": "requested_paths.lazy().with_columns(pl.col('path').str.replace('^lakefs://', 's3://').str.strip_prefix(file_prefix)).join",
           "enclosing_function": "_extract_delta_deletion_vectors",
           "enclosing_class": null,
@@ -16054,7 +16136,7 @@
           "is_specified_cache_keyword": false,
           "cache_options": null,
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/_dataset.py#L335",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/_dataset.py#L334",
           "args": [
             "delta_deletion_vectors.lazy().with_columns(pl.col('filepath').str.replace('^lakefs://', 's3://').str.strip_prefix(file_prefix))"
           ],
@@ -16071,12 +16153,12 @@
     },
     {
       "target_source": "GitHub:Lightning-AI/pytorch-lightning (main)",
-      "total_files_scanned": 446,
-      "files_with_usages": 61,
-      "total_usages_found": 178,
+      "total_files_scanned": 457,
+      "files_with_usages": 63,
+      "total_usages_found": 181,
       "repo_url": "https://github.com/Lightning-AI/pytorch-lightning",
       "cache_type_summary": {
-        "NOT_EXPLICIT": 178
+        "NOT_EXPLICIT": 181
       },
       "usages": [
         {
@@ -16286,6 +16368,46 @@
           ],
           "kwargs": {},
           "code_snippet": "        with open(ver_file, \"w\") as fo:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "setup.py",
+          "line_number": 98,
+          "end_line_number": 98,
+          "target_name": "open",
+          "enclosing_function": "_set_manifest_path",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/Lightning-AI/pytorch-lightning",
+          "file_url": "https://github.com/Lightning-AI/pytorch-lightning/blob/main/setup.py#L98",
+          "args": [
+            "pkg_manifest"
+          ],
+          "kwargs": {},
+          "code_snippet": "                with open(pkg_manifest) as fh:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "setup.py",
+          "line_number": 107,
+          "end_line_number": 107,
+          "target_name": "open",
+          "enclosing_function": "_set_manifest_path",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/Lightning-AI/pytorch-lightning",
+          "file_url": "https://github.com/Lightning-AI/pytorch-lightning/blob/main/setup.py#L107",
+          "args": [
+            "manifest_path"
+          ],
+          "kwargs": {
+            "mode": "'w'"
+          },
+          "code_snippet": "        with open(manifest_path, mode=\"w\") as fp:",
           "detection_method": "ast"
         },
         {
@@ -16760,6 +16882,25 @@
           ],
           "kwargs": {},
           "code_snippet": "                with open(std_out_out, \"wb\") as stdout:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "src/lightning/app/cli/pl-app-template/setup.py",
+          "line_number": 11,
+          "end_line_number": 11,
+          "target_name": "open",
+          "enclosing_function": "_load_requirements",
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/Lightning-AI/pytorch-lightning",
+          "file_url": "https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/pl-app-template/setup.py#L11",
+          "args": [
+            "os.path.join(path_dir, file_name)"
+          ],
+          "kwargs": {},
+          "code_snippet": "    with open(os.path.join(path_dir, file_name)) as file:",
           "detection_method": "ast"
         },
         {
@@ -19618,7 +19759,7 @@
     },
     {
       "target_source": "GitHub:duckdb/duckdb (main)",
-      "total_files_scanned": 14,
+      "total_files_scanned": 15,
       "files_with_usages": 2,
       "total_usages_found": 4,
       "repo_url": "https://github.com/duckdb/duckdb",
@@ -19710,14 +19851,35 @@
     },
     {
       "target_source": "GitHub:huggingface/datasets (main)",
-      "total_files_scanned": 139,
-      "files_with_usages": 34,
-      "total_usages_found": 143,
+      "total_files_scanned": 141,
+      "files_with_usages": 35,
+      "total_usages_found": 144,
       "repo_url": "https://github.com/huggingface/datasets",
       "cache_type_summary": {
-        "NOT_EXPLICIT": 143
+        "NOT_EXPLICIT": 144
       },
       "usages": [
+        {
+          "file_path": "setup.py",
+          "line_number": 249,
+          "end_line_number": 249,
+          "target_name": "open",
+          "enclosing_function": null,
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/huggingface/datasets",
+          "file_url": "https://github.com/huggingface/datasets/blob/main/setup.py#L249",
+          "args": [
+            "'README.md'"
+          ],
+          "kwargs": {
+            "encoding": "'utf-8'"
+          },
+          "code_snippet": "    long_description=open(\"README.md\", encoding=\"utf-8\").read(),",
+          "detection_method": "ast"
+        },
         {
           "file_path": "src/datasets/arrow_dataset.py",
           "line_number": 1851,
@@ -22582,7 +22744,7 @@
     },
     {
       "target_source": "GitHub:mlflow/mlflow (master)",
-      "total_files_scanned": 1291,
+      "total_files_scanned": 1300,
       "files_with_usages": 102,
       "total_usages_found": 226,
       "repo_url": "https://github.com/mlflow/mlflow",
@@ -27039,7 +27201,7 @@
     },
     {
       "target_source": "GitHub:apache/arrow (main)",
-      "total_files_scanned": 70,
+      "total_files_scanned": 80,
       "files_with_usages": 11,
       "total_usages_found": 38,
       "repo_url": "https://github.com/apache/arrow",
@@ -27816,7 +27978,7 @@
     },
     {
       "target_source": "GitHub:iterative/dvc (main)",
-      "total_files_scanned": 257,
+      "total_files_scanned": 258,
       "files_with_usages": 60,
       "total_usages_found": 310,
       "repo_url": "https://github.com/iterative/dvc",
@@ -33880,7 +34042,7 @@
     },
     {
       "target_source": "GitHub:dask/dask (main)",
-      "total_files_scanned": 182,
+      "total_files_scanned": 184,
       "files_with_usages": 20,
       "total_usages_found": 96,
       "repo_url": "https://github.com/dask/dask",
@@ -35842,12 +36004,12 @@
     },
     {
       "target_source": "GitHub:modin-project/modin (main)",
-      "total_files_scanned": 278,
-      "files_with_usages": 8,
-      "total_usages_found": 48,
+      "total_files_scanned": 283,
+      "files_with_usages": 9,
+      "total_usages_found": 49,
       "repo_url": "https://github.com/modin-project/modin",
       "cache_type_summary": {
-        "NOT_EXPLICIT": 48
+        "NOT_EXPLICIT": 49
       },
       "usages": [
         {
@@ -36467,6 +36629,28 @@
           "detection_method": "ast"
         },
         {
+          "file_path": "setup.py",
+          "line_number": 5,
+          "end_line_number": 5,
+          "target_name": "open",
+          "enclosing_function": null,
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/modin-project/modin",
+          "file_url": "https://github.com/modin-project/modin/blob/main/setup.py#L5",
+          "args": [
+            "'README.md'",
+            "'r'"
+          ],
+          "kwargs": {
+            "encoding": "'utf-8'"
+          },
+          "code_snippet": "with open(\"README.md\", \"r\", encoding=\"utf-8\") as fh:",
+          "detection_method": "ast"
+        },
+        {
           "file_path": "versioneer.py",
           "line_number": 408,
           "end_line_number": 408,
@@ -36788,7 +36972,7 @@
     },
     {
       "target_source": "GitHub:flyteorg/flyte (main)",
-      "total_files_scanned": 236,
+      "total_files_scanned": 242,
       "files_with_usages": 0,
       "total_usages_found": 0,
       "repo_url": "https://github.com/flyteorg/flyte",
@@ -36797,12 +36981,12 @@
     },
     {
       "target_source": "GitHub:feast-dev/feast (master)",
-      "total_files_scanned": 593,
-      "files_with_usages": 35,
-      "total_usages_found": 75,
+      "total_files_scanned": 599,
+      "files_with_usages": 36,
+      "total_usages_found": 76,
       "repo_url": "https://github.com/feast-dev/feast",
       "cache_type_summary": {
-        "NOT_EXPLICIT": 75
+        "NOT_EXPLICIT": 76
       },
       "usages": [
         {
@@ -37163,6 +37347,25 @@
           ],
           "kwargs": {},
           "code_snippet": "        with open(output, \"w\") as f:",
+          "detection_method": "ast"
+        },
+        {
+          "file_path": "sdk/python/feast/credentials.py",
+          "line_number": 323,
+          "end_line_number": 323,
+          "target_name": "open",
+          "enclosing_function": "_current_namespace",
+          "enclosing_class": "KubernetesSecretProvider",
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/feast-dev/feast",
+          "file_url": "https://github.com/feast-dev/feast/blob/master/sdk/python/feast/credentials.py#L323",
+          "args": [
+            "ns_path"
+          ],
+          "kwargs": {},
+          "code_snippet": "            with open(ns_path) as f:",
           "detection_method": "ast"
         },
         {
@@ -38206,8 +38409,8 @@
         },
         {
           "file_path": "sdk/python/feast/ui_server.py",
-          "line_number": 967,
-          "end_line_number": 967,
+          "line_number": 969,
+          "end_line_number": 969,
           "target_name": "refs_raw.split",
           "enclosing_function": "get_mlflow_runs",
           "enclosing_class": null,
@@ -38215,7 +38418,7 @@
           "is_specified_cache_keyword": false,
           "cache_options": null,
           "repo_url": "https://github.com/feast-dev/feast",
-          "file_url": "https://github.com/feast-dev/feast/blob/master/sdk/python/feast/ui_server.py#L967",
+          "file_url": "https://github.com/feast-dev/feast/blob/master/sdk/python/feast/ui_server.py#L969",
           "args": [
             "','"
           ],
@@ -38225,8 +38428,8 @@
         },
         {
           "file_path": "sdk/python/feast/ui_server.py",
-          "line_number": 1061,
-          "end_line_number": 1061,
+          "line_number": 1063,
+          "end_line_number": 1063,
           "target_name": "refs_raw.split",
           "enclosing_function": "get_mlflow_feature_usage",
           "enclosing_class": null,
@@ -38234,7 +38437,7 @@
           "is_specified_cache_keyword": false,
           "cache_options": null,
           "repo_url": "https://github.com/feast-dev/feast",
-          "file_url": "https://github.com/feast-dev/feast/blob/master/sdk/python/feast/ui_server.py#L1061",
+          "file_url": "https://github.com/feast-dev/feast/blob/master/sdk/python/feast/ui_server.py#L1063",
           "args": [
             "','"
           ],
@@ -38244,8 +38447,8 @@
         },
         {
           "file_path": "sdk/python/feast/ui_server.py",
-          "line_number": 1142,
-          "end_line_number": 1142,
+          "line_number": 1146,
+          "end_line_number": 1146,
           "target_name": "refs_raw.split",
           "enclosing_function": "get_mlflow_feature_models",
           "enclosing_class": null,
@@ -38253,7 +38456,7 @@
           "is_specified_cache_keyword": false,
           "cache_options": null,
           "repo_url": "https://github.com/feast-dev/feast",
-          "file_url": "https://github.com/feast-dev/feast/blob/master/sdk/python/feast/ui_server.py#L1142",
+          "file_url": "https://github.com/feast-dev/feast/blob/master/sdk/python/feast/ui_server.py#L1146",
           "args": [
             "','"
           ],
@@ -38263,8 +38466,8 @@
         },
         {
           "file_path": "sdk/python/feast/ui_server.py",
-          "line_number": 1174,
-          "end_line_number": 1174,
+          "line_number": 1178,
+          "end_line_number": 1178,
           "target_name": "open",
           "enclosing_function": "_serve_index",
           "enclosing_class": null,
@@ -38272,7 +38475,7 @@
           "is_specified_cache_keyword": false,
           "cache_options": null,
           "repo_url": "https://github.com/feast-dev/feast",
-          "file_url": "https://github.com/feast-dev/feast/blob/master/sdk/python/feast/ui_server.py#L1174",
+          "file_url": "https://github.com/feast-dev/feast/blob/master/sdk/python/feast/ui_server.py#L1178",
           "args": [
             "filename"
           ],
@@ -38284,7 +38487,7 @@
     },
     {
       "target_source": "GitHub:pydata/xarray (main)",
-      "total_files_scanned": 121,
+      "total_files_scanned": 123,
       "files_with_usages": 3,
       "total_usages_found": 6,
       "repo_url": "https://github.com/pydata/xarray",
@@ -38423,7 +38626,7 @@
     },
     {
       "target_source": "GitHub:kedro-org/kedro (main)",
-      "total_files_scanned": 98,
+      "total_files_scanned": 104,
       "files_with_usages": 10,
       "total_usages_found": 30,
       "repo_url": "https://github.com/kedro-org/kedro",
@@ -39035,7 +39238,7 @@
     },
     {
       "target_source": "GitHub:pytorch/torchtitan (main)",
-      "total_files_scanned": 308,
+      "total_files_scanned": 313,
       "files_with_usages": 15,
       "total_usages_found": 31,
       "repo_url": "https://github.com/pytorch/torchtitan",
@@ -39647,7 +39850,7 @@
     },
     {
       "target_source": "GitHub:delta-io/delta-rs (main)",
-      "total_files_scanned": 17,
+      "total_files_scanned": 18,
       "files_with_usages": 0,
       "total_usages_found": 0,
       "repo_url": "https://github.com/delta-io/delta-rs",
@@ -39656,7 +39859,7 @@
     },
     {
       "target_source": "GitHub:zarr-developers/zarr-python (main)",
-      "total_files_scanned": 169,
+      "total_files_scanned": 173,
       "files_with_usages": 2,
       "total_usages_found": 3,
       "repo_url": "https://github.com/zarr-developers/zarr-python",
@@ -39729,7 +39932,7 @@
     },
     {
       "target_source": "GitHub:intake/intake (master)",
-      "total_files_scanned": 51,
+      "total_files_scanned": 52,
       "files_with_usages": 15,
       "total_usages_found": 98,
       "repo_url": "https://github.com/intake/intake",
@@ -41664,12 +41867,12 @@
     },
     {
       "target_source": "GitHub:fsspec/s3fs (main)",
-      "total_files_scanned": 7,
-      "files_with_usages": 3,
-      "total_usages_found": 51,
+      "total_files_scanned": 10,
+      "files_with_usages": 4,
+      "total_usages_found": 52,
       "repo_url": "https://github.com/fsspec/s3fs",
       "cache_type_summary": {
-        "NOT_EXPLICIT": 51
+        "NOT_EXPLICIT": 52
       },
       "usages": [
         {
@@ -42361,6 +42564,25 @@
           "detection_method": "ast"
         },
         {
+          "file_path": "setup.py",
+          "line_number": 29,
+          "end_line_number": 29,
+          "target_name": "open",
+          "enclosing_function": null,
+          "enclosing_class": null,
+          "cache_type": "NOT_EXPLICIT",
+          "is_specified_cache_keyword": false,
+          "cache_options": null,
+          "repo_url": "https://github.com/fsspec/s3fs",
+          "file_url": "https://github.com/fsspec/s3fs/blob/main/setup.py#L29",
+          "args": [
+            "'requirements.txt'"
+          ],
+          "kwargs": {},
+          "code_snippet": "    install_requires=[open(\"requirements.txt\").read().strip().split(\"\\n\")],",
+          "detection_method": "ast"
+        },
+        {
           "file_path": "versioneer.py",
           "line_number": 409,
           "end_line_number": 409,
@@ -42682,7 +42904,7 @@
     },
     {
       "target_source": "GitHub:fsspec/gcsfs (main)",
-      "total_files_scanned": 27,
+      "total_files_scanned": 30,
       "files_with_usages": 9,
       "total_usages_found": 72,
       "repo_url": "https://github.com/fsspec/gcsfs",
@@ -44183,7 +44405,7 @@
     },
     {
       "target_source": "GitHub:fsspec/adlfs (main)",
-      "total_files_scanned": 3,
+      "total_files_scanned": 6,
       "files_with_usages": 2,
       "total_usages_found": 31,
       "repo_url": "https://github.com/fsspec/adlfs",

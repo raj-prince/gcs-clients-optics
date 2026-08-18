@@ -195,10 +195,68 @@ def init_db(db_path: Union[str, Path]) -> sqlite3.Connection:
             "CREATE INDEX IF NOT EXISTS idx_async_sync_mode ON async_sync_usages(execution_mode);"
         )
         conn.execute(
-            "CREATE INDEX IF NOT EXISTS idx_async_sync_mech ON async_sync_usages(async_mechanism);"
+            "CREATE INDEX IF NOT EXISTS idx_async_sync_block ON async_sync_usages(potential_event_loop_block);"
+        )
+
+        # 7. ReadView & Zero-Copy Buffer Candidates
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS readview_candidates (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                scan_id TEXT,
+                repository TEXT NOT NULL,
+                file_path TEXT NOT NULL,
+                line_number INTEGER,
+                target_name TEXT NOT NULL,
+                is_descoped INTEGER NOT NULL,
+                is_zero_copy_ready INTEGER NOT NULL,
+                consumer_category TEXT NOT NULL,
+                consumer_name TEXT NOT NULL,
+                descoped_reason TEXT,
+                enclosing_class TEXT,
+                enclosing_function TEXT,
+                file_url TEXT,
+                code_snippet TEXT,
+                FOREIGN KEY(scan_id) REFERENCES scan_runs(scan_id)
+            );
+            """
         )
         conn.execute(
-            "CREATE INDEX IF NOT EXISTS idx_async_sync_block ON async_sync_usages(potential_event_loop_block);"
+            "CREATE INDEX IF NOT EXISTS idx_readview_repo ON readview_candidates(repository);"
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_readview_ready ON readview_candidates(is_zero_copy_ready);"
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_readview_cat ON readview_candidates(consumer_category);"
+        )
+
+        # 8. Storage Package Dependency Versions
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS dependency_versions (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                scan_id TEXT,
+                repository TEXT NOT NULL,
+                package_name TEXT NOT NULL,
+                specifier TEXT NOT NULL,
+                constraint_type TEXT NOT NULL,
+                manifest_path TEXT NOT NULL,
+                line_number INTEGER,
+                raw_entry TEXT,
+                file_url TEXT,
+                FOREIGN KEY(scan_id) REFERENCES scan_runs(scan_id)
+            );
+            """
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_deps_repo ON dependency_versions(repository);"
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_deps_pkg ON dependency_versions(package_name);"
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_deps_type ON dependency_versions(constraint_type);"
         )
 
     return conn
@@ -538,6 +596,130 @@ def ingest_async_sync_reports(
                         is_async_context, is_coroutine_call, potential_event_loop_block,
                         enclosing_class, enclosing_function, file_url, code_snippet
                     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+                    """,
+                    rows,
+                )
+                total_inserted += len(rows)
+
+    conn.close()
+    return total_inserted
+
+
+def ingest_readview_reports(
+    reports: List[Any],
+    db_path: Union[str, Path],
+    elapsed_seconds: float = 0.0,
+) -> int:
+    """Ingest ReadView zero-copy buffer ownership reports into SQLite."""
+    conn = init_db(db_path)
+    total_inserted = 0
+
+    with conn:
+        for r in reports:
+            scan_id = str(uuid.uuid4())
+            repo_name = _clean_repo_name(r.target_source)
+            conn.execute(
+                """
+                INSERT INTO scan_runs (scan_id, use_case, target_source, repo_url, total_files_scanned, total_matches, elapsed_seconds)
+                VALUES (?, ?, ?, ?, ?, ?, ?);
+                """,
+                (
+                    scan_id,
+                    "readview",
+                    r.target_source,
+                    r.repo_url,
+                    r.total_files_scanned,
+                    getattr(r, "total_read_calls", len(getattr(r, "candidates", []))),
+                    elapsed_seconds,
+                ),
+            )
+
+            rows = []
+            for item in getattr(r, "candidates", []):
+                rows.append((
+                    scan_id,
+                    repo_name,
+                    getattr(item, "file_path", ""),
+                    getattr(item, "line_number", 0),
+                    getattr(item, "target_name", ""),
+                    1 if getattr(item, "is_descoped", False) else 0,
+                    1 if getattr(item, "is_zero_copy_ready", False) else 0,
+                    getattr(item, "consumer_category", "LOCAL_TRANSIENT"),
+                    getattr(item, "consumer_name", ""),
+                    getattr(item, "descoped_reason", ""),
+                    getattr(item, "enclosing_class", None),
+                    getattr(item, "enclosing_function", None),
+                    getattr(item, "file_url", None),
+                    getattr(item, "code_snippet", ""),
+                ))
+
+            if rows:
+                conn.executemany(
+                    """
+                    INSERT INTO readview_candidates (
+                        scan_id, repository, file_path, line_number, target_name,
+                        is_descoped, is_zero_copy_ready, consumer_category, consumer_name,
+                        descoped_reason, enclosing_class, enclosing_function, file_url, code_snippet
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+                    """,
+                    rows,
+                )
+                total_inserted += len(rows)
+
+    conn.close()
+    return total_inserted
+
+
+def ingest_dependency_reports(
+    reports: List[Any],
+    db_path: Union[str, Path],
+    elapsed_seconds: float = 0.0,
+) -> int:
+    """Ingest storage package dependency version reports into SQLite."""
+    conn = init_db(db_path)
+    total_inserted = 0
+
+    with conn:
+        for r in reports:
+            scan_id = str(uuid.uuid4())
+            repo_name = _clean_repo_name(r.target_source)
+            conn.execute(
+                """
+                INSERT INTO scan_runs (scan_id, use_case, target_source, repo_url, total_files_scanned, total_matches, elapsed_seconds)
+                VALUES (?, ?, ?, ?, ?, ?, ?);
+                """,
+                (
+                    scan_id,
+                    "dependencies",
+                    r.target_source,
+                    r.repo_url,
+                    r.total_files_scanned,
+                    getattr(r, "total_dependencies_found", len(getattr(r, "items", []))),
+                    elapsed_seconds,
+                ),
+            )
+
+            rows = []
+            for item in getattr(r, "items", []):
+                rows.append((
+                    scan_id,
+                    repo_name,
+                    getattr(item, "package_name", ""),
+                    getattr(item, "specifier", "*"),
+                    getattr(item, "constraint_type", "unconstrained"),
+                    getattr(item, "manifest_path", ""),
+                    getattr(item, "line_number", 0),
+                    getattr(item, "raw_entry", ""),
+                    getattr(item, "file_url", None),
+                ))
+
+            if rows:
+                conn.executemany(
+                    """
+                    INSERT INTO dependency_versions (
+                        scan_id, repository, package_name, specifier, constraint_type,
+                        manifest_path, line_number, raw_entry, file_url
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
                     """,
                     rows,
                 )

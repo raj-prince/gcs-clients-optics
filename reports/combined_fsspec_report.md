@@ -1,9 +1,9 @@
 # Master FSSPEC Usage Report Across GitHub Repositories
 
 - **Repositories Crawled:** `24`
-- **Total Files Scanned:** `9357`
-- **Files with FSSPEC Usages:** `755`
-- **Total FSSPEC Usages Detected:** `2251`
+- **Total Files Scanned:** `9472`
+- **Files with FSSPEC Usages:** `762`
+- **Total FSSPEC Usages Detected:** `2262`
 - **Skipping Test Files (test_*.py):** `True`
 
 ---
@@ -12,30 +12,30 @@
 
 | Project / Repository | Files Scanned | Files w/ Usages | Total Usages | Cache_Types |
 | :--- | :--- | :--- | :--- | :--- |
-| [pytorch/pytorch](https://github.com/pytorch/pytorch) | `2546` | `219` | `459` | `NOT_EXPLICIT:459` |
-| [pandas-dev/pandas](https://github.com/pandas-dev/pandas) | `297` | `12` | `29` | `NOT_EXPLICIT:29` |
-| [ray-project/ray](https://github.com/ray-project/ray) | `2003` | `130` | `319` | `NOT_EXPLICIT:319` |
-| [pola-rs/polars](https://github.com/pola-rs/polars) | `204` | `2` | `4` | `NOT_EXPLICIT:4` |
-| [Lightning-AI/pytorch-lightning](https://github.com/Lightning-AI/pytorch-lightning) | `446` | `61` | `178` | `NOT_EXPLICIT:178` |
-| [duckdb/duckdb](https://github.com/duckdb/duckdb) | `14` | `2` | `4` | `NOT_EXPLICIT:4` |
-| [huggingface/datasets](https://github.com/huggingface/datasets) | `139` | `34` | `143` | `NOT_EXPLICIT:143` |
-| [mlflow/mlflow](https://github.com/mlflow/mlflow) | `1291` | `102` | `226` | `NOT_EXPLICIT:226` |
-| [apache/arrow](https://github.com/apache/arrow) | `70` | `11` | `38` | `NOT_EXPLICIT:38` |
-| [iterative/dvc](https://github.com/iterative/dvc) | `257` | `60` | `310` | `NOT_EXPLICIT:310` |
-| [dask/dask](https://github.com/dask/dask) | `182` | `20` | `96` | `NOT_EXPLICIT:93, parts:3` |
+| [pytorch/pytorch](https://github.com/pytorch/pytorch) | `2554` | `219` | `459` | `NOT_EXPLICIT:459` |
+| [pandas-dev/pandas](https://github.com/pandas-dev/pandas) | `300` | `12` | `29` | `NOT_EXPLICIT:29` |
+| [ray-project/ray](https://github.com/ray-project/ray) | `2018` | `131` | `323` | `NOT_EXPLICIT:323` |
+| [pola-rs/polars](https://github.com/pola-rs/polars) | `212` | `2` | `4` | `NOT_EXPLICIT:4` |
+| [Lightning-AI/pytorch-lightning](https://github.com/Lightning-AI/pytorch-lightning) | `457` | `63` | `181` | `NOT_EXPLICIT:181` |
+| [duckdb/duckdb](https://github.com/duckdb/duckdb) | `15` | `2` | `4` | `NOT_EXPLICIT:4` |
+| [huggingface/datasets](https://github.com/huggingface/datasets) | `141` | `35` | `144` | `NOT_EXPLICIT:144` |
+| [mlflow/mlflow](https://github.com/mlflow/mlflow) | `1300` | `102` | `226` | `NOT_EXPLICIT:226` |
+| [apache/arrow](https://github.com/apache/arrow) | `80` | `11` | `38` | `NOT_EXPLICIT:38` |
+| [iterative/dvc](https://github.com/iterative/dvc) | `258` | `60` | `310` | `NOT_EXPLICIT:310` |
+| [dask/dask](https://github.com/dask/dask) | `184` | `20` | `96` | `NOT_EXPLICIT:93, parts:3` |
 | [great-expectations/great_expectations](https://github.com/great-expectations/great_expectations) | `0` | `0` | `0` | `None` |
-| [modin-project/modin](https://github.com/modin-project/modin) | `278` | `8` | `48` | `NOT_EXPLICIT:48` |
-| [flyteorg/flyte](https://github.com/flyteorg/flyte) | `236` | `0` | `0` | `None` |
-| [feast-dev/feast](https://github.com/feast-dev/feast) | `593` | `35` | `75` | `NOT_EXPLICIT:75` |
-| [pydata/xarray](https://github.com/pydata/xarray) | `121` | `3` | `6` | `NOT_EXPLICIT:6` |
-| [kedro-org/kedro](https://github.com/kedro-org/kedro) | `98` | `10` | `30` | `NOT_EXPLICIT:30` |
-| [pytorch/torchtitan](https://github.com/pytorch/torchtitan) | `308` | `15` | `31` | `NOT_EXPLICIT:31` |
-| [delta-io/delta-rs](https://github.com/delta-io/delta-rs) | `17` | `0` | `0` | `None` |
-| [zarr-developers/zarr-python](https://github.com/zarr-developers/zarr-python) | `169` | `2` | `3` | `NOT_EXPLICIT:3` |
-| [intake/intake](https://github.com/intake/intake) | `51` | `15` | `98` | `NOT_EXPLICIT:98` |
-| [fsspec/s3fs](https://github.com/fsspec/s3fs) | `7` | `3` | `51` | `NOT_EXPLICIT:51` |
-| [fsspec/gcsfs](https://github.com/fsspec/gcsfs) | `27` | `9` | `72` | `NOT_EXPLICIT:71, self.cache_type:1` |
-| [fsspec/adlfs](https://github.com/fsspec/adlfs) | `3` | `2` | `31` | `NOT_EXPLICIT:31` |
+| [modin-project/modin](https://github.com/modin-project/modin) | `283` | `9` | `49` | `NOT_EXPLICIT:49` |
+| [flyteorg/flyte](https://github.com/flyteorg/flyte) | `242` | `0` | `0` | `None` |
+| [feast-dev/feast](https://github.com/feast-dev/feast) | `599` | `36` | `76` | `NOT_EXPLICIT:76` |
+| [pydata/xarray](https://github.com/pydata/xarray) | `123` | `3` | `6` | `NOT_EXPLICIT:6` |
+| [kedro-org/kedro](https://github.com/kedro-org/kedro) | `104` | `10` | `30` | `NOT_EXPLICIT:30` |
+| [pytorch/torchtitan](https://github.com/pytorch/torchtitan) | `313` | `15` | `31` | `NOT_EXPLICIT:31` |
+| [delta-io/delta-rs](https://github.com/delta-io/delta-rs) | `18` | `0` | `0` | `None` |
+| [zarr-developers/zarr-python](https://github.com/zarr-developers/zarr-python) | `173` | `2` | `3` | `NOT_EXPLICIT:3` |
+| [intake/intake](https://github.com/intake/intake) | `52` | `15` | `98` | `NOT_EXPLICIT:98` |
+| [fsspec/s3fs](https://github.com/fsspec/s3fs) | `10` | `4` | `52` | `NOT_EXPLICIT:52` |
+| [fsspec/gcsfs](https://github.com/fsspec/gcsfs) | `30` | `9` | `72` | `NOT_EXPLICIT:71, self.cache_type:1` |
+| [fsspec/adlfs](https://github.com/fsspec/adlfs) | `6` | `2` | `31` | `NOT_EXPLICIT:31` |
 
 ---
 
@@ -43,7 +43,7 @@
 
 | Cache_Type Option | Total Occurrences | Is Specified Keyword | Description |
 | :--- | :--- | :--- | :--- |
-| `NOT_EXPLICIT` | `2247` | `False` | cache_type keyword omitted (uses fsspec default) |
+| `NOT_EXPLICIT` | `2258` | `False` | cache_type keyword omitted (uses fsspec default) |
 | `parts` | `3` | `True` | Parquet section/column block caching (required for fsspec.parquet precaching) |
 | `self.cache_type` | `1` | `False` | Custom cache strategy |
 
@@ -2308,8 +2308,8 @@ with open(filename, "w", encoding="utf8") as fout:
             with open(header_path) as header_file:
 ```
 
-#### 204. [torch/_inductor/codegen/triton.py](https://github.com/pytorch/pytorch/blob/main/torch/_inductor/codegen/triton.py#L8469) (Line 8469)
-- **Line Link:** https://github.com/pytorch/pytorch/blob/main/torch/_inductor/codegen/triton.py#L8469
+#### 204. [torch/_inductor/codegen/triton.py](https://github.com/pytorch/pytorch/blob/main/torch/_inductor/codegen/triton.py#L8470) (Line 8470)
+- **Line Link:** https://github.com/pytorch/pytorch/blob/main/torch/_inductor/codegen/triton.py#L8470
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `TritonScheduling.load_cache`
 - **Arguments:** `path`
@@ -2319,8 +2319,8 @@ with open(filename, "w", encoding="utf8") as fout:
                     with open(path) as fd:
 ```
 
-#### 205. [torch/_inductor/codegen/triton.py](https://github.com/pytorch/pytorch/blob/main/torch/_inductor/codegen/triton.py#L8641) (Line 8641)
-- **Line Link:** https://github.com/pytorch/pytorch/blob/main/torch/_inductor/codegen/triton.py#L8641
+#### 205. [torch/_inductor/codegen/triton.py](https://github.com/pytorch/pytorch/blob/main/torch/_inductor/codegen/triton.py#L8642) (Line 8642)
+- **Line Link:** https://github.com/pytorch/pytorch/blob/main/torch/_inductor/codegen/triton.py#L8642
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `TritonScheduling.load_cache`
 - **Arguments:** `path`
@@ -4646,8 +4646,8 @@ with open(filename, "w", encoding="utf8") as fout:
     with open(output_filename, "w") as file:
 ```
 
-#### 416. [torch/utils/_triton.py](https://github.com/pytorch/pytorch/blob/main/torch/utils/_triton.py#L269) (Line 269)
-- **Line Link:** https://github.com/pytorch/pytorch/blob/main/torch/utils/_triton.py#L269
+#### 416. [torch/utils/_triton.py](https://github.com/pytorch/pytorch/blob/main/torch/utils/_triton.py#L285) (Line 285)
+- **Line Link:** https://github.com/pytorch/pytorch/blob/main/torch/utils/_triton.py#L285
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_extern_libs_key`
 - **Arguments:** `path, 'rb'`
@@ -5481,7 +5481,7 @@ with open(filename, "w", encoding="utf8") as fout:
 ```
 
 ### [ray-project/ray](https://github.com/ray-project/ray)
-- **Usages Found:** `319` in `130` files.
+- **Usages Found:** `323` in `131` files.
 
 #### 1. [.buildkite/copy_files.py](https://github.com/ray-project/ray/blob/master/.buildkite/copy_files.py#L92) (Line 92)
 - **Line Link:** https://github.com/ray-project/ray/blob/master/.buildkite/copy_files.py#L92
@@ -8889,7 +8889,53 @@ with open(filename, "w", encoding="utf8") as fout:
         with open(pathlib.Path(__file__).parent / "templates" / file, "r") as f:
 ```
 
-#### 300. [rllib/algorithms/algorithm.py](https://github.com/ray-project/ray/blob/master/rllib/algorithms/algorithm.py#L3141) (Line 3141)
+#### 300. [python/setup.py](https://github.com/ray-project/ray/blob/master/python/setup.py#L62) (Line 62)
+- **Line Link:** https://github.com/ray-project/ray/blob/master/python/setup.py#L62
+- **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
+- **Context:** `find_version`
+- **Arguments:** `os.path.join(ROOT_DIR, *filepath)`
+- **Keywords:** `{}`
+
+```python
+    with open(os.path.join(ROOT_DIR, *filepath)) as fp:
+```
+
+#### 301. [python/setup.py](https://github.com/ray-project/ray/blob/master/python/setup.py#L513) (Line 513)
+- **Line Link:** https://github.com/ray-project/ray/blob/master/python/setup.py#L513
+- **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
+- **Context:** `replace_symlinks_with_junctions`
+- **Arguments:** `path`
+- **Keywords:** `{}`
+
+```python
+                with open(path) as inp:
+```
+
+#### 302. [python/setup.py](https://github.com/ray-project/ray/blob/master/python/setup.py#L805) (Line 805)
+- **Line Link:** https://github.com/ray-project/ray/blob/master/python/setup.py#L805
+- **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
+- **Context:** `global`
+- **Arguments:** `os.path.join(ROOT_DIR, os.path.pardir, 'README.rst'), 'r'`
+- **Keywords:** `{'encoding': "'utf-8'"}`
+
+```python
+    with open(
+        os.path.join(ROOT_DIR, os.path.pardir, "README.rst"), "r", encoding="utf-8"
+    ) as f:
+```
+
+#### 303. [python/setup.py](https://github.com/ray-project/ray/blob/master/python/setup.py#L810) (Line 810)
+- **Line Link:** https://github.com/ray-project/ray/blob/master/python/setup.py#L810
+- **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
+- **Context:** `global`
+- **Arguments:** `os.path.join(ROOT_DIR, 'LICENSE.txt'), 'r'`
+- **Keywords:** `{'encoding': "'utf-8'"}`
+
+```python
+    with open(os.path.join(ROOT_DIR, "LICENSE.txt"), "r", encoding="utf-8") as f:
+```
+
+#### 304. [rllib/algorithms/algorithm.py](https://github.com/ray-project/ray/blob/master/rllib/algorithms/algorithm.py#L3141) (Line 3141)
 - **Line Link:** https://github.com/ray-project/ray/blob/master/rllib/algorithms/algorithm.py#L3141
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Algorithm.save_checkpoint`
@@ -8900,7 +8946,7 @@ with open(filename, "w", encoding="utf8") as fout:
             with open(state_file, "wb") as f:
 ```
 
-#### 301. [rllib/algorithms/algorithm.py](https://github.com/ray-project/ray/blob/master/rllib/algorithms/algorithm.py#L3145) (Line 3145)
+#### 305. [rllib/algorithms/algorithm.py](https://github.com/ray-project/ray/blob/master/rllib/algorithms/algorithm.py#L3145) (Line 3145)
 - **Line Link:** https://github.com/ray-project/ray/blob/master/rllib/algorithms/algorithm.py#L3145
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Algorithm.save_checkpoint`
@@ -8911,7 +8957,7 @@ with open(filename, "w", encoding="utf8") as fout:
             with open(checkpoint_dir / "rllib_checkpoint.json", "w") as f:
 ```
 
-#### 302. [rllib/algorithms/algorithm.py](https://github.com/ray-project/ray/blob/master/rllib/algorithms/algorithm.py#L4349) (Line 4349)
+#### 306. [rllib/algorithms/algorithm.py](https://github.com/ray-project/ray/blob/master/rllib/algorithms/algorithm.py#L4349) (Line 4349)
 - **Line Link:** https://github.com/ray-project/ray/blob/master/rllib/algorithms/algorithm.py#L4349
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Algorithm._checkpoint_info_to_algorithm_state`
@@ -8922,7 +8968,7 @@ with open(filename, "w", encoding="utf8") as fout:
         with open(checkpoint_info["state_file"], "rb") as f:
 ```
 
-#### 303. [rllib/algorithms/algorithm.py](https://github.com/ray-project/ray/blob/master/rllib/algorithms/algorithm.py#L4430) (Line 4430)
+#### 307. [rllib/algorithms/algorithm.py](https://github.com/ray-project/ray/blob/master/rllib/algorithms/algorithm.py#L4430) (Line 4430)
 - **Line Link:** https://github.com/ray-project/ray/blob/master/rllib/algorithms/algorithm.py#L4430
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Algorithm._checkpoint_info_to_algorithm_state`
@@ -8933,7 +8979,7 @@ with open(filename, "w", encoding="utf8") as fout:
                 with open(policy_state_file, "rb") as f:
 ```
 
-#### 304. [rllib/algorithms/mock.py](https://github.com/ray-project/ray/blob/master/rllib/algorithms/mock.py#L65) (Line 65)
+#### 308. [rllib/algorithms/mock.py](https://github.com/ray-project/ray/blob/master/rllib/algorithms/mock.py#L65) (Line 65)
 - **Line Link:** https://github.com/ray-project/ray/blob/master/rllib/algorithms/mock.py#L65
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_MockTrainer.save_checkpoint`
@@ -8944,7 +8990,7 @@ with open(filename, "w", encoding="utf8") as fout:
         with open(path, "wb") as f:
 ```
 
-#### 305. [rllib/algorithms/mock.py](https://github.com/ray-project/ray/blob/master/rllib/algorithms/mock.py#L71) (Line 71)
+#### 309. [rllib/algorithms/mock.py](https://github.com/ray-project/ray/blob/master/rllib/algorithms/mock.py#L71) (Line 71)
 - **Line Link:** https://github.com/ray-project/ray/blob/master/rllib/algorithms/mock.py#L71
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_MockTrainer.load_checkpoint`
@@ -8955,7 +9001,7 @@ with open(filename, "w", encoding="utf8") as fout:
         with open(path, "rb") as f:
 ```
 
-#### 306. [rllib/offline/json_writer.py](https://github.com/ray-project/ray/blob/master/rllib/offline/json_writer.py#L106) (Line 106)
+#### 310. [rllib/offline/json_writer.py](https://github.com/ray-project/ray/blob/master/rllib/offline/json_writer.py#L106) (Line 106)
 - **Line Link:** https://github.com/ray-project/ray/blob/master/rllib/offline/json_writer.py#L106
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `JsonWriter._get_file`
@@ -8966,7 +9012,7 @@ with open(filename, "w", encoding="utf8") as fout:
                 self.cur_file = open(path, "w")
 ```
 
-#### 307. [rllib/offline/offline_data.py](https://github.com/ray-project/ray/blob/master/rllib/offline/offline_data.py#L69) (Line 69)
+#### 311. [rllib/offline/offline_data.py](https://github.com/ray-project/ray/blob/master/rllib/offline/offline_data.py#L69) (Line 69)
 - **Line Link:** https://github.com/ray-project/ray/blob/master/rllib/offline/offline_data.py#L69
 - **Target Call:** `gcsfs.GCSFileSystem` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `OfflineData.__init__`
@@ -8977,7 +9023,7 @@ with open(filename, "w", encoding="utf8") as fout:
             self.filesystem_object = gcsfs.GCSFileSystem(**self.filesystem_kwargs)
 ```
 
-#### 308. [rllib/offline/offline_env_runner.py](https://github.com/ray-project/ray/blob/master/rllib/offline/offline_env_runner.py#L86) (Line 86)
+#### 312. [rllib/offline/offline_env_runner.py](https://github.com/ray-project/ray/blob/master/rllib/offline/offline_env_runner.py#L86) (Line 86)
 - **Line Link:** https://github.com/ray-project/ray/blob/master/rllib/offline/offline_env_runner.py#L86
 - **Target Call:** `gcsfs.GCSFileSystem` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `OfflineSingleAgentEnvRunner.__init__`
@@ -8988,7 +9034,7 @@ with open(filename, "w", encoding="utf8") as fout:
             self.filesystem_object = gcsfs.GCSFileSystem(**self.filesystem_kwargs)
 ```
 
-#### 309. [rllib/policy/policy.py](https://github.com/ray-project/ray/blob/master/rllib/policy/policy.py#L314) (Line 314)
+#### 313. [rllib/policy/policy.py](https://github.com/ray-project/ray/blob/master/rllib/policy/policy.py#L314) (Line 314)
 - **Line Link:** https://github.com/ray-project/ray/blob/master/rllib/policy/policy.py#L314
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Policy.from_checkpoint`
@@ -8999,7 +9045,7 @@ with open(filename, "w", encoding="utf8") as fout:
                 with open(checkpoint_info["state_file"], "rb") as f:
 ```
 
-#### 310. [rllib/policy/policy.py](https://github.com/ray-project/ray/blob/master/rllib/policy/policy.py#L341) (Line 341)
+#### 314. [rllib/policy/policy.py](https://github.com/ray-project/ray/blob/master/rllib/policy/policy.py#L341) (Line 341)
 - **Line Link:** https://github.com/ray-project/ray/blob/master/rllib/policy/policy.py#L341
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Policy.from_checkpoint`
@@ -9010,7 +9056,7 @@ with open(filename, "w", encoding="utf8") as fout:
                         with open(policy_checkpoint_info["state_file"], "rb") as f:
 ```
 
-#### 311. [rllib/policy/policy.py](https://github.com/ray-project/ray/blob/master/rllib/policy/policy.py#L352) (Line 352)
+#### 315. [rllib/policy/policy.py](https://github.com/ray-project/ray/blob/master/rllib/policy/policy.py#L352) (Line 352)
 - **Line Link:** https://github.com/ray-project/ray/blob/master/rllib/policy/policy.py#L352
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Policy.from_checkpoint`
@@ -9021,7 +9067,7 @@ with open(filename, "w", encoding="utf8") as fout:
             with open(checkpoint_info["state_file"], "rb") as f:
 ```
 
-#### 312. [rllib/policy/policy.py](https://github.com/ray-project/ray/blob/master/rllib/policy/policy.py#L1126) (Line 1126)
+#### 316. [rllib/policy/policy.py](https://github.com/ray-project/ray/blob/master/rllib/policy/policy.py#L1126) (Line 1126)
 - **Line Link:** https://github.com/ray-project/ray/blob/master/rllib/policy/policy.py#L1126
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Policy.export_checkpoint`
@@ -9032,7 +9078,7 @@ with open(filename, "w", encoding="utf8") as fout:
             with open(os.path.join(export_dir, state_file), "w+b") as f:
 ```
 
-#### 313. [rllib/policy/policy.py](https://github.com/ray-project/ray/blob/master/rllib/policy/policy.py#L1138) (Line 1138)
+#### 317. [rllib/policy/policy.py](https://github.com/ray-project/ray/blob/master/rllib/policy/policy.py#L1138) (Line 1138)
 - **Line Link:** https://github.com/ray-project/ray/blob/master/rllib/policy/policy.py#L1138
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Policy.export_checkpoint`
@@ -9043,7 +9089,7 @@ with open(filename, "w", encoding="utf8") as fout:
             with open(os.path.join(export_dir, state_file), "w+b") as f:
 ```
 
-#### 314. [rllib/policy/policy.py](https://github.com/ray-project/ray/blob/master/rllib/policy/policy.py#L1142) (Line 1142)
+#### 318. [rllib/policy/policy.py](https://github.com/ray-project/ray/blob/master/rllib/policy/policy.py#L1142) (Line 1142)
 - **Line Link:** https://github.com/ray-project/ray/blob/master/rllib/policy/policy.py#L1142
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Policy.export_checkpoint`
@@ -9054,7 +9100,7 @@ with open(filename, "w", encoding="utf8") as fout:
         with open(os.path.join(export_dir, "rllib_checkpoint.json"), "w") as f:
 ```
 
-#### 315. [rllib/utils/checkpoints.py](https://github.com/ray-project/ray/blob/master/rllib/utils/checkpoints.py#L976) (Line 976)
+#### 319. [rllib/utils/checkpoints.py](https://github.com/ray-project/ray/blob/master/rllib/utils/checkpoints.py#L976) (Line 976)
 - **Line Link:** https://github.com/ray-project/ray/blob/master/rllib/utils/checkpoints.py#L976
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `convert_to_msgpack_checkpoint`
@@ -9065,7 +9111,7 @@ with open(filename, "w", encoding="utf8") as fout:
     with open(state_file, "wb") as f:
 ```
 
-#### 316. [rllib/utils/checkpoints.py](https://github.com/ray-project/ray/blob/master/rllib/utils/checkpoints.py#L980) (Line 980)
+#### 320. [rllib/utils/checkpoints.py](https://github.com/ray-project/ray/blob/master/rllib/utils/checkpoints.py#L980) (Line 980)
 - **Line Link:** https://github.com/ray-project/ray/blob/master/rllib/utils/checkpoints.py#L980
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `convert_to_msgpack_checkpoint`
@@ -9076,7 +9122,7 @@ with open(filename, "w", encoding="utf8") as fout:
     with open(os.path.join(msgpack_checkpoint_dir, "rllib_checkpoint.json"), "w") as f:
 ```
 
-#### 317. [rllib/utils/from_config.py](https://github.com/ray-project/ray/blob/master/rllib/utils/from_config.py#L233) (Line 233)
+#### 321. [rllib/utils/from_config.py](https://github.com/ray-project/ray/blob/master/rllib/utils/from_config.py#L233) (Line 233)
 - **Line Link:** https://github.com/ray-project/ray/blob/master/rllib/utils/from_config.py#L233
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `from_file`
@@ -9087,7 +9133,7 @@ with open(filename, "w", encoding="utf8") as fout:
     with open(path, "rt") as fp:
 ```
 
-#### 318. [rllib/utils/policy.py](https://github.com/ray-project/ray/blob/master/rllib/utils/policy.py#L124) (Line 124)
+#### 322. [rllib/utils/policy.py](https://github.com/ray-project/ray/blob/master/rllib/utils/policy.py#L124) (Line 124)
 - **Line Link:** https://github.com/ray-project/ray/blob/master/rllib/utils/policy.py#L124
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `parse_policy_specs_from_checkpoint`
@@ -9098,7 +9144,7 @@ with open(filename, "w", encoding="utf8") as fout:
     with open(path, "rb") as f:
 ```
 
-#### 319. [rllib/utils/tf_run_builder.py](https://github.com/ray-project/ray/blob/master/rllib/utils/tf_run_builder.py#L100) (Line 100)
+#### 323. [rllib/utils/tf_run_builder.py](https://github.com/ray-project/ray/blob/master/rllib/utils/tf_run_builder.py#L100) (Line 100)
 - **Line Link:** https://github.com/ray-project/ray/blob/master/rllib/utils/tf_run_builder.py#L100
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_run_timeline`
@@ -9145,8 +9191,8 @@ with open(filename, "w", encoding="utf8") as fout:
                 if all(infer_storage_options(f)["protocol"] == "file" for f in file):
 ```
 
-#### 4. [py-polars/src/polars/io/delta/_dataset.py](https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/_dataset.py#L335) (Line 335)
-- **Line Link:** https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/_dataset.py#L335
+#### 4. [py-polars/src/polars/io/delta/_dataset.py](https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/_dataset.py#L334) (Line 334)
+- **Line Link:** https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/_dataset.py#L334
 - **Target Call:** `requested_paths.lazy().with_columns(pl.col('path').str.replace('^lakefs://', 's3://').str.strip_prefix(file_prefix)).join` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_extract_delta_deletion_vectors`
 - **Arguments:** `delta_deletion_vectors.lazy().with_columns(pl.col('filepath').str.replace('^lakefs://', 's3://').str.strip_prefix(file_prefix))`
@@ -9173,7 +9219,7 @@ with open(filename, "w", encoding="utf8") as fout:
 ```
 
 ### [Lightning-AI/pytorch-lightning](https://github.com/Lightning-AI/pytorch-lightning)
-- **Usages Found:** `178` in `61` files.
+- **Usages Found:** `181` in `63` files.
 
 #### 1. [.actions/assistant.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/.actions/assistant.py#L170) (Line 170)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/.actions/assistant.py#L170
@@ -9285,7 +9331,29 @@ with open(filename, "w", encoding="utf8") as fout:
         with open(ver_file, "w") as fo:
 ```
 
-#### 11. [src/lightning/__setup__.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/__setup__.py#L80) (Line 80)
+#### 11. [setup.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/setup.py#L98) (Line 98)
+- **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/setup.py#L98
+- **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
+- **Context:** `_set_manifest_path`
+- **Arguments:** `pkg_manifest`
+- **Keywords:** `{}`
+
+```python
+                with open(pkg_manifest) as fh:
+```
+
+#### 12. [setup.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/setup.py#L107) (Line 107)
+- **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/setup.py#L107
+- **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
+- **Context:** `_set_manifest_path`
+- **Arguments:** `manifest_path`
+- **Keywords:** `{'mode': "'w'"}`
+
+```python
+        with open(manifest_path, mode="w") as fp:
+```
+
+#### 13. [src/lightning/__setup__.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/__setup__.py#L80) (Line 80)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/__setup__.py#L80
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_setup_args`
@@ -9296,7 +9364,7 @@ with open(filename, "w", encoding="utf8") as fout:
         with open(ui_ver_file, encoding="utf-8") as fo:
 ```
 
-#### 12. [src/lightning/__version__.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/__version__.py#L8) (Line 8)
+#### 14. [src/lightning/__version__.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/__version__.py#L8) (Line 8)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/__version__.py#L8
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `global`
@@ -9307,7 +9375,7 @@ with open(filename, "w", encoding="utf8") as fout:
 with open(_VERSION_PATH, encoding="utf-8") as fo:
 ```
 
-#### 13. [src/lightning/app/cli/cmd_init.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/cmd_init.py#L66) (Line 66)
+#### 15. [src/lightning/app/cli/cmd_init.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/cmd_init.py#L66) (Line 66)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/cmd_init.py#L66
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_make_resource`
@@ -9318,7 +9386,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(bad_file) as fo:
 ```
 
-#### 14. [src/lightning/app/cli/cmd_init.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/cmd_init.py#L68) (Line 68)
+#### 16. [src/lightning/app/cli/cmd_init.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/cmd_init.py#L68) (Line 68)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/cmd_init.py#L68
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_make_resource`
@@ -9329,7 +9397,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(bad_file, "w") as fw:
 ```
 
-#### 15. [src/lightning/app/cli/cmd_pl_init.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/cmd_pl_init.py#L132) (Line 132)
+#### 17. [src/lightning/app/cli/cmd_pl_init.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/cmd_pl_init.py#L132) (Line 132)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/cmd_pl_init.py#L132
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `project_file_from_template`
@@ -9340,7 +9408,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
     with open(destination_dir / template_name, "w") as file:
 ```
 
-#### 16. [src/lightning/app/cli/commands/cd.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/commands/cd.py#L59) (Line 59)
+#### 18. [src/lightning/app/cli/commands/cd.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/commands/cd.py#L59) (Line 59)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/commands/cd.py#L59
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `cd`
@@ -9351,7 +9419,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             with open(_CD_FILE, "w") as f:
 ```
 
-#### 17. [src/lightning/app/cli/commands/cd.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/commands/cd.py#L69) (Line 69)
+#### 19. [src/lightning/app/cli/commands/cd.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/commands/cd.py#L69) (Line 69)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/commands/cd.py#L69
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `cd`
@@ -9362,7 +9430,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(_CD_FILE) as f:
 ```
 
-#### 18. [src/lightning/app/cli/commands/cd.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/commands/cd.py#L103) (Line 103)
+#### 20. [src/lightning/app/cli/commands/cd.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/commands/cd.py#L103) (Line 103)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/commands/cd.py#L103
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `cd`
@@ -9373,7 +9441,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(_CD_FILE, "w") as f:
 ```
 
-#### 19. [src/lightning/app/cli/commands/cp.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/commands/cp.py#L268) (Line 268)
+#### 21. [src/lightning/app/cli/commands/cp.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/commands/cp.py#L268) (Line 268)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/commands/cp.py#L268
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_download_file`
@@ -9384,7 +9452,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(path, "wb") as fp:
 ```
 
-#### 20. [src/lightning/app/cli/commands/ls.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/commands/ls.py#L59) (Line 59)
+#### 22. [src/lightning/app/cli/commands/ls.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/commands/ls.py#L59) (Line 59)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/commands/ls.py#L59
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `ls`
@@ -9395,7 +9463,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             with open(_CD_FILE, "w") as f:
 ```
 
-#### 21. [src/lightning/app/cli/commands/ls.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/commands/ls.py#L62) (Line 62)
+#### 23. [src/lightning/app/cli/commands/ls.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/commands/ls.py#L62) (Line 62)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/commands/ls.py#L62
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `ls`
@@ -9406,7 +9474,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             with open(_CD_FILE) as f:
 ```
 
-#### 22. [src/lightning/app/cli/commands/pwd.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/commands/pwd.py#L46) (Line 46)
+#### 24. [src/lightning/app/cli/commands/pwd.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/commands/pwd.py#L46) (Line 46)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/commands/pwd.py#L46
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_pwd`
@@ -9417,7 +9485,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(_CD_FILE, "w") as f:
 ```
 
-#### 23. [src/lightning/app/cli/commands/pwd.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/commands/pwd.py#L49) (Line 49)
+#### 25. [src/lightning/app/cli/commands/pwd.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/commands/pwd.py#L49) (Line 49)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/commands/pwd.py#L49
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_pwd`
@@ -9428,7 +9496,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(_CD_FILE) as f:
 ```
 
-#### 24. [src/lightning/app/cli/connect/app.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L74) (Line 74)
+#### 26. [src/lightning/app/cli/connect/app.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L74) (Line 74)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L74
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `connect_app`
@@ -9439,7 +9507,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(connected_file) as f:
 ```
 
-#### 25. [src/lightning/app/cli/connect/app.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L108) (Line 108)
+#### 27. [src/lightning/app/cli/connect/app.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L108) (Line 108)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L108
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `connect_app`
@@ -9450,7 +9518,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             with open(os.path.join(commands_folder, "openapi.json"), "w") as f:
 ```
 
-#### 26. [src/lightning/app/cli/connect/app.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L124) (Line 124)
+#### 28. [src/lightning/app/cli/connect/app.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L124) (Line 124)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L124
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `connect_app`
@@ -9461,7 +9529,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
                     with open(os.path.join(commands_folder, f"{command_name}.txt"), "w") as f:
 ```
 
-#### 27. [src/lightning/app/cli/connect/app.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L129) (Line 129)
+#### 29. [src/lightning/app/cli/connect/app.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L129) (Line 129)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L129
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `connect_app`
@@ -9472,7 +9540,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(connected_file, "w") as f:
 ```
 
-#### 28. [src/lightning/app/cli/connect/app.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L199) (Line 199)
+#### 30. [src/lightning/app/cli/connect/app.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L199) (Line 199)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L199
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `connect_app`
@@ -9483,7 +9551,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
                     with open(os.path.join(commands_folder, f"{command_name}.txt"), "w") as f:
 ```
 
-#### 29. [src/lightning/app/cli/connect/app.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L204) (Line 204)
+#### 31. [src/lightning/app/cli/connect/app.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L204) (Line 204)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L204
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `connect_app`
@@ -9494,7 +9562,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(connected_file, "w") as f:
 ```
 
-#### 30. [src/lightning/app/cli/connect/app.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L225) (Line 225)
+#### 32. [src/lightning/app/cli/connect/app.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L225) (Line 225)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L225
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `disconnect_app`
@@ -9505,7 +9573,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(connected_file) as f:
 ```
 
-#### 31. [src/lightning/app/cli/connect/app.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L247) (Line 247)
+#### 33. [src/lightning/app/cli/connect/app.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L247) (Line 247)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L247
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_read_connected_file`
@@ -9516,7 +9584,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(connected_file) as f:
 ```
 
-#### 32. [src/lightning/app/cli/connect/app.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L267) (Line 267)
+#### 34. [src/lightning/app/cli/connect/app.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L267) (Line 267)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L267
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_write_commands_metadata`
@@ -9527,7 +9595,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
     with open(metadata_path, "w") as f:
 ```
 
-#### 33. [src/lightning/app/cli/connect/app.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L273) (Line 273)
+#### 35. [src/lightning/app/cli/connect/app.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L273) (Line 273)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L273
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_get_commands_metadata`
@@ -9538,7 +9606,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
     with open(metadata_path) as f:
 ```
 
-#### 34. [src/lightning/app/cli/connect/app.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L343) (Line 343)
+#### 36. [src/lightning/app/cli/connect/app.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L343) (Line 343)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/connect/app.py#L343
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_install_missing_requirements`
@@ -9549,7 +9617,18 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
                 with open(std_out_out, "wb") as stdout:
 ```
 
-#### 35. [src/lightning/app/core/api.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/core/api.py#L333) (Line 333)
+#### 37. [src/lightning/app/cli/pl-app-template/setup.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/pl-app-template/setup.py#L11) (Line 11)
+- **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/pl-app-template/setup.py#L11
+- **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
+- **Context:** `_load_requirements`
+- **Arguments:** `os.path.join(path_dir, file_name)`
+- **Keywords:** `{}`
+
+```python
+    with open(os.path.join(path_dir, file_name)) as file:
+```
+
+#### 38. [src/lightning/app/core/api.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/core/api.py#L333) (Line 333)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/core/api.py#L333
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `upload_file`
@@ -9560,7 +9639,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(tmp_file, "wb") as f:
 ```
 
-#### 36. [src/lightning/app/core/api.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/core/api.py#L471) (Line 471)
+#### 39. [src/lightning/app/core/api.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/core/api.py#L471) (Line 471)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/core/api.py#L471
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `start_server`
@@ -9571,7 +9650,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(annotations_path) as f:
 ```
 
-#### 37. [src/lightning/app/core/app.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/core/app.py#L626) (Line 626)
+#### 40. [src/lightning/app/core/app.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/core/app.py#L626) (Line 626)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/core/app.py#L626
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `LightningApp.load_state_dict_from_checkpoint_dir`
@@ -9582,7 +9661,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(checkpoint_path, "rb") as fo:
 ```
 
-#### 38. [src/lightning/app/core/app.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/core/app.py#L646) (Line 646)
+#### 41. [src/lightning/app/core/app.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/core/app.py#L646) (Line 646)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/core/app.py#L646
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `LightningApp._dump_checkpoint`
@@ -9593,7 +9672,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(checkpoint_path, "wb") as f:
 ```
 
-#### 39. [src/lightning/app/frontend/just_py/just_py.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/frontend/just_py/just_py.py#L107) (Line 107)
+#### 42. [src/lightning/app/frontend/just_py/just_py.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/frontend/just_py/just_py.py#L107) (Line 107)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/frontend/just_py/just_py.py#L107
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `JustPyFrontend.start_server`
@@ -9604,7 +9683,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(std_out_out, "wb") as stdout:
 ```
 
-#### 40. [src/lightning/app/frontend/stream_lit.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/frontend/stream_lit.py#L86) (Line 86)
+#### 43. [src/lightning/app/frontend/stream_lit.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/frontend/stream_lit.py#L86) (Line 86)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/frontend/stream_lit.py#L86
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `StreamlitFrontend.start_server`
@@ -9615,7 +9694,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(std_err_out, "wb") as stderr, open(std_out_out, "wb") as stdout:
 ```
 
-#### 41. [src/lightning/app/frontend/stream_lit.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/frontend/stream_lit.py#L86) (Line 86)
+#### 44. [src/lightning/app/frontend/stream_lit.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/frontend/stream_lit.py#L86) (Line 86)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/frontend/stream_lit.py#L86
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `StreamlitFrontend.start_server`
@@ -9626,7 +9705,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(std_err_out, "wb") as stderr, open(std_out_out, "wb") as stdout:
 ```
 
-#### 42. [src/lightning/app/plugin/plugin.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/plugin/plugin.py#L149) (Line 149)
+#### 45. [src/lightning/app/plugin/plugin.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/plugin/plugin.py#L149) (Line 149)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/plugin/plugin.py#L149
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_run_plugin`
@@ -9637,7 +9716,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             with open(download_path, "wb") as f:
 ```
 
-#### 43. [src/lightning/app/source_code/hashing.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/source_code/hashing.py#L48) (Line 48)
+#### 46. [src/lightning/app/source_code/hashing.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/source_code/hashing.py#L48) (Line 48)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/source_code/hashing.py#L48
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_get_hash`
@@ -9648,7 +9727,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(file, "rb") as f:
 ```
 
-#### 44. [src/lightning/app/source_code/local.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/source_code/local.py#L60) (Line 60)
+#### 47. [src/lightning/app/source_code/local.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/source_code/local.py#L60) (Line 60)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/source_code/local.py#L60
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `LocalSourceCodeDir.__init__`
@@ -9659,7 +9738,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             with open(path / DOT_IGNORE_FILENAME, "w") as f:
 ```
 
-#### 45. [src/lightning/app/source_code/tar.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/source_code/tar.py#L164) (Line 164)
+#### 48. [src/lightning/app/source_code/tar.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/source_code/tar.py#L164) (Line 164)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/source_code/tar.py#L164
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_tar_path_python`
@@ -9670,7 +9749,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             with open(source_path) as fo:
 ```
 
-#### 46. [src/lightning/app/source_code/uploader.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/source_code/uploader.py#L104) (Line 104)
+#### 49. [src/lightning/app/source_code/uploader.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/source_code/uploader.py#L104) (Line 104)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/source_code/uploader.py#L104
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `FileUploader.upload`
@@ -9681,7 +9760,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             with open(self.source_file, "rb") as f:
 ```
 
-#### 47. [src/lightning/app/storage/copier.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/copier.py#L131) (Line 131)
+#### 50. [src/lightning/app/storage/copier.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/copier.py#L131) (Line 131)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/copier.py#L131
 - **Target Call:** `fs.makedirs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_copy`
@@ -9692,7 +9771,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
                 fs.makedirs(str(to_path.parent), exist_ok=True)
 ```
 
-#### 48. [src/lightning/app/storage/copier.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/copier.py#L133) (Line 133)
+#### 51. [src/lightning/app/storage/copier.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/copier.py#L133) (Line 133)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/copier.py#L133
 - **Target Call:** `fs.put` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_copy`
@@ -9703,7 +9782,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             fs.put(str(from_path), str(to_path), recursive=False)
 ```
 
-#### 49. [src/lightning/app/storage/copier.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/copier.py#L153) (Line 153)
+#### 52. [src/lightning/app/storage/copier.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/copier.py#L153) (Line 153)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/copier.py#L153
 - **Target Call:** `fs.makedirs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_copy_files`
@@ -9714,7 +9793,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             fs.makedirs(str(destination_path.parent), exist_ok=True)
 ```
 
-#### 50. [src/lightning/app/storage/copier.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/copier.py#L155) (Line 155)
+#### 53. [src/lightning/app/storage/copier.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/copier.py#L155) (Line 155)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/copier.py#L155
 - **Target Call:** `fs.put` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_copy_files`
@@ -9725,7 +9804,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         fs.put(str(source_path), str(destination_path))
 ```
 
-#### 51. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L88) (Line 88)
+#### 54. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L88) (Line 88)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L88
 - **Target Call:** `self.fs.makedirs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Drive.root`
@@ -9736,7 +9815,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             self.fs.makedirs(root_path, exist_ok=True)
 ```
 
-#### 52. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L151) (Line 151)
+#### 55. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L151) (Line 151)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L151
 - **Target Call:** `self.fs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Drive.list`
@@ -9747,7 +9826,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             if self.fs.exists(p):
 ```
 
-#### 53. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L152) (Line 152)
+#### 56. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L152) (Line 152)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L152
 - **Target Call:** `self.fs.ls` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Drive.list`
@@ -9758,7 +9837,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
                 for f in self.fs.ls(p):
 ```
 
-#### 54. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L183) (Line 183)
+#### 57. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L183) (Line 183)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L183
 - **Target Call:** `self.fs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Drive.get`
@@ -9769,7 +9848,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
                 while not self.fs.exists(shared_path):
 ```
 
-#### 55. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L228) (Line 228)
+#### 58. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L228) (Line 228)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L228
 - **Target Call:** `self.fs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Drive.delete`
@@ -9780,7 +9859,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         if self.fs.exists(str(shared_path)):
 ```
 
-#### 56. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L229) (Line 229)
+#### 59. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L229) (Line 229)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L229
 - **Target Call:** `self.fs.rm` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Drive.delete`
@@ -9791,7 +9870,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             self.fs.rm(str(shared_path))
 ```
 
-#### 57. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L264) (Line 264)
+#### 60. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L264) (Line 264)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L264
 - **Target Call:** `self.fs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Drive._collect_component_names`
@@ -9802,7 +9881,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         if self.fs.exists(self.drive_root):
 ```
 
-#### 58. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L268) (Line 268)
+#### 61. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L268) (Line 268)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L268
 - **Target Call:** `self.fs.ls` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Drive._collect_component_names`
@@ -9813,7 +9892,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             return [str(p.split(sep)[-1]) for p in self.fs.ls(self.drive_root)]
 ```
 
-#### 59. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L279) (Line 279)
+#### 62. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L279) (Line 279)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L279
 - **Target Call:** `fs.isdir` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Drive._get`
@@ -9824,7 +9903,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         if fs.isdir(src):
 ```
 
-#### 60. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L282) (Line 282)
+#### 63. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L282) (Line 282)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L282
 - **Target Call:** `fs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Drive._get`
@@ -9835,7 +9914,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
                 if fs.exists(dst):
 ```
 
-#### 61. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L284) (Line 284)
+#### 64. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L284) (Line 284)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L284
 - **Target Call:** `fs.rm` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Drive._get`
@@ -9846,7 +9925,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
                         fs.rm(str(dst), recursive=True)
 ```
 
-#### 62. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L291) (Line 291)
+#### 65. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L291) (Line 291)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L291
 - **Target Call:** `fs.get` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Drive._get`
@@ -9857,7 +9936,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
                 fs.get(glob, str(dst.absolute()), recursive=False)
 ```
 
-#### 63. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L293) (Line 293)
+#### 66. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L293) (Line 293)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L293
 - **Target Call:** `fs.get` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Drive._get`
@@ -9868,7 +9947,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             fs.get(str(src), str(dst.absolute()), recursive=False)
 ```
 
-#### 64. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L299) (Line 299)
+#### 67. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L299) (Line 299)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L299
 - **Target Call:** `self.fs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Drive._find_match`
@@ -9879,7 +9958,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             if self.fs.exists(possible_path):
 ```
 
-#### 65. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L322) (Line 322)
+#### 68. [src/lightning/app/storage/drive.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L322) (Line 322)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/drive.py#L322
 - **Target Call:** `self.fs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Drive._check_for_allow_duplicates`
@@ -9890,7 +9969,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         matches = [self.fs.exists(p) for p in possible_paths]
 ```
 
-#### 66. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L14) (Line 14)
+#### 69. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L14) (Line 14)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L14
 - **Target Call:** `fs.isdir` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_get_files`
@@ -9901,7 +9980,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
     if fs.isdir(src):
 ```
 
-#### 67. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L17) (Line 17)
+#### 70. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L17) (Line 17)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L17
 - **Target Call:** `fs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_get_files`
@@ -9912,7 +9991,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             if fs.exists(dst):
 ```
 
-#### 68. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L19) (Line 19)
+#### 71. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L19) (Line 19)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L19
 - **Target Call:** `fs.rm` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_get_files`
@@ -9923,7 +10002,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
                     fs.rm(str(dst), recursive=True)
 ```
 
-#### 69. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L26) (Line 26)
+#### 72. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L26) (Line 26)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L26
 - **Target Call:** `fs.get` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_get_files`
@@ -9934,7 +10013,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             fs.get(glob, str(dst), recursive=False)
 ```
 
-#### 70. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L28) (Line 28)
+#### 73. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L28) (Line 28)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L28
 - **Target Call:** `fs.get` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_get_files`
@@ -9945,7 +10024,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         fs.get(str(src), str(dst), recursive=False)
 ```
 
-#### 71. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L92) (Line 92)
+#### 74. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L92) (Line 92)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L92
 - **Target Call:** `self._fs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `FileSystem.listdir`
@@ -9956,7 +10035,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         if not self._fs.exists(shared_path):
 ```
 
-#### 72. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L99) (Line 99)
+#### 75. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L99) (Line 99)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L99
 - **Target Call:** `self._fs.ls` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `FileSystem.listdir`
@@ -9967,7 +10046,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         paths = self._fs.ls(shared_path)
 ```
 
-#### 73. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L117) (Line 117)
+#### 76. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L117) (Line 117)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L117
 - **Target Call:** `self._fs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `FileSystem.walk`
@@ -9978,7 +10057,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         if not self._fs.exists(shared_path):
 ```
 
-#### 74. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L124) (Line 124)
+#### 77. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L124) (Line 124)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L124
 - **Target Call:** `self._fs.ls` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `FileSystem.walk`
@@ -9989,7 +10068,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         paths = self._fs.ls(shared_path)
 ```
 
-#### 75. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L132) (Line 132)
+#### 78. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L132) (Line 132)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L132
 - **Target Call:** `self._fs.isdir` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `FileSystem.walk`
@@ -10000,7 +10079,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             if self._fs.isdir(shared_path):
 ```
 
-#### 76. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L146) (Line 146)
+#### 79. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L146) (Line 146)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L146
 - **Target Call:** `self._fs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `FileSystem.rm`
@@ -10011,7 +10090,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         if self._fs.exists(str(delete_path)):
 ```
 
-#### 77. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L147) (Line 147)
+#### 80. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L147) (Line 147)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L147
 - **Target Call:** `self._fs.isdir` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `FileSystem.rm`
@@ -10022,7 +10101,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             if self._fs.isdir(str(delete_path)):
 ```
 
-#### 78. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L148) (Line 148)
+#### 81. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L148) (Line 148)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L148
 - **Target Call:** `self._fs.rmdir` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `FileSystem.rm`
@@ -10033,7 +10112,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
                 self._fs.rmdir(str(delete_path))
 ```
 
-#### 79. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L150) (Line 150)
+#### 82. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L150) (Line 150)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L150
 - **Target Call:** `self._fs.rm` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `FileSystem.rm`
@@ -10044,7 +10123,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
                 self._fs.rm(str(delete_path))
 ```
 
-#### 80. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L159) (Line 159)
+#### 83. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L159) (Line 159)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L159
 - **Target Call:** `self._fs.isfile` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `FileSystem.isfile`
@@ -10055,7 +10134,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         return self._fs.isfile(path)
 ```
 
-#### 81. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L166) (Line 166)
+#### 84. [src/lightning/app/storage/filesystem.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L166) (Line 166)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/filesystem.py#L166
 - **Target Call:** `self._fs.isdir` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `FileSystem.isdir`
@@ -10066,7 +10145,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         return self._fs.isdir(path)
 ```
 
-#### 82. [src/lightning/app/storage/orchestrator.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/orchestrator.py#L122) (Line 122)
+#### 85. [src/lightning/app/storage/orchestrator.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/orchestrator.py#L122) (Line 122)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/orchestrator.py#L122
 - **Target Call:** `self.fs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `StorageOrchestrator.run_once`
@@ -10077,7 +10156,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
                 if self.fs.exists(maybe_artifact_path):
 ```
 
-#### 83. [src/lightning/app/storage/orchestrator.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/orchestrator.py#L134) (Line 134)
+#### 86. [src/lightning/app/storage/orchestrator.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/orchestrator.py#L134) (Line 134)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/orchestrator.py#L134
 - **Target Call:** `self.fs.info` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `StorageOrchestrator.run_once`
@@ -10088,7 +10167,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
                             size=self.fs.info(maybe_artifact_path)["size"],
 ```
 
-#### 84. [src/lightning/app/storage/path.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/path.py#L223) (Line 223)
+#### 87. [src/lightning/app/storage/path.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/path.py#L223) (Line 223)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/path.py#L223
 - **Target Call:** `fs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Path.get`
@@ -10099,7 +10178,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         while not fs.exists(response.path) or fs.info(response.path)["size"] != response.size:
 ```
 
-#### 85. [src/lightning/app/storage/path.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/path.py#L223) (Line 223)
+#### 88. [src/lightning/app/storage/path.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/path.py#L223) (Line 223)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/path.py#L223
 - **Target Call:** `fs.info` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Path.get`
@@ -10110,7 +10189,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         while not fs.exists(response.path) or fs.info(response.path)["size"] != response.size:
 ```
 
-#### 86. [src/lightning/app/storage/path.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/path.py#L231) (Line 231)
+#### 89. [src/lightning/app/storage/path.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/path.py#L231) (Line 231)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/path.py#L231
 - **Target Call:** `fs.isdir` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Path.get`
@@ -10121,7 +10200,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         if fs.isdir(response.path):
 ```
 
-#### 87. [src/lightning/app/storage/path.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/path.py#L237) (Line 237)
+#### 90. [src/lightning/app/storage/path.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/path.py#L237) (Line 237)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/path.py#L237
 - **Target Call:** `fs.get` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Path.get`
@@ -10132,7 +10211,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
                 fs.get(glob, str(self.absolute()), recursive=False)
 ```
 
-#### 88. [src/lightning/app/storage/path.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/path.py#L240) (Line 240)
+#### 91. [src/lightning/app/storage/path.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/path.py#L240) (Line 240)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/path.py#L240
 - **Target Call:** `fs.get` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Path.get`
@@ -10143,7 +10222,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             fs.get(str(response.path), str(self.absolute()), recursive=False)
 ```
 
-#### 89. [src/lightning/app/storage/path.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/path.py#L434) (Line 434)
+#### 92. [src/lightning/app/storage/path.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/path.py#L434) (Line 434)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/path.py#L434
 - **Target Call:** `LocalFileSystem` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_filesystem`
@@ -10154,7 +10233,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
     fs = LocalFileSystem()
 ```
 
-#### 90. [src/lightning/app/storage/path.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/path.py#L450) (Line 450)
+#### 93. [src/lightning/app/storage/path.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/path.py#L450) (Line 450)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/path.py#L450
 - **Target Call:** `fs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_filesystem`
@@ -10165,7 +10244,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         if not fs.exists(_shared_storage_path()):
 ```
 
-#### 91. [src/lightning/app/storage/payload.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/payload.py#L182) (Line 182)
+#### 94. [src/lightning/app/storage/payload.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/payload.py#L182) (Line 182)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/payload.py#L182
 - **Target Call:** `fs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_BasePayload.get`
@@ -10176,7 +10255,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         while not fs.exists(response.path) or fs.info(response.path)["size"] != response.size:
 ```
 
-#### 92. [src/lightning/app/storage/payload.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/payload.py#L182) (Line 182)
+#### 95. [src/lightning/app/storage/payload.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/payload.py#L182) (Line 182)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/payload.py#L182
 - **Target Call:** `fs.info` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_BasePayload.get`
@@ -10187,7 +10266,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         while not fs.exists(response.path) or fs.info(response.path)["size"] != response.size:
 ```
 
-#### 93. [src/lightning/app/storage/payload.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/payload.py#L188) (Line 188)
+#### 96. [src/lightning/app/storage/payload.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/payload.py#L188) (Line 188)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/payload.py#L188
 - **Target Call:** `fs.get` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_BasePayload.get`
@@ -10198,7 +10277,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         fs.get(str(response.path), str(local_path), recursive=False)
 ```
 
-#### 94. [src/lightning/app/storage/payload.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/payload.py#L269) (Line 269)
+#### 97. [src/lightning/app/storage/payload.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/payload.py#L269) (Line 269)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/payload.py#L269
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Payload.save`
@@ -10209,7 +10288,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(path, "wb") as f:
 ```
 
-#### 95. [src/lightning/app/storage/payload.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/payload.py#L273) (Line 273)
+#### 98. [src/lightning/app/storage/payload.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/payload.py#L273) (Line 273)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/storage/payload.py#L273
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Payload.load`
@@ -10220,7 +10299,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(path, "rb") as f:
 ```
 
-#### 96. [src/lightning/app/utilities/app_commands.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/app_commands.py#L52) (Line 52)
+#### 99. [src/lightning/app/utilities/app_commands.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/app_commands.py#L52) (Line 52)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/app_commands.py#L52
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_extract_commands_from_file`
@@ -10231,7 +10310,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
     with open(file_name) as f:
 ```
 
-#### 97. [src/lightning/app/utilities/cli_helpers.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/cli_helpers.py#L144) (Line 144)
+#### 100. [src/lightning/app/utilities/cli_helpers.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/cli_helpers.py#L144) (Line 144)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/cli_helpers.py#L144
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_LightningAppOpenAPIRetriever.__init__`
@@ -10242,7 +10321,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
                 with open(cache_openapi) as f:
 ```
 
-#### 98. [src/lightning/app/utilities/commands/base.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/commands/base.py#L133) (Line 133)
+#### 101. [src/lightning/app/utilities/commands/base.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/commands/base.py#L133) (Line 133)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/commands/base.py#L133
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_download_command`
@@ -10253,7 +10332,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
                         with open(target_file, "wb") as f:
 ```
 
-#### 99. [src/lightning/app/utilities/commands/base.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/commands/base.py#L204) (Line 204)
+#### 102. [src/lightning/app/utilities/commands/base.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/commands/base.py#L204) (Line 204)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/commands/base.py#L204
 - **Target Call:** `fs.put` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_upload`
@@ -10264,7 +10343,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         fs.put(source_file, remote_url)
 ```
 
-#### 100. [src/lightning/app/utilities/load_app.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/load_app.py#L155) (Line 155)
+#### 103. [src/lightning/app/utilities/load_app.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/load_app.py#L155) (Line 155)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/load_app.py#L155
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `open_python_file`
@@ -10275,7 +10354,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
     return open(filename, encoding="utf-8")  # noqa: SIM115
 ```
 
-#### 101. [src/lightning/app/utilities/packaging/app_config.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/packaging/app_config.py#L40) (Line 40)
+#### 104. [src/lightning/app/utilities/packaging/app_config.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/packaging/app_config.py#L40) (Line 40)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/packaging/app_config.py#L40
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `AppConfig.save_to_file`
@@ -10286,7 +10365,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(path, "w") as file:
 ```
 
-#### 102. [src/lightning/app/utilities/packaging/app_config.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/packaging/app_config.py#L50) (Line 50)
+#### 105. [src/lightning/app/utilities/packaging/app_config.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/packaging/app_config.py#L50) (Line 50)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/packaging/app_config.py#L50
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `AppConfig.load_from_file`
@@ -10297,7 +10376,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(path) as file:
 ```
 
-#### 103. [src/lightning/app/utilities/packaging/build_config.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/packaging/build_config.py#L41) (Line 41)
+#### 106. [src/lightning/app/utilities/packaging/build_config.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/packaging/build_config.py#L41) (Line 41)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/packaging/build_config.py#L41
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `load_requirements`
@@ -10308,7 +10387,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
     with open(path) as file:
 ```
 
-#### 104. [src/lightning/app/utilities/packaging/build_config.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/packaging/build_config.py#L191) (Line 191)
+#### 107. [src/lightning/app/utilities/packaging/build_config.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/packaging/build_config.py#L191) (Line 191)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/packaging/build_config.py#L191
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `BuildConfig._prepare_dockerfile`
@@ -10319,7 +10398,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
                 with open(path) as f:
 ```
 
-#### 105. [src/lightning/app/utilities/packaging/docker.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/packaging/docker.py#L66) (Line 66)
+#### 108. [src/lightning/app/utilities/packaging/docker.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/packaging/docker.py#L66) (Line 66)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/packaging/docker.py#L66
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `DockerRunner._create_work_container`
@@ -10330,7 +10409,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(work_destination_path, "wb") as f:
 ```
 
-#### 106. [src/lightning/app/utilities/packaging/docker.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/packaging/docker.py#L70) (Line 70)
+#### 109. [src/lightning/app/utilities/packaging/docker.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/packaging/docker.py#L70) (Line 70)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/packaging/docker.py#L70
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `DockerRunner._create_work_container`
@@ -10341,7 +10420,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(source_path) as f:
 ```
 
-#### 107. [src/lightning/app/utilities/packaging/docker.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/packaging/docker.py#L82) (Line 82)
+#### 110. [src/lightning/app/utilities/packaging/docker.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/packaging/docker.py#L82) (Line 82)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/packaging/docker.py#L82
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `DockerRunner._create_work_container`
@@ -10352,7 +10431,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(destination_path, "w") as f:
 ```
 
-#### 108. [src/lightning/app/utilities/packaging/lightning_utils.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/packaging/lightning_utils.py#L68) (Line 68)
+#### 111. [src/lightning/app/utilities/packaging/lightning_utils.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/packaging/lightning_utils.py#L68) (Line 68)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/packaging/lightning_utils.py#L68
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_prepare_wheel`
@@ -10363,7 +10442,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
     with open("log.txt", "w") as logfile:
 ```
 
-#### 109. [src/lightning/fabric/loggers/csv_logs.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L179) (Line 179)
+#### 112. [src/lightning/fabric/loggers/csv_logs.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L179) (Line 179)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L179
 - **Target Call:** `self._fs.listdir` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `CSVLogger._get_next_version`
@@ -10374,7 +10453,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         for d in self._fs.listdir(versions_root):
 ```
 
-#### 110. [src/lightning/fabric/loggers/csv_logs.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L212) (Line 212)
+#### 113. [src/lightning/fabric/loggers/csv_logs.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L212) (Line 212)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L212
 - **Target Call:** `self._fs.makedirs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_ExperimentWriter.__init__`
@@ -10385,7 +10464,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         self._fs.makedirs(self.log_dir, exist_ok=True)
 ```
 
-#### 111. [src/lightning/fabric/loggers/csv_logs.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L235) (Line 235)
+#### 114. [src/lightning/fabric/loggers/csv_logs.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L235) (Line 235)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L235
 - **Target Call:** `self._fs.isfile` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_ExperimentWriter.save`
@@ -10396,7 +10475,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         file_exists = self._fs.isfile(self.metrics_file_path)
 ```
 
-#### 112. [src/lightning/fabric/loggers/csv_logs.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L241) (Line 241)
+#### 115. [src/lightning/fabric/loggers/csv_logs.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L241) (Line 241)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L241
 - **Target Call:** `self._fs.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_ExperimentWriter.save`
@@ -10407,7 +10486,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with self._fs.open(self.metrics_file_path, mode=("a" if file_exists else "w"), newline="") as file:
 ```
 
-#### 113. [src/lightning/fabric/loggers/csv_logs.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L259) (Line 259)
+#### 116. [src/lightning/fabric/loggers/csv_logs.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L259) (Line 259)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L259
 - **Target Call:** `self._fs.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_ExperimentWriter._rewrite_with_new_header`
@@ -10418,7 +10497,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with self._fs.open(self.metrics_file_path, "r", newline="") as file:
 ```
 
-#### 114. [src/lightning/fabric/loggers/csv_logs.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L262) (Line 262)
+#### 117. [src/lightning/fabric/loggers/csv_logs.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L262) (Line 262)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L262
 - **Target Call:** `self._fs.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_ExperimentWriter._rewrite_with_new_header`
@@ -10429,7 +10508,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with self._fs.open(self.metrics_file_path, "w", newline="") as file:
 ```
 
-#### 115. [src/lightning/fabric/loggers/csv_logs.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L268) (Line 268)
+#### 118. [src/lightning/fabric/loggers/csv_logs.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L268) (Line 268)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L268
 - **Target Call:** `self._fs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_ExperimentWriter._check_log_dir_exists`
@@ -10440,7 +10519,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         if self._fs.exists(self.log_dir) and self._fs.listdir(self.log_dir):
 ```
 
-#### 116. [src/lightning/fabric/loggers/csv_logs.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L268) (Line 268)
+#### 119. [src/lightning/fabric/loggers/csv_logs.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L268) (Line 268)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L268
 - **Target Call:** `self._fs.listdir` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_ExperimentWriter._check_log_dir_exists`
@@ -10451,7 +10530,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         if self._fs.exists(self.log_dir) and self._fs.listdir(self.log_dir):
 ```
 
-#### 117. [src/lightning/fabric/loggers/csv_logs.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L273) (Line 273)
+#### 120. [src/lightning/fabric/loggers/csv_logs.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L273) (Line 273)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L273
 - **Target Call:** `self._fs.isfile` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_ExperimentWriter._check_log_dir_exists`
@@ -10462,7 +10541,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             if self._fs.isfile(self.metrics_file_path):
 ```
 
-#### 118. [src/lightning/fabric/loggers/csv_logs.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L274) (Line 274)
+#### 121. [src/lightning/fabric/loggers/csv_logs.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L274) (Line 274)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/csv_logs.py#L274
 - **Target Call:** `self._fs.rm_file` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_ExperimentWriter._check_log_dir_exists`
@@ -10473,7 +10552,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
                 self._fs.rm_file(self.metrics_file_path)
 ```
 
-#### 119. [src/lightning/fabric/loggers/tensorboard.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/tensorboard.py#L190) (Line 190)
+#### 122. [src/lightning/fabric/loggers/tensorboard.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/tensorboard.py#L190) (Line 190)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/tensorboard.py#L190
 - **Target Call:** `self._fs.makedirs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `TensorBoardLogger.experiment`
@@ -10484,7 +10563,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             self._fs.makedirs(self.root_dir, exist_ok=True)
 ```
 
-#### 120. [src/lightning/fabric/loggers/tensorboard.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/tensorboard.py#L306) (Line 306)
+#### 123. [src/lightning/fabric/loggers/tensorboard.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/tensorboard.py#L306) (Line 306)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/loggers/tensorboard.py#L306
 - **Target Call:** `self._fs.listdir` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `TensorBoardLogger._get_next_version`
@@ -10495,7 +10574,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             listdir_info = self._fs.listdir(save_dir)
 ```
 
-#### 121. [src/lightning/fabric/plugins/environments/lsf.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/plugins/environments/lsf.py#L170) (Line 170)
+#### 124. [src/lightning/fabric/plugins/environments/lsf.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/plugins/environments/lsf.py#L170) (Line 170)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/plugins/environments/lsf.py#L170
 - **Target Call:** `fs.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `LSFEnvironment._read_hosts`
@@ -10506,7 +10585,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with fs.open(rankfile, "r") as f:
 ```
 
-#### 122. [src/lightning/fabric/plugins/io/torch_io.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/plugins/io/torch_io.py#L57) (Line 57)
+#### 125. [src/lightning/fabric/plugins/io/torch_io.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/plugins/io/torch_io.py#L57) (Line 57)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/plugins/io/torch_io.py#L57
 - **Target Call:** `fs.makedirs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `TorchCheckpointIO.save_checkpoint`
@@ -10517,7 +10596,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         fs.makedirs(os.path.dirname(path), exist_ok=True)
 ```
 
-#### 123. [src/lightning/fabric/plugins/io/torch_io.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/plugins/io/torch_io.py#L80) (Line 80)
+#### 126. [src/lightning/fabric/plugins/io/torch_io.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/plugins/io/torch_io.py#L80) (Line 80)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/plugins/io/torch_io.py#L80
 - **Target Call:** `fs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `TorchCheckpointIO.load_checkpoint`
@@ -10528,7 +10607,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         if not fs.exists(path):
 ```
 
-#### 124. [src/lightning/fabric/plugins/io/torch_io.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/plugins/io/torch_io.py#L94) (Line 94)
+#### 127. [src/lightning/fabric/plugins/io/torch_io.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/plugins/io/torch_io.py#L94) (Line 94)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/plugins/io/torch_io.py#L94
 - **Target Call:** `fs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `TorchCheckpointIO.remove_checkpoint`
@@ -10539,7 +10618,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         if fs.exists(path):
 ```
 
-#### 125. [src/lightning/fabric/plugins/io/torch_io.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/plugins/io/torch_io.py#L95) (Line 95)
+#### 128. [src/lightning/fabric/plugins/io/torch_io.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/plugins/io/torch_io.py#L95) (Line 95)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/plugins/io/torch_io.py#L95
 - **Target Call:** `fs.rm` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `TorchCheckpointIO.remove_checkpoint`
@@ -10550,7 +10629,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             fs.rm(path, recursive=True)
 ```
 
-#### 126. [src/lightning/fabric/plugins/io/xla.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/plugins/io/xla.py#L64) (Line 64)
+#### 129. [src/lightning/fabric/plugins/io/xla.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/plugins/io/xla.py#L64) (Line 64)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/plugins/io/xla.py#L64
 - **Target Call:** `fs.makedirs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `XLACheckpointIO.save_checkpoint`
@@ -10561,7 +10640,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         fs.makedirs(os.path.dirname(path), exist_ok=True)
 ```
 
-#### 127. [src/lightning/fabric/strategies/deepspeed.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/strategies/deepspeed.py#L810) (Line 810)
+#### 130. [src/lightning/fabric/strategies/deepspeed.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/strategies/deepspeed.py#L810) (Line 810)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/strategies/deepspeed.py#L810
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `DeepSpeedStrategy._load_config`
@@ -10572,7 +10651,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             with open(config) as f:
 ```
 
-#### 128. [src/lightning/fabric/strategies/fsdp.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/strategies/fsdp.py#L268) (Line 268)
+#### 131. [src/lightning/fabric/strategies/fsdp.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/strategies/fsdp.py#L268) (Line 268)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/strategies/fsdp.py#L268
 - **Target Call:** `self._fsdp_kwargs.get` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `FSDPStrategy.setup_module_and_optimizers`
@@ -10583,7 +10662,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         use_orig_params = self._fsdp_kwargs.get("use_orig_params")
 ```
 
-#### 129. [src/lightning/fabric/strategies/fsdp.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/strategies/fsdp.py#L322) (Line 322)
+#### 132. [src/lightning/fabric/strategies/fsdp.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/strategies/fsdp.py#L322) (Line 322)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/strategies/fsdp.py#L322
 - **Target Call:** `self._fsdp_kwargs.get` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `FSDPStrategy.setup_optimizer`
@@ -10594,7 +10673,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         if self._fsdp_kwargs.get("use_orig_params"):
 ```
 
-#### 130. [src/lightning/fabric/strategies/xla_fsdp.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/strategies/xla_fsdp.py#L633) (Line 633)
+#### 133. [src/lightning/fabric/strategies/xla_fsdp.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/strategies/xla_fsdp.py#L633) (Line 633)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/strategies/xla_fsdp.py#L633
 - **Target Call:** `self._fsdp_kwargs.copy` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `XLAFSDPStrategy._parse_fsdp_kwargs`
@@ -10605,7 +10684,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         kwargs = self._fsdp_kwargs.copy()
 ```
 
-#### 131. [src/lightning/fabric/utilities/cloud_io.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/utilities/cloud_io.py#L56) (Line 56)
+#### 134. [src/lightning/fabric/utilities/cloud_io.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/utilities/cloud_io.py#L56) (Line 56)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/utilities/cloud_io.py#L56
 - **Target Call:** `fs.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_load`
@@ -10616,7 +10695,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
     with fs.open(path_or_url, "rb") as f:
 ```
 
-#### 132. [src/lightning/fabric/utilities/cloud_io.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/utilities/cloud_io.py#L61) (Line 61)
+#### 135. [src/lightning/fabric/utilities/cloud_io.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/utilities/cloud_io.py#L61) (Line 61)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/utilities/cloud_io.py#L61
 - **Target Call:** `url_to_fs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `get_filesystem`
@@ -10627,7 +10706,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
     fs, _ = url_to_fs(str(path), **kwargs)
 ```
 
-#### 133. [src/lightning/fabric/utilities/cloud_io.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/utilities/cloud_io.py#L79) (Line 79)
+#### 136. [src/lightning/fabric/utilities/cloud_io.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/utilities/cloud_io.py#L79) (Line 79)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/utilities/cloud_io.py#L79
 - **Target Call:** `fsspec.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_atomic_save`
@@ -10638,7 +10717,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
     with fsspec.open(filepath, "wb") as f:
 ```
 
-#### 134. [src/lightning/fabric/utilities/cloud_io.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/utilities/cloud_io.py#L126) (Line 126)
+#### 137. [src/lightning/fabric/utilities/cloud_io.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/utilities/cloud_io.py#L126) (Line 126)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/utilities/cloud_io.py#L126
 - **Target Call:** `fs.isdir` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_is_dir`
@@ -10649,7 +10728,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             return fs.isdir(path)
 ```
 
-#### 135. [src/lightning/fabric/utilities/cloud_io.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/utilities/cloud_io.py#L130) (Line 130)
+#### 138. [src/lightning/fabric/utilities/cloud_io.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/utilities/cloud_io.py#L130) (Line 130)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/utilities/cloud_io.py#L130
 - **Target Call:** `fs.isfile` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_is_dir`
@@ -10660,7 +10739,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         return not fs.isfile(path)
 ```
 
-#### 136. [src/lightning/fabric/utilities/cloud_io.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/utilities/cloud_io.py#L132) (Line 132)
+#### 139. [src/lightning/fabric/utilities/cloud_io.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/utilities/cloud_io.py#L132) (Line 132)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/utilities/cloud_io.py#L132
 - **Target Call:** `fs.isdir` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_is_dir`
@@ -10671,7 +10750,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
     return fs.isdir(path)
 ```
 
-#### 137. [src/lightning/fabric/utilities/cloud_io.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/utilities/cloud_io.py#L136) (Line 136)
+#### 140. [src/lightning/fabric/utilities/cloud_io.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/utilities/cloud_io.py#L136) (Line 136)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/utilities/cloud_io.py#L136
 - **Target Call:** `fsspec.utils.get_protocol` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_is_local_file_protocol`
@@ -10682,7 +10761,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
     return fsspec.utils.get_protocol(str(path)) == "file"
 ```
 
-#### 138. [src/lightning/fabric/utilities/spike.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/utilities/spike.py#L126) (Line 126)
+#### 141. [src/lightning/fabric/utilities/spike.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/utilities/spike.py#L126) (Line 126)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/fabric/utilities/spike.py#L126
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `SpikeDetection._handle_spike`
@@ -10693,7 +10772,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             with open(self.exclude_batches_path, "w") as f:
 ```
 
-#### 139. [src/lightning/pytorch/callbacks/model_checkpoint.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/callbacks/model_checkpoint.py#L646) (Line 646)
+#### 142. [src/lightning/pytorch/callbacks/model_checkpoint.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/callbacks/model_checkpoint.py#L646) (Line 646)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/callbacks/model_checkpoint.py#L646
 - **Target Call:** `self._fs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `ModelCheckpoint._find_last_checkpoints`
@@ -10704,7 +10783,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         if self._fs.exists(ckpt_path):
 ```
 
-#### 140. [src/lightning/pytorch/callbacks/model_checkpoint.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/callbacks/model_checkpoint.py#L647) (Line 647)
+#### 143. [src/lightning/pytorch/callbacks/model_checkpoint.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/callbacks/model_checkpoint.py#L647) (Line 647)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/callbacks/model_checkpoint.py#L647
 - **Target Call:** `self._fs.ls` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `ModelCheckpoint._find_last_checkpoints`
@@ -10715,7 +10794,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             return {os.path.normpath(p) for p in self._fs.ls(ckpt_path, detail=False) if _is_last(Path(p))}
 ```
 
-#### 141. [src/lightning/pytorch/callbacks/model_checkpoint.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/callbacks/model_checkpoint.py#L651) (Line 651)
+#### 144. [src/lightning/pytorch/callbacks/model_checkpoint.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/callbacks/model_checkpoint.py#L651) (Line 651)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/callbacks/model_checkpoint.py#L651
 - **Target Call:** `self._fs.ls` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `ModelCheckpoint.__warn_if_dir_not_empty`
@@ -10726,7 +10805,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         if self.save_top_k != 0 and _is_dir(self._fs, dirpath, strict=True) and len(self._fs.ls(dirpath)) > 0:
 ```
 
-#### 142. [src/lightning/pytorch/callbacks/model_checkpoint.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/callbacks/model_checkpoint.py#L767) (Line 767)
+#### 145. [src/lightning/pytorch/callbacks/model_checkpoint.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/callbacks/model_checkpoint.py#L767) (Line 767)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/callbacks/model_checkpoint.py#L767
 - **Target Call:** `self._fs.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `ModelCheckpoint.to_yaml`
@@ -10737,7 +10816,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with self._fs.open(filepath, "w") as fp:
 ```
 
-#### 143. [src/lightning/pytorch/callbacks/model_checkpoint.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/callbacks/model_checkpoint.py#L773) (Line 773)
+#### 146. [src/lightning/pytorch/callbacks/model_checkpoint.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/callbacks/model_checkpoint.py#L773) (Line 773)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/callbacks/model_checkpoint.py#L773
 - **Target Call:** `self._fs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `ModelCheckpoint.file_exists`
@@ -10748,7 +10827,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         exists = self._fs.exists(filepath)
 ```
 
-#### 144. [src/lightning/pytorch/cli.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/cli.py#L258) (Line 258)
+#### 147. [src/lightning/pytorch/cli.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/cli.py#L258) (Line 258)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/cli.py#L258
 - **Target Call:** `fs.isfile` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `SaveConfigCallback.setup`
@@ -10759,7 +10838,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
                 file_exists = fs.isfile(config_path) if trainer.is_global_zero else False
 ```
 
-#### 145. [src/lightning/pytorch/cli.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/cli.py#L273) (Line 273)
+#### 148. [src/lightning/pytorch/cli.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/cli.py#L273) (Line 273)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/cli.py#L273
 - **Target Call:** `fs.makedirs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `SaveConfigCallback.setup`
@@ -10770,7 +10849,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
                 fs.makedirs(log_dir, exist_ok=True)
 ```
 
-#### 146. [src/lightning/pytorch/core/module.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/core/module.py#L1480) (Line 1480)
+#### 149. [src/lightning/pytorch/core/module.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/core/module.py#L1480) (Line 1480)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/core/module.py#L1480
 - **Target Call:** `fs.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `LightningModule.to_torchscript`
@@ -10781,7 +10860,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             with fs.open(file_path, "wb") as f:
 ```
 
-#### 147. [src/lightning/pytorch/core/saving.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/core/saving.py#L259) (Line 259)
+#### 150. [src/lightning/pytorch/core/saving.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/core/saving.py#L259) (Line 259)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/core/saving.py#L259
 - **Target Call:** `fs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `load_hparams_from_tags_csv`
@@ -10792,7 +10871,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
     if not fs.exists(tags_csv):
 ```
 
-#### 148. [src/lightning/pytorch/core/saving.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/core/saving.py#L263) (Line 263)
+#### 151. [src/lightning/pytorch/core/saving.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/core/saving.py#L263) (Line 263)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/core/saving.py#L263
 - **Target Call:** `fs.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `load_hparams_from_tags_csv`
@@ -10803,7 +10882,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
     with fs.open(tags_csv, "r", newline="") as fp:
 ```
 
-#### 149. [src/lightning/pytorch/core/saving.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/core/saving.py#L276) (Line 276)
+#### 152. [src/lightning/pytorch/core/saving.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/core/saving.py#L276) (Line 276)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/core/saving.py#L276
 - **Target Call:** `fs.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `save_hparams_to_tags_csv`
@@ -10814,7 +10893,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
     with fs.open(tags_csv, "w", newline="") as fp:
 ```
 
-#### 150. [src/lightning/pytorch/core/saving.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/core/saving.py#L302) (Line 302)
+#### 153. [src/lightning/pytorch/core/saving.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/core/saving.py#L302) (Line 302)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/core/saving.py#L302
 - **Target Call:** `fs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `load_hparams_from_yaml`
@@ -10825,7 +10904,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
     if not fs.exists(config_yaml):
 ```
 
-#### 151. [src/lightning/pytorch/core/saving.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/core/saving.py#L306) (Line 306)
+#### 154. [src/lightning/pytorch/core/saving.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/core/saving.py#L306) (Line 306)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/core/saving.py#L306
 - **Target Call:** `fs.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `load_hparams_from_yaml`
@@ -10836,7 +10915,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
     with fs.open(config_yaml, "r") as fp:
 ```
 
-#### 152. [src/lightning/pytorch/core/saving.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/core/saving.py#L346) (Line 346)
+#### 155. [src/lightning/pytorch/core/saving.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/core/saving.py#L346) (Line 346)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/core/saving.py#L346
 - **Target Call:** `fs.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `save_hparams_to_yaml`
@@ -10847,7 +10926,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with fs.open(config_yaml, "w", encoding="utf-8") as fp:
 ```
 
-#### 153. [src/lightning/pytorch/core/saving.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/core/saving.py#L369) (Line 369)
+#### 156. [src/lightning/pytorch/core/saving.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/core/saving.py#L369) (Line 369)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/core/saving.py#L369
 - **Target Call:** `fs.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `save_hparams_to_yaml`
@@ -10858,7 +10937,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
     with fs.open(config_yaml, "w", newline="") as fp:
 ```
 
-#### 154. [src/lightning/pytorch/demos/transformer.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/demos/transformer.py#L141) (Line 141)
+#### 157. [src/lightning/pytorch/demos/transformer.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/demos/transformer.py#L141) (Line 141)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/demos/transformer.py#L141
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `WikiText2.download`
@@ -10869,7 +10948,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(destination, "w") as f:
 ```
 
-#### 155. [src/lightning/pytorch/demos/transformer.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/demos/transformer.py#L165) (Line 165)
+#### 158. [src/lightning/pytorch/demos/transformer.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/demos/transformer.py#L165) (Line 165)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/demos/transformer.py#L165
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `tokenize`
@@ -10880,7 +10959,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
     with open(path, encoding="utf8") as f:
 ```
 
-#### 156. [src/lightning/pytorch/demos/transformer.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/demos/transformer.py#L172) (Line 172)
+#### 159. [src/lightning/pytorch/demos/transformer.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/demos/transformer.py#L172) (Line 172)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/demos/transformer.py#L172
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `tokenize`
@@ -10891,7 +10970,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
     with open(path, encoding="utf8") as f:
 ```
 
-#### 157. [src/lightning/pytorch/loggers/csv_logs.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/loggers/csv_logs.py#L169) (Line 169)
+#### 160. [src/lightning/pytorch/loggers/csv_logs.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/loggers/csv_logs.py#L169) (Line 169)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/loggers/csv_logs.py#L169
 - **Target Call:** `self._fs.makedirs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `CSVLogger.experiment`
@@ -10902,7 +10981,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         self._fs.makedirs(self.root_dir, exist_ok=True)
 ```
 
-#### 158. [src/lightning/pytorch/loggers/mlflow.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/loggers/mlflow.py#L365) (Line 365)
+#### 161. [src/lightning/pytorch/loggers/mlflow.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/loggers/mlflow.py#L365) (Line 365)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/loggers/mlflow.py#L365
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `MLFlowLogger._scan_and_log_checkpoints`
@@ -10913,7 +10992,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
                 with open(f"{tmp_dir}/metadata.yaml", "w") as tmp_file_metadata:
 ```
 
-#### 159. [src/lightning/pytorch/loggers/mlflow.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/loggers/mlflow.py#L369) (Line 369)
+#### 162. [src/lightning/pytorch/loggers/mlflow.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/loggers/mlflow.py#L369) (Line 369)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/loggers/mlflow.py#L369
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `MLFlowLogger._scan_and_log_checkpoints`
@@ -10924,7 +11003,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
                 with open(f"{tmp_dir}/aliases.txt", "w") as tmp_file_aliases:
 ```
 
-#### 160. [src/lightning/pytorch/loggers/neptune.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/loggers/neptune.py#L519) (Line 519)
+#### 163. [src/lightning/pytorch/loggers/neptune.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/loggers/neptune.py#L519) (Line 519)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/loggers/neptune.py#L519
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `NeptuneLogger.after_save_checkpoint`
@@ -10935,7 +11014,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             with open(checkpoint_callback.last_model_path, "rb") as fp:
 ```
 
-#### 161. [src/lightning/pytorch/loggers/neptune.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/loggers/neptune.py#L535) (Line 535)
+#### 164. [src/lightning/pytorch/loggers/neptune.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/loggers/neptune.py#L535) (Line 535)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/loggers/neptune.py#L535
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `NeptuneLogger.after_save_checkpoint`
@@ -10946,7 +11025,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             with open(checkpoint_callback.best_model_path, "rb") as fp:
 ```
 
-#### 162. [src/lightning/pytorch/loggers/tensorboard.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/loggers/tensorboard.py#L220) (Line 220)
+#### 165. [src/lightning/pytorch/loggers/tensorboard.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/loggers/tensorboard.py#L220) (Line 220)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/loggers/tensorboard.py#L220
 - **Target Call:** `self._fs.isfile` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `TensorBoardLogger.save`
@@ -10957,7 +11036,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         if _is_dir(self._fs, dir_path) and not self._fs.isfile(hparams_file):
 ```
 
-#### 163. [src/lightning/pytorch/loggers/tensorboard.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/loggers/tensorboard.py#L246) (Line 246)
+#### 166. [src/lightning/pytorch/loggers/tensorboard.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/loggers/tensorboard.py#L246) (Line 246)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/loggers/tensorboard.py#L246
 - **Target Call:** `self._fs.listdir` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `TensorBoardLogger._get_next_version`
@@ -10968,7 +11047,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             listdir_info = self._fs.listdir(root_dir)
 ```
 
-#### 164. [src/lightning/pytorch/profilers/profiler.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/profilers/profiler.py#L99) (Line 99)
+#### 167. [src/lightning/pytorch/profilers/profiler.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/profilers/profiler.py#L99) (Line 99)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/profilers/profiler.py#L99
 - **Target Call:** `fs.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Profiler._prepare_streams`
@@ -10979,7 +11058,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             file = fs.open(filepath, "a")
 ```
 
-#### 165. [src/lightning/pytorch/strategies/deepspeed.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/strategies/deepspeed.py#L795) (Line 795)
+#### 168. [src/lightning/pytorch/strategies/deepspeed.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/strategies/deepspeed.py#L795) (Line 795)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/strategies/deepspeed.py#L795
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `DeepSpeedStrategy._load_config`
@@ -10990,7 +11069,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             with open(config) as f:
 ```
 
-#### 166. [src/lightning/pytorch/trainer/connectors/checkpoint_connector.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/trainer/connectors/checkpoint_connector.py#L53) (Line 53)
+#### 169. [src/lightning/pytorch/trainer/connectors/checkpoint_connector.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/trainer/connectors/checkpoint_connector.py#L53) (Line 53)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/trainer/connectors/checkpoint_connector.py#L53
 - **Target Call:** `url_to_fs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_CheckpointConnector._hpc_resume_path`
@@ -11001,7 +11080,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         fs, path = url_to_fs(dir_path_hpc)
 ```
 
-#### 167. [src/lightning/pytorch/trainer/connectors/checkpoint_connector.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/trainer/connectors/checkpoint_connector.py#L183) (Line 183)
+#### 170. [src/lightning/pytorch/trainer/connectors/checkpoint_connector.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/trainer/connectors/checkpoint_connector.py#L183) (Line 183)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/trainer/connectors/checkpoint_connector.py#L183
 - **Target Call:** `fs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_CheckpointConnector._parse_ckpt_path`
@@ -11012,7 +11091,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             candidates_ts = {path: fs.modified(path) for path, fs in candidates_fs.items() if fs.exists(path)}
 ```
 
-#### 168. [src/lightning/pytorch/trainer/connectors/checkpoint_connector.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/trainer/connectors/checkpoint_connector.py#L519) (Line 519)
+#### 171. [src/lightning/pytorch/trainer/connectors/checkpoint_connector.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/trainer/connectors/checkpoint_connector.py#L519) (Line 519)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/trainer/connectors/checkpoint_connector.py#L519
 - **Target Call:** `url_to_fs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_CheckpointConnector.__max_ckpt_version_in_folder`
@@ -11023,7 +11102,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         fs, uri = url_to_fs(str(dir_path))
 ```
 
-#### 169. [src/lightning/pytorch/trainer/connectors/checkpoint_connector.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/trainer/connectors/checkpoint_connector.py#L520) (Line 520)
+#### 172. [src/lightning/pytorch/trainer/connectors/checkpoint_connector.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/trainer/connectors/checkpoint_connector.py#L520) (Line 520)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/trainer/connectors/checkpoint_connector.py#L520
 - **Target Call:** `fs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_CheckpointConnector.__max_ckpt_version_in_folder`
@@ -11034,7 +11113,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         if not fs.exists(dir_path):
 ```
 
-#### 170. [src/lightning/pytorch/trainer/connectors/checkpoint_connector.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/trainer/connectors/checkpoint_connector.py#L524) (Line 524)
+#### 173. [src/lightning/pytorch/trainer/connectors/checkpoint_connector.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/trainer/connectors/checkpoint_connector.py#L524) (Line 524)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/trainer/connectors/checkpoint_connector.py#L524
 - **Target Call:** `fs.listdir` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_CheckpointConnector.__max_ckpt_version_in_folder`
@@ -11045,7 +11124,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         files = [os.path.basename(f["name"]) for f in fs.listdir(uri)]
 ```
 
-#### 171. [src/lightning/pytorch/utilities/deepspeed.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/utilities/deepspeed.py#L33) (Line 33)
+#### 174. [src/lightning/pytorch/utilities/deepspeed.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/utilities/deepspeed.py#L33) (Line 33)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/pytorch/utilities/deepspeed.py#L33
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `ds_checkpoint_dir`
@@ -11056,7 +11135,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
             with open(latest_path) as fd:
 ```
 
-#### 172. [src/lightning/store/utils.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/store/utils.py#L26) (Line 26)
+#### 175. [src/lightning/store/utils.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/store/utils.py#L26) (Line 26)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/store/utils.py#L26
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_upload_file_to_url`
@@ -11067,7 +11146,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(path, "rb") as fd, tqdm(
 ```
 
-#### 173. [src/lightning/store/utils.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/store/utils.py#L37) (Line 37)
+#### 176. [src/lightning/store/utils.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/store/utils.py#L37) (Line 37)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/store/utils.py#L37
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_upload_file_to_url`
@@ -11078,7 +11157,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(path, "rb") as fo:
 ```
 
-#### 174. [src/lightning/store/utils.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/store/utils.py#L55) (Line 55)
+#### 177. [src/lightning/store/utils.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/store/utils.py#L55) (Line 55)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/store/utils.py#L55
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_download_file_from_url`
@@ -11089,7 +11168,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(path, "wb") as f:
 ```
 
-#### 175. [src/lightning_app/__setup__.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning_app/__setup__.py#L61) (Line 61)
+#### 178. [src/lightning_app/__setup__.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning_app/__setup__.py#L61) (Line 61)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning_app/__setup__.py#L61
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_setup_args`
@@ -11100,7 +11179,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
         with open(ui_ver_file, encoding="utf-8") as fo:
 ```
 
-#### 176. [src/lightning_app/__version__.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning_app/__version__.py#L8) (Line 8)
+#### 179. [src/lightning_app/__version__.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning_app/__version__.py#L8) (Line 8)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning_app/__version__.py#L8
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `global`
@@ -11111,7 +11190,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
 with open(_VERSION_PATH, encoding="utf-8") as fo:
 ```
 
-#### 177. [src/lightning_fabric/__version__.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning_fabric/__version__.py#L8) (Line 8)
+#### 180. [src/lightning_fabric/__version__.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning_fabric/__version__.py#L8) (Line 8)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning_fabric/__version__.py#L8
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `global`
@@ -11122,7 +11201,7 @@ with open(_VERSION_PATH, encoding="utf-8") as fo:
 with open(_VERSION_PATH, encoding="utf-8") as fo:
 ```
 
-#### 178. [src/pytorch_lightning/__version__.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/pytorch_lightning/__version__.py#L8) (Line 8)
+#### 181. [src/pytorch_lightning/__version__.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/pytorch_lightning/__version__.py#L8) (Line 8)
 - **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/pytorch_lightning/__version__.py#L8
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `global`
@@ -11181,9 +11260,20 @@ with open('Package.swift.template', 'r') as f:
 ```
 
 ### [huggingface/datasets](https://github.com/huggingface/datasets)
-- **Usages Found:** `143` in `34` files.
+- **Usages Found:** `144` in `35` files.
 
-#### 1. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L1851) (Line 1851)
+#### 1. [setup.py](https://github.com/huggingface/datasets/blob/main/setup.py#L249) (Line 249)
+- **Line Link:** https://github.com/huggingface/datasets/blob/main/setup.py#L249
+- **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
+- **Context:** `global`
+- **Arguments:** `'README.md'`
+- **Keywords:** `{'encoding': "'utf-8'"}`
+
+```python
+    long_description=open("README.md", encoding="utf-8").read(),
+```
+
+#### 2. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L1851) (Line 1851)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L1851
 - **Target Call:** `url_to_fs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Dataset.save_to_disk`
@@ -11194,7 +11284,7 @@ with open('Package.swift.template', 'r') as f:
         fs, _ = url_to_fs(dataset_path, **(storage_options or {}))
 ```
 
-#### 2. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L1863) (Line 1863)
+#### 3. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L1863) (Line 1863)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L1863
 - **Target Call:** `fs.makedirs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Dataset.save_to_disk`
@@ -11205,7 +11295,7 @@ with open('Package.swift.template', 'r') as f:
         fs.makedirs(dataset_path, exist_ok=True)
 ```
 
-#### 3. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L1931) (Line 1931)
+#### 4. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L1931) (Line 1931)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L1931
 - **Target Call:** `fs.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Dataset.save_to_disk`
@@ -11218,7 +11308,7 @@ with open('Package.swift.template', 'r') as f:
         ) as state_file:
 ```
 
-#### 4. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L1935) (Line 1935)
+#### 5. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L1935) (Line 1935)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L1935
 - **Target Call:** `fs.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Dataset.save_to_disk`
@@ -11231,7 +11321,7 @@ with open('Package.swift.template', 'r') as f:
         ) as dataset_info_file:
 ```
 
-#### 5. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L2022) (Line 2022)
+#### 6. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L2022) (Line 2022)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L2022
 - **Target Call:** `url_to_fs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Dataset.load_from_disk`
@@ -11242,7 +11332,7 @@ with open('Package.swift.template', 'r') as f:
         fs, dataset_path = url_to_fs(dataset_path, **(storage_options or {}))
 ```
 
-#### 6. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L2029) (Line 2029)
+#### 7. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L2029) (Line 2029)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L2029
 - **Target Call:** `fs.isfile` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Dataset.load_from_disk`
@@ -11253,7 +11343,7 @@ with open('Package.swift.template', 'r') as f:
         dataset_dict_is_file = fs.isfile(dataset_dict_json_path)
 ```
 
-#### 7. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L2030) (Line 2030)
+#### 8. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L2030) (Line 2030)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L2030
 - **Target Call:** `fs.isfile` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Dataset.load_from_disk`
@@ -11264,7 +11354,7 @@ with open('Package.swift.template', 'r') as f:
         dataset_info_is_file = fs.isfile(dataset_info_path)
 ```
 
-#### 8. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L2031) (Line 2031)
+#### 9. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L2031) (Line 2031)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L2031
 - **Target Call:** `fs.isfile` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Dataset.load_from_disk`
@@ -11275,7 +11365,7 @@ with open('Package.swift.template', 'r') as f:
         dataset_state_is_file = fs.isfile(dataset_state_json_path)
 ```
 
-#### 9. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L2065) (Line 2065)
+#### 10. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L2065) (Line 2065)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L2065
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Dataset.load_from_disk`
@@ -11286,7 +11376,7 @@ with open('Package.swift.template', 'r') as f:
         with open(dataset_state_json_path, encoding="utf-8") as state_file:
 ```
 
-#### 10. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L2067) (Line 2067)
+#### 11. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L2067) (Line 2067)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L2067
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Dataset.load_from_disk`
@@ -11297,7 +11387,7 @@ with open('Package.swift.template', 'r') as f:
         with open(dataset_info_path, encoding="utf-8") as dataset_info_file:
 ```
 
-#### 11. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L6754) (Line 6754)
+#### 12. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L6754) (Line 6754)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L6754
 - **Target Call:** `DirFileSystem` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_push_to_repo`
@@ -11308,7 +11398,7 @@ with open('Package.swift.template', 'r') as f:
         dirfs = DirFileSystem(fs=hffs, path=hf_path)
 ```
 
-#### 12. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L6758) (Line 6758)
+#### 13. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L6758) (Line 6758)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L6758
 - **Target Call:** `dirfs.glob` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_push_to_repo`
@@ -11319,7 +11409,7 @@ with open('Package.swift.template', 'r') as f:
             files_to_delete = dirfs.glob(f"{data_dir}/{split}-*", detail=True)
 ```
 
-#### 13. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L6844) (Line 6844)
+#### 14. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L6844) (Line 6844)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L6844
 - **Target Call:** `DirFileSystem` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_push_to_bucket`
@@ -11330,7 +11420,7 @@ with open('Package.swift.template', 'r') as f:
     dirfs = DirFileSystem(fs=hffs, path=hf_path)
 ```
 
-#### 14. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L6848) (Line 6848)
+#### 15. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L6848) (Line 6848)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L6848
 - **Target Call:** `dirfs.glob` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_push_to_bucket`
@@ -11341,7 +11431,7 @@ with open('Package.swift.template', 'r') as f:
         files_to_delete = dirfs.glob(f"{data_dir}/{split}-*", detail=True)
 ```
 
-#### 15. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L6911) (Line 6911)
+#### 16. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L6911) (Line 6911)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L6911
 - **Target Call:** `json.loads(fs.read_text(config.DATASETDICT_INFOS_FILENAME, encoding='utf-8')).get` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_get_updated_dataset_card`
@@ -11354,7 +11444,7 @@ with open('Package.swift.template', 'r') as f:
         )
 ```
 
-#### 16. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L6911) (Line 6911)
+#### 17. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L6911) (Line 6911)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L6911
 - **Target Call:** `fs.read_text` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_get_updated_dataset_card`
@@ -11365,7 +11455,7 @@ with open('Package.swift.template', 'r') as f:
         legacy_dataset_info: dict = json.loads(fs.read_text(config.DATASETDICT_INFOS_FILENAME, encoding="utf-8")).get(
 ```
 
-#### 17. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L6920) (Line 6920)
+#### 18. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L6920) (Line 6920)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L6920
 - **Target Call:** `fs.read_text` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_get_updated_dataset_card`
@@ -11376,7 +11466,7 @@ with open('Package.swift.template', 'r') as f:
         dataset_card = DatasetCard(fs.read_text(config.REPOCARD_FILENAME, newline="", encoding="utf-8"))
 ```
 
-#### 18. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L6966) (Line 6966)
+#### 19. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L6966) (Line 6966)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L6966
 - **Target Call:** `fs.glob` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_get_updated_dataset_card`
@@ -11387,7 +11477,7 @@ with open('Package.swift.template', 'r') as f:
     for file_path in fs.glob(PUSH_TO_HUB_WITHOUT_METADATA_CONFIGS_SPLIT_PATTERN_SHARDED.replace("{split}", "*")):
 ```
 
-#### 19. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L7019) (Line 7019)
+#### 20. [src/datasets/arrow_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L7019) (Line 7019)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_dataset.py#L7019
 - **Target Call:** `fs.read_text` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_get_updated_dataset_card`
@@ -11398,7 +11488,7 @@ with open('Package.swift.template', 'r') as f:
         legacy_dataset_infos: dict = json.loads(fs.read_text(config.DATASETDICT_INFOS_FILENAME, encoding="utf-8"))
 ```
 
-#### 20. [src/datasets/arrow_writer.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_writer.py#L521) (Line 521)
+#### 21. [src/datasets/arrow_writer.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_writer.py#L521) (Line 521)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_writer.py#L521
 - **Target Call:** `url_to_fs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `ArrowWriter.__init__`
@@ -11409,7 +11499,7 @@ with open('Package.swift.template', 'r') as f:
             fs, path = url_to_fs(path, **(storage_options or {}))
 ```
 
-#### 21. [src/datasets/arrow_writer.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_writer.py#L524) (Line 524)
+#### 22. [src/datasets/arrow_writer.py](https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_writer.py#L524) (Line 524)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/arrow_writer.py#L524
 - **Target Call:** `self._fs.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `ArrowWriter.__init__`
@@ -11420,7 +11510,7 @@ with open('Package.swift.template', 'r') as f:
             self.stream = self._fs.open(path, "wb")
 ```
 
-#### 22. [src/datasets/builder.py](https://github.com/huggingface/datasets/blob/main/src/datasets/builder.py#L422) (Line 422)
+#### 23. [src/datasets/builder.py](https://github.com/huggingface/datasets/blob/main/src/datasets/builder.py#L422) (Line 422)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/builder.py#L422
 - **Target Call:** `fsspec.filesystem` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `DatasetBuilder.__init__`
@@ -11431,7 +11521,7 @@ with open('Package.swift.template', 'r') as f:
         self._fs: fsspec.AbstractFileSystem = fsspec.filesystem("file")
 ```
 
-#### 23. [src/datasets/builder.py](https://github.com/huggingface/datasets/blob/main/src/datasets/builder.py#L789) (Line 789)
+#### 24. [src/datasets/builder.py](https://github.com/huggingface/datasets/blob/main/src/datasets/builder.py#L789) (Line 789)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/builder.py#L789
 - **Target Call:** `url_to_fs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `DatasetBuilder.download_and_prepare`
@@ -11442,7 +11532,7 @@ with open('Package.swift.template', 'r') as f:
         fs, output_dir = url_to_fs(output_dir, **(storage_options or {}))
 ```
 
-#### 24. [src/datasets/builder.py](https://github.com/huggingface/datasets/blob/main/src/datasets/builder.py#L842) (Line 842)
+#### 25. [src/datasets/builder.py](https://github.com/huggingface/datasets/blob/main/src/datasets/builder.py#L842) (Line 842)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/builder.py#L842
 - **Target Call:** `self._fs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `DatasetBuilder.download_and_prepare`
@@ -11453,7 +11543,7 @@ with open('Package.swift.template', 'r') as f:
             data_exists = self._fs.exists(posixpath.join(self._output_dir, config.DATASET_INFO_FILENAME))
 ```
 
-#### 25. [src/datasets/builder.py](https://github.com/huggingface/datasets/blob/main/src/datasets/builder.py#L863) (Line 863)
+#### 26. [src/datasets/builder.py](https://github.com/huggingface/datasets/blob/main/src/datasets/builder.py#L863) (Line 863)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/builder.py#L863
 - **Target Call:** `self._fs.makedirs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `DatasetBuilder.incomplete_dir`
@@ -11464,7 +11554,7 @@ with open('Package.swift.template', 'r') as f:
                     self._fs.makedirs(dirname, exist_ok=True)
 ```
 
-#### 26. [src/datasets/data_files.py](https://github.com/huggingface/datasets/blob/main/src/datasets/data_files.py#L356) (Line 356)
+#### 27. [src/datasets/data_files.py](https://github.com/huggingface/datasets/blob/main/src/datasets/data_files.py#L356) (Line 356)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/data_files.py#L356
 - **Target Call:** `url_to_fs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `resolve_pattern`
@@ -11475,7 +11565,7 @@ with open('Package.swift.template', 'r') as f:
     fs, fs_pattern = url_to_fs(pattern, **storage_options)
 ```
 
-#### 27. [src/datasets/data_files.py](https://github.com/huggingface/datasets/blob/main/src/datasets/data_files.py#L372) (Line 372)
+#### 28. [src/datasets/data_files.py](https://github.com/huggingface/datasets/blob/main/src/datasets/data_files.py#L372) (Line 372)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/data_files.py#L372
 - **Target Call:** `fs.glob` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `resolve_pattern`
@@ -11486,7 +11576,7 @@ with open('Package.swift.template', 'r') as f:
     for filepath, info in fs.glob(fs_pattern, detail=True, **glob_kwargs).items():
 ```
 
-#### 28. [src/datasets/data_files.py](https://github.com/huggingface/datasets/blob/main/src/datasets/data_files.py#L509) (Line 509)
+#### 29. [src/datasets/data_files.py](https://github.com/huggingface/datasets/blob/main/src/datasets/data_files.py#L509) (Line 509)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/data_files.py#L509
 - **Target Call:** `url_to_fs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_get_single_origin_metadata`
@@ -11497,7 +11587,7 @@ with open('Package.swift.template', 'r') as f:
         fs, fs_path = url_to_fs(data_file, **storage_options)
 ```
 
-#### 29. [src/datasets/data_files.py](https://github.com/huggingface/datasets/blob/main/src/datasets/data_files.py#L514) (Line 514)
+#### 30. [src/datasets/data_files.py](https://github.com/huggingface/datasets/blob/main/src/datasets/data_files.py#L514) (Line 514)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/data_files.py#L514
 - **Target Call:** `fs.info` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_get_single_origin_metadata`
@@ -11508,7 +11598,7 @@ with open('Package.swift.template', 'r') as f:
     info = fs.info(fs_path)
 ```
 
-#### 30. [src/datasets/dataset_dict.py](https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L1359) (Line 1359)
+#### 31. [src/datasets/dataset_dict.py](https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L1359) (Line 1359)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L1359
 - **Target Call:** `url_to_fs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `DatasetDict.save_to_disk`
@@ -11519,7 +11609,7 @@ with open('Package.swift.template', 'r') as f:
         fs, _ = url_to_fs(dataset_dict_path, **(storage_options or {}))
 ```
 
-#### 31. [src/datasets/dataset_dict.py](https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L1368) (Line 1368)
+#### 32. [src/datasets/dataset_dict.py](https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L1368) (Line 1368)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L1368
 - **Target Call:** `fs.makedirs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `DatasetDict.save_to_disk`
@@ -11530,7 +11620,7 @@ with open('Package.swift.template', 'r') as f:
         fs.makedirs(dataset_dict_path, exist_ok=True)
 ```
 
-#### 32. [src/datasets/dataset_dict.py](https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L1370) (Line 1370)
+#### 33. [src/datasets/dataset_dict.py](https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L1370) (Line 1370)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L1370
 - **Target Call:** `fs.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `DatasetDict.save_to_disk`
@@ -11545,7 +11635,7 @@ with open('Package.swift.template', 'r') as f:
         ) as f:
 ```
 
-#### 33. [src/datasets/dataset_dict.py](https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L1418) (Line 1418)
+#### 34. [src/datasets/dataset_dict.py](https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L1418) (Line 1418)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L1418
 - **Target Call:** `url_to_fs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `DatasetDict.load_from_disk`
@@ -11556,7 +11646,7 @@ with open('Package.swift.template', 'r') as f:
         fs, dataset_dict_path = url_to_fs(dataset_dict_path, **(storage_options or {}))
 ```
 
-#### 34. [src/datasets/dataset_dict.py](https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L1423) (Line 1423)
+#### 35. [src/datasets/dataset_dict.py](https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L1423) (Line 1423)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L1423
 - **Target Call:** `fs.isfile` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `DatasetDict.load_from_disk`
@@ -11567,7 +11657,7 @@ with open('Package.swift.template', 'r') as f:
         if not fs.isfile(dataset_dict_json_path):
 ```
 
-#### 35. [src/datasets/dataset_dict.py](https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L1424) (Line 1424)
+#### 36. [src/datasets/dataset_dict.py](https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L1424) (Line 1424)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L1424
 - **Target Call:** `fs.isfile` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `DatasetDict.load_from_disk`
@@ -11578,7 +11668,7 @@ with open('Package.swift.template', 'r') as f:
             if fs.isfile(dataset_info_path) and fs.isfile(dataset_state_json_path):
 ```
 
-#### 36. [src/datasets/dataset_dict.py](https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L1424) (Line 1424)
+#### 37. [src/datasets/dataset_dict.py](https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L1424) (Line 1424)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L1424
 - **Target Call:** `fs.isfile` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `DatasetDict.load_from_disk`
@@ -11589,7 +11679,7 @@ with open('Package.swift.template', 'r') as f:
             if fs.isfile(dataset_info_path) and fs.isfile(dataset_state_json_path):
 ```
 
-#### 37. [src/datasets/dataset_dict.py](https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L1432) (Line 1432)
+#### 38. [src/datasets/dataset_dict.py](https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L1432) (Line 1432)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L1432
 - **Target Call:** `fs.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `DatasetDict.load_from_disk`
@@ -11600,7 +11690,7 @@ with open('Package.swift.template', 'r') as f:
         with fs.open(dataset_dict_json_path, "r", encoding="utf-8") as f:
 ```
 
-#### 38. [src/datasets/dataset_dict.py](https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L2626) (Line 2626)
+#### 39. [src/datasets/dataset_dict.py](https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L2626) (Line 2626)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L2626
 - **Target Call:** `DirFileSystem` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_push_to_repo`
@@ -11611,7 +11701,7 @@ with open('Package.swift.template', 'r') as f:
         dirfs = DirFileSystem(fs=hffs, path=hf_path)
 ```
 
-#### 39. [src/datasets/dataset_dict.py](https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L2630) (Line 2630)
+#### 40. [src/datasets/dataset_dict.py](https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L2630) (Line 2630)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L2630
 - **Target Call:** `dirfs.glob` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_push_to_repo`
@@ -11622,7 +11712,7 @@ with open('Package.swift.template', 'r') as f:
             files_to_delete = list(dirfs.glob(f"{data_dir}/*"))
 ```
 
-#### 40. [src/datasets/dataset_dict.py](https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L2713) (Line 2713)
+#### 41. [src/datasets/dataset_dict.py](https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L2713) (Line 2713)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L2713
 - **Target Call:** `DirFileSystem` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_push_to_bucket`
@@ -11633,7 +11723,7 @@ with open('Package.swift.template', 'r') as f:
     dirfs = DirFileSystem(fs=hffs, path=hf_path)
 ```
 
-#### 41. [src/datasets/dataset_dict.py](https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L2722) (Line 2722)
+#### 42. [src/datasets/dataset_dict.py](https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L2722) (Line 2722)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/dataset_dict.py#L2722
 - **Target Call:** `dirfs.glob` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_push_to_bucket`
@@ -11644,7 +11734,7 @@ with open('Package.swift.template', 'r') as f:
         files_to_delete = list(dirfs.glob(f"{data_dir}/*"))
 ```
 
-#### 42. [src/datasets/download/download_manager.py](https://github.com/huggingface/datasets/blob/main/src/datasets/download/download_manager.py#L196) (Line 196)
+#### 43. [src/datasets/download/download_manager.py](https://github.com/huggingface/datasets/blob/main/src/datasets/download/download_manager.py#L196) (Line 196)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/download/download_manager.py#L196
 - **Target Call:** `url_to_fs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `DownloadManager._download_batched`
@@ -11655,7 +11745,7 @@ with open('Package.swift.template', 'r') as f:
             fs, path = url_to_fs(path, **download_config.storage_options)
 ```
 
-#### 43. [src/datasets/download/download_manager.py](https://github.com/huggingface/datasets/blob/main/src/datasets/download/download_manager.py#L199) (Line 199)
+#### 44. [src/datasets/download/download_manager.py](https://github.com/huggingface/datasets/blob/main/src/datasets/download/download_manager.py#L199) (Line 199)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/download/download_manager.py#L199
 - **Target Call:** `fs.info(path).get` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `DownloadManager._download_batched`
@@ -11666,7 +11756,7 @@ with open('Package.swift.template', 'r') as f:
                 size = fs.info(path).get("size", 0)
 ```
 
-#### 44. [src/datasets/download/download_manager.py](https://github.com/huggingface/datasets/blob/main/src/datasets/download/download_manager.py#L199) (Line 199)
+#### 45. [src/datasets/download/download_manager.py](https://github.com/huggingface/datasets/blob/main/src/datasets/download/download_manager.py#L199) (Line 199)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/download/download_manager.py#L199
 - **Target Call:** `fs.info` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `DownloadManager._download_batched`
@@ -11677,7 +11767,7 @@ with open('Package.swift.template', 'r') as f:
                 size = fs.info(path).get("size", 0)
 ```
 
-#### 45. [src/datasets/features/features.py](https://github.com/huggingface/datasets/blob/main/src/datasets/features/features.py#L1193) (Line 1193)
+#### 46. [src/datasets/features/features.py](https://github.com/huggingface/datasets/blob/main/src/datasets/features/features.py#L1193) (Line 1193)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/features/features.py#L1193
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `ClassLabel._load_names_from_file`
@@ -11688,7 +11778,7 @@ with open('Package.swift.template', 'r') as f:
         with open(names_filepath, encoding="utf-8") as f:
 ```
 
-#### 46. [src/datasets/filesystems/__init__.py](https://github.com/huggingface/datasets/blob/main/src/datasets/filesystems/__init__.py#L27) (Line 27)
+#### 47. [src/datasets/filesystems/__init__.py](https://github.com/huggingface/datasets/blob/main/src/datasets/filesystems/__init__.py#L27) (Line 27)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/filesystems/__init__.py#L27
 - **Target Call:** `fsspec.register_implementation` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `global`
@@ -11699,7 +11789,7 @@ with open('Package.swift.template', 'r') as f:
     fsspec.register_implementation(fs_class.protocol, fs_class, clobber=True)
 ```
 
-#### 47. [src/datasets/filesystems/__init__.py](https://github.com/huggingface/datasets/blob/main/src/datasets/filesystems/__init__.py#L52) (Line 52)
+#### 48. [src/datasets/filesystems/__init__.py](https://github.com/huggingface/datasets/blob/main/src/datasets/filesystems/__init__.py#L52) (Line 52)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/filesystems/__init__.py#L52
 - **Target Call:** `fs.mv` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `rename`
@@ -11710,7 +11800,7 @@ with open('Package.swift.template', 'r') as f:
         fs.mv(src, dst, recursive=True)
 ```
 
-#### 48. [src/datasets/filesystems/compression.py](https://github.com/huggingface/datasets/blob/main/src/datasets/filesystems/compression.py#L66) (Line 66)
+#### 49. [src/datasets/filesystems/compression.py](https://github.com/huggingface/datasets/blob/main/src/datasets/filesystems/compression.py#L66) (Line 66)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/filesystems/compression.py#L66
 - **Target Call:** `self._open_with_fsspec().fs.info` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `BaseCompressedFileFileSystem._get_dirs`
@@ -11721,7 +11811,7 @@ with open('Package.swift.template', 'r') as f:
             f = {**self._open_with_fsspec().fs.info(self.fo), "name": self.uncompressed_name}
 ```
 
-#### 49. [src/datasets/filesystems/compression.py](https://github.com/huggingface/datasets/blob/main/src/datasets/filesystems/compression.py#L70) (Line 70)
+#### 50. [src/datasets/filesystems/compression.py](https://github.com/huggingface/datasets/blob/main/src/datasets/filesystems/compression.py#L70) (Line 70)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/filesystems/compression.py#L70
 - **Target Call:** `self._open_with_fsspec().open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `BaseCompressedFileFileSystem.cat`
@@ -11732,7 +11822,7 @@ with open('Package.swift.template', 'r') as f:
         with self._open_with_fsspec().open() as f:
 ```
 
-#### 50. [src/datasets/filesystems/compression.py](https://github.com/huggingface/datasets/blob/main/src/datasets/filesystems/compression.py#L85) (Line 85)
+#### 51. [src/datasets/filesystems/compression.py](https://github.com/huggingface/datasets/blob/main/src/datasets/filesystems/compression.py#L85) (Line 85)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/filesystems/compression.py#L85
 - **Target Call:** `self._open_with_fsspec().open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `BaseCompressedFileFileSystem._open`
@@ -11743,7 +11833,7 @@ with open('Package.swift.template', 'r') as f:
         return self._open_with_fsspec().open()
 ```
 
-#### 51. [src/datasets/info.py](https://github.com/huggingface/datasets/blob/main/src/datasets/info.py#L208) (Line 208)
+#### 52. [src/datasets/info.py](https://github.com/huggingface/datasets/blob/main/src/datasets/info.py#L208) (Line 208)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/info.py#L208
 - **Target Call:** `url_to_fs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `DatasetInfo.write_to_directory`
@@ -11754,7 +11844,7 @@ with open('Package.swift.template', 'r') as f:
         fs, *_ = url_to_fs(dataset_info_dir, **(storage_options or {}))
 ```
 
-#### 52. [src/datasets/info.py](https://github.com/huggingface/datasets/blob/main/src/datasets/info.py#L209) (Line 209)
+#### 53. [src/datasets/info.py](https://github.com/huggingface/datasets/blob/main/src/datasets/info.py#L209) (Line 209)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/info.py#L209
 - **Target Call:** `fs.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `DatasetInfo.write_to_directory`
@@ -11765,7 +11855,7 @@ with open('Package.swift.template', 'r') as f:
         with fs.open(posixpath.join(dataset_info_dir, config.DATASET_INFO_FILENAME), "wb") as f:
 ```
 
-#### 53. [src/datasets/info.py](https://github.com/huggingface/datasets/blob/main/src/datasets/info.py#L212) (Line 212)
+#### 54. [src/datasets/info.py](https://github.com/huggingface/datasets/blob/main/src/datasets/info.py#L212) (Line 212)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/info.py#L212
 - **Target Call:** `fs.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `DatasetInfo.write_to_directory`
@@ -11776,7 +11866,7 @@ with open('Package.swift.template', 'r') as f:
             with fs.open(posixpath.join(dataset_info_dir, config.LICENSE_FILENAME), "wb") as f:
 ```
 
-#### 54. [src/datasets/info.py](https://github.com/huggingface/datasets/blob/main/src/datasets/info.py#L273) (Line 273)
+#### 55. [src/datasets/info.py](https://github.com/huggingface/datasets/blob/main/src/datasets/info.py#L273) (Line 273)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/info.py#L273
 - **Target Call:** `url_to_fs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `DatasetInfo.from_directory`
@@ -11787,7 +11877,7 @@ with open('Package.swift.template', 'r') as f:
         fs, *_ = url_to_fs(dataset_info_dir, **(storage_options or {}))
 ```
 
-#### 55. [src/datasets/info.py](https://github.com/huggingface/datasets/blob/main/src/datasets/info.py#L277) (Line 277)
+#### 56. [src/datasets/info.py](https://github.com/huggingface/datasets/blob/main/src/datasets/info.py#L277) (Line 277)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/info.py#L277
 - **Target Call:** `fs.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `DatasetInfo.from_directory`
@@ -11798,7 +11888,7 @@ with open('Package.swift.template', 'r') as f:
         with fs.open(posixpath.join(dataset_info_dir, config.DATASET_INFO_FILENAME), "r", encoding="utf-8") as f:
 ```
 
-#### 56. [src/datasets/info.py](https://github.com/huggingface/datasets/blob/main/src/datasets/info.py#L347) (Line 347)
+#### 57. [src/datasets/info.py](https://github.com/huggingface/datasets/blob/main/src/datasets/info.py#L347) (Line 347)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/info.py#L347
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `DatasetInfosDict.write_to_directory`
@@ -11809,7 +11899,7 @@ with open('Package.swift.template', 'r') as f:
             with open(dataset_infos_path, "w", encoding="utf-8") as f:
 ```
 
-#### 57. [src/datasets/info.py](https://github.com/huggingface/datasets/blob/main/src/datasets/info.py#L376) (Line 376)
+#### 58. [src/datasets/info.py](https://github.com/huggingface/datasets/blob/main/src/datasets/info.py#L376) (Line 376)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/info.py#L376
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `DatasetInfosDict.from_directory`
@@ -11820,7 +11910,7 @@ with open('Package.swift.template', 'r') as f:
             with open(os.path.join(dataset_infos_dir, config.DATASETDICT_INFOS_FILENAME), encoding="utf-8") as f:
 ```
 
-#### 58. [src/datasets/io/csv.py](https://github.com/huggingface/datasets/blob/main/src/datasets/io/csv.py#L94) (Line 94)
+#### 59. [src/datasets/io/csv.py](https://github.com/huggingface/datasets/blob/main/src/datasets/io/csv.py#L94) (Line 94)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/io/csv.py#L94
 - **Target Call:** `fsspec.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `CsvDatasetWriter.write`
@@ -11831,7 +11921,7 @@ with open('Package.swift.template', 'r') as f:
             with fsspec.open(self.path_or_buf, "wb", **(self.storage_options or {})) as buffer:
 ```
 
-#### 59. [src/datasets/io/json.py](https://github.com/huggingface/datasets/blob/main/src/datasets/io/json.py#L113) (Line 113)
+#### 60. [src/datasets/io/json.py](https://github.com/huggingface/datasets/blob/main/src/datasets/io/json.py#L113) (Line 113)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/io/json.py#L113
 - **Target Call:** `fsspec.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `JsonDatasetWriter.write`
@@ -11844,7 +11934,7 @@ with open('Package.swift.template', 'r') as f:
             ) as buffer:
 ```
 
-#### 60. [src/datasets/io/parquet.py](https://github.com/huggingface/datasets/blob/main/src/datasets/io/parquet.py#L100) (Line 100)
+#### 61. [src/datasets/io/parquet.py](https://github.com/huggingface/datasets/blob/main/src/datasets/io/parquet.py#L100) (Line 100)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/io/parquet.py#L100
 - **Target Call:** `fsspec.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `ParquetDatasetWriter.write`
@@ -11855,7 +11945,7 @@ with open('Package.swift.template', 'r') as f:
             with fsspec.open(self.path_or_buf, "wb", **(self.storage_options or {})) as buffer:
 ```
 
-#### 61. [src/datasets/iterable_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/iterable_dataset.py#L2699) (Line 2699)
+#### 62. [src/datasets/iterable_dataset.py](https://github.com/huggingface/datasets/blob/main/src/datasets/iterable_dataset.py#L2699) (Line 2699)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/iterable_dataset.py#L2699
 - **Target Call:** `fsspec.asyn.reset_lock` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `IterableDataset._iter_pytorch`
@@ -11866,7 +11956,7 @@ with open('Package.swift.template', 'r') as f:
         fsspec.asyn.reset_lock()
 ```
 
-#### 62. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L434) (Line 434)
+#### 63. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L434) (Line 434)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L434
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `LocalDatasetModuleFactory.get_module`
@@ -11877,7 +11967,7 @@ with open('Package.swift.template', 'r') as f:
             with open(standalone_yaml_path, encoding="utf-8") as f:
 ```
 
-#### 63. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L488) (Line 488)
+#### 64. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L488) (Line 488)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L488
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `LocalDatasetModuleFactory.get_module`
@@ -11888,7 +11978,7 @@ with open('Package.swift.template', 'r') as f:
             with open(os.path.join(self.path, config.DATASETDICT_INFOS_FILENAME), encoding="utf-8") as f:
 ```
 
-#### 64. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L612) (Line 612)
+#### 65. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L612) (Line 612)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L612
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `HubDatasetModuleFactory.get_module`
@@ -11899,7 +11989,7 @@ with open('Package.swift.template', 'r') as f:
             with open(standalone_yaml_path, encoding="utf-8") as f:
 ```
 
-#### 65. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L697) (Line 697)
+#### 66. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L697) (Line 697)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L697
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `HubDatasetModuleFactory.get_module`
@@ -11910,7 +12000,7 @@ with open('Package.swift.template', 'r') as f:
             with open(dataset_infos_path, encoding="utf-8") as f:
 ```
 
-#### 66. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L873) (Line 873)
+#### 67. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L873) (Line 873)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L873
 - **Target Call:** `hffs.read_text` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `HubBucketDatasetModuleFactory.get_module`
@@ -11921,7 +12011,7 @@ with open('Package.swift.template', 'r') as f:
             dataset_card_data = DatasetCard(hffs.read_text(readme_path, newline="", encoding="utf-8")).data
 ```
 
-#### 67. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L877) (Line 877)
+#### 68. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L877) (Line 877)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L877
 - **Target Call:** `hffs.read_text` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `HubBucketDatasetModuleFactory.get_module`
@@ -11932,7 +12022,7 @@ with open('Package.swift.template', 'r') as f:
             standalone_yaml_data = yaml.safe_load(hffs.read_text(standalone_yaml_path, newline="", encoding="utf-8"))
 ```
 
-#### 68. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L880) (Line 880)
+#### 69. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L880) (Line 880)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L880
 - **Target Call:** `hffs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `HubBucketDatasetModuleFactory.get_module`
@@ -11943,7 +12033,7 @@ with open('Package.swift.template', 'r') as f:
         if hffs.exists(standalone_yaml_path):
 ```
 
-#### 69. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L881) (Line 881)
+#### 70. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L881) (Line 881)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L881
 - **Target Call:** `hffs.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `HubBucketDatasetModuleFactory.get_module`
@@ -11954,7 +12044,7 @@ with open('Package.swift.template', 'r') as f:
             with hffs.open(standalone_yaml_path, "r", encoding="utf-8") as f:
 ```
 
-#### 70. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L934) (Line 934)
+#### 71. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L934) (Line 934)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L934
 - **Target Call:** `hffs.isfile` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `HubBucketDatasetModuleFactory.get_module`
@@ -11965,7 +12055,7 @@ with open('Package.swift.template', 'r') as f:
         if hffs.isfile(xjoin(self.path, config.DATASETDICT_INFOS_FILENAME)):
 ```
 
-#### 71. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L935) (Line 935)
+#### 72. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L935) (Line 935)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L935
 - **Target Call:** `hffs.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `HubBucketDatasetModuleFactory.get_module`
@@ -11976,7 +12066,7 @@ with open('Package.swift.template', 'r') as f:
             with hffs.open(xjoin(self.path, config.DATASETDICT_INFOS_FILENAME), "r", encoding="utf-8") as f:
 ```
 
-#### 72. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L1772) (Line 1772)
+#### 73. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L1772) (Line 1772)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L1772
 - **Target Call:** `url_to_fs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `load_from_disk`
@@ -11987,7 +12077,7 @@ with open('Package.swift.template', 'r') as f:
     fs, *_ = url_to_fs(dataset_path, **(storage_options or {}))
 ```
 
-#### 73. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L1773) (Line 1773)
+#### 74. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L1773) (Line 1773)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L1773
 - **Target Call:** `fs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `load_from_disk`
@@ -11998,7 +12088,7 @@ with open('Package.swift.template', 'r') as f:
     if not fs.exists(dataset_path):
 ```
 
-#### 74. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L1775) (Line 1775)
+#### 75. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L1775) (Line 1775)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L1775
 - **Target Call:** `fs.isfile` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `load_from_disk`
@@ -12009,7 +12099,7 @@ with open('Package.swift.template', 'r') as f:
     if fs.isfile(posixpath.join(dataset_path, config.DATASET_INFO_FILENAME)) and fs.isfile(
 ```
 
-#### 75. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L1775) (Line 1775)
+#### 76. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L1775) (Line 1775)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L1775
 - **Target Call:** `fs.isfile` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `load_from_disk`
@@ -12022,7 +12112,7 @@ with open('Package.swift.template', 'r') as f:
     ):
 ```
 
-#### 76. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L1779) (Line 1779)
+#### 77. [src/datasets/load.py](https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L1779) (Line 1779)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/load.py#L1779
 - **Target Call:** `fs.isfile` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `load_from_disk`
@@ -12033,7 +12123,7 @@ with open('Package.swift.template', 'r') as f:
     elif fs.isfile(posixpath.join(dataset_path, config.DATASETDICT_JSON_FILENAME)):
 ```
 
-#### 77. [src/datasets/packaged_modules/arrow/arrow.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/arrow/arrow.py#L40) (Line 40)
+#### 78. [src/datasets/packaged_modules/arrow/arrow.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/arrow/arrow.py#L40) (Line 40)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/arrow/arrow.py#L40
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Arrow._split_generators`
@@ -12044,7 +12134,7 @@ with open('Package.swift.template', 'r') as f:
                     with open(file, "rb") as f:
 ```
 
-#### 78. [src/datasets/packaged_modules/arrow/arrow.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/arrow/arrow.py#L62) (Line 62)
+#### 79. [src/datasets/packaged_modules/arrow/arrow.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/arrow/arrow.py#L62) (Line 62)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/arrow/arrow.py#L62
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Arrow._generate_tables`
@@ -12055,7 +12145,7 @@ with open('Package.swift.template', 'r') as f:
             with open(file, "rb") as f:
 ```
 
-#### 79. [src/datasets/packaged_modules/cache/cache.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/cache/cache.py#L185) (Line 185)
+#### 80. [src/datasets/packaged_modules/cache/cache.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/cache/cache.py#L185) (Line 185)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/cache/cache.py#L185
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Cache._generate_tables`
@@ -12066,7 +12156,7 @@ with open('Package.swift.template', 'r') as f:
             with open(file, "rb") as f:
 ```
 
-#### 80. [src/datasets/packaged_modules/conll/conll.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/conll/conll.py#L126) (Line 126)
+#### 81. [src/datasets/packaged_modules/conll/conll.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/conll/conll.py#L126) (Line 126)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/conll/conll.py#L126
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Conll._generate_tables`
@@ -12077,7 +12167,7 @@ with open('Package.swift.template', 'r') as f:
                 with open(file, encoding=self.config.encoding, errors=self.config.encoding_errors) as f:
 ```
 
-#### 81. [src/datasets/packaged_modules/eval/eval.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/eval/eval.py#L62) (Line 62)
+#### 82. [src/datasets/packaged_modules/eval/eval.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/eval/eval.py#L62) (Line 62)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/eval/eval.py#L62
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Eval._iter_samples_from_log_files`
@@ -12088,7 +12178,7 @@ with open('Package.swift.template', 'r') as f:
             with open(sample_file) as f:
 ```
 
-#### 82. [src/datasets/packaged_modules/folder_based_builder/folder_based_builder.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/folder_based_builder/folder_based_builder.py#L313) (Line 313)
+#### 83. [src/datasets/packaged_modules/folder_based_builder/folder_based_builder.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/folder_based_builder/folder_based_builder.py#L313) (Line 313)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/folder_based_builder/folder_based_builder.py#L313
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `FolderBasedBuilder._read_metadata`
@@ -12099,7 +12189,7 @@ with open('Package.swift.template', 'r') as f:
             with open(metadata_file, "rb") as f:
 ```
 
-#### 83. [src/datasets/packaged_modules/folder_based_builder/folder_based_builder.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/folder_based_builder/folder_based_builder.py#L352) (Line 352)
+#### 84. [src/datasets/packaged_modules/folder_based_builder/folder_based_builder.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/folder_based_builder/folder_based_builder.py#L352) (Line 352)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/folder_based_builder/folder_based_builder.py#L352
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `FolderBasedBuilder._read_metadata`
@@ -12110,7 +12200,7 @@ with open('Package.swift.template', 'r') as f:
             with open(metadata_file, "rb") as f:
 ```
 
-#### 84. [src/datasets/packaged_modules/hdf5/hdf5.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/hdf5/hdf5.py#L57) (Line 57)
+#### 85. [src/datasets/packaged_modules/hdf5/hdf5.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/hdf5/hdf5.py#L57) (Line 57)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/hdf5/hdf5.py#L57
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `HDF5._split_generators`
@@ -12121,7 +12211,7 @@ with open('Package.swift.template', 'r') as f:
                     with open(first_file, "rb") as f:
 ```
 
-#### 85. [src/datasets/packaged_modules/hdf5/hdf5.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/hdf5/hdf5.py#L71) (Line 71)
+#### 86. [src/datasets/packaged_modules/hdf5/hdf5.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/hdf5/hdf5.py#L71) (Line 71)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/hdf5/hdf5.py#L71
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `HDF5._generate_tables`
@@ -12132,7 +12222,7 @@ with open('Package.swift.template', 'r') as f:
                 with open(file, "rb") as f:
 ```
 
-#### 86. [src/datasets/packaged_modules/json/json.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/json/json.py#L161) (Line 161)
+#### 87. [src/datasets/packaged_modules/json/json.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/json/json.py#L161) (Line 161)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/json/json.py#L161
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Json._generate_tables`
@@ -12143,7 +12233,7 @@ with open('Package.swift.template', 'r') as f:
                     with open(file, encoding=self.config.encoding, errors=self.config.encoding_errors) as f:
 ```
 
-#### 87. [src/datasets/packaged_modules/json/json.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/json/json.py#L225) (Line 225)
+#### 88. [src/datasets/packaged_modules/json/json.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/json/json.py#L225) (Line 225)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/json/json.py#L225
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Json._generate_tables`
@@ -12154,7 +12244,7 @@ with open('Package.swift.template', 'r') as f:
                     with open(file, "rb") as f:
 ```
 
-#### 88. [src/datasets/packaged_modules/json/json.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/json/json.py#L321) (Line 321)
+#### 89. [src/datasets/packaged_modules/json/json.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/json/json.py#L321) (Line 321)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/json/json.py#L321
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Json._generate_tables`
@@ -12167,7 +12257,7 @@ with open('Package.swift.template', 'r') as f:
                                     ) as f:
 ```
 
-#### 89. [src/datasets/packaged_modules/pandas/pandas.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/pandas/pandas.py#L55) (Line 55)
+#### 90. [src/datasets/packaged_modules/pandas/pandas.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/pandas/pandas.py#L55) (Line 55)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/pandas/pandas.py#L55
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Pandas._generate_tables`
@@ -12178,7 +12268,7 @@ with open('Package.swift.template', 'r') as f:
             with open(file, "rb") as f:
 ```
 
-#### 90. [src/datasets/packaged_modules/parquet/parquet.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/parquet/parquet.py#L126) (Line 126)
+#### 91. [src/datasets/packaged_modules/parquet/parquet.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/parquet/parquet.py#L126) (Line 126)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/parquet/parquet.py#L126
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Parquet._split_generators`
@@ -12189,7 +12279,7 @@ with open('Package.swift.template', 'r') as f:
                         with open(file, "rb") as f:
 ```
 
-#### 91. [src/datasets/packaged_modules/parquet/parquet.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/parquet/parquet.py#L173) (Line 173)
+#### 92. [src/datasets/packaged_modules/parquet/parquet.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/parquet/parquet.py#L173) (Line 173)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/parquet/parquet.py#L173
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Parquet._generate_more_gen_kwargs`
@@ -12200,7 +12290,7 @@ with open('Package.swift.template', 'r') as f:
                 with open(file, "rb") as f:
 ```
 
-#### 92. [src/datasets/packaged_modules/parquet/parquet.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/parquet/parquet.py#L199) (Line 199)
+#### 93. [src/datasets/packaged_modules/parquet/parquet.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/parquet/parquet.py#L199) (Line 199)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/parquet/parquet.py#L199
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Parquet._generate_tables`
@@ -12211,7 +12301,7 @@ with open('Package.swift.template', 'r') as f:
                 with open(file, "rb") as f:
 ```
 
-#### 93. [src/datasets/packaged_modules/spark/spark.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/spark/spark.py#L148) (Line 148)
+#### 94. [src/datasets/packaged_modules/spark/spark.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/spark/spark.py#L148) (Line 148)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/spark/spark.py#L148
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Spark.create_cache_and_write_probe`
@@ -12222,7 +12312,7 @@ with open('Package.swift.template', 'r') as f:
             open(probe_file, "a")
 ```
 
-#### 94. [src/datasets/packaged_modules/text/text.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/text/text.py#L94) (Line 94)
+#### 95. [src/datasets/packaged_modules/text/text.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/text/text.py#L94) (Line 94)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/text/text.py#L94
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Text._generate_tables`
@@ -12233,7 +12323,7 @@ with open('Package.swift.template', 'r') as f:
                 with open(file, encoding=self.config.encoding, errors=self.config.encoding_errors) as f:
 ```
 
-#### 95. [src/datasets/packaged_modules/tsfile/tsfile.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/tsfile/tsfile.py#L736) (Line 736)
+#### 96. [src/datasets/packaged_modules/tsfile/tsfile.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/tsfile/tsfile.py#L736) (Line 736)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/tsfile/tsfile.py#L736
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `TsFile._open_reader`
@@ -12244,7 +12334,7 @@ with open('Package.swift.template', 'r') as f:
             with open(file, "rb") as fh:
 ```
 
-#### 96. [src/datasets/packaged_modules/webdataset/_tenbin.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/webdataset/_tenbin.py#L276) (Line 276)
+#### 97. [src/datasets/packaged_modules/webdataset/_tenbin.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/webdataset/_tenbin.py#L276) (Line 276)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/webdataset/_tenbin.py#L276
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `save`
@@ -12255,7 +12345,7 @@ with open('Package.swift.template', 'r') as f:
     with open(fname, "wb") as stream:
 ```
 
-#### 97. [src/datasets/packaged_modules/webdataset/_tenbin.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/webdataset/_tenbin.py#L284) (Line 284)
+#### 98. [src/datasets/packaged_modules/webdataset/_tenbin.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/webdataset/_tenbin.py#L284) (Line 284)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/webdataset/_tenbin.py#L284
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `load`
@@ -12266,7 +12356,7 @@ with open('Package.swift.template', 'r') as f:
     with open(fname, "rb") as stream:
 ```
 
-#### 98. [src/datasets/packaged_modules/xml/xml.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/xml/xml.py#L67) (Line 67)
+#### 99. [src/datasets/packaged_modules/xml/xml.py](https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/xml/xml.py#L67) (Line 67)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/packaged_modules/xml/xml.py#L67
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Xml._generate_tables`
@@ -12277,7 +12367,7 @@ with open('Package.swift.template', 'r') as f:
             with open(file, encoding=self.config.encoding, errors=self.config.encoding_errors) as f:
 ```
 
-#### 99. [src/datasets/search.py](https://github.com/huggingface/datasets/blob/main/src/datasets/search.py#L396) (Line 396)
+#### 100. [src/datasets/search.py](https://github.com/huggingface/datasets/blob/main/src/datasets/search.py#L396) (Line 396)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/search.py#L396
 - **Target Call:** `fsspec.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `FaissIndex.save`
@@ -12288,7 +12378,7 @@ with open('Package.swift.template', 'r') as f:
         with fsspec.open(str(file), "wb", **(storage_options or {})) as f:
 ```
 
-#### 100. [src/datasets/search.py](https://github.com/huggingface/datasets/blob/main/src/datasets/search.py#L411) (Line 411)
+#### 101. [src/datasets/search.py](https://github.com/huggingface/datasets/blob/main/src/datasets/search.py#L411) (Line 411)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/search.py#L411
 - **Target Call:** `fsspec.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `FaissIndex.load`
@@ -12299,7 +12389,7 @@ with open('Package.swift.template', 'r') as f:
         with fsspec.open(str(file), "rb", **(storage_options or {})) as f:
 ```
 
-#### 101. [src/datasets/utils/extract.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/extract.py#L72) (Line 72)
+#### 102. [src/datasets/utils/extract.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/extract.py#L72) (Line 72)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/extract.py#L72
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `MagicNumberBaseExtractor.read_magic_number`
@@ -12310,7 +12400,7 @@ with open('Package.swift.template', 'r') as f:
         with open(path, "rb") as f:
 ```
 
-#### 102. [src/datasets/utils/extract.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/extract.py#L141) (Line 141)
+#### 103. [src/datasets/utils/extract.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/extract.py#L141) (Line 141)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/extract.py#L141
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `GzipExtractor.extract`
@@ -12321,7 +12411,7 @@ with open('Package.swift.template', 'r') as f:
             with open(output_path, "wb") as extracted_file:
 ```
 
-#### 103. [src/datasets/utils/extract.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/extract.py#L172) (Line 172)
+#### 104. [src/datasets/utils/extract.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/extract.py#L172) (Line 172)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/extract.py#L172
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `ZipExtractor.is_extractable`
@@ -12332,7 +12422,7 @@ with open('Package.swift.template', 'r') as f:
             with open(path, "rb") as fp:
 ```
 
-#### 104. [src/datasets/utils/extract.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/extract.py#L235) (Line 235)
+#### 105. [src/datasets/utils/extract.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/extract.py#L235) (Line 235)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/extract.py#L235
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `XzExtractor.extract`
@@ -12343,7 +12433,7 @@ with open('Package.swift.template', 'r') as f:
             with open(output_path, "wb") as extracted_file:
 ```
 
-#### 105. [src/datasets/utils/extract.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/extract.py#L301) (Line 301)
+#### 106. [src/datasets/utils/extract.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/extract.py#L301) (Line 301)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/extract.py#L301
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `ZstdExtractor.extract`
@@ -12354,7 +12444,7 @@ with open('Package.swift.template', 'r') as f:
         with open(input_path, "rb") as ifh, open(output_path, "wb") as ofh:
 ```
 
-#### 106. [src/datasets/utils/extract.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/extract.py#L301) (Line 301)
+#### 107. [src/datasets/utils/extract.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/extract.py#L301) (Line 301)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/extract.py#L301
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `ZstdExtractor.extract`
@@ -12365,7 +12455,7 @@ with open('Package.swift.template', 'r') as f:
         with open(input_path, "rb") as ifh, open(output_path, "wb") as ofh:
 ```
 
-#### 107. [src/datasets/utils/extract.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/extract.py#L311) (Line 311)
+#### 108. [src/datasets/utils/extract.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/extract.py#L311) (Line 311)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/extract.py#L311
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Bzip2Extractor.extract`
@@ -12376,7 +12466,7 @@ with open('Package.swift.template', 'r') as f:
             with open(output_path, "wb") as extracted_file:
 ```
 
-#### 108. [src/datasets/utils/extract.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/extract.py#L377) (Line 377)
+#### 109. [src/datasets/utils/extract.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/extract.py#L377) (Line 377)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/extract.py#L377
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `Lz4Extractor.extract`
@@ -12387,7 +12477,7 @@ with open('Package.swift.template', 'r') as f:
             with open(output_path, "wb") as extracted_file:
 ```
 
-#### 109. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L166) (Line 166)
+#### 110. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L166) (Line 166)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L166
 - **Target Call:** `can_be_local` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `cached_path`
@@ -12398,7 +12488,7 @@ with open('Package.swift.template', 'r') as f:
     if can_be_local(url_or_filename):
 ```
 
-#### 110. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L167) (Line 167)
+#### 111. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L167) (Line 167)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L167
 - **Target Call:** `strip_protocol` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `cached_path`
@@ -12409,7 +12499,7 @@ with open('Package.swift.template', 'r') as f:
         url_or_filename = strip_protocol(url_or_filename)
 ```
 
-#### 111. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L295) (Line 295)
+#### 112. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L295) (Line 295)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L295
 - **Target Call:** `url_to_fs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `fsspec_head`
@@ -12420,7 +12510,7 @@ with open('Package.swift.template', 'r') as f:
     fs, path = url_to_fs(url, **(storage_options or {}))
 ```
 
-#### 112. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L296) (Line 296)
+#### 113. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L296) (Line 296)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L296
 - **Target Call:** `fs.info` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `fsspec_head`
@@ -12431,7 +12521,7 @@ with open('Package.swift.template', 'r') as f:
     return fs.info(path)
 ```
 
-#### 113. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L317) (Line 317)
+#### 114. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L317) (Line 317)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L317
 - **Target Call:** `url_to_fs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `fsspec_get`
@@ -12442,7 +12532,7 @@ with open('Package.swift.template', 'r') as f:
     fs, path = url_to_fs(url, **(storage_options or {}))
 ```
 
-#### 114. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L330) (Line 330)
+#### 115. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L330) (Line 330)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L330
 - **Target Call:** `fs.get_file` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `fsspec_get`
@@ -12453,7 +12543,7 @@ with open('Package.swift.template', 'r') as f:
     fs.get_file(path, temp_file.name, callback=callback)
 ```
 
-#### 115. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L403) (Line 403)
+#### 116. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L403) (Line 403)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L403
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `get_from_cache`
@@ -12464,7 +12554,7 @@ with open('Package.swift.template', 'r') as f:
         with open(incomplete_path, "w+b") as temp_file:
 ```
 
-#### 116. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L414) (Line 414)
+#### 117. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L414) (Line 414)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L414
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `get_from_cache`
@@ -12475,7 +12565,7 @@ with open('Package.swift.template', 'r') as f:
         with open(meta_path, "w", encoding="utf-8") as meta_file:
 ```
 
-#### 117. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L559) (Line 559)
+#### 118. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L559) (Line 559)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L559
 - **Target Call:** `fsspec.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_get_extraction_protocol`
@@ -12486,7 +12576,7 @@ with open('Package.swift.template', 'r') as f:
         with fsspec.open(urlpath, **(storage_options or {})) as f:
 ```
 
-#### 118. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L645) (Line 645)
+#### 119. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L645) (Line 645)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L645
 - **Target Call:** `url_to_fs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `xexists`
@@ -12497,7 +12587,7 @@ with open('Package.swift.template', 'r') as f:
         fs, *_ = url_to_fs(urlpath, **storage_options)
 ```
 
-#### 119. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L646) (Line 646)
+#### 120. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L646) (Line 646)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L646
 - **Target Call:** `fs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `xexists`
@@ -12508,7 +12598,7 @@ with open('Package.swift.template', 'r') as f:
         return fs.exists(main_hop)
 ```
 
-#### 120. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L745) (Line 745)
+#### 121. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L745) (Line 745)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L745
 - **Target Call:** `url_to_fs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `xisfile`
@@ -12519,7 +12609,7 @@ with open('Package.swift.template', 'r') as f:
         fs, *_ = url_to_fs(path, **storage_options)
 ```
 
-#### 121. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L746) (Line 746)
+#### 122. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L746) (Line 746)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L746
 - **Target Call:** `fs.isfile` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `xisfile`
@@ -12530,7 +12620,7 @@ with open('Package.swift.template', 'r') as f:
         return fs.isfile(main_hop)
 ```
 
-#### 122. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L765) (Line 765)
+#### 123. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L765) (Line 765)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L765
 - **Target Call:** `url_to_fs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `xgetsize`
@@ -12541,7 +12631,7 @@ with open('Package.swift.template', 'r') as f:
         fs, *_ = fs, *_ = url_to_fs(path, **storage_options)
 ```
 
-#### 123. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L767) (Line 767)
+#### 124. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L767) (Line 767)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L767
 - **Target Call:** `fs.size` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `xgetsize`
@@ -12552,7 +12642,7 @@ with open('Package.swift.template', 'r') as f:
             size = fs.size(main_hop)
 ```
 
-#### 124. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L793) (Line 793)
+#### 125. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L793) (Line 793)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L793
 - **Target Call:** `url_to_fs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `xisdir`
@@ -12563,7 +12653,7 @@ with open('Package.swift.template', 'r') as f:
         fs, *_ = fs, *_ = url_to_fs(path, **storage_options)
 ```
 
-#### 125. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L797) (Line 797)
+#### 126. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L797) (Line 797)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L797
 - **Target Call:** `fs.isdir` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `xisdir`
@@ -12574,7 +12664,7 @@ with open('Package.swift.template', 'r') as f:
         return fs.isdir(inner_path)
 ```
 
-#### 126. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L913) (Line 913)
+#### 127. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L913) (Line 913)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L913
 - **Target Call:** `fsspec.available_protocols` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_prepare_single_hop_path_and_storage_options`
@@ -12585,7 +12675,7 @@ with open('Package.swift.template', 'r') as f:
             if option_name not in fsspec.available_protocols()
 ```
 
-#### 127. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L967) (Line 967)
+#### 128. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L967) (Line 967)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L967
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `xopen`
@@ -12596,7 +12686,7 @@ with open('Package.swift.template', 'r') as f:
         return open(main_hop, mode, *args, **kwargs)
 ```
 
-#### 128. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L977) (Line 977)
+#### 129. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L977) (Line 977)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L977
 - **Target Call:** `fsspec.get_fs_token_paths` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `xopen`
@@ -12611,7 +12701,7 @@ with open('Package.swift.template', 'r') as f:
             )
 ```
 
-#### 129. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L982) (Line 982)
+#### 130. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L982) (Line 982)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L982
 - **Target Call:** `fs.open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `xopen`
@@ -12622,7 +12712,7 @@ with open('Package.swift.template', 'r') as f:
             file_obj = fs.open(paths[0], mode)
 ```
 
-#### 130. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1030) (Line 1030)
+#### 131. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1030) (Line 1030)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1030
 - **Target Call:** `url_to_fs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `xlistdir`
@@ -12633,7 +12723,7 @@ with open('Package.swift.template', 'r') as f:
         fs, *_ = url_to_fs(path, **storage_options)
 ```
 
-#### 131. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1032) (Line 1032)
+#### 132. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1032) (Line 1032)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1032
 - **Target Call:** `fs.isdir` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `xlistdir`
@@ -12644,7 +12734,7 @@ with open('Package.swift.template', 'r') as f:
         if inner_path.strip("/") and not fs.isdir(inner_path):
 ```
 
-#### 132. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1034) (Line 1034)
+#### 133. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1034) (Line 1034)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1034
 - **Target Call:** `fs.listdir` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `xlistdir`
@@ -12655,7 +12745,7 @@ with open('Package.swift.template', 'r') as f:
         paths = fs.listdir(inner_path, detail=False)
 ```
 
-#### 133. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1057) (Line 1057)
+#### 134. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1057) (Line 1057)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1057
 - **Target Call:** `url_to_fs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `xglob`
@@ -12666,7 +12756,7 @@ with open('Package.swift.template', 'r') as f:
         fs, *_ = url_to_fs(urlpath, **storage_options)
 ```
 
-#### 134. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1059) (Line 1059)
+#### 135. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1059) (Line 1059)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1059
 - **Target Call:** `fs.glob` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `xglob`
@@ -12677,7 +12767,7 @@ with open('Package.swift.template', 'r') as f:
         globbed_paths = fs.glob(inner_path)
 ```
 
-#### 135. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1083) (Line 1083)
+#### 136. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1083) (Line 1083)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1083
 - **Target Call:** `url_to_fs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `xwalk`
@@ -12688,7 +12778,7 @@ with open('Package.swift.template', 'r') as f:
         fs, *_ = url_to_fs(urlpath, **storage_options)
 ```
 
-#### 136. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1085) (Line 1085)
+#### 137. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1085) (Line 1085)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1085
 - **Target Call:** `fs.isdir` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `xwalk`
@@ -12699,7 +12789,7 @@ with open('Package.swift.template', 'r') as f:
         if inner_path.strip("/") and not fs.isdir(inner_path):
 ```
 
-#### 137. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1088) (Line 1088)
+#### 138. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1088) (Line 1088)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1088
 - **Target Call:** `fs.walk` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `xwalk`
@@ -12710,7 +12800,7 @@ with open('Package.swift.template', 'r') as f:
         for dirpath, dirnames, filenames in fs.walk(inner_path, **kwargs):
 ```
 
-#### 138. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1161) (Line 1161)
+#### 139. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1161) (Line 1161)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1161
 - **Target Call:** `url_to_fs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `xPath.glob`
@@ -12721,7 +12811,7 @@ with open('Package.swift.template', 'r') as f:
             fs, *_ = url_to_fs(xjoin(posix_path, pattern), **(storage_options or {}))
 ```
 
-#### 139. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1162) (Line 1162)
+#### 140. [src/datasets/utils/file_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1162) (Line 1162)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/file_utils.py#L1162
 - **Target Call:** `fs.glob` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `xPath.glob`
@@ -12732,7 +12822,7 @@ with open('Package.swift.template', 'r') as f:
             globbed_paths = fs.glob(xjoin(main_hop, pattern))
 ```
 
-#### 140. [src/datasets/utils/info_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/info_utils.py#L84) (Line 84)
+#### 141. [src/datasets/utils/info_utils.py](https://github.com/huggingface/datasets/blob/main/src/datasets/utils/info_utils.py#L84) (Line 84)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/src/datasets/utils/info_utils.py#L84
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `get_size_checksum_dict`
@@ -12743,7 +12833,7 @@ with open('Package.swift.template', 'r') as f:
         with open(path, "rb") as f:
 ```
 
-#### 141. [utils/release.py](https://github.com/huggingface/datasets/blob/main/utils/release.py#L33) (Line 33)
+#### 142. [utils/release.py](https://github.com/huggingface/datasets/blob/main/utils/release.py#L33) (Line 33)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/utils/release.py#L33
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `update_version_in_file`
@@ -12754,7 +12844,7 @@ with open('Package.swift.template', 'r') as f:
     with open(fname, "r", encoding="utf-8", newline="\n") as f:
 ```
 
-#### 142. [utils/release.py](https://github.com/huggingface/datasets/blob/main/utils/release.py#L38) (Line 38)
+#### 143. [utils/release.py](https://github.com/huggingface/datasets/blob/main/utils/release.py#L38) (Line 38)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/utils/release.py#L38
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `update_version_in_file`
@@ -12765,7 +12855,7 @@ with open('Package.swift.template', 'r') as f:
     with open(fname, "w", encoding="utf-8", newline="\n") as f:
 ```
 
-#### 143. [utils/release.py](https://github.com/huggingface/datasets/blob/main/utils/release.py#L50) (Line 50)
+#### 144. [utils/release.py](https://github.com/huggingface/datasets/blob/main/utils/release.py#L50) (Line 50)
 - **Line Link:** https://github.com/huggingface/datasets/blob/main/utils/release.py#L50
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `get_version`
@@ -20255,7 +20345,7 @@ with open('Package.swift.template', 'r') as f:
 No direct filesystem / fsspec usages detected in this target.
 
 ### [modin-project/modin](https://github.com/modin-project/modin)
-- **Usages Found:** `48` in `8` files.
+- **Usages Found:** `49` in `9` files.
 
 #### 1. [modin/_version.py](https://github.com/modin-project/modin/blob/main/modin/_version.py#L176) (Line 176)
 - **Line Link:** https://github.com/modin-project/modin/blob/main/modin/_version.py#L176
@@ -20609,7 +20699,18 @@ No direct filesystem / fsspec usages detected in this target.
             fs, _ = fsspec.core.url_to_fs(file_path, anon=True, **new_storage_options)
 ```
 
-#### 33. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L408) (Line 408)
+#### 33. [setup.py](https://github.com/modin-project/modin/blob/main/setup.py#L5) (Line 5)
+- **Line Link:** https://github.com/modin-project/modin/blob/main/setup.py#L5
+- **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
+- **Context:** `global`
+- **Arguments:** `'README.md', 'r'`
+- **Keywords:** `{'encoding': "'utf-8'"}`
+
+```python
+with open("README.md", "r", encoding="utf-8") as fh:
+```
+
+#### 34. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L408) (Line 408)
 - **Line Link:** https://github.com/modin-project/modin/blob/main/versioneer.py#L408
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `get_config_from_root`
@@ -20620,7 +20721,7 @@ No direct filesystem / fsspec usages detected in this target.
             with open(pyproject_toml, "rb") as fobj:
 ```
 
-#### 34. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L416) (Line 416)
+#### 35. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L416) (Line 416)
 - **Line Link:** https://github.com/modin-project/modin/blob/main/versioneer.py#L416
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `get_config_from_root`
@@ -20631,7 +20732,7 @@ No direct filesystem / fsspec usages detected in this target.
         with open(setup_cfg) as cfg_file:
 ```
 
-#### 35. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L1213) (Line 1213)
+#### 36. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L1213) (Line 1213)
 - **Line Link:** https://github.com/modin-project/modin/blob/main/versioneer.py#L1213
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `git_get_keywords`
@@ -20642,7 +20743,7 @@ No direct filesystem / fsspec usages detected in this target.
         with open(versionfile_abs, "r") as fobj:
 ```
 
-#### 36. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L1473) (Line 1473)
+#### 37. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L1473) (Line 1473)
 - **Line Link:** https://github.com/modin-project/modin/blob/main/versioneer.py#L1473
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `do_vcs_install`
@@ -20653,7 +20754,7 @@ No direct filesystem / fsspec usages detected in this target.
         with open(".gitattributes", "r") as fobj:
 ```
 
-#### 37. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L1482) (Line 1482)
+#### 38. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L1482) (Line 1482)
 - **Line Link:** https://github.com/modin-project/modin/blob/main/versioneer.py#L1482
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `do_vcs_install`
@@ -20664,7 +20765,7 @@ No direct filesystem / fsspec usages detected in this target.
         with open(".gitattributes", "a+") as fobj:
 ```
 
-#### 38. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L1543) (Line 1543)
+#### 39. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L1543) (Line 1543)
 - **Line Link:** https://github.com/modin-project/modin/blob/main/versioneer.py#L1543
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `versions_from_file`
@@ -20675,7 +20776,7 @@ No direct filesystem / fsspec usages detected in this target.
         with open(filename) as f:
 ```
 
-#### 39. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L1562) (Line 1562)
+#### 40. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L1562) (Line 1562)
 - **Line Link:** https://github.com/modin-project/modin/blob/main/versioneer.py#L1562
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `write_to_version_file`
@@ -20686,7 +20787,7 @@ No direct filesystem / fsspec usages detected in this target.
     with open(filename, "w") as f:
 ```
 
-#### 40. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L2058) (Line 2058)
+#### 41. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L2058) (Line 2058)
 - **Line Link:** https://github.com/modin-project/modin/blob/main/versioneer.py#L2058
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `cmd_build_exe.run`
@@ -20697,7 +20798,7 @@ No direct filesystem / fsspec usages detected in this target.
                 with open(cfg.versionfile_source, "w") as f:
 ```
 
-#### 41. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L2091) (Line 2091)
+#### 42. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L2091) (Line 2091)
 - **Line Link:** https://github.com/modin-project/modin/blob/main/versioneer.py#L2091
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `cmd_py2exe.run`
@@ -20708,7 +20809,7 @@ No direct filesystem / fsspec usages detected in this target.
                 with open(cfg.versionfile_source, "w") as f:
 ```
 
-#### 42. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L2141) (Line 2141)
+#### 43. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L2141) (Line 2141)
 - **Line Link:** https://github.com/modin-project/modin/blob/main/versioneer.py#L2141
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `cmd_egg_info.find_sources`
@@ -20719,7 +20820,7 @@ No direct filesystem / fsspec usages detected in this target.
             with open(manifest_filename, "w") as fobj:
 ```
 
-#### 43. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L2236) (Line 2236)
+#### 44. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L2236) (Line 2236)
 - **Line Link:** https://github.com/modin-project/modin/blob/main/versioneer.py#L2236
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `do_setup`
@@ -20730,7 +20831,7 @@ No direct filesystem / fsspec usages detected in this target.
             with open(os.path.join(root, "setup.cfg"), "a") as f:
 ```
 
-#### 44. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L2242) (Line 2242)
+#### 45. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L2242) (Line 2242)
 - **Line Link:** https://github.com/modin-project/modin/blob/main/versioneer.py#L2242
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `do_setup`
@@ -20741,7 +20842,7 @@ No direct filesystem / fsspec usages detected in this target.
     with open(cfg.versionfile_source, "w") as f:
 ```
 
-#### 45. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L2259) (Line 2259)
+#### 46. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L2259) (Line 2259)
 - **Line Link:** https://github.com/modin-project/modin/blob/main/versioneer.py#L2259
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `do_setup`
@@ -20752,7 +20853,7 @@ No direct filesystem / fsspec usages detected in this target.
             with open(ipy, "r") as f:
 ```
 
-#### 46. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L2267) (Line 2267)
+#### 47. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L2267) (Line 2267)
 - **Line Link:** https://github.com/modin-project/modin/blob/main/versioneer.py#L2267
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `do_setup`
@@ -20763,7 +20864,7 @@ No direct filesystem / fsspec usages detected in this target.
             with open(ipy, "w") as f:
 ```
 
-#### 47. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L2271) (Line 2271)
+#### 48. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L2271) (Line 2271)
 - **Line Link:** https://github.com/modin-project/modin/blob/main/versioneer.py#L2271
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `do_setup`
@@ -20774,7 +20875,7 @@ No direct filesystem / fsspec usages detected in this target.
             with open(ipy, "a") as f:
 ```
 
-#### 48. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L2291) (Line 2291)
+#### 49. [versioneer.py](https://github.com/modin-project/modin/blob/main/versioneer.py#L2291) (Line 2291)
 - **Line Link:** https://github.com/modin-project/modin/blob/main/versioneer.py#L2291
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `scan_setup_py`
@@ -20791,7 +20892,7 @@ No direct filesystem / fsspec usages detected in this target.
 No direct filesystem / fsspec usages detected in this target.
 
 ### [feast-dev/feast](https://github.com/feast-dev/feast)
-- **Usages Found:** `75` in `35` files.
+- **Usages Found:** `76` in `36` files.
 
 #### 1. [sdk/python/feast/api/registry/rest/metrics.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/api/registry/rest/metrics.py#L185) (Line 185)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/api/registry/rest/metrics.py#L185
@@ -21000,7 +21101,18 @@ No direct filesystem / fsspec usages detected in this target.
         with open(output, "w") as f:
 ```
 
-#### 19. [sdk/python/feast/dbt/parser.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/dbt/parser.py#L128) (Line 128)
+#### 19. [sdk/python/feast/credentials.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/credentials.py#L323) (Line 323)
+- **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/credentials.py#L323
+- **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
+- **Context:** `KubernetesSecretProvider._current_namespace`
+- **Arguments:** `ns_path`
+- **Keywords:** `{}`
+
+```python
+            with open(ns_path) as f:
+```
+
+#### 20. [sdk/python/feast/dbt/parser.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/dbt/parser.py#L128) (Line 128)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/dbt/parser.py#L128
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `DbtManifestParser.parse`
@@ -21011,7 +21123,7 @@ No direct filesystem / fsspec usages detected in this target.
             with open(self.manifest_path, "r") as f:
 ```
 
-#### 20. [sdk/python/feast/demos.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/demos.py#L67) (Line 67)
+#### 21. [sdk/python/feast/demos.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/demos.py#L67) (Line 67)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/demos.py#L67
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_parse_yaml`
@@ -21022,7 +21134,7 @@ No direct filesystem / fsspec usages detected in this target.
     with open(yaml_path) as fh:
 ```
 
-#### 21. [sdk/python/feast/demos.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/demos.py#L837) (Line 837)
+#### 22. [sdk/python/feast/demos.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/demos.py#L837) (Line 837)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/demos.py#L837
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `copy_demo_notebooks`
@@ -21033,7 +21145,7 @@ No direct filesystem / fsspec usages detected in this target.
             with open(nb_path, "w") as fh:
 ```
 
-#### 22. [sdk/python/feast/doc_embedder.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/doc_embedder.py#L142) (Line 142)
+#### 23. [sdk/python/feast/doc_embedder.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/doc_embedder.py#L142) (Line 142)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/doc_embedder.py#L142
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `generate_repo_file`
@@ -21044,7 +21156,7 @@ No direct filesystem / fsspec usages detected in this target.
     with open(filepath, "w") as f:
 ```
 
-#### 23. [sdk/python/feast/embedded_go/online_features_service.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/embedded_go/online_features_service.py#L137) (Line 137)
+#### 24. [sdk/python/feast/embedded_go/online_features_service.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/embedded_go/online_features_service.py#L137) (Line 137)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/embedded_go/online_features_service.py#L137
 - **Target Call:** `feature_refs.split` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `EmbeddedOnlineFeatureServer.get_online_features`
@@ -21055,7 +21167,7 @@ No direct filesystem / fsspec usages detected in this target.
                 feature_refs = feature_refs.split(",")
 ```
 
-#### 24. [sdk/python/feast/embedded_go/online_features_service.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/embedded_go/online_features_service.py#L145) (Line 145)
+#### 25. [sdk/python/feast/embedded_go/online_features_service.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/embedded_go/online_features_service.py#L145) (Line 145)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/embedded_go/online_features_service.py#L145
 - **Target Call:** `feature_refs.split` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `EmbeddedOnlineFeatureServer.get_online_features`
@@ -21066,7 +21178,7 @@ No direct filesystem / fsspec usages detected in this target.
                 feature_refs = feature_refs.split(",")
 ```
 
-#### 25. [sdk/python/feast/feature_server.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/feature_server.py#L954) (Line 954)
+#### 26. [sdk/python/feast/feature_server.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/feature_server.py#L954) (Line 954)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/feature_server.py#L954
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `chat_ui`
@@ -21077,7 +21189,7 @@ No direct filesystem / fsspec usages detected in this target.
             with open(os.path.join(static_dir, "index.html")) as f:
 ```
 
-#### 26. [sdk/python/feast/feature_view_utils.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/feature_view_utils.py#L99) (Line 99)
+#### 27. [sdk/python/feast/feature_view_utils.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/feature_view_utils.py#L99) (Line 99)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/feature_view_utils.py#L99
 - **Target Call:** `fsspec.core.url_to_fs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `check_sink_source_exists`
@@ -21088,7 +21200,7 @@ No direct filesystem / fsspec usages detected in this target.
         fs, path_in_fs = fsspec.core.url_to_fs(source_path)
 ```
 
-#### 27. [sdk/python/feast/feature_view_utils.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/feature_view_utils.py#L100) (Line 100)
+#### 28. [sdk/python/feast/feature_view_utils.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/feature_view_utils.py#L100) (Line 100)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/feature_view_utils.py#L100
 - **Target Call:** `fs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `check_sink_source_exists`
@@ -21099,7 +21211,7 @@ No direct filesystem / fsspec usages detected in this target.
         return fs.exists(path_in_fs)
 ```
 
-#### 28. [sdk/python/feast/file_utils.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/file_utils.py#L28) (Line 28)
+#### 29. [sdk/python/feast/file_utils.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/file_utils.py#L28) (Line 28)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/file_utils.py#L28
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `replace_str_in_file`
@@ -21110,7 +21222,7 @@ No direct filesystem / fsspec usages detected in this target.
     with open(file_path, "r") as f:
 ```
 
-#### 29. [sdk/python/feast/file_utils.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/file_utils.py#L31) (Line 31)
+#### 30. [sdk/python/feast/file_utils.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/file_utils.py#L31) (Line 31)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/file_utils.py#L31
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `replace_str_in_file`
@@ -21121,7 +21233,7 @@ No direct filesystem / fsspec usages detected in this target.
     with open(file_path, "wt") as f:
 ```
 
-#### 30. [sdk/python/feast/file_utils.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/file_utils.py#L54) (Line 54)
+#### 31. [sdk/python/feast/file_utils.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/file_utils.py#L54) (Line 54)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/file_utils.py#L54
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `remove_lines_from_file`
@@ -21132,7 +21244,7 @@ No direct filesystem / fsspec usages detected in this target.
     with open(file_path, "r") as f:
 ```
 
-#### 31. [sdk/python/feast/file_utils.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/file_utils.py#L59) (Line 59)
+#### 32. [sdk/python/feast/file_utils.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/file_utils.py#L59) (Line 59)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/file_utils.py#L59
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `remove_lines_from_file`
@@ -21143,7 +21255,7 @@ No direct filesystem / fsspec usages detected in this target.
     with open(file_path, "wt") as f:
 ```
 
-#### 32. [sdk/python/feast/infra/compute_engines/aws_lambda/app.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/compute_engines/aws_lambda/app.py#L39) (Line 39)
+#### 33. [sdk/python/feast/infra/compute_engines/aws_lambda/app.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/compute_engines/aws_lambda/app.py#L39) (Line 39)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/compute_engines/aws_lambda/app.py#L39
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `handler`
@@ -21154,7 +21266,7 @@ No direct filesystem / fsspec usages detected in this target.
             with open(repo_path / "feature_store.yaml", "wb") as f:
 ```
 
-#### 33. [sdk/python/feast/infra/compute_engines/kubernetes/main.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/compute_engines/kubernetes/main.py#L69) (Line 69)
+#### 34. [sdk/python/feast/infra/compute_engines/kubernetes/main.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/compute_engines/kubernetes/main.py#L69) (Line 69)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/compute_engines/kubernetes/main.py#L69
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `global`
@@ -21165,7 +21277,7 @@ No direct filesystem / fsspec usages detected in this target.
     with open("/var/feast/feature_store.yaml") as f:
 ```
 
-#### 34. [sdk/python/feast/infra/compute_engines/kubernetes/main.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/compute_engines/kubernetes/main.py#L72) (Line 72)
+#### 35. [sdk/python/feast/infra/compute_engines/kubernetes/main.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/compute_engines/kubernetes/main.py#L72) (Line 72)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/compute_engines/kubernetes/main.py#L72
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `global`
@@ -21176,7 +21288,7 @@ No direct filesystem / fsspec usages detected in this target.
         with open("/var/feast/materialization_config.yaml") as b:
 ```
 
-#### 35. [sdk/python/feast/infra/compute_engines/snowflake/snowflake_engine.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/compute_engines/snowflake/snowflake_engine.py#L175) (Line 175)
+#### 36. [sdk/python/feast/infra/compute_engines/snowflake/snowflake_engine.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/compute_engines/snowflake/snowflake_engine.py#L175) (Line 175)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/compute_engines/snowflake/snowflake_engine.py#L175
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `SnowflakeComputeEngine.update`
@@ -21187,7 +21299,7 @@ No direct filesystem / fsspec usages detected in this target.
             with open(sql_function_file, "r") as file:
 ```
 
-#### 36. [sdk/python/feast/infra/compute_engines/snowflake/snowflake_engine.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/compute_engines/snowflake/snowflake_engine.py#L203) (Line 203)
+#### 37. [sdk/python/feast/infra/compute_engines/snowflake/snowflake_engine.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/compute_engines/snowflake/snowflake_engine.py#L203) (Line 203)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/compute_engines/snowflake/snowflake_engine.py#L203
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `SnowflakeComputeEngine.teardown_infra`
@@ -21198,7 +21310,7 @@ No direct filesystem / fsspec usages detected in this target.
             with open(sql_function_file, "r") as file:
 ```
 
-#### 37. [sdk/python/feast/infra/compute_engines/spark_application/main.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/compute_engines/spark_application/main.py#L31) (Line 31)
+#### 38. [sdk/python/feast/infra/compute_engines/spark_application/main.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/compute_engines/spark_application/main.py#L31) (Line 31)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/compute_engines/spark_application/main.py#L31
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_load_config_from_files`
@@ -21209,7 +21321,7 @@ No direct filesystem / fsspec usages detected in this target.
     with open("/var/feast/feature_store.yaml") as f:
 ```
 
-#### 38. [sdk/python/feast/infra/compute_engines/spark_application/main.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/compute_engines/spark_application/main.py#L33) (Line 33)
+#### 39. [sdk/python/feast/infra/compute_engines/spark_application/main.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/compute_engines/spark_application/main.py#L33) (Line 33)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/compute_engines/spark_application/main.py#L33
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_load_config_from_files`
@@ -21220,7 +21332,7 @@ No direct filesystem / fsspec usages detected in this target.
     with open("/var/feast/materialization_config.yaml") as f:
 ```
 
-#### 39. [sdk/python/feast/infra/offline_stores/contrib/ray_offline_store/ray.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/offline_stores/contrib/ray_offline_store/ray.py#L2127) (Line 2127)
+#### 40. [sdk/python/feast/infra/offline_stores/contrib/ray_offline_store/ray.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/offline_stores/contrib/ray_offline_store/ray.py#L2127) (Line 2127)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/offline_stores/contrib/ray_offline_store/ray.py#L2127
 - **Target Call:** `fsspec.core.url_to_fs` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `RayOfflineStore.pull_all_from_table_or_query`
@@ -21231,7 +21343,7 @@ No direct filesystem / fsspec usages detected in this target.
         fs, path_in_fs = fsspec.core.url_to_fs(source_path)
 ```
 
-#### 40. [sdk/python/feast/infra/offline_stores/contrib/ray_offline_store/ray.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/offline_stores/contrib/ray_offline_store/ray.py#L2128) (Line 2128)
+#### 41. [sdk/python/feast/infra/offline_stores/contrib/ray_offline_store/ray.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/offline_stores/contrib/ray_offline_store/ray.py#L2128) (Line 2128)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/offline_stores/contrib/ray_offline_store/ray.py#L2128
 - **Target Call:** `fs.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `RayOfflineStore.pull_all_from_table_or_query`
@@ -21242,7 +21354,7 @@ No direct filesystem / fsspec usages detected in this target.
         if not fs.exists(path_in_fs):
 ```
 
-#### 41. [sdk/python/feast/infra/offline_stores/contrib/spark_offline_store/spark.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/offline_stores/contrib/spark_offline_store/spark.py#L1607) (Line 1607)
+#### 42. [sdk/python/feast/infra/offline_stores/contrib/spark_offline_store/spark.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/offline_stores/contrib/spark_offline_store/spark.py#L1607) (Line 1607)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/offline_stores/contrib/spark_offline_store/spark.py#L1607
 - **Target Call:** `jvm.org.apache.hadoop.fs.FileSystem.get` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_list_hdfs_files`
@@ -21253,7 +21365,7 @@ No direct filesystem / fsspec usages detected in this target.
     fs = jvm.org.apache.hadoop.fs.FileSystem.get(path.toUri(), conf)
 ```
 
-#### 42. [sdk/python/feast/infra/offline_stores/offline_store.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/offline_stores/offline_store.py#L257) (Line 257)
+#### 43. [sdk/python/feast/infra/offline_stores/offline_store.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/offline_stores/offline_store.py#L257) (Line 257)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/offline_stores/offline_store.py#L257
 - **Target Call:** `odfv_feature_refs.get` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `RetrievalJob.to_arrow`
@@ -21264,7 +21376,7 @@ No direct filesystem / fsspec usages detected in this target.
                     odfv_feature_refs.get(odfv.name)
 ```
 
-#### 43. [sdk/python/feast/infra/offline_stores/offline_store.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/offline_stores/offline_store.py#L259) (Line 259)
+#### 44. [sdk/python/feast/infra/offline_stores/offline_store.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/offline_stores/offline_store.py#L259) (Line 259)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/offline_stores/offline_store.py#L259
 - **Target Call:** `odfv_feature_refs.get` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `RetrievalJob.to_arrow`
@@ -21275,7 +21387,7 @@ No direct filesystem / fsspec usages detected in this target.
                     else odfv_feature_refs.get(odfv.projection.name_to_use())
 ```
 
-#### 44. [sdk/python/feast/infra/offline_stores/remote.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/offline_stores/remote.py#L94) (Line 94)
+#### 45. [sdk/python/feast/infra/offline_stores/remote.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/offline_stores/remote.py#L94) (Line 94)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/offline_stores/remote.py#L94
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `build_arrow_flight_client`
@@ -21286,7 +21398,7 @@ No direct filesystem / fsspec usages detected in this target.
         with open(cert, "rb") as root_certs:
 ```
 
-#### 45. [sdk/python/feast/infra/registry/file.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/registry/file.py#L46) (Line 46)
+#### 46. [sdk/python/feast/infra/registry/file.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/registry/file.py#L46) (Line 46)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/registry/file.py#L46
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `FileRegistryStore._write_registry`
@@ -21297,7 +21409,7 @@ No direct filesystem / fsspec usages detected in this target.
         with open(self._filepath, mode="wb", buffering=0) as f:
 ```
 
-#### 46. [sdk/python/feast/infra/registry/remote.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/registry/remote.py#L134) (Line 134)
+#### 47. [sdk/python/feast/infra/registry/remote.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/registry/remote.py#L134) (Line 134)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/registry/remote.py#L134
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `RemoteRegistry._create_grpc_channel`
@@ -21308,7 +21420,7 @@ No direct filesystem / fsspec usages detected in this target.
             with open(cafile, "rb") as cert_file:
 ```
 
-#### 47. [sdk/python/feast/infra/registry/remote.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/registry/remote.py#L139) (Line 139)
+#### 48. [sdk/python/feast/infra/registry/remote.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/registry/remote.py#L139) (Line 139)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/registry/remote.py#L139
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `RemoteRegistry._create_grpc_channel`
@@ -21319,7 +21431,7 @@ No direct filesystem / fsspec usages detected in this target.
                 with open(registry_config.client_key, "rb") as key_file:
 ```
 
-#### 48. [sdk/python/feast/infra/registry/remote.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/registry/remote.py#L141) (Line 141)
+#### 49. [sdk/python/feast/infra/registry/remote.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/registry/remote.py#L141) (Line 141)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/registry/remote.py#L141
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `RemoteRegistry._create_grpc_channel`
@@ -21330,7 +21442,7 @@ No direct filesystem / fsspec usages detected in this target.
                 with open(registry_config.client_cert, "rb") as cert_file:
 ```
 
-#### 49. [sdk/python/feast/infra/registry/snowflake.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/registry/snowflake.py#L143) (Line 143)
+#### 50. [sdk/python/feast/infra/registry/snowflake.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/registry/snowflake.py#L143) (Line 143)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/registry/snowflake.py#L143
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `SnowflakeRegistry.__init__`
@@ -21341,7 +21453,7 @@ No direct filesystem / fsspec usages detected in this target.
             with open(sql_function_file, "r") as file:
 ```
 
-#### 50. [sdk/python/feast/infra/registry/snowflake.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/registry/snowflake.py#L239) (Line 239)
+#### 51. [sdk/python/feast/infra/registry/snowflake.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/registry/snowflake.py#L239) (Line 239)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/registry/snowflake.py#L239
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `SnowflakeRegistry.teardown`
@@ -21352,7 +21464,7 @@ No direct filesystem / fsspec usages detected in this target.
             with open(sql_function_file, "r") as file:
 ```
 
-#### 51. [sdk/python/feast/infra/transformation_servers/app.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/transformation_servers/app.py#L26) (Line 26)
+#### 52. [sdk/python/feast/infra/transformation_servers/app.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/transformation_servers/app.py#L26) (Line 26)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/transformation_servers/app.py#L26
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `global`
@@ -21363,7 +21475,7 @@ No direct filesystem / fsspec usages detected in this target.
 with open(repo_path / "feature_store.yaml", "wb") as f:
 ```
 
-#### 52. [sdk/python/feast/infra/transformation_servers/app.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/transformation_servers/app.py#L41) (Line 41)
+#### 53. [sdk/python/feast/infra/transformation_servers/app.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/transformation_servers/app.py#L41) (Line 41)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/transformation_servers/app.py#L41
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `global`
@@ -21374,7 +21486,7 @@ with open(repo_path / "feature_store.yaml", "wb") as f:
     with open(repo_path / registry_path, "wb") as f:
 ```
 
-#### 53. [sdk/python/feast/infra/utils/aws_utils.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/utils/aws_utils.py#L211) (Line 211)
+#### 54. [sdk/python/feast/infra/utils/aws_utils.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/utils/aws_utils.py#L211) (Line 211)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/utils/aws_utils.py#L211
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `upload_df_to_s3`
@@ -21385,7 +21497,7 @@ with open(repo_path / "feature_store.yaml", "wb") as f:
         s3_resource.Object(bucket, key).put(Body=open(file_path, "rb"))
 ```
 
-#### 54. [sdk/python/feast/infra/utils/snowflake/snowflake_utils.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/utils/snowflake/snowflake_utils.py#L526) (Line 526)
+#### 55. [sdk/python/feast/infra/utils/snowflake/snowflake_utils.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/utils/snowflake/snowflake_utils.py#L526) (Line 526)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/utils/snowflake/snowflake_utils.py#L526
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `parse_private_key_path`
@@ -21396,7 +21508,7 @@ with open(repo_path / "feature_store.yaml", "wb") as f:
         with open(key_path, "rb") as key:
 ```
 
-#### 55. [sdk/python/feast/mlflow_integration/client.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/mlflow_integration/client.py#L137) (Line 137)
+#### 56. [sdk/python/feast/mlflow_integration/client.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/mlflow_integration/client.py#L137) (Line 137)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/mlflow_integration/client.py#L137
 - **Target Call:** `refs_str.split` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `FeastMlflowClient._log_required_features`
@@ -21407,7 +21519,7 @@ with open(repo_path / "feature_store.yaml", "wb") as f:
             features = [r for r in refs_str.split(",") if r]
 ```
 
-#### 56. [sdk/python/feast/mlflow_integration/client.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/mlflow_integration/client.py#L143) (Line 143)
+#### 57. [sdk/python/feast/mlflow_integration/client.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/mlflow_integration/client.py#L143) (Line 143)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/mlflow_integration/client.py#L143
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `FeastMlflowClient._log_required_features`
@@ -21418,7 +21530,7 @@ with open(repo_path / "feature_store.yaml", "wb") as f:
                 with open(path, "w") as f:
 ```
 
-#### 57. [sdk/python/feast/mlflow_integration/model_resolver.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/mlflow_integration/model_resolver.py#L110) (Line 110)
+#### 58. [sdk/python/feast/mlflow_integration/model_resolver.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/mlflow_integration/model_resolver.py#L110) (Line 110)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/mlflow_integration/model_resolver.py#L110
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `FeastMlflowModelResolver._validate_feature_service`
@@ -21429,7 +21541,7 @@ with open(repo_path / "feature_store.yaml", "wb") as f:
             with open(local_path) as f:
 ```
 
-#### 58. [sdk/python/feast/offline_server.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/offline_server.py#L24) (Line 24)
+#### 59. [sdk/python/feast/offline_server.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/offline_server.py#L24) (Line 24)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/offline_server.py#L24
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_is_fips_enabled`
@@ -21440,7 +21552,7 @@ with open(repo_path / "feature_store.yaml", "wb") as f:
         with open("/proc/sys/crypto/fips_enabled") as f:
 ```
 
-#### 59. [sdk/python/feast/offline_server.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/offline_server.py#L649) (Line 649)
+#### 60. [sdk/python/feast/offline_server.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/offline_server.py#L649) (Line 649)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/offline_server.py#L649
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `start_server`
@@ -21451,7 +21563,7 @@ with open(repo_path / "feature_store.yaml", "wb") as f:
         with open(tls_cert_path, "rb") as cert_file:
 ```
 
-#### 60. [sdk/python/feast/offline_server.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/offline_server.py#L651) (Line 651)
+#### 61. [sdk/python/feast/offline_server.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/offline_server.py#L651) (Line 651)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/offline_server.py#L651
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `start_server`
@@ -21462,7 +21574,7 @@ with open(repo_path / "feature_store.yaml", "wb") as f:
         with open(tls_key_path, "rb") as key_file:
 ```
 
-#### 61. [sdk/python/feast/permissions/auth/kubernetes_token_parser.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/permissions/auth/kubernetes_token_parser.py#L104) (Line 104)
+#### 62. [sdk/python/feast/permissions/auth/kubernetes_token_parser.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/permissions/auth/kubernetes_token_parser.py#L104) (Line 104)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/permissions/auth/kubernetes_token_parser.py#L104
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `KubernetesTokenParser._read_namespace_from_file`
@@ -21473,7 +21585,7 @@ with open(repo_path / "feature_store.yaml", "wb") as f:
             with open(_namespace_file_path, "r") as file:
 ```
 
-#### 62. [sdk/python/feast/permissions/client/kubernetes_auth_client_manager.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/permissions/client/kubernetes_auth_client_manager.py#L49) (Line 49)
+#### 63. [sdk/python/feast/permissions/client/kubernetes_auth_client_manager.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/permissions/client/kubernetes_auth_client_manager.py#L49) (Line 49)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/permissions/client/kubernetes_auth_client_manager.py#L49
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `KubernetesAuthClientManager._read_token_from_file`
@@ -21484,7 +21596,7 @@ with open(repo_path / "feature_store.yaml", "wb") as f:
             with open(self.token_file_path, "r") as file:
 ```
 
-#### 63. [sdk/python/feast/permissions/client/oidc_authentication_client_manager.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/permissions/client/oidc_authentication_client_manager.py#L76) (Line 76)
+#### 64. [sdk/python/feast/permissions/client/oidc_authentication_client_manager.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/permissions/client/oidc_authentication_client_manager.py#L76) (Line 76)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/permissions/client/oidc_authentication_client_manager.py#L76
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `OidcAuthClientManager._read_sa_token`
@@ -21495,7 +21607,7 @@ with open(repo_path / "feature_store.yaml", "wb") as f:
             with open(SA_TOKEN_PATH) as f:
 ```
 
-#### 64. [sdk/python/feast/registry_server.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/registry_server.py#L1955) (Line 1955)
+#### 65. [sdk/python/feast/registry_server.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/registry_server.py#L1955) (Line 1955)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/registry_server.py#L1955
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `start_server`
@@ -21506,7 +21618,7 @@ with open(repo_path / "feature_store.yaml", "wb") as f:
             open(tls_cert_path, "rb") as cert_file,
 ```
 
-#### 65. [sdk/python/feast/registry_server.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/registry_server.py#L1956) (Line 1956)
+#### 66. [sdk/python/feast/registry_server.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/registry_server.py#L1956) (Line 1956)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/registry_server.py#L1956
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `start_server`
@@ -21517,7 +21629,7 @@ with open(repo_path / "feature_store.yaml", "wb") as f:
             open(tls_key_path, "rb") as key_file,
 ```
 
-#### 66. [sdk/python/feast/repo_config.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/repo_config.py#L787) (Line 787)
+#### 67. [sdk/python/feast/repo_config.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/repo_config.py#L787) (Line 787)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/repo_config.py#L787
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `RepoConfig.write_to_path`
@@ -21528,7 +21640,7 @@ with open(repo_path / "feature_store.yaml", "wb") as f:
         with open(config_path, mode="w") as f:
 ```
 
-#### 67. [sdk/python/feast/repo_config.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/repo_config.py#L894) (Line 894)
+#### 68. [sdk/python/feast/repo_config.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/repo_config.py#L894) (Line 894)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/repo_config.py#L894
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `load_repo_config`
@@ -21539,7 +21651,7 @@ with open(repo_path / "feature_store.yaml", "wb") as f:
     with open(config_path) as f:
 ```
 
-#### 68. [sdk/python/feast/repo_operations.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/repo_operations.py#L499) (Line 499)
+#### 69. [sdk/python/feast/repo_operations.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/repo_operations.py#L499) (Line 499)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/repo_operations.py#L499
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `create_feature_store`
@@ -21550,7 +21662,7 @@ with open(repo_path / "feature_store.yaml", "wb") as f:
         with open(repo_path / "feature_store.yaml", "wb") as f:
 ```
 
-#### 69. [sdk/python/feast/repo_operations.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/repo_operations.py#L561) (Line 561)
+#### 70. [sdk/python/feast/repo_operations.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/repo_operations.py#L561) (Line 561)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/repo_operations.py#L561
 - **Target Call:** `fs_yaml_file.exists` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `cli_check_repo`
@@ -21561,7 +21673,7 @@ with open(repo_path / "feature_store.yaml", "wb") as f:
     if not fs_yaml_file.exists():
 ```
 
-#### 70. [sdk/python/feast/templates/snowflake/feature_repo/driver_repo.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/templates/snowflake/feature_repo/driver_repo.py#L24) (Line 24)
+#### 71. [sdk/python/feast/templates/snowflake/feature_repo/driver_repo.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/templates/snowflake/feature_repo/driver_repo.py#L24) (Line 24)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/templates/snowflake/feature_repo/driver_repo.py#L24
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `global`
@@ -21572,7 +21684,7 @@ with open(repo_path / "feature_store.yaml", "wb") as f:
 project_name = yaml.safe_load(open("feature_store.yaml"))["project"]
 ```
 
-#### 71. [sdk/python/feast/templates/snowflake/feature_repo/driver_repo.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/templates/snowflake/feature_repo/driver_repo.py#L28) (Line 28)
+#### 72. [sdk/python/feast/templates/snowflake/feature_repo/driver_repo.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/templates/snowflake/feature_repo/driver_repo.py#L28) (Line 28)
 - **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/templates/snowflake/feature_repo/driver_repo.py#L28
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `global`
@@ -21583,8 +21695,8 @@ project_name = yaml.safe_load(open("feature_store.yaml"))["project"]
     database=yaml.safe_load(open("feature_store.yaml"))["offline_store"]["database"],
 ```
 
-#### 72. [sdk/python/feast/ui_server.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/ui_server.py#L967) (Line 967)
-- **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/ui_server.py#L967
+#### 73. [sdk/python/feast/ui_server.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/ui_server.py#L969) (Line 969)
+- **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/ui_server.py#L969
 - **Target Call:** `refs_raw.split` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `get_mlflow_runs`
 - **Arguments:** `','`
@@ -21594,8 +21706,8 @@ project_name = yaml.safe_load(open("feature_store.yaml"))["project"]
                             "feature_refs": [v for v in refs_raw.split(",") if v],
 ```
 
-#### 73. [sdk/python/feast/ui_server.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/ui_server.py#L1061) (Line 1061)
-- **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/ui_server.py#L1061
+#### 74. [sdk/python/feast/ui_server.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/ui_server.py#L1063) (Line 1063)
+- **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/ui_server.py#L1063
 - **Target Call:** `refs_raw.split` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `get_mlflow_feature_usage`
 - **Arguments:** `','`
@@ -21605,8 +21717,8 @@ project_name = yaml.safe_load(open("feature_store.yaml"))["project"]
                     for ref in refs_raw.split(","):
 ```
 
-#### 74. [sdk/python/feast/ui_server.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/ui_server.py#L1142) (Line 1142)
-- **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/ui_server.py#L1142
+#### 75. [sdk/python/feast/ui_server.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/ui_server.py#L1146) (Line 1146)
+- **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/ui_server.py#L1146
 - **Target Call:** `refs_raw.split` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `get_mlflow_feature_models`
 - **Arguments:** `','`
@@ -21616,8 +21728,8 @@ project_name = yaml.safe_load(open("feature_store.yaml"))["project"]
                         feature_refs = [r for r in refs_raw.split(",") if r]
 ```
 
-#### 75. [sdk/python/feast/ui_server.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/ui_server.py#L1174) (Line 1174)
-- **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/ui_server.py#L1174
+#### 76. [sdk/python/feast/ui_server.py](https://github.com/feast-dev/feast/blob/master/sdk/python/feast/ui_server.py#L1178) (Line 1178)
+- **Line Link:** https://github.com/feast-dev/feast/blob/master/sdk/python/feast/ui_server.py#L1178
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `_serve_index`
 - **Arguments:** `filename`
@@ -23536,7 +23648,7 @@ confdir = make_path_posix(os.getenv("INTAKE_CONF_DIR", os.path.join(expanduser("
 ```
 
 ### [fsspec/s3fs](https://github.com/fsspec/s3fs)
-- **Usages Found:** `51` in `3` files.
+- **Usages Found:** `52` in `4` files.
 
 #### 1. [s3fs/_version.py](https://github.com/fsspec/s3fs/blob/main/s3fs/_version.py#L176) (Line 176)
 - **Line Link:** https://github.com/fsspec/s3fs/blob/main/s3fs/_version.py#L176
@@ -23932,7 +24044,18 @@ confdir = make_path_posix(os.getenv("INTAKE_CONF_DIR", os.path.join(expanduser("
     )
 ```
 
-#### 36. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L409) (Line 409)
+#### 36. [setup.py](https://github.com/fsspec/s3fs/blob/main/setup.py#L29) (Line 29)
+- **Line Link:** https://github.com/fsspec/s3fs/blob/main/setup.py#L29
+- **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
+- **Context:** `global`
+- **Arguments:** `'requirements.txt'`
+- **Keywords:** `{}`
+
+```python
+    install_requires=[open("requirements.txt").read().strip().split("\n")],
+```
+
+#### 37. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L409) (Line 409)
 - **Line Link:** https://github.com/fsspec/s3fs/blob/main/versioneer.py#L409
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `get_config_from_root`
@@ -23943,7 +24066,7 @@ confdir = make_path_posix(os.getenv("INTAKE_CONF_DIR", os.path.join(expanduser("
             with open(pyproject_toml, "rb") as fobj:
 ```
 
-#### 37. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L417) (Line 417)
+#### 38. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L417) (Line 417)
 - **Line Link:** https://github.com/fsspec/s3fs/blob/main/versioneer.py#L417
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `get_config_from_root`
@@ -23954,7 +24077,7 @@ confdir = make_path_posix(os.getenv("INTAKE_CONF_DIR", os.path.join(expanduser("
         with open(setup_cfg) as cfg_file:
 ```
 
-#### 38. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L1214) (Line 1214)
+#### 39. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L1214) (Line 1214)
 - **Line Link:** https://github.com/fsspec/s3fs/blob/main/versioneer.py#L1214
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `git_get_keywords`
@@ -23965,7 +24088,7 @@ confdir = make_path_posix(os.getenv("INTAKE_CONF_DIR", os.path.join(expanduser("
         with open(versionfile_abs, "r") as fobj:
 ```
 
-#### 39. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L1474) (Line 1474)
+#### 40. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L1474) (Line 1474)
 - **Line Link:** https://github.com/fsspec/s3fs/blob/main/versioneer.py#L1474
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `do_vcs_install`
@@ -23976,7 +24099,7 @@ confdir = make_path_posix(os.getenv("INTAKE_CONF_DIR", os.path.join(expanduser("
         with open(".gitattributes", "r") as fobj:
 ```
 
-#### 40. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L1483) (Line 1483)
+#### 41. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L1483) (Line 1483)
 - **Line Link:** https://github.com/fsspec/s3fs/blob/main/versioneer.py#L1483
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `do_vcs_install`
@@ -23987,7 +24110,7 @@ confdir = make_path_posix(os.getenv("INTAKE_CONF_DIR", os.path.join(expanduser("
         with open(".gitattributes", "a+") as fobj:
 ```
 
-#### 41. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L1544) (Line 1544)
+#### 42. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L1544) (Line 1544)
 - **Line Link:** https://github.com/fsspec/s3fs/blob/main/versioneer.py#L1544
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `versions_from_file`
@@ -23998,7 +24121,7 @@ confdir = make_path_posix(os.getenv("INTAKE_CONF_DIR", os.path.join(expanduser("
         with open(filename) as f:
 ```
 
-#### 42. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L1563) (Line 1563)
+#### 43. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L1563) (Line 1563)
 - **Line Link:** https://github.com/fsspec/s3fs/blob/main/versioneer.py#L1563
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `write_to_version_file`
@@ -24009,7 +24132,7 @@ confdir = make_path_posix(os.getenv("INTAKE_CONF_DIR", os.path.join(expanduser("
     with open(filename, "w") as f:
 ```
 
-#### 43. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L2059) (Line 2059)
+#### 44. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L2059) (Line 2059)
 - **Line Link:** https://github.com/fsspec/s3fs/blob/main/versioneer.py#L2059
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `cmd_build_exe.run`
@@ -24020,7 +24143,7 @@ confdir = make_path_posix(os.getenv("INTAKE_CONF_DIR", os.path.join(expanduser("
                 with open(cfg.versionfile_source, "w") as f:
 ```
 
-#### 44. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L2092) (Line 2092)
+#### 45. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L2092) (Line 2092)
 - **Line Link:** https://github.com/fsspec/s3fs/blob/main/versioneer.py#L2092
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `cmd_py2exe.run`
@@ -24031,7 +24154,7 @@ confdir = make_path_posix(os.getenv("INTAKE_CONF_DIR", os.path.join(expanduser("
                 with open(cfg.versionfile_source, "w") as f:
 ```
 
-#### 45. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L2142) (Line 2142)
+#### 46. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L2142) (Line 2142)
 - **Line Link:** https://github.com/fsspec/s3fs/blob/main/versioneer.py#L2142
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `cmd_egg_info.find_sources`
@@ -24042,7 +24165,7 @@ confdir = make_path_posix(os.getenv("INTAKE_CONF_DIR", os.path.join(expanduser("
             with open(manifest_filename, "w") as fobj:
 ```
 
-#### 46. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L2237) (Line 2237)
+#### 47. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L2237) (Line 2237)
 - **Line Link:** https://github.com/fsspec/s3fs/blob/main/versioneer.py#L2237
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `do_setup`
@@ -24053,7 +24176,7 @@ confdir = make_path_posix(os.getenv("INTAKE_CONF_DIR", os.path.join(expanduser("
             with open(os.path.join(root, "setup.cfg"), "a") as f:
 ```
 
-#### 47. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L2243) (Line 2243)
+#### 48. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L2243) (Line 2243)
 - **Line Link:** https://github.com/fsspec/s3fs/blob/main/versioneer.py#L2243
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `do_setup`
@@ -24064,7 +24187,7 @@ confdir = make_path_posix(os.getenv("INTAKE_CONF_DIR", os.path.join(expanduser("
     with open(cfg.versionfile_source, "w") as f:
 ```
 
-#### 48. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L2260) (Line 2260)
+#### 49. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L2260) (Line 2260)
 - **Line Link:** https://github.com/fsspec/s3fs/blob/main/versioneer.py#L2260
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `do_setup`
@@ -24075,7 +24198,7 @@ confdir = make_path_posix(os.getenv("INTAKE_CONF_DIR", os.path.join(expanduser("
             with open(ipy, "r") as f:
 ```
 
-#### 49. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L2268) (Line 2268)
+#### 50. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L2268) (Line 2268)
 - **Line Link:** https://github.com/fsspec/s3fs/blob/main/versioneer.py#L2268
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `do_setup`
@@ -24086,7 +24209,7 @@ confdir = make_path_posix(os.getenv("INTAKE_CONF_DIR", os.path.join(expanduser("
             with open(ipy, "w") as f:
 ```
 
-#### 50. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L2272) (Line 2272)
+#### 51. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L2272) (Line 2272)
 - **Line Link:** https://github.com/fsspec/s3fs/blob/main/versioneer.py#L2272
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `do_setup`
@@ -24097,7 +24220,7 @@ confdir = make_path_posix(os.getenv("INTAKE_CONF_DIR", os.path.join(expanduser("
             with open(ipy, "a") as f:
 ```
 
-#### 51. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L2292) (Line 2292)
+#### 52. [versioneer.py](https://github.com/fsspec/s3fs/blob/main/versioneer.py#L2292) (Line 2292)
 - **Line Link:** https://github.com/fsspec/s3fs/blob/main/versioneer.py#L2292
 - **Target Call:** `open` | **Cache_Type:** `NOT_EXPLICIT` | **Is Specified Keyword:** `False`
 - **Context:** `scan_setup_py`

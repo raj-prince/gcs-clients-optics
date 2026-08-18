@@ -1,13 +1,13 @@
 {
   "summary": {
     "total_targets": 24,
-    "total_files_scanned": 9357,
-    "total_protocol_usages": 4486,
+    "total_files_scanned": 9472,
+    "total_protocol_usages": 4506,
     "protocol_counts": {
-      "https": 3713,
-      "http": 224,
+      "https": 3730,
+      "http": 226,
       "file": 62,
-      "s3": 326,
+      "s3": 327,
       "gcs": 6,
       "azureblob": 4,
       "gs": 42,
@@ -20,29 +20,29 @@
       "memory": 41
     },
     "provider_counts": {
-      "Web / HTTP": 3937,
+      "Web / HTTP": 3956,
       "Local Filesystem": 62,
-      "Amazon Web Services (S3)": 328,
+      "Amazon Web Services (S3)": 329,
       "Google Cloud Storage (GCS)": 48,
       "Other / Chained Protocol": 19,
       "Microsoft Azure (Blob/ADLS)": 38,
       "Hadoop HDFS": 13,
       "In-Memory Storage": 41
     },
-    "elapsed_seconds": 199.78
+    "elapsed_seconds": 269.53
   },
   "per_repository": [
     {
       "target_source": "GitHub:pytorch/pytorch (main)",
-      "total_files_scanned": 2546,
-      "files_with_protocols": 326,
-      "total_protocol_usages": 847,
+      "total_files_scanned": 2554,
+      "files_with_protocols": 327,
+      "total_protocol_usages": 848,
       "protocol_counts": {
-        "https": 831,
+        "https": 832,
         "http": 16
       },
       "provider_counts": {
-        "Web / HTTP": 847
+        "Web / HTTP": 848
       },
       "repo_url": "https://github.com/pytorch/pytorch",
       "items": [
@@ -243,6 +243,17 @@
           "repo_url": "https://github.com/pytorch/pytorch",
           "file_url": "https://github.com/pytorch/pytorch/blob/main/functorch/einops/rearrange.py#L158",
           "code_snippet": "r\"\"\"A native implementation of `einops.rearrange`, a reader-friendly smart element reordering for multidimensional"
+        },
+        {
+          "file_path": "setup.py",
+          "line_number": 26,
+          "protocol": "https",
+          "provider": "Web / HTTP",
+          "usage_type": "uri_string",
+          "context": "https://github.com/pytorch/pytorch/issues/152276",
+          "repo_url": "https://github.com/pytorch/pytorch",
+          "file_url": "https://github.com/pytorch/pytorch/blob/main/setup.py#L26",
+          "code_snippet": "DEPRECATION_NOTICE = \"\"\"\\"
         },
         {
           "file_path": "tools/alerts/create_alerts.py",
@@ -2369,24 +2380,24 @@
         },
         {
           "file_path": "torch/_inductor/codegen/triton.py",
-          "line_number": 887,
+          "line_number": 888,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://github.com/triton-lang/triton/issues/2836",
           "repo_url": "https://github.com/pytorch/pytorch",
-          "file_url": "https://github.com/pytorch/pytorch/blob/main/torch/_inductor/codegen/triton.py#L887",
+          "file_url": "https://github.com/pytorch/pytorch/blob/main/torch/_inductor/codegen/triton.py#L888",
           "code_snippet": "\"\"\"Workaround https://github.com/triton-lang/triton/issues/2836\"\"\""
         },
         {
           "file_path": "torch/_inductor/codegen/triton.py",
-          "line_number": 1550,
+          "line_number": 1551,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://github.com/triton-lang/triton/issues/5735",
           "repo_url": "https://github.com/pytorch/pytorch",
-          "file_url": "https://github.com/pytorch/pytorch/blob/main/torch/_inductor/codegen/triton.py#L1550",
+          "file_url": "https://github.com/pytorch/pytorch/blob/main/torch/_inductor/codegen/triton.py#L1551",
           "code_snippet": "\"\"\""
         },
         {
@@ -2402,13 +2413,13 @@
         },
         {
           "file_path": "torch/_inductor/codegen/triton_utils.py",
-          "line_number": 312,
+          "line_number": 359,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://github.com/triton-lang/triton/blob/5282ed890d453e10b",
           "repo_url": "https://github.com/pytorch/pytorch",
-          "file_url": "https://github.com/pytorch/pytorch/blob/main/torch/_inductor/codegen/triton_utils.py#L312",
+          "file_url": "https://github.com/pytorch/pytorch/blob/main/torch/_inductor/codegen/triton_utils.py#L359",
           "code_snippet": "\"\"\""
         },
         {
@@ -2644,13 +2655,13 @@
         },
         {
           "file_path": "torch/_inductor/kernel/mm_common.py",
-          "line_number": 200,
+          "line_number": 201,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://github.com/pytorch/pytorch/issues/186348",
           "repo_url": "https://github.com/pytorch/pytorch",
-          "file_url": "https://github.com/pytorch/pytorch/blob/main/torch/_inductor/kernel/mm_common.py#L200",
+          "file_url": "https://github.com/pytorch/pytorch/blob/main/torch/_inductor/kernel/mm_common.py#L201",
           "code_snippet": "\"\"\"Check if mm should be lowered to pointwise ops for small K and N."
         },
         {
@@ -9367,7 +9378,7 @@
     },
     {
       "target_source": "GitHub:pandas-dev/pandas (main)",
-      "total_files_scanned": 297,
+      "total_files_scanned": 300,
       "files_with_protocols": 75,
       "total_protocol_usages": 348,
       "protocol_counts": {
@@ -13215,11 +13226,11 @@
     },
     {
       "target_source": "GitHub:ray-project/ray (master)",
-      "total_files_scanned": 2003,
-      "files_with_protocols": 324,
-      "total_protocol_usages": 930,
+      "total_files_scanned": 2018,
+      "files_with_protocols": 325,
+      "total_protocol_usages": 931,
       "protocol_counts": {
-        "https": 638,
+        "https": 639,
         "http": 57,
         "file": 3,
         "gcs": 3,
@@ -13233,7 +13244,7 @@
         "abfss": 17
       },
       "provider_counts": {
-        "Web / HTTP": 695,
+        "Web / HTTP": 696,
         "Local Filesystem": 3,
         "Google Cloud Storage (GCS)": 30,
         "Other / Chained Protocol": 5,
@@ -22132,6 +22143,17 @@
           "code_snippet": "\"\"\"Decorator which strips rich notebook output from mimebundles in certain cases."
         },
         {
+          "file_path": "python/setup.py",
+          "line_number": 829,
+          "protocol": "https",
+          "provider": "Web / HTTP",
+          "usage_type": "uri_string",
+          "context": "https://github.com/ray-project/ray",
+          "repo_url": "https://github.com/ray-project/ray",
+          "file_url": "https://github.com/ray-project/ray/blob/master/python/setup.py#L829",
+          "code_snippet": "url=\"https://github.com/ray-project/ray\","
+        },
+        {
           "file_path": "rllib/algorithms/algorithm_config.py",
           "line_number": 3227,
           "protocol": "s3",
@@ -23477,7 +23499,7 @@
     },
     {
       "target_source": "GitHub:pola-rs/polars (main)",
-      "total_files_scanned": 204,
+      "total_files_scanned": 212,
       "files_with_protocols": 54,
       "total_protocol_usages": 284,
       "protocol_counts": {
@@ -24127,13 +24149,13 @@
         },
         {
           "file_path": "py-polars/src/polars/dataframe/frame.py",
-          "line_number": 12608,
+          "line_number": 12614,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://numpy.org/doc/stable/reference/generated/numpy.corrc",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/dataframe/frame.py#L12608",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/dataframe/frame.py#L12614",
           "code_snippet": "\"\"\""
         },
         {
@@ -24875,35 +24897,35 @@
         },
         {
           "file_path": "py-polars/src/polars/io/csv/functions.py",
-          "line_number": 1158,
+          "line_number": 1179,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://docs.rs/object_store/latest/object_store/aws/enum.Am",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/csv/functions.py#L1158",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/csv/functions.py#L1179",
           "code_snippet": "r\"\"\""
         },
         {
           "file_path": "py-polars/src/polars/io/csv/functions.py",
-          "line_number": 1158,
+          "line_number": 1179,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://docs.rs/object_store/latest/object_store/gcp/enum.Go",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/csv/functions.py#L1158",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/csv/functions.py#L1179",
           "code_snippet": "r\"\"\""
         },
         {
           "file_path": "py-polars/src/polars/io/csv/functions.py",
-          "line_number": 1158,
+          "line_number": 1179,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://docs.rs/object_store/latest/object_store/azure/enum.",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/csv/functions.py#L1158",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/csv/functions.py#L1179",
           "code_snippet": "r\"\"\""
         },
         {
@@ -24974,13 +24996,13 @@
         },
         {
           "file_path": "py-polars/src/polars/io/delta/_dataset.py",
-          "line_number": 333,
+          "line_number": 332,
           "protocol": "file",
           "provider": "Local Filesystem",
           "usage_type": "uri_string",
           "context": "file:///",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/_dataset.py#L333",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/_dataset.py#L332",
           "code_snippet": "file_prefix = \"file://\" if sys.platform != \"win32\" else \"file:///\""
         },
         {
@@ -24996,189 +25018,189 @@
         },
         {
           "file_path": "py-polars/src/polars/io/delta/functions.py",
-          "line_number": 35,
+          "line_number": 36,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://delta-io.github.io/delta-rs/usage/loading-table/",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L35",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L36",
           "code_snippet": "\"\"\""
         },
         {
           "file_path": "py-polars/src/polars/io/delta/functions.py",
-          "line_number": 35,
+          "line_number": 36,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://docs.rs/object_store/latest/object_store/aws/enum.Am",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L35",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L36",
           "code_snippet": "\"\"\""
         },
         {
           "file_path": "py-polars/src/polars/io/delta/functions.py",
-          "line_number": 35,
+          "line_number": 36,
           "protocol": "s3",
           "provider": "Amazon Web Services (S3)",
           "usage_type": "uri_string",
           "context": "s3://bucket/path/to/delta-table/",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L35",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L36",
           "code_snippet": "\"\"\""
         },
         {
           "file_path": "py-polars/src/polars/io/delta/functions.py",
-          "line_number": 35,
+          "line_number": 36,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://docs.rs/object_store/latest/object_store/gcp/enum.Go",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L35",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L36",
           "code_snippet": "\"\"\""
         },
         {
           "file_path": "py-polars/src/polars/io/delta/functions.py",
-          "line_number": 35,
+          "line_number": 36,
           "protocol": "gs",
           "provider": "Google Cloud Storage (GCS)",
           "usage_type": "uri_string",
           "context": "gs://bucket/path/to/delta-table/",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L35",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L36",
           "code_snippet": "\"\"\""
         },
         {
           "file_path": "py-polars/src/polars/io/delta/functions.py",
-          "line_number": 35,
+          "line_number": 36,
           "protocol": "az",
           "provider": "Microsoft Azure (Blob/ADLS)",
           "usage_type": "uri_string",
           "context": "az://<container",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L35",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L36",
           "code_snippet": "\"\"\""
         },
         {
           "file_path": "py-polars/src/polars/io/delta/functions.py",
-          "line_number": 35,
+          "line_number": 36,
           "protocol": "abfs",
           "provider": "Microsoft Azure (Blob/ADLS)",
           "usage_type": "uri_string",
           "context": "abfs://<container",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L35",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L36",
           "code_snippet": "\"\"\""
         },
         {
           "file_path": "py-polars/src/polars/io/delta/functions.py",
-          "line_number": 35,
+          "line_number": 36,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://docs.rs/object_store/latest/object_store/azure/enum.",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L35",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L36",
           "code_snippet": "\"\"\""
         },
         {
           "file_path": "py-polars/src/polars/io/delta/functions.py",
-          "line_number": 35,
+          "line_number": 36,
           "protocol": "az",
           "provider": "Microsoft Azure (Blob/ADLS)",
           "usage_type": "uri_string",
           "context": "az://container/path/to/delta-table/",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L35",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L36",
           "code_snippet": "\"\"\""
         },
         {
           "file_path": "py-polars/src/polars/io/delta/functions.py",
-          "line_number": 173,
+          "line_number": 192,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://delta-io.github.io/delta-rs/usage/loading-table/",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L173",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L192",
           "code_snippet": "\"\"\""
         },
         {
           "file_path": "py-polars/src/polars/io/delta/functions.py",
-          "line_number": 173,
+          "line_number": 192,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://docs.rs/object_store/latest/object_store/aws/enum.Am",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L173",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L192",
           "code_snippet": "\"\"\""
         },
         {
           "file_path": "py-polars/src/polars/io/delta/functions.py",
-          "line_number": 173,
+          "line_number": 192,
           "protocol": "s3",
           "provider": "Amazon Web Services (S3)",
           "usage_type": "uri_string",
           "context": "s3://bucket/path/to/delta-table/",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L173",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L192",
           "code_snippet": "\"\"\""
         },
         {
           "file_path": "py-polars/src/polars/io/delta/functions.py",
-          "line_number": 173,
+          "line_number": 192,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://docs.rs/object_store/latest/object_store/gcp/enum.Go",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L173",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L192",
           "code_snippet": "\"\"\""
         },
         {
           "file_path": "py-polars/src/polars/io/delta/functions.py",
-          "line_number": 173,
+          "line_number": 192,
           "protocol": "gs",
           "provider": "Google Cloud Storage (GCS)",
           "usage_type": "uri_string",
           "context": "gs://bucket/path/to/delta-table/",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L173",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L192",
           "code_snippet": "\"\"\""
         },
         {
           "file_path": "py-polars/src/polars/io/delta/functions.py",
-          "line_number": 173,
+          "line_number": 192,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://docs.rs/object_store/latest/object_store/azure/enum.",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L173",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L192",
           "code_snippet": "\"\"\""
         },
         {
           "file_path": "py-polars/src/polars/io/delta/functions.py",
-          "line_number": 173,
+          "line_number": 192,
           "protocol": "az",
           "provider": "Microsoft Azure (Blob/ADLS)",
           "usage_type": "uri_string",
           "context": "az://<container",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L173",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L192",
           "code_snippet": "\"\"\""
         },
         {
           "file_path": "py-polars/src/polars/io/delta/functions.py",
-          "line_number": 173,
+          "line_number": 192,
           "protocol": "az",
           "provider": "Microsoft Azure (Blob/ADLS)",
           "usage_type": "uri_string",
           "context": "az://container/path/to/delta-table/",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L173",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/delta/functions.py#L192",
           "code_snippet": "\"\"\""
         },
         {
@@ -25315,46 +25337,46 @@
         },
         {
           "file_path": "py-polars/src/polars/io/ipc/functions.py",
-          "line_number": 277,
+          "line_number": 295,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://arrow.apache.org/docs/python/ipc.html.",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/ipc/functions.py#L277",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/ipc/functions.py#L295",
           "code_snippet": "\"\"\""
         },
         {
           "file_path": "py-polars/src/polars/io/ipc/functions.py",
-          "line_number": 426,
+          "line_number": 457,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://docs.rs/object_store/latest/object_store/aws/enum.Am",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/ipc/functions.py#L426",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/ipc/functions.py#L457",
           "code_snippet": "\"\"\""
         },
         {
           "file_path": "py-polars/src/polars/io/ipc/functions.py",
-          "line_number": 426,
+          "line_number": 457,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://docs.rs/object_store/latest/object_store/gcp/enum.Go",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/ipc/functions.py#L426",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/ipc/functions.py#L457",
           "code_snippet": "\"\"\""
         },
         {
           "file_path": "py-polars/src/polars/io/ipc/functions.py",
-          "line_number": 426,
+          "line_number": 457,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://docs.rs/object_store/latest/object_store/azure/enum.",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/ipc/functions.py#L426",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/ipc/functions.py#L457",
           "code_snippet": "\"\"\""
         },
         {
@@ -25458,35 +25480,35 @@
         },
         {
           "file_path": "py-polars/src/polars/io/ndjson.py",
-          "line_number": 221,
+          "line_number": 238,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://docs.rs/object_store/latest/object_store/aws/enum.Am",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/ndjson.py#L221",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/ndjson.py#L238",
           "code_snippet": "\"\"\""
         },
         {
           "file_path": "py-polars/src/polars/io/ndjson.py",
-          "line_number": 221,
+          "line_number": 238,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://docs.rs/object_store/latest/object_store/gcp/enum.Go",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/ndjson.py#L221",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/ndjson.py#L238",
           "code_snippet": "\"\"\""
         },
         {
           "file_path": "py-polars/src/polars/io/ndjson.py",
-          "line_number": 221,
+          "line_number": 238,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://docs.rs/object_store/latest/object_store/azure/enum.",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/ndjson.py#L221",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/ndjson.py#L238",
           "code_snippet": "\"\"\""
         },
         {
@@ -25535,79 +25557,79 @@
         },
         {
           "file_path": "py-polars/src/polars/io/parquet/functions.py",
-          "line_number": 397,
+          "line_number": 412,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://docs.rs/object_store/latest/object_store/aws/enum.Am",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/parquet/functions.py#L397",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/parquet/functions.py#L412",
           "code_snippet": "\"\"\""
         },
         {
           "file_path": "py-polars/src/polars/io/parquet/functions.py",
-          "line_number": 397,
+          "line_number": 412,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://docs.rs/object_store/latest/object_store/gcp/enum.Go",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/parquet/functions.py#L397",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/parquet/functions.py#L412",
           "code_snippet": "\"\"\""
         },
         {
           "file_path": "py-polars/src/polars/io/parquet/functions.py",
-          "line_number": 397,
+          "line_number": 412,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://docs.rs/object_store/latest/object_store/azure/enum.",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/parquet/functions.py#L397",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/parquet/functions.py#L412",
           "code_snippet": "\"\"\""
         },
         {
           "file_path": "py-polars/src/polars/io/parquet/functions.py",
-          "line_number": 498,
+          "line_number": 513,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://docs.rs/object_store/latest/object_store/aws/enum.Am",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/parquet/functions.py#L498",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/parquet/functions.py#L513",
           "code_snippet": "\"\"\""
         },
         {
           "file_path": "py-polars/src/polars/io/parquet/functions.py",
-          "line_number": 498,
+          "line_number": 513,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://docs.rs/object_store/latest/object_store/gcp/enum.Go",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/parquet/functions.py#L498",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/parquet/functions.py#L513",
           "code_snippet": "\"\"\""
         },
         {
           "file_path": "py-polars/src/polars/io/parquet/functions.py",
-          "line_number": 498,
+          "line_number": 513,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://docs.rs/object_store/latest/object_store/azure/enum.",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/parquet/functions.py#L498",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/parquet/functions.py#L513",
           "code_snippet": "\"\"\""
         },
         {
           "file_path": "py-polars/src/polars/io/parquet/functions.py",
-          "line_number": 498,
+          "line_number": 513,
           "protocol": "s3",
           "provider": "Amazon Web Services (S3)",
           "usage_type": "uri_string",
           "context": "s3://bucket/*.parquet",
           "repo_url": "https://github.com/pola-rs/polars",
-          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/parquet/functions.py#L498",
+          "file_url": "https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/parquet/functions.py#L513",
           "code_snippet": "\"\"\""
         },
         {
@@ -26626,17 +26648,17 @@
     },
     {
       "target_source": "GitHub:Lightning-AI/pytorch-lightning (main)",
-      "total_files_scanned": 446,
-      "files_with_protocols": 81,
-      "total_protocol_usages": 191,
+      "total_files_scanned": 457,
+      "files_with_protocols": 83,
+      "total_protocol_usages": 193,
       "protocol_counts": {
-        "https": 168,
+        "https": 170,
         "http": 18,
         "s3": 4,
         "hdfs": 1
       },
       "provider_counts": {
-        "Web / HTTP": 186,
+        "Web / HTTP": 188,
         "Amazon Web Services (S3)": 4,
         "Hadoop HDFS": 1
       },
@@ -26753,6 +26775,17 @@
           "code_snippet": "\"Source Code\": \"https://github.com/Lightning-AI/lightning\","
         },
         {
+          "file_path": "src/lightning/app/cli/app-template/setup.py",
+          "line_number": 12,
+          "protocol": "https",
+          "provider": "Web / HTTP",
+          "usage_type": "uri_string",
+          "context": "https://github.com/Lightning-AI/lightning-app-template",
+          "repo_url": "https://github.com/Lightning-AI/pytorch-lightning",
+          "file_url": "https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/app-template/setup.py#L12",
+          "code_snippet": "url=\"https://github.com/Lightning-AI/lightning-app-template\","
+        },
+        {
           "file_path": "src/lightning/app/cli/cmd_install.py",
           "line_number": 242,
           "protocol": "https",
@@ -26850,6 +26883,17 @@
           "repo_url": "https://github.com/Lightning-AI/pytorch-lightning",
           "file_url": "https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/commands/cp.py#L338",
           "code_snippet": "return f\"https://storage.{cluster.spec.driver.kubernetes.root_domain_name}\""
+        },
+        {
+          "file_path": "src/lightning/app/cli/component-template/setup.py",
+          "line_number": 12,
+          "protocol": "https",
+          "provider": "Web / HTTP",
+          "usage_type": "uri_string",
+          "context": "https://github.com/Lightning-AI/lightning-component-template",
+          "repo_url": "https://github.com/Lightning-AI/pytorch-lightning",
+          "file_url": "https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/component-template/setup.py#L12",
+          "code_snippet": "url=\"https://github.com/Lightning-AI/lightning-component-template\","
         },
         {
           "file_path": "src/lightning/app/cli/connect/data.py",
@@ -28747,7 +28791,7 @@
     },
     {
       "target_source": "GitHub:duckdb/duckdb (main)",
-      "total_files_scanned": 14,
+      "total_files_scanned": 15,
       "files_with_protocols": 0,
       "total_protocol_usages": 0,
       "protocol_counts": {},
@@ -28757,23 +28801,155 @@
     },
     {
       "target_source": "GitHub:huggingface/datasets (main)",
-      "total_files_scanned": 139,
-      "files_with_protocols": 19,
-      "total_protocol_usages": 97,
+      "total_files_scanned": 141,
+      "files_with_protocols": 20,
+      "total_protocol_usages": 109,
       "protocol_counts": {
-        "https": 75,
+        "https": 87,
         "s3": 7,
         "file": 1,
         "zip": 14
       },
       "provider_counts": {
-        "Web / HTTP": 75,
+        "Web / HTTP": 87,
         "Amazon Web Services (S3)": 7,
         "Local Filesystem": 1,
         "Other / Chained Protocol": 14
       },
       "repo_url": "https://github.com/huggingface/datasets",
       "items": [
+        {
+          "file_path": "setup.py",
+          "line_number": 2,
+          "protocol": "https",
+          "provider": "Web / HTTP",
+          "usage_type": "uri_string",
+          "context": "https://github.com/allenai/allennlp/blob/master/setup.py",
+          "repo_url": "https://github.com/huggingface/datasets",
+          "file_url": "https://github.com/huggingface/datasets/blob/main/setup.py#L2",
+          "code_snippet": "\"\"\"HuggingFace/Datasets is an open library of datasets."
+        },
+        {
+          "file_path": "setup.py",
+          "line_number": 2,
+          "protocol": "https",
+          "provider": "Web / HTTP",
+          "usage_type": "uri_string",
+          "context": "https://pypi.org/",
+          "repo_url": "https://github.com/huggingface/datasets",
+          "file_url": "https://github.com/huggingface/datasets/blob/main/setup.py#L2",
+          "code_snippet": "\"\"\"HuggingFace/Datasets is an open library of datasets."
+        },
+        {
+          "file_path": "setup.py",
+          "line_number": 2,
+          "protocol": "https",
+          "provider": "Web / HTTP",
+          "usage_type": "uri_string",
+          "context": "https://test.pypi.org/",
+          "repo_url": "https://github.com/huggingface/datasets",
+          "file_url": "https://github.com/huggingface/datasets/blob/main/setup.py#L2",
+          "code_snippet": "\"\"\"HuggingFace/Datasets is an open library of datasets."
+        },
+        {
+          "file_path": "setup.py",
+          "line_number": 2,
+          "protocol": "https",
+          "provider": "Web / HTTP",
+          "usage_type": "uri_string",
+          "context": "https://github.com/huggingface/datasets@main#egg=datasets`",
+          "repo_url": "https://github.com/huggingface/datasets",
+          "file_url": "https://github.com/huggingface/datasets/blob/main/setup.py#L2",
+          "code_snippet": "\"\"\"HuggingFace/Datasets is an open library of datasets."
+        },
+        {
+          "file_path": "setup.py",
+          "line_number": 2,
+          "protocol": "https",
+          "provider": "Web / HTTP",
+          "usage_type": "uri_string",
+          "context": "https://github.com/huggingface/datasets@main#egg=datasets",
+          "repo_url": "https://github.com/huggingface/datasets",
+          "file_url": "https://github.com/huggingface/datasets/blob/main/setup.py#L2",
+          "code_snippet": "\"\"\"HuggingFace/Datasets is an open library of datasets."
+        },
+        {
+          "file_path": "setup.py",
+          "line_number": 2,
+          "protocol": "https",
+          "provider": "Web / HTTP",
+          "usage_type": "uri_string",
+          "context": "https://github.com/huggingface/datasets/pull/new/release-VER",
+          "repo_url": "https://github.com/huggingface/datasets",
+          "file_url": "https://github.com/huggingface/datasets/blob/main/setup.py#L2",
+          "code_snippet": "\"\"\"HuggingFace/Datasets is an open library of datasets."
+        },
+        {
+          "file_path": "setup.py",
+          "line_number": 2,
+          "protocol": "https",
+          "provider": "Web / HTTP",
+          "usage_type": "uri_string",
+          "context": "https://test.pypi.org/simple/",
+          "repo_url": "https://github.com/huggingface/datasets",
+          "file_url": "https://github.com/huggingface/datasets/blob/main/setup.py#L2",
+          "code_snippet": "\"\"\"HuggingFace/Datasets is an open library of datasets."
+        },
+        {
+          "file_path": "setup.py",
+          "line_number": 2,
+          "protocol": "https",
+          "provider": "Web / HTTP",
+          "usage_type": "uri_string",
+          "context": "https://pypi.org/simple/",
+          "repo_url": "https://github.com/huggingface/datasets",
+          "file_url": "https://github.com/huggingface/datasets/blob/main/setup.py#L2",
+          "code_snippet": "\"\"\"HuggingFace/Datasets is an open library of datasets."
+        },
+        {
+          "file_path": "setup.py",
+          "line_number": 2,
+          "protocol": "https",
+          "provider": "Web / HTTP",
+          "usage_type": "uri_string",
+          "context": "https://github.com/huggingface/datasets/releases/new",
+          "repo_url": "https://github.com/huggingface/datasets",
+          "file_url": "https://github.com/huggingface/datasets/blob/main/setup.py#L2",
+          "code_snippet": "\"\"\"HuggingFace/Datasets is an open library of datasets."
+        },
+        {
+          "file_path": "setup.py",
+          "line_number": 2,
+          "protocol": "https",
+          "provider": "Web / HTTP",
+          "usage_type": "uri_string",
+          "context": "https://github.com/huggingface/datasets/pull/new/dev-version",
+          "repo_url": "https://github.com/huggingface/datasets",
+          "file_url": "https://github.com/huggingface/datasets/blob/main/setup.py#L2",
+          "code_snippet": "\"\"\"HuggingFace/Datasets is an open library of datasets."
+        },
+        {
+          "file_path": "setup.py",
+          "line_number": 253,
+          "protocol": "https",
+          "provider": "Web / HTTP",
+          "usage_type": "uri_string",
+          "context": "https://github.com/huggingface/datasets",
+          "repo_url": "https://github.com/huggingface/datasets",
+          "file_url": "https://github.com/huggingface/datasets/blob/main/setup.py#L253",
+          "code_snippet": "url=\"https://github.com/huggingface/datasets\","
+        },
+        {
+          "file_path": "setup.py",
+          "line_number": 254,
+          "protocol": "https",
+          "provider": "Web / HTTP",
+          "usage_type": "uri_string",
+          "context": "https://github.com/huggingface/datasets/tags",
+          "repo_url": "https://github.com/huggingface/datasets",
+          "file_url": "https://github.com/huggingface/datasets/blob/main/setup.py#L254",
+          "code_snippet": "download_url=\"https://github.com/huggingface/datasets/tags\","
+        },
         {
           "file_path": "src/datasets/arrow_dataset.py",
           "line_number": 1724,
@@ -29845,7 +30021,7 @@
     },
     {
       "target_source": "GitHub:mlflow/mlflow (master)",
-      "total_files_scanned": 1291,
+      "total_files_scanned": 1300,
       "files_with_protocols": 268,
       "total_protocol_usages": 923,
       "protocol_counts": {
@@ -40022,17 +40198,17 @@
     },
     {
       "target_source": "GitHub:apache/arrow (main)",
-      "total_files_scanned": 70,
-      "files_with_protocols": 15,
-      "total_protocol_usages": 49,
+      "total_files_scanned": 80,
+      "files_with_protocols": 16,
+      "total_protocol_usages": 50,
       "protocol_counts": {
-        "http": 3,
+        "http": 4,
         "https": 35,
         "file": 5,
         "s3": 6
       },
       "provider_counts": {
-        "Web / HTTP": 38,
+        "Web / HTTP": 39,
         "Local Filesystem": 5,
         "Amazon Web Services (S3)": 6
       },
@@ -40314,6 +40490,17 @@
           "code_snippet": "url = 'https://github.com/{repo}/branches/all?query={branch}'"
         },
         {
+          "file_path": "dev/archery/setup.py",
+          "line_number": 47,
+          "protocol": "http",
+          "provider": "Web / HTTP",
+          "usage_type": "uri_string",
+          "context": "http://github.com/apache/arrow",
+          "repo_url": "https://github.com/apache/arrow",
+          "file_url": "https://github.com/apache/arrow/blob/main/dev/archery/setup.py#L47",
+          "code_snippet": "url='http://github.com/apache/arrow',"
+        },
+        {
           "file_path": "dev/merge_arrow_pr.py",
           "line_number": 237,
           "protocol": "https",
@@ -40581,7 +40768,7 @@
     },
     {
       "target_source": "GitHub:iterative/dvc (main)",
-      "total_files_scanned": 257,
+      "total_files_scanned": 258,
       "files_with_protocols": 33,
       "total_protocol_usages": 71,
       "protocol_counts": {
@@ -41384,7 +41571,7 @@
     },
     {
       "target_source": "GitHub:dask/dask (main)",
-      "total_files_scanned": 182,
+      "total_files_scanned": 184,
       "files_with_protocols": 35,
       "total_protocol_usages": 101,
       "protocol_counts": {
@@ -42525,15 +42712,15 @@
     },
     {
       "target_source": "GitHub:modin-project/modin (main)",
-      "total_files_scanned": 278,
-      "files_with_protocols": 38,
-      "total_protocol_usages": 79,
+      "total_files_scanned": 283,
+      "files_with_protocols": 39,
+      "total_protocol_usages": 80,
       "protocol_counts": {
-        "https": 77,
+        "https": 78,
         "s3": 2
       },
       "provider_counts": {
-        "Web / HTTP": 77,
+        "Web / HTTP": 78,
         "Amazon Web Services (S3)": 2
       },
       "repo_url": "https://github.com/modin-project/modin",
@@ -43199,6 +43386,17 @@
           "code_snippet": "PANDAS_API_URL_TEMPLATE = f\"https://pandas.pydata.org/pandas-docs/version/{pandas.__version__}/reference/api/{{}}.html\""
         },
         {
+          "file_path": "setup.py",
+          "line_number": 50,
+          "protocol": "https",
+          "provider": "Web / HTTP",
+          "usage_type": "uri_string",
+          "context": "https://github.com/modin-project/modin",
+          "repo_url": "https://github.com/modin-project/modin",
+          "file_url": "https://github.com/modin-project/modin/blob/main/setup.py#L50",
+          "code_snippet": "url=\"https://github.com/modin-project/modin\","
+        },
+        {
           "file_path": "versioneer.py",
           "line_number": 3,
           "protocol": "https",
@@ -43411,7 +43609,7 @@
     },
     {
       "target_source": "GitHub:flyteorg/flyte (main)",
-      "total_files_scanned": 236,
+      "total_files_scanned": 242,
       "files_with_protocols": 1,
       "total_protocol_usages": 3,
       "protocol_counts": {
@@ -43459,21 +43657,21 @@
     },
     {
       "target_source": "GitHub:feast-dev/feast (master)",
-      "total_files_scanned": 593,
-      "files_with_protocols": 40,
-      "total_protocol_usages": 68,
+      "total_files_scanned": 599,
+      "files_with_protocols": 41,
+      "total_protocol_usages": 69,
       "protocol_counts": {
         "https": 37,
         "http": 10,
+        "s3": 12,
         "s3a": 2,
-        "s3": 11,
         "gs": 2,
         "hdfs": 2,
         "file": 4
       },
       "provider_counts": {
         "Web / HTTP": 47,
-        "Amazon Web Services (S3)": 13,
+        "Amazon Web Services (S3)": 14,
         "Google Cloud Storage (GCS)": 2,
         "Hadoop HDFS": 2,
         "Local Filesystem": 4
@@ -43511,6 +43709,17 @@
           "context": "https://docs.feast.dev/",
           "repo_url": "https://github.com/feast-dev/feast",
           "file_url": "https://github.com/feast-dev/feast/blob/master/sdk/python/feast/cli/cli.py#L109",
+          "code_snippet": "\"\"\""
+        },
+        {
+          "file_path": "sdk/python/feast/credentials.py",
+          "line_number": 1,
+          "protocol": "s3",
+          "provider": "Amazon Web Services (S3)",
+          "usage_type": "uri_string",
+          "context": "s3://bucket/features/",
+          "repo_url": "https://github.com/feast-dev/feast",
+          "file_url": "https://github.com/feast-dev/feast/blob/master/sdk/python/feast/credentials.py#L1",
           "code_snippet": "\"\"\""
         },
         {
@@ -43614,24 +43823,24 @@
         },
         {
           "file_path": "sdk/python/feast/infra/offline_stores/bigquery.py",
-          "line_number": 113,
+          "line_number": 114,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://cloud.google.com/bigquery/docs/locations",
           "repo_url": "https://github.com/feast-dev/feast",
-          "file_url": "https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/offline_stores/bigquery.py#L113",
+          "file_url": "https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/offline_stores/bigquery.py#L114",
           "code_snippet": "\"\"\" (optional) GCP location name used for the BigQuery offline store."
         },
         {
           "file_path": "sdk/python/feast/infra/offline_stores/bigquery.py",
-          "line_number": 125,
+          "line_number": 126,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://cloud.google.com/bigquery/docs/reference/rest/v2/Job",
           "repo_url": "https://github.com/feast-dev/feast",
-          "file_url": "https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/offline_stores/bigquery.py#L125",
+          "file_url": "https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/offline_stores/bigquery.py#L126",
           "code_snippet": "\"\"\" (optional) Specifies whether the job is allowed to create new tables. The default value is CREATE_IF_NEEDED."
         },
         {
@@ -43702,13 +43911,13 @@
         },
         {
           "file_path": "sdk/python/feast/infra/offline_stores/contrib/ray_offline_store/ray_source.py",
-          "line_number": 29,
+          "line_number": 30,
           "protocol": "s3",
           "provider": "Amazon Web Services (S3)",
           "usage_type": "uri_string",
           "context": "s3://bucket/cheques/",
           "repo_url": "https://github.com/feast-dev/feast",
-          "file_url": "https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/offline_stores/contrib/ray_offline_store/ray_source.py#L29",
+          "file_url": "https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/offline_stores/contrib/ray_offline_store/ray_source.py#L30",
           "code_snippet": "\"\"\"A RaySource object defines a data source that a RayOfflineStore can use."
         },
         {
@@ -43790,24 +43999,24 @@
         },
         {
           "file_path": "sdk/python/feast/infra/offline_stores/file_source.py",
-          "line_number": 265,
+          "line_number": 308,
           "protocol": "s3",
           "provider": "Amazon Web Services (S3)",
           "usage_type": "driver_instantiation",
           "context": "driver: s3",
           "repo_url": "https://github.com/feast-dev/feast",
-          "file_url": "https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/offline_stores/file_source.py#L265",
-          "code_snippet": "s3fs = S3FileSystem("
+          "file_url": "https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/offline_stores/file_source.py#L308",
+          "code_snippet": "s3fs = S3FileSystem(**kwargs)"
         },
         {
           "file_path": "sdk/python/feast/infra/offline_stores/snowflake.py",
-          "line_number": 1320,
+          "line_number": 1352,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://docs.snowflake.com/en/sql-reference/constructs/asof-",
           "repo_url": "https://github.com/feast-dev/feast",
-          "file_url": "https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/offline_stores/snowflake.py#L1320",
+          "file_url": "https://github.com/feast-dev/feast/blob/master/sdk/python/feast/infra/offline_stores/snowflake.py#L1352",
           "code_snippet": "MULTIPLE_FEATURE_VIEW_POINT_IN_TIME_JOIN = \"\"\""
         },
         {
@@ -44232,7 +44441,7 @@
     },
     {
       "target_source": "GitHub:pydata/xarray (main)",
-      "total_files_scanned": 121,
+      "total_files_scanned": 123,
       "files_with_protocols": 36,
       "total_protocol_usages": 151,
       "protocol_counts": {
@@ -45909,7 +46118,7 @@
     },
     {
       "target_source": "GitHub:kedro-org/kedro (main)",
-      "total_files_scanned": 98,
+      "total_files_scanned": 104,
       "files_with_protocols": 22,
       "total_protocol_usages": 42,
       "protocol_counts": {
@@ -46392,7 +46601,7 @@
     },
     {
       "target_source": "GitHub:pytorch/torchtitan (main)",
-      "total_files_scanned": 308,
+      "total_files_scanned": 313,
       "files_with_protocols": 23,
       "total_protocol_usages": 35,
       "protocol_counts": {
@@ -46464,13 +46673,13 @@
         },
         {
           "file_path": "torchtitan/config/configs.py",
-          "line_number": 209,
+          "line_number": 211,
           "protocol": "https",
           "provider": "Web / HTTP",
           "usage_type": "uri_string",
           "context": "https://github.com/pytorch/pytorch/blob/de4c2a3b4e89d96334dc",
           "repo_url": "https://github.com/pytorch/torchtitan",
-          "file_url": "https://github.com/pytorch/torchtitan/blob/main/torchtitan/config/configs.py#L209",
+          "file_url": "https://github.com/pytorch/torchtitan/blob/main/torchtitan/config/configs.py#L211",
           "code_snippet": "\"\"\""
         },
         {
@@ -46796,7 +47005,7 @@
     },
     {
       "target_source": "GitHub:delta-io/delta-rs (main)",
-      "total_files_scanned": 17,
+      "total_files_scanned": 18,
       "files_with_protocols": 3,
       "total_protocol_usages": 7,
       "protocol_counts": {
@@ -46891,7 +47100,7 @@
     },
     {
       "target_source": "GitHub:zarr-developers/zarr-python (main)",
-      "total_files_scanned": 169,
+      "total_files_scanned": 173,
       "files_with_protocols": 65,
       "total_protocol_usages": 155,
       "protocol_counts": {
@@ -48617,7 +48826,7 @@
     },
     {
       "target_source": "GitHub:intake/intake (master)",
-      "total_files_scanned": 51,
+      "total_files_scanned": 52,
       "files_with_protocols": 15,
       "total_protocol_usages": 43,
       "protocol_counts": {
@@ -49112,17 +49321,17 @@
     },
     {
       "target_source": "GitHub:fsspec/s3fs (main)",
-      "total_files_scanned": 7,
-      "files_with_protocols": 3,
-      "total_protocol_usages": 26,
+      "total_files_scanned": 10,
+      "files_with_protocols": 4,
+      "total_protocol_usages": 27,
       "protocol_counts": {
         "s3": 3,
         "https": 21,
-        "http": 2
+        "http": 3
       },
       "provider_counts": {
         "Amazon Web Services (S3)": 3,
-        "Web / HTTP": 23
+        "Web / HTTP": 24
       },
       "repo_url": "https://github.com/fsspec/s3fs",
       "items": [
@@ -49202,6 +49411,17 @@
           "repo_url": "https://github.com/fsspec/s3fs",
           "file_url": "https://github.com/fsspec/s3fs/blob/main/s3fs/errors.py#L1",
           "code_snippet": "\"\"\"S3 error codes adapted into more natural Python ones."
+        },
+        {
+          "file_path": "setup.py",
+          "line_number": 22,
+          "protocol": "http",
+          "provider": "Web / HTTP",
+          "usage_type": "uri_string",
+          "context": "http://github.com/fsspec/s3fs/",
+          "repo_url": "https://github.com/fsspec/s3fs",
+          "file_url": "https://github.com/fsspec/s3fs/blob/main/setup.py#L22",
+          "code_snippet": "url=\"http://github.com/fsspec/s3fs/\","
         },
         {
           "file_path": "versioneer.py",
@@ -49416,7 +49636,7 @@
     },
     {
       "target_source": "GitHub:fsspec/gcsfs (main)",
-      "total_files_scanned": 27,
+      "total_files_scanned": 30,
       "files_with_protocols": 5,
       "total_protocol_usages": 26,
       "protocol_counts": {
@@ -49720,7 +49940,7 @@
     },
     {
       "target_source": "GitHub:fsspec/adlfs (main)",
-      "total_files_scanned": 3,
+      "total_files_scanned": 6,
       "files_with_protocols": 1,
       "total_protocol_usages": 10,
       "protocol_counts": {

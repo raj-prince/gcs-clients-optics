@@ -114,21 +114,25 @@
 
 ### **Visual Content & Layout**
 * **Header**: **Actionable Insights & Anti-Pattern Elimination**
-* **4 Core Analysis Dimensions**:
-  1. **Method Adoption & Categorization**:
+* **6 Core Analysis Dimensions**:
+  1. **`readview` Zero-Copy Buffer Ownership & Descoping**:
+     * **The Challenge**: Future high-performance storage reads can return zero-copy `readview` buffers with zero memory allocations, but only if the buffer ownership is **descoped after the read**.
+     * **The AST Discovery**: Automatically checks AST call graphs to verify if buffers are consumed in-place (`torch.frombuffer`, `np.frombuffer`, `pa.BufferReader`, `json.loads`, `.decode()`) or transiently scoped vs escaping (`return data`, `self.attr = data`).
+     * **The Result**: Pinpoints 100% safe candidate sites across PyTorch and Ray data loaders to eliminate 30–40% memory allocation overhead.
+  2. **Downstream `fsspec`/`gcsfs` Package Version Tracking**:
+     * Audits version constraints (`>=2023.1.0`, `~=2024.2.0`, `pinned`) across `pyproject.toml` and `requirements.txt` to measure version lag and compatibility baselines.
+  3. **Method Adoption & Categorization**:
      * Classifies operations into **Data Read/Write**, **Metadata Read/Write**, and **Lifecycle Management**.
-     * Measures adoption of `fsspec.open` vs `fs.cat_file` vs batch `open_files()`.
-  2. **Anti-Pattern Detection: Zero-Copy `memoryview` Optimization**:
-     * **The Finding**: Thousands of read operations in data loaders do multiple intermediate byte copies.
-     * **The Solution**: Identify repositories where exposing a **zero-copy `readinto(memoryview)`** or DMA-friendly buffer API eliminates 30–40% memory overhead in PyTorch and Ray data loaders.
-     * **Proactive Downstream Optimizations**: Pinpoint exact files and line numbers to submit upstream PRs.
-  3. **Read-Path Caching Behavior**:
+     * Measures adoption of `fsspec.open` vs direct `fs.cat_file` vs batch `open_files()`.
+  4. **Metadata Roundtrip Amplification**:
+     * Detects redundant `exists()` / `info()` calls right before `open()`, making the case for client-side metadata caching.
+  5. **Read-Path Caching Behavior**:
      * Audits `cache_type="readahead"`, `"mmap"`, `"bytes"`, `"block"`, informing optimal default buffer sizes.
-  4. **Async vs Sync Execution Analysis**:
+  6. **Async vs Sync Execution Analysis**:
      * Evaluates whether AI workloads execute native coroutines (`await fs._cat_file`) or block on synchronous wrapper bridges (`asyn.sync`).
 
 ### **🎙️ Voiceover Script (Slide 5 — ~40s)**
-> *"With this telemetry, we can answer critical product questions. For example, we discovered thousands of read calls in ML pipelines doing intermediate byte copying. We can use this data to design and propose a high-performance, zero-copy `readinto` API with `memoryview` buffers directly to PyTorch and Ray—eliminating up to 40% memory overhead in cloud data loading."*
+> *"With this telemetry, we can answer critical product questions. Most excitingly, we analyze **`readview` zero-copy feasibility**: we check the Abstract Syntax Tree to prove whether buffer ownership is immediately descoped after the read—such as in `torch.frombuffer` or `json.loads`. This gives us verified proof that we can safely introduce zero-copy `readview` into PyTorch and Ray data loaders with zero memory copy overhead. We also track exact `fsspec` and `gcsfs` version constraints across all downstream manifests."*
 
 ---
 
@@ -141,29 +145,35 @@
 gcs-optics run-all --repo data/default_dependents.json --output-dir reports/
 ```
 
-* **SQL Query 1: Top Invocations by Category**:
+* **SQL Query 1: Zero-Copy `readview` Feasibility by Consumer**:
+```sql
+SELECT consumer_category, COUNT(*) AS safe_readview_candidates,
+       ROUND(100.0 * COUNT(*) / (SELECT COUNT(*) FROM readview_candidates), 1) AS pct_of_total
+FROM readview_candidates
+WHERE is_zero_copy_ready = 1
+GROUP BY consumer_category
+ORDER BY safe_readview_candidates DESC;
+```
+
+* **SQL Query 2: `fsspec` & `gcsfs` Downstream Version Constraints**:
+```sql
+SELECT package_name, specifier, constraint_type, COUNT(DISTINCT repository) AS repo_count
+FROM dependency_versions
+GROUP BY package_name, specifier
+ORDER BY package_name, repo_count DESC;
+```
+
+* **SQL Query 3: Top Invocations & Metadata Probing**:
 ```sql
 SELECT category, method_name, COUNT(*) AS total_calls, COUNT(DISTINCT repo) AS repos
 FROM fsspec_usages
 GROUP BY category, method_name
 ORDER BY category, total_calls DESC
-LIMIT 8;
-```
-* **Key Findings**:
-  * `open` / `fsspec.open`: **1,274+ occurrences** across major repos.
-  * `fs.exists` / `fs.isdir` / `fs.info`: **100+ metadata probes** before reads (revealing metadata caching optimization opportunities!).
-  * `fs.get` / `get_file`: **30+ bulk downloads** (candidates for multipart parallel fetch).
-
-* **SQL Query 2: Read-Path Caching Strategy Distribution**:
-```sql
-SELECT cache_type, COUNT(*) AS count
-FROM cache_type_usages
-GROUP BY cache_type
-ORDER BY count DESC;
+LIMIT 6;
 ```
 
 ### **🎙️ Voiceover Script (Slide 6 — ~50s)**
-> *"Let's see it in action. In our live demo, we run `gcs-optics` across 24 top AI repositories. In just seconds, it produces a unified SQLite database, `optics.db`. Querying the database immediately reveals that metadata probes like `fs.exists` and `fs.isdir` are invoked repeatedly before data reads, proving a massive opportunity for client-side metadata caching. We can also see the exact distribution of read-path caching across frameworks."*
+> *"Let's see it in action. In our live demo, we run `gcs-optics` across 24 top AI repositories. In just seconds, it produces a unified SQLite database, `optics.db`. Querying the database immediately reveals that over 70% of read operations are safe zero-copy `readview` candidates whose buffer ownership is descoped immediately. We can also audit the exact `fsspec` and `gcsfs` versions deployed across frameworks, and pinpoint metadata roundtrip bottlenecks before reads."*
 
 ---
 

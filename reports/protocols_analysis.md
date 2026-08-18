@@ -7,13 +7,13 @@ This report analyzes **storage protocols (`gs://`, `s3://`, `abfs://`, etc.) and
 ## 📊 Global Cloud Provider Breakdown
 
 - **Repositories/Targets Scanned:** `24`
-- **Total Files Scanned:** `9357`
-- **Total Protocol Usages Detected:** `4486`
+- **Total Files Scanned:** `9472`
+- **Total Protocol Usages Detected:** `4506`
 
 | Cloud Provider / Backend | Total Usages | % Share |
 | :--- | :---: | :---: |
-| **Web / HTTP** | **3937** | `87.8%` |
-| **Amazon Web Services (S3)** | **328** | `7.3%` |
+| **Web / HTTP** | **3956** | `87.8%` |
+| **Amazon Web Services (S3)** | **329** | `7.3%` |
 | **Local Filesystem** | **62** | `1.4%` |
 | **Google Cloud Storage (GCS)** | **48** | `1.1%` |
 | **In-Memory Storage** | **41** | `0.9%` |
@@ -27,9 +27,9 @@ This report analyzes **storage protocols (`gs://`, `s3://`, `abfs://`, etc.) and
 
 | Protocol Scheme | Occurrences | % Share | Description |
 | :--- | :---: | :---: | :--- |
-| **`https`** | **3713** | `82.8%` | HTTPS Secure Remote Stream (`https://`) |
-| **`s3`** | **326** | `7.3%` | Amazon S3 (`s3://`) |
-| **`http`** | **224** | `5.0%` | HTTP Remote Stream (`http://`) |
+| **`https`** | **3730** | `82.8%` | HTTPS Secure Remote Stream (`https://`) |
+| **`s3`** | **327** | `7.3%` | Amazon S3 (`s3://`) |
+| **`http`** | **226** | `5.0%` | HTTP Remote Stream (`http://`) |
 | **`file`** | **62** | `1.4%` | Local Disk (`file://`) |
 | **`gs`** | **42** | `0.9%` | Google Cloud Storage (`gs://`) |
 | **`memory`** | **41** | `0.9%` | In-Memory Filesystem (`memory://`) |
