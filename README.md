@@ -1,8 +1,8 @@
 # GCS Clients Optics (`gcs-clients-optics`)
 
-A simple, extensible CLI and analysis engine for **Google Cloud Storage (GCS) and `fsspec` filesystem optics**.
+A simple, extensible CLI and analysis engine for **Google Cloud Storage (GCS) clients**.
 
-`gcs-clients-optics` scans Python codebases (via AST) and GitHub issues across open-source ecosystems (Dask, Ray, Hugging Face Datasets, PyTorch, etc.) using a **generic engine with pluggable use cases**.
+`gcs-clients-optics` supports [fsspec](https://github.com/fsspec/)/[gcsfs](https://github.com/fsspec/gcsfs) which is pythonic filesystem client. It scans the client's upstream python codebases (via AST) and GitHub issues across open-source ecosystems (Dask, Ray, Hugging Face Datasets, PyTorch, etc.) using a **generic engine with pluggable use cases**.
 
 📖 **[System Design Document](docs/DESIGN.md)**: High-level component diagrams, responsibilities, pipelining, and SQLite schema.
 
