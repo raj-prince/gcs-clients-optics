@@ -2,7 +2,10 @@
 Unit tests for AST visitor and fsspec / filesystem usage extraction.
 """
 
-import pytest
+try:
+    import pytest
+except ImportError:
+    pytest = None
 from gcs_clients_optics.crawler.ast_visitor import FsspecASTVisitor
 from gcs_clients_optics.crawler.engine import FsspecCrawlerEngine
 
@@ -184,3 +187,32 @@ def main(args):
         usages[0].is_specified_cache_keyword is True
         or usages[0].cache_type == "mmap"
     )
+
+
+def test_builtin_open_ignored():
+    code = """
+import os
+
+def load_config():
+    with open(os.path.join("etc", "config.json"), "r") as f:
+        return f.read()
+"""
+    engine = FsspecCrawlerEngine()
+    usages = engine.scan_code("config.py", code)
+    assert len(usages) == 0
+
+
+def test_imported_fsspec_open():
+    code = """
+from fsspec import open
+
+def load_remote_dataset(url):
+    with open(url, "rb") as f:
+        return f.read()
+"""
+    engine = FsspecCrawlerEngine()
+    usages = engine.scan_code("dataset.py", code)
+    assert len(usages) == 1
+    assert usages[0].target_name == "open"
+    assert usages[0].enclosing_function == "load_remote_dataset"
+

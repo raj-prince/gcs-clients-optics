@@ -3,8 +3,6 @@ Runnable simulation suite validating and exercising empirical fsspec and abstrac
 """
 
 from typing import Any, Dict, List
-import fsspec
-from fsspec.core import url_to_fs
 
 
 def _print_header(title: str, verbose: bool = True):
@@ -21,6 +19,9 @@ def run_fsspec_simulation(verbose: bool = True) -> Dict[str, Any]:
 
     Returns a summary dictionary of simulation results.
     """
+    import fsspec
+    from fsspec.core import url_to_fs
+
     results: Dict[str, Any] = {
         "directories_created": 0,
         "files_created": 0,

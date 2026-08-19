@@ -145,17 +145,40 @@
 gcs-optics run-all --repo data/default_dependents.json --output-dir reports/
 ```
 
-* **SQL Query 1: Zero-Copy `readview` Feasibility by Consumer**:
+* **SQL Query 1: Top Repositories by `readview` Zero-Copy Optimization Potential**:
 ```sql
-SELECT consumer_category, COUNT(*) AS safe_readview_candidates,
-       ROUND(100.0 * COUNT(*) / (SELECT COUNT(*) FROM readview_candidates), 1) AS pct_of_total
+SELECT repository,
+       COUNT(*) AS total_read_calls,
+       SUM(is_zero_copy_ready) AS safe_readview_sites,
+       ROUND(100.0 * SUM(is_zero_copy_ready) / COUNT(*), 1) AS pct_zero_copy_ready
+FROM readview_candidates
+GROUP BY repository
+ORDER BY safe_readview_sites DESC
+LIMIT 8;
+```
+
+* **SQL Query 2: `readview` Consumer Breakdown (Throughput & Memory Impact)**:
+```sql
+SELECT consumer_category,
+       COUNT(*) AS candidate_count,
+       COUNT(DISTINCT repository) AS impacted_repos,
+       ROUND(100.0 * COUNT(*) / (SELECT COUNT(*) FROM readview_candidates WHERE is_zero_copy_ready = 1), 1) AS pct_of_safe_reads
 FROM readview_candidates
 WHERE is_zero_copy_ready = 1
 GROUP BY consumer_category
-ORDER BY safe_readview_candidates DESC;
+ORDER BY candidate_count DESC;
 ```
 
-* **SQL Query 2: `fsspec` & `gcsfs` Downstream Version Constraints**:
+* **SQL Query 3: Concrete `readview` Code Locations (PR-Ready Evidence)**:
+```sql
+SELECT repository, file_path, line_number, target_name, consumer_name, descoped_reason
+FROM readview_candidates
+WHERE is_zero_copy_ready = 1
+ORDER BY repository, line_number
+LIMIT 5;
+```
+
+* **SQL Query 4: `fsspec` & `gcsfs` Downstream Version Constraints**:
 ```sql
 SELECT package_name, specifier, constraint_type, COUNT(DISTINCT repository) AS repo_count
 FROM dependency_versions
@@ -163,17 +186,8 @@ GROUP BY package_name, specifier
 ORDER BY package_name, repo_count DESC;
 ```
 
-* **SQL Query 3: Top Invocations & Metadata Probing**:
-```sql
-SELECT category, method_name, COUNT(*) AS total_calls, COUNT(DISTINCT repo) AS repos
-FROM fsspec_usages
-GROUP BY category, method_name
-ORDER BY category, total_calls DESC
-LIMIT 6;
-```
-
 ### **🎙️ Voiceover Script (Slide 6 — ~50s)**
-> *"Let's see it in action. In our live demo, we run `gcs-optics` across 24 top AI repositories. In just seconds, it produces a unified SQLite database, `optics.db`. Querying the database immediately reveals that over 70% of read operations are safe zero-copy `readview` candidates whose buffer ownership is descoped immediately. We can also audit the exact `fsspec` and `gcsfs` versions deployed across frameworks, and pinpoint metadata roundtrip bottlenecks before reads."*
+> *"Let's see it in action. In our live demo, we run `gcs-optics` across 24 top AI repositories. In just seconds, it produces a unified SQLite database, `optics.db`. Querying the database reveals hundreds of verified call sites where buffer ownership is descoped immediately—such as tensors loaded via `torch.frombuffer` or data parsed in `pyarrow`. These represent immediate, drop-in opportunities to switch to zero-copy `readview`, eliminating intermediate buffer allocations and significantly boosting read throughput for training pipelines."*
 
 ---
 

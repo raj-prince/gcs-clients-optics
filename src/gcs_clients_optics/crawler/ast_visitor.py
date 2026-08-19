@@ -13,7 +13,6 @@ class FsspecASTVisitor(ast.NodeVisitor):
     """AST NodeVisitor that inspects Python source trees for fsspec usages."""
 
     TARGET_FUNCTION_NAMES: Set[str] = {
-        "open",
         "open_files",
         "open_local",
         "url_to_fs",
@@ -256,6 +255,7 @@ class FsspecASTVisitor(ast.NodeVisitor):
             imported_orig = self.imports.get(func_id, "")
             if (
                 imported_orig.startswith("fsspec")
+                or imported_orig.startswith("gcsfs")
                 or func_id in self.TARGET_FUNCTION_NAMES
             ):
                 is_match = True
