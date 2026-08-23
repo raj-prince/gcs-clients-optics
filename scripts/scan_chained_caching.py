@@ -158,8 +158,8 @@ def inspect_repository(
                         "file_url": file_url,
                     })
 
-                # 2. cache_type keyword in open / filesystem calls
-                for m in re.finditer(r'cache_type\s*[:=]\s*[\'"]([a-zA-Z0-9_-]+)[\'"]', code, re.IGNORECASE):
+                # 2. cache_type keyword in open / filesystem calls & dictionary assignments
+                for m in re.finditer(r'cache_type[\'"]?\s*\]?\s*[:=]\s*[\'"]([a-zA-Z0-9_-]+)[\'"]', code, re.IGNORECASE):
                     ct = m.group(1).lower()
                     if ct in CACHE_KEYWORDS:
                         line_no = code[:m.start()].count("\n") + 1

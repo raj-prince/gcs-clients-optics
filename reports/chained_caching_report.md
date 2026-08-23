@@ -10,27 +10,27 @@
 
 | Repository | Total Findings | `simplecache::` | `filecache::` | `blockcache` | `DirFileSystem` | `ZipFileSystem` | Other Cache / Chaining |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| [iterative/dvc](https://github.com/iterative/dvc) | **0** | - | - | - | - | - | - |
 | [great-expectations/great_expectations](https://github.com/great-expectations/great_expectations) | **0** | - | - | - | - | - | - |
-| [pydata/xarray](https://github.com/pydata/xarray) | **2** | [**2**](#pydata-xarray-chained-urls) | - | - | - | - | - |
+| [iterative/dvc](https://github.com/iterative/dvc) | **0** | - | - | - | - | - | - |
+| [pydata/xarray](https://github.com/pydata/xarray) | **5** | [**2**](#pydata-xarray-chained-urls) | - | [**2**](#pydata-xarray-blockcache) | - | - | 1 |
 | [flyteorg/flyte](https://github.com/flyteorg/flyte) | **0** | - | - | - | - | - | - |
 | [pandas-dev/pandas](https://github.com/pandas-dev/pandas) | **7** | - | [**7**](#pandas-dev-pandas-chained-urls) | - | - | - | - |
 | [dask/dask](https://github.com/dask/dask) | **0** | - | - | - | - | - | - |
 | [pytorch/torchtitan](https://github.com/pytorch/torchtitan) | **0** | - | - | - | - | - | - |
-| [zarr-developers/zarr-python](https://github.com/zarr-developers/zarr-python) | **0** | - | - | - | - | - | - |
 | [pola-rs/polars](https://github.com/pola-rs/polars) | **0** | - | - | - | - | - | - |
+| [zarr-developers/zarr-python](https://github.com/zarr-developers/zarr-python) | **0** | - | - | - | - | - | - |
 | [delta-io/delta-rs](https://github.com/delta-io/delta-rs) | **0** | - | - | - | - | - | - |
-| [intake/intake](https://github.com/intake/intake) | **3** | [**3**](#intake-intake-chained-urls) | - | - | - | - | - |
 | [Lightning-AI/pytorch-lightning](https://github.com/Lightning-AI/pytorch-lightning) | **0** | - | - | - | - | - | - |
+| [intake/intake](https://github.com/intake/intake) | **3** | [**3**](#intake-intake-chained-urls) | - | - | - | - | - |
 | [modin-project/modin](https://github.com/modin-project/modin) | **0** | - | - | - | - | - | - |
 | [apache/arrow](https://github.com/apache/arrow) | **0** | - | - | - | - | - | - |
 | [huggingface/datasets](https://github.com/huggingface/datasets) | **7** | - | - | - | [**3**](#huggingface-datasets-dirfs) | - | 4 |
+| [kedro-org/kedro](https://github.com/kedro-org/kedro) | **0** | - | - | - | - | - | - |
 | [pytorch/pytorch](https://github.com/pytorch/pytorch) | **0** | - | - | - | - | - | - |
 | [feast-dev/feast](https://github.com/feast-dev/feast) | **0** | - | - | - | - | - | - |
 | [duckdb/duckdb](https://github.com/duckdb/duckdb) | **0** | - | - | - | - | - | - |
 | [ray-project/ray](https://github.com/ray-project/ray) | **6** | - | - | - | [**2**](#ray-project-ray-dirfs) | [**4**](#ray-project-ray-zipfs) | - |
 | [mlflow/mlflow](https://github.com/mlflow/mlflow) | **0** | - | - | - | - | - | - |
-| [kedro-org/kedro](https://github.com/kedro-org/kedro) | **0** | - | - | - | - | - | - |
 
 ---
 
@@ -57,6 +57,34 @@ url = "simplecache::memory://out2.zarr"
 
 ```python
 url = "simplecache::memory://out*.zarr"
+```
+
+</details>
+
+#### <a id="pydata-xarray-blockcache"></a>🔹 `cache_type` Configuration (3 occurrences)
+
+<details open>
+<summary><b>View 3 cache_type Usages in pydata/xarray</b></summary>
+
+##### 1. [xarray/backends/h5netcdf_.py](https://github.com/pydata/xarray/blob/main/xarray/backends/h5netcdf_.py#L197) (Line 197)
+- **Cache Strategy:** `blockcache`
+
+```python
+open_kwargs["cache_type"] = "blockcache"
+```
+
+##### 2. [xarray/tests/test_backends.py](https://github.com/pydata/xarray/blob/main/xarray/tests/test_backends.py#L5234) (Line 5234)
+- **Cache Strategy:** `blockcache`
+
+```python
+({"cache_type": "blockcache"}, "blockcache", 4 * 1024 * 1024),
+```
+
+##### 3. [xarray/tests/test_backends.py](https://github.com/pydata/xarray/blob/main/xarray/tests/test_backends.py#L5236) (Line 5236)
+- **Cache Strategy:** `readahead`
+
+```python
+({"cache_type": "readahead"}, "readahead", None),
 ```
 
 </details>
