@@ -5,7 +5,7 @@ Unit tests for fsspec base specification categorization and method mapping.
 import pytest
 import inspect
 from fsspec.spec import AbstractFileSystem, AbstractBufferedFile
-from gcs_clients_optics.analysis.categorization import (
+from gcs_clients_optics.reporters.categorization import (
     CATEGORY_MUTATION,
     CATEGORY_METADATA,
     CATEGORY_PROTOCOL_LIFECYCLE,

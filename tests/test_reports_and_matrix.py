@@ -4,20 +4,13 @@ Unit tests for reports export, method distribution matrix, and summary table gen
 
 import json
 import pytest
-from pathlib import Path
-from gcs_clients_optics.analysis.matrix import generate_method_matrix
-from gcs_clients_optics.analysis.summary_table import generate_summary_table
+from gcs_clients_optics.reporters.matrix import generate_method_matrix
+from gcs_clients_optics.reporters.summary_table import generate_summary_table
 from gcs_clients_optics.crawler.models import CrawlReport, FsspecUsage
-from gcs_clients_optics.issues.models import GitHubIssue, IssueCrawlReport
 from gcs_clients_optics.reporters.code_reports import (
     export_csv_report,
     export_json_report,
     export_markdown_report,
-)
-from gcs_clients_optics.reporters.issue_reports import (
-    export_issues_csv,
-    export_issues_json,
-    export_issues_markdown,
 )
 
 
@@ -57,47 +50,7 @@ def test_code_reports_export(tmp_path):
     md_file = tmp_path / "code.md"
     export_markdown_report(report, str(md_file))
     assert md_file.exists()
-    assert "Master FSSPEC Usage Report" in md_file.read_text(encoding="utf-8")
-
-
-def test_issues_reports_export(tmp_path):
-    issue = GitHubIssue(
-        repo_name="fsspec/gcsfs",
-        issue_number=505,
-        title="gcsfs read_block latency issue",
-        html_url="https://github.com/fsspec/gcsfs/issues/505",
-        state="open",
-        created_at="2026-02-01T00:00:00Z",
-        updated_at="2026-02-02T00:00:00Z",
-        author="benchuser",
-        labels=["perf", "gcs"],
-        matched_fs_keywords=["gcsfs"],
-        matched_perf_keywords=["latency", "slow"],
-        relevance_score=18,
-        body_snippet="read_block takes too long on GCS",
-    )
-
-    report = IssueCrawlReport(
-        target_repo="fsspec/gcsfs",
-        total_issues_scanned=10,
-        matched_issues_count=1,
-        repo_url="https://github.com/fsspec/gcsfs",
-        issues=[issue],
-    )
-
-    csv_path = tmp_path / "issues.csv"
-    export_issues_csv([report], str(csv_path))
-    assert csv_path.exists()
-    assert "gcsfs read_block latency issue" in csv_path.read_text(encoding="utf-8")
-
-    json_path = tmp_path / "issues.json"
-    export_issues_json([report], str(json_path))
-    assert json_path.exists()
-
-    md_path = tmp_path / "issues.md"
-    export_issues_markdown([report], str(md_path))
-    assert md_path.exists()
-    assert "GitHub Issues Performance & FSSPEC Crawl Report" in md_path.read_text(
+    assert "Master FSSPEC & Filesystem Method Usage Report" in md_file.read_text(
         encoding="utf-8"
     )
 

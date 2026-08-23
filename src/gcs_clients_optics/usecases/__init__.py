@@ -4,16 +4,8 @@ Optics Use Cases package and registry.
 
 from typing import Dict, List, Optional
 
-from gcs_clients_optics.usecases.async_sync import AsyncSyncUseCase
 from gcs_clients_optics.usecases.base import BaseUseCase
-from gcs_clients_optics.usecases.cache_type import CacheTypeUseCase
-from gcs_clients_optics.usecases.dependencies import DependencyVersionsUseCase
 from gcs_clients_optics.usecases.fsspec_methods import FsspecMethodsUseCase
-from gcs_clients_optics.usecases.issues_performance import (
-    IssuesPerformanceUseCase,
-)
-from gcs_clients_optics.usecases.protocols import ProtocolsUseCase
-from gcs_clients_optics.usecases.readview import ReadViewUseCase
 
 USE_CASES: Dict[str, BaseUseCase] = {}
 
@@ -43,22 +35,10 @@ def list_use_cases() -> List[BaseUseCase]:
 
 # Register default built-in use cases
 register_use_case(FsspecMethodsUseCase())
-register_use_case(CacheTypeUseCase())
-register_use_case(IssuesPerformanceUseCase())
-register_use_case(ProtocolsUseCase())
-register_use_case(AsyncSyncUseCase())
-register_use_case(ReadViewUseCase())
-register_use_case(DependencyVersionsUseCase())
 
 __all__ = [
     "BaseUseCase",
     "FsspecMethodsUseCase",
-    "CacheTypeUseCase",
-    "IssuesPerformanceUseCase",
-    "ProtocolsUseCase",
-    "AsyncSyncUseCase",
-    "ReadViewUseCase",
-    "DependencyVersionsUseCase",
     "USE_CASES",
     "register_use_case",
     "get_use_case",

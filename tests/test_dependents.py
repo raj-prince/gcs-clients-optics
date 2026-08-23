@@ -97,7 +97,7 @@ def test_load_plain_text_file(tmp_path: Path):
 
 def test_get_default_target_repos():
     """Test loading default curated target repos from data/default_dependents.json."""
-    from gcs_clients_optics.crawler.repos import get_default_target_repos
+    from gcs_clients_optics.crawler.dependents import get_default_target_repos
 
     repos = get_default_target_repos(min_stars=5000)
     assert len(repos) >= 5

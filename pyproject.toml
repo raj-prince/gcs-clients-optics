@@ -48,12 +48,10 @@ dev = [
 
 [project.scripts]
 gcs-optics = "gcs_clients_optics.cli:main"
+gcs-clients-optics = "gcs_clients_optics.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
-
-[tool.setuptools.package-data]
-gcs_clients_optics = ["data/*.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

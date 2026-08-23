@@ -65,27 +65,21 @@ src/gcs_clients_optics/
 │   ├── base.py         # BaseUseCase Abstract Contract
 │   ├── fsspec_methods.py
 │   ├── cache_type.py
-│   ├── issues_performance.py
-│   └── protocols.py
+│   ├── protocols.py
+│   ├── async_sync.py
+│   ├── readview.py
+│   └── dependencies.py
 ├── crawler/            # AST Node Visitors & Repository Scanners
 │   ├── ast_visitor.py
 │   ├── engine.py
 │   ├── models.py
-│   └── repos.py
-├── issues/             # GitHub Issues Crawler & Scoring Engine
-│   ├── analyzer.py
-│   ├── crawler.py
-│   ├── keywords.py
-│   └── models.py
+│   └── dependents.py
 ├── analysis/           # Categorization, Matrices & Summary Tables
 │   ├── categorization.py # Complete fsspec base spec ontology (8 domains)
 │   ├── matrix.py
 │   └── summary_table.py
-├── storage/            # Relational SQLite Engine & Ingestion Pipeline
-│   └── sqlite_store.py
 ├── reporters/          # Multi-Format Report Exporters
-│   ├── code_reports.py
-│   └── issue_reports.py
+│   └── code_reports.py
 └── simulation/         # In-Memory Validation & Live Simulator
     └── simulator.py
 ```
@@ -94,13 +88,11 @@ src/gcs_clients_optics/
 
 | Component | Module | Key Responsibilities | Inputs | Outputs |
 | :--- | :--- | :--- | :--- | :--- |
-| **CLI Dispatcher** | [`cli.py`](file:///usr/local/google/home/princer/code/gcs-clients-optics/src/gcs_clients_optics/cli.py) | Parses subcommands (`fsspec-methods`, `cache-type`, `issues`, `protocols`, `ingest`, `simulate`, `run-all`), resolves output paths (`.json`, `.csv`, `.md`, `.db`), and invokes engine workflows. | Command-line arguments & environment variables | Exit code & console feedback |
+| **CLI Dispatcher** | [`cli.py`](file:///usr/local/google/home/princer/code/gcs-clients-optics/src/gcs_clients_optics/cli.py) | Parses subcommands (`fsspec-methods`, `cache-type`, `protocols`, `async-sync`, `readview`, `dependencies`, `simulate`, `run-all`), resolves output paths (`.json`, `.csv`, `.md`), and invokes engine workflows. | Command-line arguments & environment variables | Exit code & console feedback |
 | **Optics Engine** | [`engine/optics_engine.py`](file:///usr/local/google/home/princer/code/gcs-clients-optics/src/gcs_clients_optics/engine/optics_engine.py) | Generic multithreaded orchestrator for scanning GitHub repositories via Git Trees API or local directory trees. Decoupled from specific use cases. | Target repository or local directory path + `BaseUseCase` | Aggregated report object |
-| **Use-Case Registry** | [`usecases/`](file:///usr/local/google/home/princer/code/gcs-clients-optics/src/gcs_clients_optics/usecases/) | Encapsulates domain-specific AST visitors, scoring logic, aggregation, and export formatting under a uniform `BaseUseCase` interface. | Source code AST nodes & issue payloads | Domain reports (CrawlReport, CacheReport, ProtocolReport, IssueCrawlReport) |
-| **AST Parser & Visitor** | [`crawler/ast_visitor.py`](file:///usr/local/google/home/princer/code/gcs-clients-optics/src/gcs_clients_optics/crawler/ast_visitor.py) | Traverses Python AST to extract method calls (`open`, `readinto`, `cat`, etc.), extracts `cache_type`, arguments, enclosing functions/classes, and line-level URLs. | Python source code string | List of `FsspecUsage` records |
-| **Issue Performance Analyzer** | [`issues/analyzer.py`](file:///usr/local/google/home/princer/code/gcs-clients-optics/src/gcs_clients_optics/issues/analyzer.py) | Performs keyword matching, heuristic relevance scoring, and category tagging for cloud storage performance bottlenecks. | GitHub issue title & body text | Scored & categorized `GitHubIssue` |
+| **Use-Case Registry** | [`usecases/`](file:///usr/local/google/home/princer/code/gcs-clients-optics/src/gcs_clients_optics/usecases/) | Encapsulates domain-specific AST visitors, scoring logic, aggregation, and export formatting under a uniform `BaseUseCase` interface. | Source code AST nodes | Domain reports (CrawlReport, CacheReport, ProtocolReport, etc.) |
+| **AST Parser & Visitor** | [`crawler/ast_visitor.py`](file:///usr/local/google/home/princer/code/gcs-clients-optics/src/gcs_clients_optics/crawler/ast_visitor.py) | Traverses Python AST with alias, constructor, tuple unpacking, and inheritance tracking to extract method calls (`open`, `readinto`, `cat`, etc.), `cache_type`, arguments, enclosing functions/classes, and line-level URLs. | Python source code string | List of `FsspecUsage` records |
 | **Categorization Ontology** | [`analysis/categorization.py`](file:///usr/local/google/home/princer/code/gcs-clients-optics/src/gcs_clients_optics/analysis/categorization.py) | Complete formal ontology mapping 100% of `AbstractFileSystem` and `AbstractBufferedFile` methods into 8 standard functional domains. | Method name string | Functional category string & descriptive pattern |
-| **SQLite Storage Engine** | [`storage/sqlite_store.py`](file:///usr/local/google/home/princer/code/gcs-clients-optics/src/gcs_clients_optics/storage/sqlite_store.py) | Normalized relational storage with WAL mode, indexing, and batch ingestion from live scans or JSON artifacts. | In-memory reports or JSON files | `optics.db` SQLite database |
 | **Live Simulator** | [`simulation/simulator.py`](file:///usr/local/google/home/princer/code/gcs-clients-optics/src/gcs_clients_optics/simulation/simulator.py) | In-memory `fsspec` filesystem testbed executing live validation of directory hierarchies, wildcards, metadata, and stream reading. | None (self-contained) | Validation test execution results |
 
 ---

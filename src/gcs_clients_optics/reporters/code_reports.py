@@ -4,6 +4,7 @@ Export formatters (CSV, JSON, Markdown) for code AST crawl reports.
 
 import csv
 import json
+from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any, Dict, List, Union
 
@@ -108,33 +109,47 @@ def export_markdown_report(
     output_path: str,
     include_tests: bool = False,
 ) -> str:
-    """Generate a clean Markdown summary report across one or multiple crawl reports."""
+    """Generate a comprehensive, single Markdown report containing summaries, ontology, matrix, and call sites."""
     if not isinstance(reports, list):
         reports = [reports]
+
+    from gcs_clients_optics.reporters.categorization import (
+        categorize_method,
+        get_method_description,
+    )
 
     total_files = sum(r.total_files_scanned for r in reports)
     total_matches = sum(r.files_with_usages for r in reports)
     total_usages = sum(r.total_usages_found for r in reports)
 
-    global_cache_summary: Dict[str, int] = {}
+    # Collect methods, per-repo counts, and snippets
+    global_methods: Counter = Counter()
+    method_repos: Dict[str, Counter] = defaultdict(Counter)
+    detected_repos: List[str] = []
+
     for r in reports:
-        for ct, cnt in r.cache_type_summary.items():
-            global_cache_summary[ct] = global_cache_summary.get(ct, 0) + cnt
+        repo_name = r.target_source.replace("GitHub:", "").replace("Local:", "").split()[0]
+        if repo_name and repo_name not in detected_repos:
+            detected_repos.append(repo_name)
+        for u in r.usages:
+            global_methods[u.target_name] += 1
+            method_repos[u.target_name][repo_name] += 1
 
     md_lines = [
-        "# Master FSSPEC Usage Report Across GitHub Repositories",
+        "# Master FSSPEC & Filesystem Method Usage Report",
         "",
         f"- **Repositories Crawled:** `{len(reports)}`",
         f"- **Total Files Scanned:** `{total_files}`",
-        f"- **Files with FSSPEC Usages:** `{total_matches}`",
-        f"- **Total FSSPEC Usages Detected:** `{total_usages}`",
+        f"- **Files with Method Usages:** `{total_matches}`",
+        f"- **Total Method Usages Detected:** `{total_usages}`",
+        f"- **Distinct Methods Detected:** `{len(global_methods)}`",
         f"- **Skipping Test Files (test_*.py):** `{not include_tests}`",
         "",
         "---",
         "",
         "## 📊 Repository Summary Table",
         "",
-        "| Project / Repository | Files Scanned | Files w/ Usages | Total Usages | Cache_Types |",
+        "| Project / Repository | Files Scanned | Files w/ Usages | Total Usages | Top Methods |",
         "| :--- | :--- | :--- | :--- | :--- |",
     ]
 
@@ -142,35 +157,61 @@ def export_markdown_report(
         repo_name = (
             r.target_source.replace("GitHub:", "").replace("Local:", "").split()[0]
         )
-        ct_str = (
-            ", ".join([f"{k}:{v}" for k, v in r.cache_type_summary.items()])
-            if r.cache_type_summary
-            else "None"
-        )
+        repo_methods = Counter(u.target_name for u in r.usages).most_common(3)
+        top_methods_str = ", ".join(f"`{m}` ({c})" for m, c in repo_methods) if repo_methods else "None"
         repo_link = (
             f"[{repo_name}]({r.repo_url})"
             if r.repo_url
             else f"`{repo_name}`"
         )
         md_lines.append(
-            f"| {repo_link} | `{r.total_files_scanned}` | `{r.files_with_usages}` | `{r.total_usages_found}` | `{ct_str}` |"
+            f"| {repo_link} | `{r.total_files_scanned}` | `{r.files_with_usages}` | `{r.total_usages_found}` | {top_methods_str} |"
         )
 
+    # 1. Complete 4-Column Method Summary & Ontology Table
     md_lines.extend([
         "",
         "---",
         "",
-        "## 📈 Global Cache_Type Breakdown",
+        f"## 📋 Complete 4-Column Summary Table of All {len(global_methods)} FSSPEC & Filesystem Methods",
         "",
-        "| Cache_Type Option | Total Occurrences | Is Specified Keyword | Description |",
-        "| :--- | :--- | :--- | :--- |",
+        "| Target Call | Occurrences | Major Repositories | Category | Primary Usage Pattern |",
+        "| :--- | :---: | :--- | :--- | :--- |",
     ])
 
-    for ct, cnt in global_cache_summary.items():
-        desc = CACHE_DESCRIPTIONS.get(ct, "Custom cache strategy")
-        is_spec = ct.lower() in SPECIFIED_CACHE_KEYWORDS
-        md_lines.append(f"| `{ct}` | `{cnt}` | `{is_spec}` | {desc} |")
+    for method, count in global_methods.most_common():
+        category = categorize_method(method)
+        desc = get_method_description(method)
+        top_repos = [r for r, _ in method_repos[method].most_common(3)]
+        repos_str = ", ".join(f"`{r}`" for r in top_repos) if top_repos else "N/A"
+        md_lines.append(
+            f"| **`{method}`** | **{count}** | {repos_str} | {category} | {desc} |"
+        )
 
+    # 2. Cross-Repository Method Distribution Matrix (if multiple repositories)
+    if len(detected_repos) > 1:
+        md_lines.extend([
+            "",
+            "---",
+            "",
+            f"## 🔢 Cross-Repository Method Distribution Matrix (All {len(global_methods)} Methods)",
+            "",
+        ])
+        header_cols = ["Rank", "Target Method Name", "Total Calls"] + [
+            f"`{r.split('/')[-1]}`" for r in detected_repos
+        ]
+        align_cols = [":---", ":---", ":---:"] + [":---:" for _ in detected_repos]
+        md_lines.append("| " + " | ".join(header_cols) + " |")
+        md_lines.append("| " + " | ".join(align_cols) + " |")
+
+        for rank, (method, total_cnt) in enumerate(global_methods.most_common(), start=1):
+            row = [f"**{rank}**", f"`{method}`", f"**{total_cnt}**"]
+            for r_name in detected_repos:
+                cnt = method_repos[method].get(r_name, 0)
+                row.append(str(cnt) if cnt > 0 else "-")
+            md_lines.append("| " + " | ".join(row) + " |")
+
+    # 3. Detailed Usage Breakdown by Repository
     md_lines.extend([
         "",
         "---",
@@ -207,10 +248,12 @@ def export_markdown_report(
                     if usage.file_url
                     else f"`{usage.file_path}`"
                 )
+                category = categorize_method(usage.target_name)
+                cache_info = f" | **Cache Strategy:** `{usage.cache_type}`" if usage.is_specified_cache_keyword else ""
                 md_lines.extend([
                     f"#### {idx}. {file_link_str} (Line {usage.line_number})",
                     f"- **Line Link:** {usage.file_url or 'N/A'}",
-                    f"- **Target Call:** `{usage.target_name}` | **Cache_Type:** `{usage.cache_type}` | **Is Specified Keyword:** `{usage.is_specified_cache_keyword}`",
+                    f"- **Target Call:** `{usage.target_name}` | **Category:** `{category}`{cache_info}",
                     f"- **Context:** {func_info}",
                     f"- **Arguments:** `{', '.join(usage.args)}`",
                     f"- **Keywords:** `{usage.kwargs}`",
