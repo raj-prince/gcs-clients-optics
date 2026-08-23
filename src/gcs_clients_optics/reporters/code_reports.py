@@ -168,50 +168,47 @@ def export_markdown_report(
             f"| {repo_link} | `{r.total_files_scanned}` | `{r.files_with_usages}` | `{r.total_usages_found}` | {top_methods_str} |"
         )
 
-    # 1. Complete 4-Column Method Summary & Ontology Table
+    def _slugify(text: str) -> str:
+        return text.replace("/", "-").replace(".", "-").replace("_", "-").replace(" ", "-").lower()
+
+    # Sorted methods by overall frequency
+    sorted_methods = [method for method, _ in global_methods.most_common()]
+
+    # 1. Repository x Target Call Metrics Matrix
     md_lines.extend([
         "",
         "---",
         "",
-        f"## 📋 Complete 4-Column Summary Table of All {len(global_methods)} FSSPEC & Filesystem Methods",
+        f"## 📊 Repository × Target Call Usage Matrix ({len(sorted_methods)} Methods)",
         "",
-        "| Target Call | Occurrences | Major Repositories | Category | Primary Usage Pattern |",
-        "| :--- | :---: | :--- | :--- | :--- |",
     ])
 
-    for method, count in global_methods.most_common():
-        category = categorize_method(method)
-        desc = get_method_description(method)
-        top_repos = [r for r, _ in method_repos[method].most_common(3)]
-        repos_str = ", ".join(f"`{r}`" for r in top_repos) if top_repos else "N/A"
-        md_lines.append(
-            f"| **`{method}`** | **{count}** | {repos_str} | {category} | {desc} |"
+    header_cols = ["Repository", "Total Calls"] + [f"`{m}`" for m in sorted_methods]
+    align_cols = [":---", ":---:"] + [":---:" for _ in sorted_methods]
+    md_lines.append("| " + " | ".join(header_cols) + " |")
+    md_lines.append("| " + " | ".join(align_cols) + " |")
+
+    for r in reports:
+        repo_name = (
+            r.target_source.replace("GitHub:", "").replace("Local:", "").split()[0]
         )
+        repo_slug = _slugify(repo_name)
+        repo_link = f"[{repo_name}]({r.repo_url})" if r.repo_url else f"`{repo_name}`"
 
-    # 2. Cross-Repository Method Distribution Matrix (if multiple repositories)
-    if len(detected_repos) > 1:
-        md_lines.extend([
-            "",
-            "---",
-            "",
-            f"## 🔢 Cross-Repository Method Distribution Matrix (All {len(global_methods)} Methods)",
-            "",
-        ])
-        header_cols = ["Rank", "Target Method Name", "Total Calls"] + [
-            f"`{r.split('/')[-1]}`" for r in detected_repos
-        ]
-        align_cols = [":---", ":---", ":---:"] + [":---:" for _ in detected_repos]
-        md_lines.append("| " + " | ".join(header_cols) + " |")
-        md_lines.append("| " + " | ".join(align_cols) + " |")
+        repo_method_counts = Counter(u.target_name for u in r.usages)
+        row = [repo_link, f"**{r.total_usages_found}**"]
 
-        for rank, (method, total_cnt) in enumerate(global_methods.most_common(), start=1):
-            row = [f"**{rank}**", f"`{method}`", f"**{total_cnt}**"]
-            for r_name in detected_repos:
-                cnt = method_repos[method].get(r_name, 0)
-                row.append(str(cnt) if cnt > 0 else "-")
-            md_lines.append("| " + " | ".join(row) + " |")
+        for m in sorted_methods:
+            cnt = repo_method_counts.get(m, 0)
+            if cnt > 0:
+                method_slug = _slugify(m)
+                anchor = f"{repo_slug}-{method_slug}"
+                row.append(f"[**{cnt}**](#{anchor})")
+            else:
+                row.append("-")
+        md_lines.append("| " + " | ".join(row) + " |")
 
-    # 3. Detailed Usage Breakdown by Repository
+    # 2. Detailed Usage Breakdown by Repository (Grouped by Target Method)
     md_lines.extend([
         "",
         "---",
@@ -224,6 +221,7 @@ def export_markdown_report(
         repo_name = (
             r.target_source.replace("GitHub:", "").replace("Local:", "").split()[0]
         )
+        repo_slug = _slugify(repo_name)
         repo_header = (
             f"### [{repo_name}]({r.repo_url})"
             if r.repo_url
@@ -231,36 +229,60 @@ def export_markdown_report(
         )
         md_lines.extend([
             repo_header,
-            f"- **Usages Found:** `{r.total_usages_found}` in `{r.files_with_usages}` files.",
+            f"- **Files Scanned:** `{r.total_files_scanned}` | **Files with Usages:** `{r.files_with_usages}` | **Total Usages:** `{r.total_usages_found}`",
             "",
         ])
         if not r.usages:
             md_lines.append("No direct filesystem / fsspec usages detected in this target.\n")
         else:
-            for idx, usage in enumerate(r.usages, start=1):
-                func_info = (
-                    f"`{usage.enclosing_class}.{usage.enclosing_function}`"
-                    if usage.enclosing_class
-                    else f"`{usage.enclosing_function or 'global'}`"
-                )
-                file_link_str = (
-                    f"[{usage.file_path}]({usage.file_url})"
-                    if usage.file_url
-                    else f"`{usage.file_path}`"
-                )
-                category = categorize_method(usage.target_name)
-                cache_info = f" | **Cache Strategy:** `{usage.cache_type}`" if usage.is_specified_cache_keyword else ""
+            # Group usages by target method for structured search & navigation
+            usages_by_method: Dict[str, List[Any]] = defaultdict(list)
+            for u in r.usages:
+                usages_by_method[u.target_name].append(u)
+
+            for method_name, method_usages in sorted(
+                usages_by_method.items(), key=lambda item: len(item[1]), reverse=True
+            ):
+                method_slug = _slugify(method_name)
+                anchor = f"{repo_slug}-{method_slug}"
+                count_str = f"{len(method_usages)} occurrence{'s' if len(method_usages) > 1 else ''}"
+
                 md_lines.extend([
-                    f"#### {idx}. {file_link_str} (Line {usage.line_number})",
-                    f"- **Line Link:** {usage.file_url or 'N/A'}",
-                    f"- **Target Call:** `{usage.target_name}` | **Category:** `{category}`{cache_info}",
-                    f"- **Context:** {func_info}",
-                    f"- **Arguments:** `{', '.join(usage.args)}`",
-                    f"- **Keywords:** `{usage.kwargs}`",
+                    f"#### <a id=\"{anchor}\"></a>🔹 `{method_name}` ({count_str})",
                     "",
-                    "```python",
-                    f"{usage.code_snippet}",
-                    "```",
+                    f"<details open>",
+                    f"<summary><b>Click to expand/collapse {count_str} for <code>{method_name}</code> in {repo_name}</b></summary>",
+                    "",
+                ])
+
+                for idx, usage in enumerate(method_usages, start=1):
+                    func_info = (
+                        f"`{usage.enclosing_class}.{usage.enclosing_function}`"
+                        if usage.enclosing_class
+                        else f"`{usage.enclosing_function or 'global'}`"
+                    )
+                    file_link_str = (
+                        f"[{usage.file_path}]({usage.file_url})"
+                        if usage.file_url
+                        else f"`{usage.file_path}`"
+                    )
+                    cache_info = f" | **Cache Strategy:** `{usage.cache_type}`" if usage.is_specified_cache_keyword else ""
+                    md_lines.extend([
+                        f"##### {idx}. {file_link_str} (Line {usage.line_number})",
+                        f"- **Line Link:** {usage.file_url or 'N/A'}",
+                        f"- **Target Call:** `{usage.target_name}`{cache_info}",
+                        f"- **Context:** {func_info}",
+                        f"- **Arguments:** `{', '.join(usage.args)}`",
+                        f"- **Keywords:** `{usage.kwargs}`",
+                        "",
+                        "```python",
+                        f"{usage.code_snippet}",
+                        "```",
+                        "",
+                    ])
+
+                md_lines.extend([
+                    "</details>",
                     "",
                 ])
 

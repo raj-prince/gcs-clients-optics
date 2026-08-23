@@ -1,10 +1,8 @@
 # GCS Clients Optics (`gcs-clients-optics`)
 
-A simple, extensible CLI and analysis engine for **Google Cloud Storage (GCS) clients**.
+A high-performance AST crawler and analysis engine for **Google Cloud Storage (GCS) and `fsspec` abstract filesystem optics**.
 
-`gcs-clients-optics` supports [fsspec](https://github.com/fsspec/)/[gcsfs](https://github.com/fsspec/gcsfs) which is pythonic filesystem client. It scans the client's upstream python codebases (via AST) and GitHub issues across open-source ecosystems (Dask, Ray, Hugging Face Datasets, PyTorch, etc.) using a **generic engine with pluggable use cases**.
-
-📖 **[System Design Document](docs/DESIGN.md)**: High-level component diagrams, responsibilities, pipelining, and SQLite schema.
+`gcs-clients-optics` analyzes upstream Python codebases across open-source ecosystems (PyTorch, Hugging Face Datasets, Dask, Ray, Pandas, DVC, etc.) using AST-based inspection to uncover how projects interact with storage layers, read streams, and abstract filesystems.
 
 ---
 
@@ -14,175 +12,125 @@ A simple, extensible CLI and analysis engine for **Google Cloud Storage (GCS) cl
 git clone https://github.com/raj-prince/gcs-clients-optics.git
 cd gcs-clients-optics
 
-# Option 1: Install globally via uv tool (available directly in your PATH):
-uv tool install --editable .
-
-# Option 2: Install with standard pip in a virtual environment:
+# Virtual environment setup
 python3 -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
 ```
 
 ---
 
-## 🚀 CLI Commands & Use Cases
+## 🚀 CLI Commands & Usage
 
-List all available use cases:
-```bash
-gcs-optics list-usecases
-```
+The CLI (`gcs-optics`) provides two streamlined commands: `scan` (default) and `dependents`.
 
-### 1. FSSPEC Method Usage Across Repos (`fsspec-methods` / `methods`)
-Scans code for all abstract filesystem calls (`open`, `exists`, `info`, `ls`, `glob`, `find`, `walk`, `makedirs`, `get`, `put`, etc.):
+### 1. Scan Repositories (`scan` or default)
+
+Scan any GitHub repository or local directory for `fsspec` and filesystem method usages:
 
 ```bash
-# Output as JSON
-gcs-optics fsspec-methods --repo dask/dask --format json -o dask_methods.json
+# Scan a single GitHub repository (exports Markdown report by default)
+gcs-optics --repo pytorch/pytorch -o reports/pytorch_methods.md
 
-# Output as CSV
-gcs-optics fsspec-methods --all --format csv -o reports/fsspec_methods.csv
+# Scan multiple repositories
+gcs-optics --repo pytorch/pytorch huggingface/datasets dask/dask
 
-# Output as Markdown
-gcs-optics fsspec-methods --all --format md -o reports/combined_fsspec_report.md
+# Scan all curated ecosystem dependents
+gcs-optics --all
 
-# Scan local code directory as JSON
-gcs-optics fsspec-methods --local-dir /path/to/project --format json -o local_methods.json
-```
+# Scan dependents loaded from a JSON file
+gcs-optics -D data/default_dependents.json --min-stars 5000
 
----
+# Scope scan to a specific subpath in repository
+gcs-optics --repo ray-project/ray -p python/ray/data -o reports/ray_data.md
 
-### 2. Cache-Type Usage in the Read Path (`cache-type` / `caching`)
-Analyzes `cache_type` (`readahead`, `mmap`, `block`, `parts`, `none`, `bytes`, `background`, `file`), `cache_options`, and read-path buffering:
-
-```bash
-# Output as JSON
-gcs-optics cache-type --all --format json -o reports/cache_analysis.json
-
-# Output as CSV
-gcs-optics cache-type --all --format csv -o reports/cache_analysis.csv
-
-# Output as Markdown
-gcs-optics cache-type --all --format md -o reports/cache_analysis.md
+# Adjust concurrency and worker threads
+gcs-optics --all --concurrency 16 --file-workers 32
 ```
 
 ---
 
-### 3. Storage Protocols & Cloud Backends (`protocols` / `storage`)
-Analyzes cloud protocol URIs (`gs://`, `s3://`, `abfs://`, `hdfs://`, `memory://`, `file://`) and backend driver instantiations (`gcsfs`, `s3fs`, etc.):
+### 2. Discover Dependents (`dependents`)
+
+Discover downstream GitHub repositories that depend on `fsspec` or `gcsfs`:
 
 ```bash
-# Output as JSON
-gcs-optics protocols --all --format json -o reports/protocols.json
+# Discover top dependents and save to JSON
+gcs-optics dependents --repo fsspec/filesystem_spec --min-stars 100 --limit 50 -o data/dependents.json
 
-# Output as CSV
-gcs-optics protocols --all --format csv -o reports/protocols.csv
-
-# Output as Markdown
-gcs-optics protocols --all --format md -o reports/protocols.md
+# Discover gcsfs dependents
+gcs-optics dependents --repo fsspec/gcsfs --min-stars 50 -o data/gcsfs_dependents.json
 ```
 
 ---
 
-### 4. Async vs Sync Filesystem Method Usage (`async-sync` / `async`)
-Analyzes asynchronous coroutines (`await fs._cat_file()`, `open_async`, `asynchronous=True`, `fsspec.asyn.sync()`) versus synchronous blocking calls (`fs.open()`, `fs.ls()`, `fs.exists()`, `f.readinto()`), and detects potential event loop blocking anti-patterns:
+## 📊 Method Taxonomy & Canonicalization
 
-```bash
-# Output as JSON
-gcs-optics async-sync --all --format json -o reports/async_sync.json
+`gcs-clients-optics` standardizes all call sites into an intuitive, clean 3-tier taxonomy:
 
-# Output as CSV
-gcs-optics async-sync --all --format csv -o reports/async_sync.csv
-
-# Output as Markdown
-gcs-optics async-sync --all --format md -o reports/async_sync.md
-```
-
-### 5. Targeting Downstream Dependents (`github-dependents-info` & `discover-dependents`)
-
-You can scan the hundreds of downstream projects that depend on `fsspec` or `gcsfs`:
-
-#### Option A: Ingest `github-dependents-info` JSON:
-```bash
-# 1. Collect dependents of fsspec or gcsfs
-github-dependents-info --repo fsspec/filesystem_spec --minstars 100 --json > dependents.json
-github-dependents-info --repo fsspec/gcsfs --minstars 50 --json > gcsfs_dependents.json
-
-# 2. Run single-pass scan across all discovered dependents:
-gcs-optics run-all --dependents-file dependents.json --min-stars 100 --output-dir reports/
-
-# 3. Or run specific use case on dependents:
-gcs-optics fsspec-methods -D dependents.json --min-stars 100 --format all -o reports/
-gcs-optics async-sync -D gcsfs_dependents.json --format md -o reports/gcsfs_dependents_async.md
-```
-
-#### Option B: Built-in Dependents Discovery:
-```bash
-# Discover top dependents and save to file:
-gcs-optics discover-dependents --repo fsspec/filesystem_spec --min-stars 100 --limit 50 -o dependents.json
-
-# Or scan discovered dependents directly on the fly:
-gcs-optics fsspec-methods --dependents-of fsspec/filesystem_spec --limit 30 --format md -o reports/fsspec_deps.md
-```
+| Layer Prefix | Type | Description | Examples |
+| :--- | :--- | :--- | :--- |
+| **`fs.*`** | **Filesystem Operations** | All abstract filesystem driver methods (whether called via `fs.open()`, `self.fs.makedirs()`, `dirfs.glob()`, or `fsspec.open()`). | `fs.open`, `fs.exists`, `fs.isfile`, `fs.glob`, `fs.makedirs`, `fs.ls`, `fs.cat_file`, `fs.info` |
+| **`f.*`** | **Stream Buffer Operations** | Methods executed on an open file handle / stream buffer. | `f.read`, `f.write`, `f.close`, `f.flush`, `f.seek`, `f.tell`, `f.readline` |
+| **Direct Helpers** | **Module Utilities** | Standalone URL resolvers and driver factory functions. | `url_to_fs`, `get_fs_token_paths`, `fsspec.filesystem` |
 
 ---
 
-### 6. Full Pipeline (`run-all`)
-Runs all use cases and exports reports to a directory:
+## 📋 8-Domain Functional Ontology
 
-```bash
-gcs-optics run-all --output-dir reports
-```
+All detected methods are categorized into 8 standard functional domains:
 
----
-
-## 💾 Output Formats: JSON, CSV, Markdown
-
-You can specify the output format using `--format` (`-t`) and the output path with `--output` (`-o`):
-
-| Flag / Option | Description | Example |
-| :--- | :--- | :--- |
-| `--format json` | Output report in JSON format | `gcs-optics fsspec-methods --all --format json -o output.json` |
-| `--format csv` | Output report in CSV format | `gcs-optics cache-type --all --format csv -o output.csv` |
-| `--format md` | Output report in Markdown format | `gcs-optics cache-type --all --format md -o output.md` |
-| `--format all` | Output all formats (JSON, CSV, MD) | `gcs-optics fsspec-methods --all --format all -o reports/` |
-| `--dependents-file <file>` / `-D` | Load target repositories from dependents JSON / text file | `gcs-optics fsspec-methods -D dependents.json --min-stars 100` |
-| `--dependents-of <owner/repo>` | Discover & scan downstream dependents from GitHub | `gcs-optics fsspec-methods --dependents-of fsspec/filesystem_spec` |
-| `--min-stars <N>` | Filter repositories by minimum GitHub stars | `gcs-optics run-all -D dependents.json --min-stars 100` |
-| `--limit <N>` / `-n` | Limit number of repositories to scan from dependents | `gcs-optics fsspec-methods -D dependents.json -n 50` |
-| `--subpath <path>` / `-p` | Scope scan to a specific subdirectory in repo | `gcs-optics fsspec-methods --repo ray-project/ray -p python/ray/data` |
-| `--file-workers <N>` / `-w` | File download/parsing worker threads (default: 32) | `gcs-optics fsspec-methods --repo ray-project/ray -w 32` |
-| `--concurrency <N>` / `-j` | Concurrent repositories to crawl (default: 16) | `gcs-optics fsspec-methods --all -j 16` |
-| `-o <path>` / `--output <path>` | Destination file (`.json`, `.csv`, `.md`) or directory | `-o my_report.json` or `-o reports/` |
+1. **Stream Reading & Writing**: `fs.open`, `f.read`, `f.write`, `f.close`, `f.flush`, `f.seek`, `f.tell`, `fs.read_text`
+2. **Metadata & Existence Checks**: `fs.exists`, `fs.isfile`, `fs.isdir`, `fs.info`, `fs.size`, `fs.checksum`, `fs.ukey`
+3. **Directory Listing & Traversal**: `fs.ls`, `fs.listdir`, `fs.glob`, `fs.find`, `fs.walk`, `fs.tree`
+4. **File & Directory Mutation**: `fs.makedirs`, `fs.mkdir`, `fs.rm`, `fs.rm_file`, `fs.mv`, `fs.rename`, `fs.touch`
+5. **Bulk Data Transfer**: `fs.get`, `fs.get_file`, `fs.put`, `fs.put_file`, `fs.copy`
+6. **Path Arithmetic & Topologies**: `fs.split`, `fs.join`, `fs.relpath`, `fs.normpath`, `fs.abspath`, `stringify_path`
+7. **Protocol Resolution & Driver Lifecycle**: `url_to_fs`, `get_fs_token_paths`, `fsspec.filesystem`, `infer_compression`
+8. **Driver Instances & Wrapper Bridges**: Transaction wrappers, caching bridges, and filesystem wrappers.
 
 ---
 
-## 🧩 Adding a Custom Use Case
+## 🛠️ CLI Options Reference
 
-Any new use case plugs directly into the generic `OpticsEngine`:
+| Option | Flag | Description | Default |
+| :--- | :--- | :--- | :--- |
+| `--repo` | `-r` | GitHub repository (`owner/repo`) or list of repositories | None |
+| `--all` | `-a` | Scan all default ecosystem dependents | `False` |
+| `--dependents-file` | `-D` | Load target repositories from dependents JSON / text file | None |
+| `--output` / `--output-md` | `-o` | Markdown report destination path | `reports/<basename>.md` |
+| `--subpath` | `-p` | Scope scan to subdirectory within the repository | None |
+| `--branch` | `-b` | Git branch to scan | `main` |
+| `--concurrency` | `-j` | Concurrent repositories to scan in parallel | `16` |
+| `--file-workers` | `-w` | Concurrent file downloading & AST parsing worker threads | `32` |
+| `--min-stars` | `-s` | Minimum GitHub stars filter for dependents | `0` |
+| `--limit` | `-n` | Maximum number of repositories to scan from dependents list | None |
+
+---
+
+## 🧩 Pluggable Use Case Architecture
+
+The engine uses a pluggable architecture. Additional analyzers can be created by subclassing `BaseUseCase`:
 
 ```python
 from gcs_clients_optics import BaseUseCase, OpticsEngine, register_use_case
 
 class CompressionUseCase(BaseUseCase):
-    name = "compression"
-    description = "Analyze compression codec usage (gzip, snappy, zstd, lz4)"
+    name = "compression-optics"
+    description = "Analyzes compression codec usage in storage pipelines"
 
     def scan_code(self, file_path, source_code, repo_url=None, branch="main"):
-        # Custom AST or regex inspection logic
+        # AST or regex inspection logic
         return [...]
 
     def aggregate_report(self, target_source, total_files_scanned, files_with_usages, usages, repo_url=None):
         return {...}
 
-    def export_reports(self, reports, output_csv=None, output_json=None, output_md=None, **kwargs):
-        # Export JSON/CSV/MD
-        return {}
-
-# Register globally
+# Register use case
 register_use_case(CompressionUseCase())
 
 # Run with generic engine
 engine = OpticsEngine(use_case=CompressionUseCase())
-report = engine.scan_local_directory("src/")
+reports = engine.scan_github_repo("dask/dask")
 ```
 
 ---
