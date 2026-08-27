@@ -3,14 +3,28 @@ AST Visitor for identifying and extracting fsspec and filesystem API usages from
 """
 
 import ast
+import re
+from enum import Enum, auto
 from pathlib import Path
 from typing import Dict, List, Optional, Set
 
 from gcs_clients_optics.crawler.models import FsspecUsage, SPECIFIED_CACHE_KEYWORDS
+from gcs_clients_optics.crawler.symbol_indexer import RepoSymbolTable
+
+
+class InferredType(Enum):
+    """Semantic type classifications for AST expressions during static analysis."""
+    UNKNOWN = auto()
+    FILESYSTEM = auto()         # Filesystem instance (e.g. AbstractFileSystem, fs, self.fs, get_filesystem())
+    FILE_STREAM = auto()        # File stream / open file handle (e.g. f, fo, stream, OpenFile, fs.open())
+    FS_FACTORY = auto()         # Function producing a filesystem instance (e.g. fsspec.filesystem, get_filesystem)
+    FS_TUPLE_FACTORY = auto()   # Function returning (fs, path, ...) tuple (e.g. url_to_fs, get_fs_token_paths)
+    OPEN_FACTORY = auto()       # Function returning file stream(s) (e.g. fsspec.open, open_files, open_local)
+    FS_MODULE = auto()          # Backend / fsspec module (e.g. fsspec, gcsfs, s3fs, adlfs, abfs)
 
 
 class FsspecASTVisitor(ast.NodeVisitor):
-    """AST NodeVisitor that inspects Python source trees for fsspec usages."""
+    """AST NodeVisitor that inspects Python source trees for fsspec usages using semantic type inference."""
 
     TARGET_FUNCTION_NAMES: Set[str] = {
         "open_files",
@@ -123,17 +137,34 @@ class FsspecASTVisitor(ast.NodeVisitor):
         "seekable",
     }
 
+    # Semantic pattern matchers
+    _RE_FS_IDENTIFIER = re.compile(
+        r"^(_)?(?:.*_)?(fs|filesystem)(_.*)?$", re.IGNORECASE
+    )
+    _RE_FILE_IDENTIFIER = re.compile(
+        r"^(_)?(fo|fileobj|file_obj|stream|stream_handle|raw_file)(_.*)?$",
+        re.IGNORECASE,
+    )
+    _RE_FS_FACTORY_FUNC = re.compile(
+        r"^(?:get|create|init|resolve|build|load|make|fetch|new)_.*(?:fs|filesystem)$|^(?:fs|filesystem)$",
+        re.IGNORECASE,
+    )
+    _RE_FS_CLASS = re.compile(r"^(?:.*_)?(?:FileSystem|FS|FSWrapper)$")
+    _KNOWN_FS_MODULES = ("fsspec", "gcsfs", "s3fs", "adlfs", "abfs")
+
     def __init__(
         self,
         file_path: str,
         source_code: str,
         repo_url: Optional[str] = None,
         branch: str = "main",
+        repo_symbols: Optional[RepoSymbolTable] = None,
     ):
         self.file_path = file_path
         self.source_lines = source_code.splitlines()
         self.repo_url = repo_url
         self.branch = branch
+        self.repo_symbols = repo_symbols
         self.usages: List[FsspecUsage] = []
 
         self.current_class: Optional[str] = None
@@ -141,7 +172,8 @@ class FsspecASTVisitor(ast.NodeVisitor):
         self.local_cache_type: Optional[str] = None
         self.dict_cache_types: Dict[str, str] = {}
         self.imports: Dict[str, str] = {}
-        self.file_vars: Set[str] = set()
+
+        # Symbol type registries
         self.filesystem_vars: Set[str] = {
             "fs",
             "_fs",
@@ -154,11 +186,9 @@ class FsspecASTVisitor(ast.NodeVisitor):
             "filesystem",
             "dirfs",
             "hffs",
-            "s3",
-            "gcs",
-            "abfs",
             "backend",
         }
+        self.file_vars: Set[str] = set()
         self.filesystem_classes: Set[str] = {
             "AbstractFileSystem",
             "AsyncFileSystem",
@@ -176,6 +206,7 @@ class FsspecASTVisitor(ast.NodeVisitor):
             "gcsfs.GCSFileSystem",
             "gcsfs.core.GCSFileSystem",
         }
+        self.fs_factories: Set[str] = set()
 
     def _get_node_source(self, node: ast.AST) -> str:
         """Extract literal source snippet for an AST node."""
@@ -207,6 +238,184 @@ class FsspecASTVisitor(ast.NodeVisitor):
         abs_p = Path(self.file_path).resolve()
         return f"file://{abs_p}#L{start_line}"
 
+    # --------------------------------------------------------------------------
+    # Semantic Type Inference
+    # --------------------------------------------------------------------------
+
+    def _is_fs_module(self, name: str) -> bool:
+        """Check if an identifier or import path refers to a filesystem backend module."""
+        imported = self.imports.get(name, name)
+        return imported.startswith(self._KNOWN_FS_MODULES) or name in self._KNOWN_FS_MODULES
+
+    def _is_fs_class_name(self, name: str) -> bool:
+        """Check if a name represents a filesystem class."""
+        imported = self.imports.get(name, name)
+        if self.repo_symbols and (self.repo_symbols.is_fs_class(name) or self.repo_symbols.is_fs_class(imported)):
+            return True
+        return (
+            name in self.filesystem_classes
+            or imported in self.filesystem_classes
+            or bool(self._RE_FS_CLASS.match(name))
+            or bool(self._RE_FS_CLASS.match(imported.split(".")[-1]))
+        )
+
+    def _is_fs_factory_name(self, name: str) -> bool:
+        """Check if a function or method name represents a filesystem factory / constructor."""
+        imported = self.imports.get(name, name)
+        last_seg = name.split(".")[-1]
+        imported_last_seg = imported.split(".")[-1]
+        if self.repo_symbols and (
+            self.repo_symbols.is_fs_factory(name)
+            or self.repo_symbols.is_fs_factory(imported)
+            or self.repo_symbols.is_fs_factory(last_seg)
+            or self.repo_symbols.is_fs_factory(imported_last_seg)
+        ):
+            return True
+        return (
+            name in self.fs_factories
+            or imported in self.fs_factories
+            or self._is_fs_class_name(name)
+            or self._is_fs_class_name(imported)
+            or bool(self._RE_FS_FACTORY_FUNC.match(last_seg))
+            or bool(self._RE_FS_FACTORY_FUNC.match(imported_last_seg))
+            or (
+                (self._is_fs_module(name.split(".")[0]) or self._is_fs_module(imported.split(".")[0]))
+                and (last_seg == "filesystem" or imported_last_seg == "filesystem")
+            )
+        )
+
+    def _is_tuple_factory_name(self, name: str) -> bool:
+        """Check if a function returns an (fs, path, ...) tuple."""
+        imported = self.imports.get(name, name)
+        last_seg = name.split(".")[-1]
+        imported_last_seg = imported.split(".")[-1]
+        if self.repo_symbols and (
+            self.repo_symbols.is_tuple_factory(name)
+            or self.repo_symbols.is_tuple_factory(imported)
+        ):
+            return True
+        return (
+            last_seg in ("url_to_fs", "get_fs_token_paths")
+            or imported_last_seg in ("url_to_fs", "get_fs_token_paths")
+        )
+
+    def _is_open_factory_name(self, name: str) -> bool:
+        """Check if a function opens file streams."""
+        imported = self.imports.get(name, name)
+        last_seg = name.split(".")[-1]
+        imported_last_seg = imported.split(".")[-1]
+        if self.repo_symbols and (
+            self.repo_symbols.is_open_factory(name)
+            or self.repo_symbols.is_open_factory(imported)
+        ):
+            return True
+        if last_seg in ("open_files", "open_local", "open_file", "OpenFile", "open_parquet_file"):
+            return True
+        if imported_last_seg in ("open_files", "open_local", "open_file", "OpenFile", "open_parquet_file"):
+            return True
+        if (
+            (self._is_fs_module(name.split(".")[0]) or self._is_fs_module(imported.split(".")[0]))
+            and (last_seg in ("open", "open_async") or imported_last_seg in ("open", "open_async"))
+        ):
+            return True
+        return False
+
+    def infer_node_type(self, node: Optional[ast.AST]) -> InferredType:
+        """Recursively infer the semantic type (FILESYSTEM, FILE_STREAM, FS_FACTORY, etc.) of an AST node."""
+        if node is None:
+            return InferredType.UNKNOWN
+
+        # 1. Identifiers (ast.Name)
+        if isinstance(node, ast.Name):
+            name = node.id
+            if name in self.filesystem_vars or bool(self._RE_FS_IDENTIFIER.match(name)):
+                return InferredType.FILESYSTEM
+            if name in self.file_vars or bool(self._RE_FILE_IDENTIFIER.match(name)):
+                return InferredType.FILE_STREAM
+            if self._is_tuple_factory_name(name):
+                return InferredType.FS_TUPLE_FACTORY
+            if self._is_open_factory_name(name):
+                return InferredType.OPEN_FACTORY
+            if self._is_fs_factory_name(name):
+                return InferredType.FS_FACTORY
+            if self._is_fs_module(name):
+                return InferredType.FS_MODULE
+            return InferredType.UNKNOWN
+
+        # 2. Attribute access (ast.Attribute: e.g. self.fs, fsspec.open, fs.open, get_fs().ls)
+        if isinstance(node, ast.Attribute):
+            attr = node.attr
+            val_type = self.infer_node_type(node.value)
+            val_str = self._get_node_source(node.value)
+            full_attr_str = self._get_node_source(node)
+
+            # Attribute on a filesystem module: fsspec.filesystem, fsspec.open, fsspec.core.url_to_fs
+            if val_type == InferredType.FS_MODULE or self._is_fs_module(val_str):
+                if attr in ("filesystem",) or self._is_fs_class_name(attr) or self._is_fs_factory_name(attr):
+                    return InferredType.FS_FACTORY
+                if attr in ("url_to_fs", "get_fs_token_paths"):
+                    return InferredType.FS_TUPLE_FACTORY
+                if attr in ("open", "open_async", "open_files", "open_local", "open_file", "open_parquet_file"):
+                    return InferredType.OPEN_FACTORY
+                return InferredType.UNKNOWN
+
+            # Explicit filesystem attribute naming on instances (self.fs, self._fs, obj.filesystem)
+            if full_attr_str in self.filesystem_vars or bool(self._RE_FS_IDENTIFIER.match(attr)):
+                return InferredType.FILESYSTEM
+
+            # Explicit file stream attribute naming (self.stream, obj.fileobj)
+            if full_attr_str in self.file_vars or bool(self._RE_FILE_IDENTIFIER.match(attr)):
+                return InferredType.FILE_STREAM
+
+            # Method access on a filesystem object: fs.open
+            if val_type == InferredType.FILESYSTEM and attr in ("open", "open_async"):
+                return InferredType.OPEN_FACTORY
+
+            # Factory method on object (e.g. backend.get_filesystem(), client.resolve_fs())
+            if self._is_fs_factory_name(attr):
+                return InferredType.FS_FACTORY
+
+            return InferredType.UNKNOWN
+
+        # 3. Call expressions (ast.Call: e.g. get_filesystem(...), fsspec.filesystem(...), fs.open(...))
+        if isinstance(node, ast.Call):
+            func_type = self.infer_node_type(node.func)
+            func_str = self._get_node_source(node.func)
+
+            # Calling a filesystem factory produces a filesystem instance
+            if func_type == InferredType.FS_FACTORY or self._is_fs_factory_name(func_str):
+                return InferredType.FILESYSTEM
+
+            # Calling an open factory produces a file stream
+            if func_type == InferredType.OPEN_FACTORY or self._is_open_factory_name(func_str):
+                return InferredType.FILE_STREAM
+
+            # Calling .open() on a filesystem instance produces a file stream
+            if isinstance(node.func, ast.Attribute) and node.func.attr in ("open", "open_async"):
+                if self.infer_node_type(node.func.value) == InferredType.FILESYSTEM:
+                    return InferredType.FILE_STREAM
+
+            # Calling a tuple factory produces an FS tuple
+            if func_type == InferredType.FS_TUPLE_FACTORY or self._is_tuple_factory_name(func_str):
+                return InferredType.FS_TUPLE_FACTORY
+
+            return InferredType.UNKNOWN
+
+        # 4. Subscript indexing (ast.Subscript: e.g. url_to_fs(...)[0])
+        if isinstance(node, ast.Subscript):
+            val_type = self.infer_node_type(node.value)
+            if val_type == InferredType.FS_TUPLE_FACTORY:
+                # First element of url_to_fs or get_fs_token_paths is the filesystem instance
+                if isinstance(node.slice, ast.Constant) and node.slice.value == 0:
+                    return InferredType.FILESYSTEM
+            return InferredType.UNKNOWN
+
+        return InferredType.UNKNOWN
+
+    # --------------------------------------------------------------------------
+    # AST Node Visitors
+    # --------------------------------------------------------------------------
+
     def visit_ClassDef(self, node: ast.ClassDef):
         """Track class context and filesystem subclass inheritance."""
         old_class = self.current_class
@@ -216,15 +425,12 @@ class FsspecASTVisitor(ast.NodeVisitor):
         is_fs_subclass = False
         for base in node.bases:
             base_str = self._get_node_source(base)
-            if (
-                base_str in self.filesystem_classes
-                or base_str.endswith(("FileSystem", "FS", "FSWrapper"))
-                or self.imports.get(base_str, "").endswith(("FileSystem", "FS", "FSWrapper"))
-            ):
+            if self._is_fs_class_name(base_str):
                 is_fs_subclass = True
                 break
 
         if is_fs_subclass:
+            self.filesystem_classes.add(node.name)
             self.filesystem_vars.add("self")
             self.filesystem_vars.add("cls")
 
@@ -232,43 +438,27 @@ class FsspecASTVisitor(ast.NodeVisitor):
         self.current_class = old_class
 
     def visit_FunctionDef(self, node: ast.FunctionDef):
-        """Track function context, filesystem parameters, and local cache_type defaults."""
+        """Track function context, return type annotations, filesystem parameters, and local cache_type defaults."""
         old_func = self.current_function
         old_ct = getattr(self, "local_cache_type", None)
         self.current_function = node.name
         self.local_cache_type = None
 
+        # Return type annotation: if function returns a FileSystem, register as an fs factory
+        if node.returns:
+            ret_str = self._get_node_source(node.returns)
+            if self._is_fs_class_name(ret_str):
+                self.fs_factories.add(node.name)
+
         # Inspect parameters for explicit filesystem and file stream variables
         for arg in node.args.args + node.args.kwonlyargs:
-            if arg.arg in (
-                "fs",
-                "_fs",
-                "filesystem",
-                "gcs_fs",
-                "s3_fs",
-                "storage_fs",
-                "target_fs",
-                "src_fs",
-            ):
+            if bool(self._RE_FS_IDENTIFIER.match(arg.arg)):
                 self.filesystem_vars.add(arg.arg)
-            elif arg.arg in (
-                "fo",
-                "fileobj",
-                "file_obj",
-                "stream",
-                "stream_handle",
-                "raw_file",
-            ):
+            elif bool(self._RE_FILE_IDENTIFIER.match(arg.arg)):
                 self.file_vars.add(arg.arg)
             elif arg.annotation:
                 ann_str = self._get_node_source(arg.annotation)
-                if (
-                    ann_str in self.filesystem_classes
-                    or ann_str.endswith(("FileSystem", "FS", "FSWrapper"))
-                    or self.imports.get(ann_str, "").endswith(
-                        ("FileSystem", "FS", "FSWrapper")
-                    )
-                ):
+                if self._is_fs_class_name(ann_str):
                     self.filesystem_vars.add(arg.arg)
                 elif "AbstractBufferedFile" in ann_str or "BinaryIO" in ann_str:
                     self.file_vars.add(arg.arg)
@@ -302,112 +492,50 @@ class FsspecASTVisitor(ast.NodeVisitor):
         for alias in node.names:
             local_name = alias.asname or alias.name
             self.imports[local_name] = alias.name
-            if alias.name in ("fsspec", "gcsfs", "s3fs", "adlfs", "abfs"):
+            if alias.name in self._KNOWN_FS_MODULES:
                 self.filesystem_classes.add(local_name)
         self.generic_visit(node)
 
     def visit_ImportFrom(self, node: ast.ImportFrom):
-        """Track from imports like `from fsspec.core import url_to_fs`."""
+        """Track from imports like `from fsspec.core import url_to_fs` or `from cloud_io import get_filesystem`."""
         module = node.module or ""
         for alias in node.names:
             local_name = alias.asname or alias.name
             full_name = f"{module}.{alias.name}" if module else alias.name
             self.imports[local_name] = full_name
-            if module.startswith(("fsspec", "gcsfs", "s3fs", "adlfs", "abfs")):
-                if (
-                    alias.name.endswith(("FileSystem", "FS", "FSWrapper"))
-                    or alias.name == "filesystem"
-                ):
-                    self.filesystem_classes.add(local_name)
-            elif alias.name.endswith(("FileSystem", "FS", "FSWrapper")):
+
+            if self._is_fs_class_name(alias.name) or self._is_fs_class_name(full_name):
                 self.filesystem_classes.add(local_name)
+            elif self._is_fs_factory_name(alias.name) or self._is_fs_factory_name(full_name):
+                self.fs_factories.add(local_name)
         self.generic_visit(node)
 
     def _track_assignment(self, targets: List[ast.AST], value: ast.AST):
-        """Helper to track filesystem instantiation, file handles, tuple unpacking, and aliases."""
-        if isinstance(value, ast.Call):
-            func_name = self._get_node_source(value.func)
-            imported = self.imports.get(func_name, func_name)
+        """Helper to track variable assignments from filesystem and file stream expressions."""
+        val_type = self.infer_node_type(value)
 
-            # Tuple unpacking from factory functions: fs, path = url_to_fs(...), fs, tok, paths = get_fs_token_paths(...)
-            if (
-                func_name
-                in (
-                    "url_to_fs",
-                    "fsspec.core.url_to_fs",
-                    "get_fs_token_paths",
-                    "fsspec.core.get_fs_token_paths",
-                )
-                or imported.endswith(("url_to_fs", "get_fs_token_paths"))
-            ):
-                for target in targets:
-                    if isinstance(target, (ast.Tuple, ast.List)) and target.elts:
-                        fs_var = self._get_node_source(target.elts[0])
-                        if fs_var:
-                            self.filesystem_vars.add(fs_var)
-                    else:
-                        var_name = self._get_node_source(target)
-                        if var_name:
-                            self.filesystem_vars.add(var_name)
-
-            # Direct factory / constructor calls: fsspec.filesystem, GCSFileSystem(), etc.
-            elif (
-                func_name.endswith(".filesystem")
-                or func_name == "filesystem"
-                or imported.endswith(".filesystem")
-                or func_name in self.filesystem_classes
-                or imported in self.filesystem_classes
-                or func_name.endswith(("FileSystem", "FSWrapper"))
-                or imported.endswith(("FileSystem", "FSWrapper"))
-            ):
-                for target in targets:
-                    if isinstance(target, (ast.Tuple, ast.List)) and target.elts:
-                        fs_var = self._get_node_source(target.elts[0])
-                        if fs_var:
-                            self.filesystem_vars.add(fs_var)
-                    else:
-                        var_name = self._get_node_source(target)
-                        if var_name:
-                            self.filesystem_vars.add(var_name)
-
-            # File handle assignment from open calls: f = fs.open(...), f = fsspec.open(...)
-            elif (
-                func_name.endswith((".open", ".open_file", ".open_parquet_file"))
-                or func_name in ("open_files", "open_local", "open_file", "OpenFile", "open_parquet_file", "open")
-                or imported.endswith((".open", "open_files", "open_local", "open_file", "OpenFile", "open_parquet_file"))
-                or (isinstance(value.func, ast.Attribute) and value.func.attr in ("open", "open_async"))
-            ):
-                for target in targets:
-                    if isinstance(target, (ast.Tuple, ast.List)):
-                        for elt in target.elts:
-                            fn = self._get_node_source(elt)
-                            if fn:
-                                self.file_vars.add(fn)
-                    else:
-                        var_name = self._get_node_source(target)
-                        if var_name:
-                            self.file_vars.add(var_name)
-
-        # Alias / reference assignment: fs_copy = fs, self.fs = fs
-        val_str = self._get_node_source(value)
-        if val_str and (
-            val_str in self.filesystem_vars
-            or val_str.endswith((".fs", "._fs"))
-        ):
+        if val_type == InferredType.FILESYSTEM:
             for target in targets:
                 var_name = self._get_node_source(target)
                 if var_name:
                     self.filesystem_vars.add(var_name)
 
-        # File handle alias assignment: f2 = f
-        if val_str and (
-            val_str in self.file_vars
-            or val_str.endswith((".f", "._f", ".fo", ".fileobj", ".stream"))
-        ):
+        elif val_type == InferredType.FILE_STREAM:
             for target in targets:
                 var_name = self._get_node_source(target)
                 if var_name:
                     self.file_vars.add(var_name)
+
+        elif val_type == InferredType.FS_TUPLE_FACTORY:
+            for target in targets:
+                if isinstance(target, (ast.Tuple, ast.List)) and target.elts:
+                    fs_var = self._get_node_source(target.elts[0])
+                    if fs_var:
+                        self.filesystem_vars.add(fs_var)
+                else:
+                    var_name = self._get_node_source(target)
+                    if var_name:
+                        self.filesystem_vars.add(var_name)
 
     def visit_Assign(self, node: ast.Assign):
         """Track filesystem assignments and dictionary cache_type assignments."""
@@ -454,13 +582,7 @@ class FsspecASTVisitor(ast.NodeVisitor):
             self._track_assignment([node.target], node.value)
         if node.annotation:
             ann_str = self._get_node_source(node.annotation)
-            if (
-                ann_str in self.filesystem_classes
-                or ann_str.endswith(("FileSystem", "FS", "FSWrapper"))
-                or self.imports.get(ann_str, "").endswith(
-                    ("FileSystem", "FS", "FSWrapper")
-                )
-            ):
+            if self._is_fs_class_name(ann_str):
                 var_name = self._get_node_source(node.target)
                 if var_name:
                     self.filesystem_vars.add(var_name)
@@ -469,54 +591,30 @@ class FsspecASTVisitor(ast.NodeVisitor):
     def visit_With(self, node: ast.With):
         """Track file handle variables in with statements (e.g. with fs.open(...) as f)."""
         for item in node.items:
-            ctx = item.context_expr
-            if isinstance(ctx, ast.Call):
-                func_name = self._get_node_source(ctx.func)
-                imported = self.imports.get(func_name, func_name)
-                is_fsspec_open = False
-
-                if func_name in ("open_files", "open_local", "open_file", "OpenFile", "open_parquet_file"):
-                    is_fsspec_open = True
-                elif imported.startswith(("fsspec", "gcsfs", "s3fs", "adlfs", "abfs")):
-                    is_fsspec_open = True
-                elif isinstance(ctx.func, ast.Attribute) and ctx.func.attr in ("open", "open_async"):
-                    val_id = self._get_node_source(ctx.func.value)
-                    imported_val = self.imports.get(val_id, val_id)
-                    if (
-                        val_id in self.filesystem_vars
-                        or val_id.endswith((".fs", "._fs", ".filesystem"))
-                        or imported_val.startswith(("fsspec", "gcsfs", "s3fs", "adlfs", "abfs"))
-                    ):
-                        is_fsspec_open = True
-
-                if is_fsspec_open and item.optional_vars:
-                    var_name = self._get_node_source(item.optional_vars)
-                    if var_name:
-                        self.file_vars.add(var_name)
+            ctx_type = self.infer_node_type(item.context_expr)
+            if ctx_type == InferredType.FILE_STREAM and item.optional_vars:
+                var_name = self._get_node_source(item.optional_vars)
+                if var_name:
+                    self.file_vars.add(var_name)
         self.generic_visit(node)
 
     def visit_AsyncWith(self, node: ast.AsyncWith):
         """Track file handle variables in async with statements."""
         for item in node.items:
-            ctx = item.context_expr
-            if isinstance(ctx, ast.Call):
-                func_name = self._get_node_source(ctx.func)
-                if (
-                    func_name.endswith((".open", ".open_async", "open_files", "open_local", "open_file"))
-                    or (isinstance(ctx.func, ast.Attribute) and ctx.func.attr in ("open", "open_async"))
-                ):
-                    if item.optional_vars:
-                        var_name = self._get_node_source(item.optional_vars)
-                        if var_name:
-                            self.file_vars.add(var_name)
+            ctx_type = self.infer_node_type(item.context_expr)
+            if ctx_type == InferredType.FILE_STREAM and item.optional_vars:
+                var_name = self._get_node_source(item.optional_vars)
+                if var_name:
+                    self.file_vars.add(var_name)
         self.generic_visit(node)
 
     def visit_For(self, node: ast.For):
         """Track file variables in for loops (e.g. for f in open_files(...) or for f in files)."""
+        iter_type = self.infer_node_type(node.iter)
         iter_str = self._get_node_source(node.iter)
         if (
-            iter_str in self.file_vars
-            or iter_str.startswith("open_files")
+            iter_type == InferredType.FILE_STREAM
+            or iter_str in self.file_vars
             or "open_files" in iter_str
         ):
             target_str = self._get_node_source(node.target)
@@ -525,7 +623,7 @@ class FsspecASTVisitor(ast.NodeVisitor):
         self.generic_visit(node)
 
     def visit_Call(self, node: ast.Call):
-        """Analyze call sites for fsspec and filesystem usages."""
+        """Analyze call sites for fsspec and filesystem usages using semantic type inference."""
         is_match = False
         target_name = ""
 
@@ -537,7 +635,7 @@ class FsspecASTVisitor(ast.NodeVisitor):
                 imported_orig = self.imports.get(func_id, "")
                 orig_name = imported_orig.split(".")[-1] if imported_orig else func_id
                 if (
-                    imported_orig.startswith(("fsspec", "gcsfs", "s3fs", "adlfs", "abfs"))
+                    imported_orig.startswith(self._KNOWN_FS_MODULES)
                     and (orig_name in self.TARGET_FUNCTION_NAMES or orig_name in self.TARGET_OBJECT_METHODS or orig_name == "open")
                 ):
                     is_match = True
@@ -552,20 +650,17 @@ class FsspecASTVisitor(ast.NodeVisitor):
                     else:
                         target_name = func_id
 
-        # Case 2: Attribute calls (e.g. `fsspec.open(...)`, `fs.open(...)`, `self.fs.open(...)`, `fo.read(...)`)
+        # Case 2: Attribute calls (e.g. `fsspec.open(...)`, `fs.open(...)`, `get_filesystem().mv(...)`, `f.read(...)`)
         elif isinstance(node.func, ast.Attribute):
             attr = node.func.attr
             # Exclude class constructors (PascalCase attribute names)
             if attr and not attr[0].isupper():
+                receiver_type = self.infer_node_type(node.func.value)
                 val_id = self._get_node_source(node.func.value)
                 imported_orig = self.imports.get(val_id, val_id)
 
-                # Subcase 2a: Module-level fsspec calls
-                if (
-                    imported_orig in ("fsspec", "fsspec.core", "fsspec.parquet")
-                    or val_id in ("fsspec", "fsspec.core", "fsspec.parquet")
-                    or (imported_orig.startswith("fsspec") and attr in self.TARGET_FUNCTION_NAMES)
-                ):
+                # Subcase 2a: Module-level fsspec calls (fsspec.open, fsspec.core.url_to_fs)
+                if receiver_type == InferredType.FS_MODULE or imported_orig in ("fsspec", "fsspec.core", "fsspec.parquet"):
                     if (
                         attr in self.TARGET_OBJECT_METHODS
                         or attr in self.TARGET_FUNCTION_NAMES
@@ -581,32 +676,13 @@ class FsspecASTVisitor(ast.NodeVisitor):
                         else:
                             target_name = f"fsspec.{attr}"
 
-                # Subcase 2b: Filesystem instance calls (e.g. fs.open, self.fs.makedirs, dirfs.glob, gcs.cat_file)
-                elif (
-                    imported_orig in ("gcsfs", "s3fs", "adlfs", "abfs")
-                    or imported_orig.startswith(("fsspec.", "gcsfs.", "s3fs.", "adlfs.", "abfs."))
-                    or val_id in self.filesystem_vars
-                    or val_id.endswith((".fs", "._fs", ".filesystem"))
-                    or val_id in (
-                        "fs",
-                        "_fs",
-                        "gcs_fs",
-                        "s3_fs",
-                        "filesystem",
-                        "self.fs",
-                        "self._fs",
-                        "cls.fs",
-                        "cls._fs",
-                    )
-                ) and attr in self.TARGET_OBJECT_METHODS:
+                # Subcase 2b: Filesystem instance calls (fs.open, self.fs.makedirs, get_filesystem().mv)
+                elif receiver_type == InferredType.FILESYSTEM and attr in self.TARGET_OBJECT_METHODS:
                     is_match = True
                     target_name = f"fs.{attr}"
 
-                # Subcase 2c: File stream handle calls (e.g. stream.read, w_fp.write, f.close)
-                elif (
-                    val_id in self.file_vars
-                    or val_id.endswith((".f", "._f", ".fo", ".fileobj", ".stream"))
-                ) and attr in self.FILE_STREAM_METHODS:
+                # Subcase 2c: File stream handle calls (f.read, stream.seek, fileobj.close)
+                elif receiver_type == InferredType.FILE_STREAM and attr in self.FILE_STREAM_METHODS:
                     is_match = True
                     target_name = f"f.{attr}"
 

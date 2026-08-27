@@ -428,5 +428,49 @@ def multi_alias_flow(path):
     assert "f.close" in target_names
 
 
+def test_get_filesystem_direct_call():
+    code = """
+from lightning.fabric.utilities.cloud_io import get_filesystem
 
+def consolidate_and_move(save_path, path):
+    get_filesystem(save_path).mv(str(save_path), str(path))
+    get_filesystem(path).exists(str(path))
+"""
+    engine = FsspecCrawlerEngine()
+    usages = engine.scan_code("lightning/fabric/strategies/xla_fsdp.py", code)
+    target_names = [u.target_name for u in usages]
+    assert "fs.mv" in target_names
+    assert "fs.exists" in target_names
+    u_mv = [u for u in usages if u.target_name == "fs.mv"][0]
+    assert u_mv.line_number == 5
+    assert u_mv.args == ["str(save_path)", "str(path)"]
+
+
+def test_generalized_filesystem_factories_and_return_annotations():
+    code = """
+from fsspec.spec import AbstractFileSystem
+
+def create_storage_fs(uri: str) -> AbstractFileSystem:
+    return None
+
+def resolve_fs(target: str):
+    pass
+
+def execute_pipeline(uri: str):
+    # 1. Calling function with -> AbstractFileSystem annotation
+    storage = create_storage_fs(uri)
+    storage.copy("src", "dst")
+
+    # 2. Chained factory invocation without assignment
+    resolve_fs(uri).rm("temp/dir", recursive=True)
+
+    # 3. Factory method on client object
+    client.get_filesystem().makedirs("bucket/data", exist_ok=True)
+"""
+    engine = FsspecCrawlerEngine()
+    usages = engine.scan_code("pipeline_gen.py", code)
+    target_names = [u.target_name for u in usages]
+    assert "fs.copy" in target_names
+    assert "fs.rm" in target_names
+    assert "fs.makedirs" in target_names
 
