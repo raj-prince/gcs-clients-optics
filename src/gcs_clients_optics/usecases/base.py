@@ -25,6 +25,8 @@ class BaseUseCase(abc.ABC):
         source_code: str,
         repo_url: Optional[str] = None,
         branch: str = "main",
+        repo_symbols: Optional[Any] = None,
+        **kwargs,
     ) -> List[Any]:
         """Scan a single Python source string and return detected usage items."""
         pass

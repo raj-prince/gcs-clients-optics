@@ -5,7 +5,7 @@ Use Case 1: FSSPEC & Abstract Filesystem Method Usage Analysis across codebases.
 import ast
 import json
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Any, Dict, List, Optional
 
 from gcs_clients_optics.crawler.ast_visitor import FsspecASTVisitor
 from gcs_clients_optics.crawler.models import CrawlReport, FsspecUsage
@@ -34,12 +34,18 @@ class FsspecMethodsUseCase(BaseUseCase):
         source_code: str,
         repo_url: Optional[str] = None,
         branch: str = "main",
+        repo_symbols: Optional[Any] = None,
+        **kwargs,
     ) -> List[FsspecUsage]:
         """Scan Python code for abstract filesystem method usages."""
         try:
             tree = ast.parse(source_code, filename=file_path)
             visitor = FsspecASTVisitor(
-                file_path, source_code, repo_url=repo_url, branch=branch
+                file_path,
+                source_code,
+                repo_url=repo_url,
+                branch=branch,
+                repo_symbols=repo_symbols,
             )
             visitor.visit(tree)
             return visitor.usages

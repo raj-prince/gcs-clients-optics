@@ -17,6 +17,7 @@ from typing import Any, Callable, Dict, List, Optional, Tuple
 from gcs_clients_optics.crawler.ast_visitor import FsspecASTVisitor
 from gcs_clients_optics.crawler.models import CrawlReport, FsspecUsage
 from gcs_clients_optics.crawler.regex_scanner import RegexFallbackScanner
+from gcs_clients_optics.crawler.symbol_indexer import RepoSymbolTable, build_repo_symbol_table
 from gcs_clients_optics.usecases.base import BaseUseCase
 
 _thread_local = threading.local()
@@ -338,6 +339,7 @@ class OpticsEngine:
         }
         scanned_count = 0
 
+        files_map: Dict[str, str] = {}
         try:
             with tarfile.open(fileobj=io.BytesIO(tar_bytes), mode="r:gz") as tar:
                 for member in tar.getmembers():
@@ -358,19 +360,9 @@ class OpticsEngine:
                     if f is None:
                         continue
 
-                    scanned_count += 1
                     try:
                         content = f.read().decode("utf-8", errors="ignore")
-                        for uc in use_cases:
-                            usages = uc.scan_code(
-                                rel_path,
-                                content,
-                                repo_url=repo_url,
-                                branch=successful_branch,
-                            )
-                            if usages:
-                                uc_data[uc.name]["files_with"] += 1
-                                uc_data[uc.name]["usages"].extend(usages)
+                        files_map[rel_path] = content
                     except Exception:
                         continue
         except Exception as e:
@@ -379,6 +371,23 @@ class OpticsEngine:
                 file=sys.stderr,
             )
             return None
+
+        # Build repository symbol table for cross-file reference resolution
+        repo_symbols = build_repo_symbol_table(files_map)
+
+        for rel_path, content in files_map.items():
+            scanned_count += 1
+            for uc in use_cases:
+                usages = uc.scan_code(
+                    rel_path,
+                    content,
+                    repo_url=repo_url,
+                    branch=successful_branch,
+                    repo_symbols=repo_symbols,
+                )
+                if usages:
+                    uc_data[uc.name]["files_with"] += 1
+                    uc_data[uc.name]["usages"].extend(usages)
 
         reports: Dict[str, Any] = {}
         for uc in use_cases:
@@ -472,26 +481,40 @@ class OpticsEngine:
 
         scanned_count = len(py_files)
 
-        def _fetch_and_scan_multi(rel_path: str) -> Dict[str, List[Any]]:
+        def _fetch_file(rel_path: str) -> Tuple[str, str]:
             content = fetch_raw_github_content(
                 repo_name,
                 branch,
                 rel_path,
                 github_token=self.github_token,
             )
+            return rel_path, content
+
+        with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
+            fetched_items = list(executor.map(_fetch_file, py_files))
+
+        files_map = {p: c for p, c in fetched_items if c}
+        repo_symbols = build_repo_symbol_table(files_map)
+
+        def _scan_file_multi(item: Tuple[str, str]) -> Dict[str, List[Any]]:
+            rel_path, content = item
             if not content:
                 return {uc.name: [] for uc in use_cases}
 
             file_results = {}
             for uc in use_cases:
                 file_results[uc.name] = uc.scan_code(
-                    rel_path, content, repo_url=repo_url, branch=branch
+                    rel_path,
+                    content,
+                    repo_url=repo_url,
+                    branch=branch,
+                    repo_symbols=repo_symbols,
                 )
             return file_results
 
         with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
             all_file_results = list(
-                executor.map(_fetch_and_scan_multi, py_files)
+                executor.map(_scan_file_multi, fetched_items)
             )
 
         reports: Dict[str, Any] = {}
@@ -612,12 +635,17 @@ class FsspecCrawlerEngine:
         source_code: str,
         repo_url: Optional[str] = None,
         branch: str = "main",
+        repo_symbols: Optional[RepoSymbolTable] = None,
     ) -> List[FsspecUsage]:
         """Scan a single Python source code string."""
         try:
             tree = ast.parse(source_code, filename=file_path)
             visitor = FsspecASTVisitor(
-                file_path, source_code, repo_url=repo_url, branch=branch
+                file_path,
+                source_code,
+                repo_url=repo_url,
+                branch=branch,
+                repo_symbols=repo_symbols,
             )
             visitor.visit(tree)
             return visitor.usages

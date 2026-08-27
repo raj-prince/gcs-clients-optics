@@ -1,9 +1,9 @@
 # Master FSSPEC & Filesystem Method Usage Report
 
 - **Repositories Crawled:** `21`
-- **Total Files Scanned:** `9441`
-- **Files with Method Usages:** `194`
-- **Total Method Usages Detected:** `927`
+- **Total Files Scanned:** `9456`
+- **Files with Method Usages:** `201`
+- **Total Method Usages Detected:** `938`
 - **Distinct Methods Detected:** `65`
 - **Skipping Test Files (test_*.py):** `True`
 
@@ -13,24 +13,24 @@
 
 | Project / Repository | Files Scanned | Files w/ Usages | Total Usages | Top Methods |
 | :--- | :--- | :--- | :--- | :--- |
-| [pytorch/pytorch](https://github.com/pytorch/pytorch) | `2558` | `17` | `53` | `f.write` (13), `f.close` (5), `f.read` (5) |
-| [pandas-dev/pandas](https://github.com/pandas-dev/pandas) | `297` | `4` | `10` | `fs.open` (4), `f.seek` (2), `f.read` (1) |
-| [ray-project/ray](https://github.com/ray-project/ray) | `2018` | `15` | `34` | `fs.open` (5), `f.read` (4), `f.write` (4) |
-| [pola-rs/polars](https://github.com/pola-rs/polars) | `207` | `1` | `2` | `fs.open` (1), `fs.open_files` (1) |
-| [Lightning-AI/pytorch-lightning](https://github.com/Lightning-AI/pytorch-lightning) | `456` | `30` | `112` | `fs.exists` (24), `fs.open` (14), `fs.makedirs` (9) |
+| [pytorch/pytorch](https://github.com/pytorch/pytorch) | `2558` | `19` | `56` | `f.write` (14), `f.close` (5), `f.read` (5) |
+| [pandas-dev/pandas](https://github.com/pandas-dev/pandas) | `300` | `4` | `10` | `fs.open` (4), `f.seek` (2), `f.read` (1) |
+| [ray-project/ray](https://github.com/ray-project/ray) | `2023` | `18` | `39` | `fs.open` (5), `f.read` (4), `f.write` (4) |
+| [pola-rs/polars](https://github.com/pola-rs/polars) | `207` | `2` | `4` | `fs.open` (1), `fs.open_files` (1), `f.tell` (1) |
+| [Lightning-AI/pytorch-lightning](https://github.com/Lightning-AI/pytorch-lightning) | `457` | `31` | `113` | `fs.exists` (24), `fs.open` (14), `fs.makedirs` (9) |
 | [duckdb/duckdb](https://github.com/duckdb/duckdb) | `16` | `0` | `0` | None |
 | [huggingface/datasets](https://github.com/huggingface/datasets) | `143` | `16` | `101` | `url_to_fs` (22), `fs.open` (17), `fs.isfile` (11) |
-| [mlflow/mlflow](https://github.com/mlflow/mlflow) | `1303` | `3` | `3` | `f.read` (2), `fs.get` (1) |
+| [mlflow/mlflow](https://github.com/mlflow/mlflow) | `1304` | `3` | `3` | `f.read` (2), `fs.get` (1) |
 | [apache/arrow](https://github.com/apache/arrow) | `80` | `2` | `22` | `fs.rm` (4), `fs.open` (4), `fs.isfile` (3) |
 | [iterative/dvc](https://github.com/iterative/dvc) | `258` | `54` | `301` | `fs.join` (58), `fs.relparts` (25), `fs.relpath` (25) |
 | [dask/dask](https://github.com/dask/dask) | `184` | `15` | `72` | `fs.open` (16), `f.read` (10), `stringify_path` (9) |
 | [great-expectations/great_expectations](https://github.com/great-expectations/great_expectations) | `0` | `0` | `0` | None |
-| [modin-project/modin](https://github.com/modin-project/modin) | `282` | `7` | `43` | `url_to_fs` (11), `fs.open` (5), `fs.exists` (5) |
+| [modin-project/modin](https://github.com/modin-project/modin) | `283` | `7` | `43` | `url_to_fs` (11), `fs.open` (5), `fs.exists` (5) |
 | [flyteorg/flyte](https://github.com/flyteorg/flyte) | `242` | `0` | `0` | None |
-| [feast-dev/feast](https://github.com/feast-dev/feast) | `599` | `10` | `29` | `fs.get` (9), `f.seek` (6), `f.write` (4) |
+| [feast-dev/feast](https://github.com/feast-dev/feast) | `600` | `10` | `29` | `fs.get` (9), `f.seek` (6), `f.write` (4) |
 | [pydata/xarray](https://github.com/pydata/xarray) | `123` | `1` | `4` | `get_fs_token_paths` (2), `fs.glob` (1), `fs.open` (1) |
 | [kedro-org/kedro](https://github.com/kedro-org/kedro) | `106` | `1` | `12` | `fsspec.filesystem` (4), `fs.ls` (3), `fs.isdir` (1) |
-| [pytorch/torchtitan](https://github.com/pytorch/torchtitan) | `326` | `5` | `18` | `fs.join` (8), `fs.isdir` (2), `fs.isfile` (2) |
+| [pytorch/torchtitan](https://github.com/pytorch/torchtitan) | `329` | `5` | `18` | `fs.join` (8), `fs.isdir` (2), `fs.isfile` (2) |
 | [delta-io/delta-rs](https://github.com/delta-io/delta-rs) | `18` | `0` | `0` | None |
 | [zarr-developers/zarr-python](https://github.com/zarr-developers/zarr-python) | `173` | `2` | `8` | `f.tell` (3), `f.seek` (3), `url_to_fs` (1) |
 | [intake/intake](https://github.com/intake/intake) | `52` | `11` | `103` | `fs.open` (41), `f.read` (23), `open_files` (6) |
@@ -39,41 +39,41 @@
 
 ## 📊 Repository × Target Call Usage Matrix (65 Methods)
 
-| Repository | Total Calls | `fs.open` | `fs.exists` | `fs.join` | `f.read` | `url_to_fs` | `fs.isdir` | `f.write` | `fs.isfile` | `fs.info` | `fs.relparts` | `fs.relpath` | `f.seek` | `fs.get` | `fs.ls` | `fs.makedirs` | `fs.abspath` | `f.close` | `fs.glob` | `fs.find` | `fs.getcwd` | `fs.parts` | `fs.normpath` | `open_files` | `fs.rm` | `get_fs_token_paths` | `fs.isin` | `fsspec.filesystem` | `f.flush` | `f.tell` | `fs.get_file` | `stringify_path` | `f.readlines` | `fs.listdir` | `fs.walk` | `fs.split` | `fs.read_text` | `fs.close` | `f.readline` | `fs.put` | `fs.open_local` | `fs.move` | `fs.open_files` | `fs.mv` | `fs.rename` | `fs.mkdir` | `fs.rm_file` | `f.writelines` | `fs.chdir` | `fs.as_posix` | `fs.du` | `fs.ukey` | `fs.read_block` | `infer_compression` | `expand_paths_if_needed` | `fs.cat_file` | `fs.cat` | `fs.flush` | `fs.rmdir` | `fs.size` | `fs.copy` | `fs.commonpath` | `fs.expand_path` | `fs.checksum` | `fsspec.open_parquet_file` | `get_filesystem_class` |
+| Repository | Total Calls | `fs.open` | `fs.exists` | `fs.join` | `f.read` | `url_to_fs` | `fs.isdir` | `f.write` | `fs.isfile` | `fs.info` | `f.seek` | `fs.get` | `fs.relparts` | `fs.relpath` | `fs.ls` | `fs.makedirs` | `fs.abspath` | `f.close` | `fs.glob` | `fs.find` | `fs.getcwd` | `fs.parts` | `fs.normpath` | `open_files` | `fs.rm` | `f.tell` | `get_fs_token_paths` | `fs.isin` | `fsspec.filesystem` | `f.flush` | `fs.get_file` | `stringify_path` | `f.readlines` | `fs.listdir` | `f.readline` | `fs.walk` | `fs.split` | `fs.read_text` | `fs.close` | `fs.put` | `fs.open_local` | `fs.move` | `fs.open_files` | `fs.mv` | `fs.rename` | `fs.mkdir` | `fs.rm_file` | `f.writelines` | `fs.chdir` | `fs.as_posix` | `fs.du` | `fs.ukey` | `fs.read_block` | `infer_compression` | `expand_paths_if_needed` | `fs.cat_file` | `fs.cat` | `fs.flush` | `fs.rmdir` | `fs.size` | `fs.copy` | `fs.commonpath` | `fs.expand_path` | `fs.checksum` | `fsspec.open_parquet_file` | `get_filesystem_class` |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| [pytorch/pytorch](https://github.com/pytorch/pytorch) | **53** | [**1**](#pytorch-pytorch-fs-open) | [**4**](#pytorch-pytorch-fs-exists) | [**1**](#pytorch-pytorch-fs-join) | [**5**](#pytorch-pytorch-f-read) | [**2**](#pytorch-pytorch-url-to-fs) | [**1**](#pytorch-pytorch-fs-isdir) | [**13**](#pytorch-pytorch-f-write) | - | - | - | - | [**2**](#pytorch-pytorch-f-seek) | [**1**](#pytorch-pytorch-fs-get) | [**2**](#pytorch-pytorch-fs-ls) | [**2**](#pytorch-pytorch-fs-makedirs) | - | [**5**](#pytorch-pytorch-f-close) | - | - | - | - | - | - | [**1**](#pytorch-pytorch-fs-rm) | - | - | - | [**4**](#pytorch-pytorch-f-flush) | [**2**](#pytorch-pytorch-f-tell) | - | - | - | - | - | [**1**](#pytorch-pytorch-fs-split) | - | - | - | [**1**](#pytorch-pytorch-fs-put) | - | - | - | - | [**2**](#pytorch-pytorch-fs-rename) | [**1**](#pytorch-pytorch-fs-mkdir) | [**1**](#pytorch-pytorch-fs-rm-file) | - | - | - | - | - | - | - | - | - | - | [**1**](#pytorch-pytorch-fs-flush) | - | - | - | - | - | - | - | - |
-| [pandas-dev/pandas](https://github.com/pandas-dev/pandas) | **10** | [**4**](#pandas-dev-pandas-fs-open) | - | - | [**1**](#pandas-dev-pandas-f-read) | [**1**](#pandas-dev-pandas-url-to-fs) | - | - | - | - | - | - | [**2**](#pandas-dev-pandas-f-seek) | - | - | - | - | [**1**](#pandas-dev-pandas-f-close) | - | - | - | - | - | - | - | - | - | - | [**1**](#pandas-dev-pandas-f-flush) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
-| [ray-project/ray](https://github.com/ray-project/ray) | **34** | [**5**](#ray-project-ray-fs-open) | [**1**](#ray-project-ray-fs-exists) | - | [**4**](#ray-project-ray-f-read) | [**1**](#ray-project-ray-url-to-fs) | - | [**4**](#ray-project-ray-f-write) | - | - | - | - | [**4**](#ray-project-ray-f-seek) | [**2**](#ray-project-ray-fs-get) | - | - | - | [**1**](#ray-project-ray-f-close) | - | - | - | - | - | - | - | - | - | [**1**](#ray-project-ray-fsspec-filesystem) | [**3**](#ray-project-ray-f-flush) | [**2**](#ray-project-ray-f-tell) | [**2**](#ray-project-ray-fs-get-file) | - | - | - | - | [**1**](#ray-project-ray-fs-split) | - | - | - | - | - | [**2**](#ray-project-ray-fs-move) | - | - | - | - | - | [**1**](#ray-project-ray-f-writelines) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
-| [pola-rs/polars](https://github.com/pola-rs/polars) | **2** | [**1**](#pola-rs-polars-fs-open) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | [**1**](#pola-rs-polars-fs-open-files) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
-| [Lightning-AI/pytorch-lightning](https://github.com/Lightning-AI/pytorch-lightning) | **112** | [**14**](#lightning-ai-pytorch-lightning-fs-open) | [**24**](#lightning-ai-pytorch-lightning-fs-exists) | - | [**4**](#lightning-ai-pytorch-lightning-f-read) | [**3**](#lightning-ai-pytorch-lightning-url-to-fs) | [**8**](#lightning-ai-pytorch-lightning-fs-isdir) | [**2**](#lightning-ai-pytorch-lightning-f-write) | [**6**](#lightning-ai-pytorch-lightning-fs-isfile) | [**3**](#lightning-ai-pytorch-lightning-fs-info) | - | - | - | [**7**](#lightning-ai-pytorch-lightning-fs-get) | [**6**](#lightning-ai-pytorch-lightning-fs-ls) | [**9**](#lightning-ai-pytorch-lightning-fs-makedirs) | - | [**1**](#lightning-ai-pytorch-lightning-f-close) | - | - | - | - | - | - | [**5**](#lightning-ai-pytorch-lightning-fs-rm) | - | - | - | [**1**](#lightning-ai-pytorch-lightning-f-flush) | - | - | - | [**7**](#lightning-ai-pytorch-lightning-f-readlines) | [**5**](#lightning-ai-pytorch-lightning-fs-listdir) | - | - | - | - | - | [**3**](#lightning-ai-pytorch-lightning-fs-put) | - | - | - | [**1**](#lightning-ai-pytorch-lightning-fs-mv) | - | - | [**1**](#lightning-ai-pytorch-lightning-fs-rm-file) | [**1**](#lightning-ai-pytorch-lightning-f-writelines) | - | - | - | - | - | - | - | - | - | - | [**1**](#lightning-ai-pytorch-lightning-fs-rmdir) | - | - | - | - | - | - | - |
+| [pytorch/pytorch](https://github.com/pytorch/pytorch) | **56** | [**1**](#pytorch-pytorch-fs-open) | [**4**](#pytorch-pytorch-fs-exists) | [**1**](#pytorch-pytorch-fs-join) | [**5**](#pytorch-pytorch-f-read) | [**2**](#pytorch-pytorch-url-to-fs) | [**1**](#pytorch-pytorch-fs-isdir) | [**14**](#pytorch-pytorch-f-write) | - | - | [**3**](#pytorch-pytorch-f-seek) | [**1**](#pytorch-pytorch-fs-get) | - | - | [**2**](#pytorch-pytorch-fs-ls) | [**2**](#pytorch-pytorch-fs-makedirs) | - | [**5**](#pytorch-pytorch-f-close) | - | - | - | - | - | - | [**1**](#pytorch-pytorch-fs-rm) | [**3**](#pytorch-pytorch-f-tell) | - | - | - | [**4**](#pytorch-pytorch-f-flush) | - | - | - | - | - | - | [**1**](#pytorch-pytorch-fs-split) | - | - | [**1**](#pytorch-pytorch-fs-put) | - | - | - | - | [**2**](#pytorch-pytorch-fs-rename) | [**1**](#pytorch-pytorch-fs-mkdir) | [**1**](#pytorch-pytorch-fs-rm-file) | - | - | - | - | - | - | - | - | - | - | [**1**](#pytorch-pytorch-fs-flush) | - | - | - | - | - | - | - | - |
+| [pandas-dev/pandas](https://github.com/pandas-dev/pandas) | **10** | [**4**](#pandas-dev-pandas-fs-open) | - | - | [**1**](#pandas-dev-pandas-f-read) | [**1**](#pandas-dev-pandas-url-to-fs) | - | - | - | - | [**2**](#pandas-dev-pandas-f-seek) | - | - | - | - | - | - | [**1**](#pandas-dev-pandas-f-close) | - | - | - | - | - | - | - | - | - | - | - | [**1**](#pandas-dev-pandas-f-flush) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
+| [ray-project/ray](https://github.com/ray-project/ray) | **39** | [**5**](#ray-project-ray-fs-open) | [**1**](#ray-project-ray-fs-exists) | - | [**4**](#ray-project-ray-f-read) | [**1**](#ray-project-ray-url-to-fs) | - | [**4**](#ray-project-ray-f-write) | - | - | [**4**](#ray-project-ray-f-seek) | [**4**](#ray-project-ray-fs-get) | - | - | - | - | - | [**2**](#ray-project-ray-f-close) | - | - | - | - | - | - | - | [**2**](#ray-project-ray-f-tell) | - | - | [**1**](#ray-project-ray-fsspec-filesystem) | [**3**](#ray-project-ray-f-flush) | [**2**](#ray-project-ray-fs-get-file) | - | - | - | [**2**](#ray-project-ray-f-readline) | - | [**1**](#ray-project-ray-fs-split) | - | - | - | - | [**2**](#ray-project-ray-fs-move) | - | - | - | - | - | [**1**](#ray-project-ray-f-writelines) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
+| [pola-rs/polars](https://github.com/pola-rs/polars) | **4** | [**1**](#pola-rs-polars-fs-open) | - | - | - | - | - | - | - | - | [**1**](#pola-rs-polars-f-seek) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | [**1**](#pola-rs-polars-f-tell) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | [**1**](#pola-rs-polars-fs-open-files) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
+| [Lightning-AI/pytorch-lightning](https://github.com/Lightning-AI/pytorch-lightning) | **113** | [**14**](#lightning-ai-pytorch-lightning-fs-open) | [**24**](#lightning-ai-pytorch-lightning-fs-exists) | - | [**5**](#lightning-ai-pytorch-lightning-f-read) | [**3**](#lightning-ai-pytorch-lightning-url-to-fs) | [**8**](#lightning-ai-pytorch-lightning-fs-isdir) | [**2**](#lightning-ai-pytorch-lightning-f-write) | [**6**](#lightning-ai-pytorch-lightning-fs-isfile) | [**3**](#lightning-ai-pytorch-lightning-fs-info) | - | [**7**](#lightning-ai-pytorch-lightning-fs-get) | - | - | [**6**](#lightning-ai-pytorch-lightning-fs-ls) | [**9**](#lightning-ai-pytorch-lightning-fs-makedirs) | - | [**1**](#lightning-ai-pytorch-lightning-f-close) | - | - | - | - | - | - | [**5**](#lightning-ai-pytorch-lightning-fs-rm) | - | - | - | - | [**1**](#lightning-ai-pytorch-lightning-f-flush) | - | - | [**7**](#lightning-ai-pytorch-lightning-f-readlines) | [**5**](#lightning-ai-pytorch-lightning-fs-listdir) | - | - | - | - | - | [**3**](#lightning-ai-pytorch-lightning-fs-put) | - | - | - | [**1**](#lightning-ai-pytorch-lightning-fs-mv) | - | - | [**1**](#lightning-ai-pytorch-lightning-fs-rm-file) | [**1**](#lightning-ai-pytorch-lightning-f-writelines) | - | - | - | - | - | - | - | - | - | - | [**1**](#lightning-ai-pytorch-lightning-fs-rmdir) | - | - | - | - | - | - | - |
 | [duckdb/duckdb](https://github.com/duckdb/duckdb) | **0** | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
-| [huggingface/datasets](https://github.com/huggingface/datasets) | **101** | [**17**](#huggingface-datasets-fs-open) | [**4**](#huggingface-datasets-fs-exists) | - | [**6**](#huggingface-datasets-f-read) | [**22**](#huggingface-datasets-url-to-fs) | [**3**](#huggingface-datasets-fs-isdir) | [**8**](#huggingface-datasets-f-write) | [**11**](#huggingface-datasets-fs-isfile) | [**4**](#huggingface-datasets-fs-info) | - | - | - | - | - | [**3**](#huggingface-datasets-fs-makedirs) | - | [**3**](#huggingface-datasets-f-close) | [**8**](#huggingface-datasets-fs-glob) | - | - | - | - | - | - | [**1**](#huggingface-datasets-get-fs-token-paths) | - | [**1**](#huggingface-datasets-fsspec-filesystem) | - | - | [**1**](#huggingface-datasets-fs-get-file) | - | - | [**1**](#huggingface-datasets-fs-listdir) | [**1**](#huggingface-datasets-fs-walk) | - | [**5**](#huggingface-datasets-fs-read-text) | - | - | - | - | - | - | [**1**](#huggingface-datasets-fs-mv) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | [**1**](#huggingface-datasets-fs-size) | - | - | - | - | - | - |
-| [mlflow/mlflow](https://github.com/mlflow/mlflow) | **3** | - | - | - | [**2**](#mlflow-mlflow-f-read) | - | - | - | - | - | - | - | - | [**1**](#mlflow-mlflow-fs-get) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
+| [huggingface/datasets](https://github.com/huggingface/datasets) | **101** | [**17**](#huggingface-datasets-fs-open) | [**4**](#huggingface-datasets-fs-exists) | - | [**6**](#huggingface-datasets-f-read) | [**22**](#huggingface-datasets-url-to-fs) | [**3**](#huggingface-datasets-fs-isdir) | [**8**](#huggingface-datasets-f-write) | [**11**](#huggingface-datasets-fs-isfile) | [**4**](#huggingface-datasets-fs-info) | - | - | - | - | - | [**3**](#huggingface-datasets-fs-makedirs) | - | [**3**](#huggingface-datasets-f-close) | [**8**](#huggingface-datasets-fs-glob) | - | - | - | - | - | - | - | [**1**](#huggingface-datasets-get-fs-token-paths) | - | [**1**](#huggingface-datasets-fsspec-filesystem) | - | [**1**](#huggingface-datasets-fs-get-file) | - | - | [**1**](#huggingface-datasets-fs-listdir) | - | [**1**](#huggingface-datasets-fs-walk) | - | [**5**](#huggingface-datasets-fs-read-text) | - | - | - | - | - | [**1**](#huggingface-datasets-fs-mv) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | [**1**](#huggingface-datasets-fs-size) | - | - | - | - | - | - |
+| [mlflow/mlflow](https://github.com/mlflow/mlflow) | **3** | - | - | - | [**2**](#mlflow-mlflow-f-read) | - | - | - | - | - | - | [**1**](#mlflow-mlflow-fs-get) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
 | [apache/arrow](https://github.com/apache/arrow) | **22** | [**4**](#apache-arrow-fs-open) | [**2**](#apache-arrow-fs-exists) | - | - | - | [**2**](#apache-arrow-fs-isdir) | - | [**3**](#apache-arrow-fs-isfile) | [**1**](#apache-arrow-fs-info) | - | - | - | - | - | - | - | [**1**](#apache-arrow-f-close) | - | [**1**](#apache-arrow-fs-find) | - | - | - | - | [**4**](#apache-arrow-fs-rm) | - | - | - | - | - | - | - | - | [**1**](#apache-arrow-fs-listdir) | - | - | - | - | - | - | - | - | - | [**1**](#apache-arrow-fs-mv) | - | [**1**](#apache-arrow-fs-mkdir) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | [**1**](#apache-arrow-fs-copy) | - | - | - | - | - |
-| [iterative/dvc](https://github.com/iterative/dvc) | **301** | [**12**](#iterative-dvc-fs-open) | [**23**](#iterative-dvc-fs-exists) | [**58**](#iterative-dvc-fs-join) | [**4**](#iterative-dvc-f-read) | - | [**17**](#iterative-dvc-fs-isdir) | [**2**](#iterative-dvc-f-write) | [**5**](#iterative-dvc-fs-isfile) | [**13**](#iterative-dvc-fs-info) | [**25**](#iterative-dvc-fs-relparts) | [**25**](#iterative-dvc-fs-relpath) | - | [**3**](#iterative-dvc-fs-get) | [**7**](#iterative-dvc-fs-ls) | [**4**](#iterative-dvc-fs-makedirs) | [**17**](#iterative-dvc-fs-abspath) | [**1**](#iterative-dvc-f-close) | - | [**8**](#iterative-dvc-fs-find) | [**14**](#iterative-dvc-fs-getcwd) | [**13**](#iterative-dvc-fs-parts) | [**13**](#iterative-dvc-fs-normpath) | - | - | - | [**11**](#iterative-dvc-fs-isin) | - | - | - | [**5**](#iterative-dvc-fs-get-file) | - | [**1**](#iterative-dvc-f-readlines) | - | [**5**](#iterative-dvc-fs-walk) | [**3**](#iterative-dvc-fs-split) | - | [**4**](#iterative-dvc-fs-close) | - | - | - | [**1**](#iterative-dvc-fs-move) | - | - | - | - | - | - | [**2**](#iterative-dvc-fs-chdir) | [**2**](#iterative-dvc-fs-as-posix) | [**2**](#iterative-dvc-fs-du) | - | - | - | - | - | - | - | - | - | - | [**1**](#iterative-dvc-fs-commonpath) | - | - | - | - |
-| [dask/dask](https://github.com/dask/dask) | **72** | [**16**](#dask-dask-fs-open) | [**2**](#dask-dask-fs-exists) | - | [**10**](#dask-dask-f-read) | - | [**2**](#dask-dask-fs-isdir) | - | [**1**](#dask-dask-fs-isfile) | [**2**](#dask-dask-fs-info) | - | - | [**1**](#dask-dask-f-seek) | - | - | - | - | - | - | [**2**](#dask-dask-fs-find) | - | - | - | [**7**](#dask-dask-open-files) | [**1**](#dask-dask-fs-rm) | [**7**](#dask-dask-get-fs-token-paths) | - | - | - | [**1**](#dask-dask-f-tell) | - | [**9**](#dask-dask-stringify-path) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | [**2**](#dask-dask-fs-ukey) | [**2**](#dask-dask-fs-read-block) | [**2**](#dask-dask-infer-compression) | [**2**](#dask-dask-expand-paths-if-needed) | - | - | - | - | - | - | - | [**1**](#dask-dask-fs-expand-path) | [**1**](#dask-dask-fs-checksum) | [**1**](#dask-dask-fsspec-open-parquet-file) | - |
+| [iterative/dvc](https://github.com/iterative/dvc) | **301** | [**12**](#iterative-dvc-fs-open) | [**23**](#iterative-dvc-fs-exists) | [**58**](#iterative-dvc-fs-join) | [**4**](#iterative-dvc-f-read) | - | [**17**](#iterative-dvc-fs-isdir) | [**2**](#iterative-dvc-f-write) | [**5**](#iterative-dvc-fs-isfile) | [**13**](#iterative-dvc-fs-info) | - | [**3**](#iterative-dvc-fs-get) | [**25**](#iterative-dvc-fs-relparts) | [**25**](#iterative-dvc-fs-relpath) | [**7**](#iterative-dvc-fs-ls) | [**4**](#iterative-dvc-fs-makedirs) | [**17**](#iterative-dvc-fs-abspath) | [**1**](#iterative-dvc-f-close) | - | [**8**](#iterative-dvc-fs-find) | [**14**](#iterative-dvc-fs-getcwd) | [**13**](#iterative-dvc-fs-parts) | [**13**](#iterative-dvc-fs-normpath) | - | - | - | - | [**11**](#iterative-dvc-fs-isin) | - | - | [**5**](#iterative-dvc-fs-get-file) | - | [**1**](#iterative-dvc-f-readlines) | - | - | [**5**](#iterative-dvc-fs-walk) | [**3**](#iterative-dvc-fs-split) | - | [**4**](#iterative-dvc-fs-close) | - | - | [**1**](#iterative-dvc-fs-move) | - | - | - | - | - | - | [**2**](#iterative-dvc-fs-chdir) | [**2**](#iterative-dvc-fs-as-posix) | [**2**](#iterative-dvc-fs-du) | - | - | - | - | - | - | - | - | - | - | [**1**](#iterative-dvc-fs-commonpath) | - | - | - | - |
+| [dask/dask](https://github.com/dask/dask) | **72** | [**16**](#dask-dask-fs-open) | [**2**](#dask-dask-fs-exists) | - | [**10**](#dask-dask-f-read) | - | [**2**](#dask-dask-fs-isdir) | - | [**1**](#dask-dask-fs-isfile) | [**2**](#dask-dask-fs-info) | [**1**](#dask-dask-f-seek) | - | - | - | - | - | - | - | - | [**2**](#dask-dask-fs-find) | - | - | - | [**7**](#dask-dask-open-files) | [**1**](#dask-dask-fs-rm) | [**1**](#dask-dask-f-tell) | [**7**](#dask-dask-get-fs-token-paths) | - | - | - | - | [**9**](#dask-dask-stringify-path) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | [**2**](#dask-dask-fs-ukey) | [**2**](#dask-dask-fs-read-block) | [**2**](#dask-dask-infer-compression) | [**2**](#dask-dask-expand-paths-if-needed) | - | - | - | - | - | - | - | [**1**](#dask-dask-fs-expand-path) | [**1**](#dask-dask-fs-checksum) | [**1**](#dask-dask-fsspec-open-parquet-file) | - |
 | [great-expectations/great_expectations](https://github.com/great-expectations/great_expectations) | **0** | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
-| [modin-project/modin](https://github.com/modin-project/modin) | **43** | [**5**](#modin-project-modin-fs-open) | [**5**](#modin-project-modin-fs-exists) | - | [**3**](#modin-project-modin-f-read) | [**11**](#modin-project-modin-url-to-fs) | - | - | [**1**](#modin-project-modin-fs-isfile) | - | - | - | [**4**](#modin-project-modin-f-seek) | - | - | - | - | [**1**](#modin-project-modin-f-close) | [**3**](#modin-project-modin-fs-glob) | [**3**](#modin-project-modin-fs-find) | - | - | - | - | - | - | - | - | - | [**1**](#modin-project-modin-f-tell) | - | - | - | - | [**1**](#modin-project-modin-fs-walk) | - | - | - | [**5**](#modin-project-modin-f-readline) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
+| [modin-project/modin](https://github.com/modin-project/modin) | **43** | [**5**](#modin-project-modin-fs-open) | [**5**](#modin-project-modin-fs-exists) | - | [**3**](#modin-project-modin-f-read) | [**11**](#modin-project-modin-url-to-fs) | - | - | [**1**](#modin-project-modin-fs-isfile) | - | [**4**](#modin-project-modin-f-seek) | - | - | - | - | - | - | [**1**](#modin-project-modin-f-close) | [**3**](#modin-project-modin-fs-glob) | [**3**](#modin-project-modin-fs-find) | - | - | - | - | - | [**1**](#modin-project-modin-f-tell) | - | - | - | - | - | - | - | - | [**5**](#modin-project-modin-f-readline) | [**1**](#modin-project-modin-fs-walk) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
 | [flyteorg/flyte](https://github.com/flyteorg/flyte) | **0** | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
-| [feast-dev/feast](https://github.com/feast-dev/feast) | **29** | - | [**3**](#feast-dev-feast-fs-exists) | [**2**](#feast-dev-feast-fs-join) | [**3**](#feast-dev-feast-f-read) | [**2**](#feast-dev-feast-url-to-fs) | - | [**4**](#feast-dev-feast-f-write) | - | - | - | - | [**6**](#feast-dev-feast-f-seek) | [**9**](#feast-dev-feast-fs-get) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
-| [pydata/xarray](https://github.com/pydata/xarray) | **4** | [**1**](#pydata-xarray-fs-open) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | [**1**](#pydata-xarray-fs-glob) | - | - | - | - | - | - | [**2**](#pydata-xarray-get-fs-token-paths) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
-| [kedro-org/kedro](https://github.com/kedro-org/kedro) | **12** | [**1**](#kedro-org-kedro-fs-open) | - | - | [**1**](#kedro-org-kedro-f-read) | - | [**1**](#kedro-org-kedro-fs-isdir) | - | [**1**](#kedro-org-kedro-fs-isfile) | - | - | - | - | - | [**3**](#kedro-org-kedro-fs-ls) | - | - | - | [**1**](#kedro-org-kedro-fs-glob) | - | - | - | - | - | - | - | - | [**4**](#kedro-org-kedro-fsspec-filesystem) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
-| [pytorch/torchtitan](https://github.com/pytorch/torchtitan) | **18** | - | [**1**](#pytorch-torchtitan-fs-exists) | [**8**](#pytorch-torchtitan-fs-join) | - | [**1**](#pytorch-torchtitan-url-to-fs) | [**2**](#pytorch-torchtitan-fs-isdir) | - | [**2**](#pytorch-torchtitan-fs-isfile) | - | - | - | - | - | [**1**](#pytorch-torchtitan-fs-ls) | - | - | - | - | - | - | - | - | - | [**1**](#pytorch-torchtitan-fs-rm) | - | - | - | - | - | - | - | - | [**1**](#pytorch-torchtitan-fs-listdir) | - | - | - | [**1**](#pytorch-torchtitan-fs-close) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
+| [feast-dev/feast](https://github.com/feast-dev/feast) | **29** | - | [**3**](#feast-dev-feast-fs-exists) | [**2**](#feast-dev-feast-fs-join) | [**3**](#feast-dev-feast-f-read) | [**2**](#feast-dev-feast-url-to-fs) | - | [**4**](#feast-dev-feast-f-write) | - | - | [**6**](#feast-dev-feast-f-seek) | [**9**](#feast-dev-feast-fs-get) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
+| [pydata/xarray](https://github.com/pydata/xarray) | **4** | [**1**](#pydata-xarray-fs-open) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | [**1**](#pydata-xarray-fs-glob) | - | - | - | - | - | - | - | [**2**](#pydata-xarray-get-fs-token-paths) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
+| [kedro-org/kedro](https://github.com/kedro-org/kedro) | **12** | [**1**](#kedro-org-kedro-fs-open) | - | - | [**1**](#kedro-org-kedro-f-read) | - | [**1**](#kedro-org-kedro-fs-isdir) | - | [**1**](#kedro-org-kedro-fs-isfile) | - | - | - | - | - | [**3**](#kedro-org-kedro-fs-ls) | - | - | - | [**1**](#kedro-org-kedro-fs-glob) | - | - | - | - | - | - | - | - | - | [**4**](#kedro-org-kedro-fsspec-filesystem) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
+| [pytorch/torchtitan](https://github.com/pytorch/torchtitan) | **18** | - | [**1**](#pytorch-torchtitan-fs-exists) | [**8**](#pytorch-torchtitan-fs-join) | - | [**1**](#pytorch-torchtitan-url-to-fs) | [**2**](#pytorch-torchtitan-fs-isdir) | - | [**2**](#pytorch-torchtitan-fs-isfile) | - | - | - | - | - | [**1**](#pytorch-torchtitan-fs-ls) | - | - | - | - | - | - | - | - | - | [**1**](#pytorch-torchtitan-fs-rm) | - | - | - | - | - | - | - | - | [**1**](#pytorch-torchtitan-fs-listdir) | - | - | - | - | [**1**](#pytorch-torchtitan-fs-close) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
 | [delta-io/delta-rs](https://github.com/delta-io/delta-rs) | **0** | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
-| [zarr-developers/zarr-python](https://github.com/zarr-developers/zarr-python) | **8** | - | - | - | [**1**](#zarr-developers-zarr-python-f-read) | [**1**](#zarr-developers-zarr-python-url-to-fs) | - | - | - | - | - | - | [**3**](#zarr-developers-zarr-python-f-seek) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | [**3**](#zarr-developers-zarr-python-f-tell) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
-| [intake/intake](https://github.com/intake/intake) | **103** | [**41**](#intake-intake-fs-open) | - | - | [**23**](#intake-intake-f-read) | [**6**](#intake-intake-url-to-fs) | [**1**](#intake-intake-fs-isdir) | [**1**](#intake-intake-f-write) | - | [**3**](#intake-intake-fs-info) | - | - | [**1**](#intake-intake-f-seek) | - | [**3**](#intake-intake-fs-ls) | - | - | - | [**1**](#intake-intake-fs-glob) | - | - | - | - | [**6**](#intake-intake-open-files) | - | [**1**](#intake-intake-get-fs-token-paths) | - | [**4**](#intake-intake-fsspec-filesystem) | - | - | [**1**](#intake-intake-fs-get-file) | - | - | - | - | - | - | - | - | - | [**4**](#intake-intake-fs-open-local) | - | [**2**](#intake-intake-fs-open-files) | - | - | - | - | - | - | - | - | - | - | - | - | [**2**](#intake-intake-fs-cat-file) | [**2**](#intake-intake-fs-cat) | - | - | - | - | - | - | - | - | [**1**](#intake-intake-get-filesystem-class) |
+| [zarr-developers/zarr-python](https://github.com/zarr-developers/zarr-python) | **8** | - | - | - | [**1**](#zarr-developers-zarr-python-f-read) | [**1**](#zarr-developers-zarr-python-url-to-fs) | - | - | - | - | [**3**](#zarr-developers-zarr-python-f-seek) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | [**3**](#zarr-developers-zarr-python-f-tell) | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - | - |
+| [intake/intake](https://github.com/intake/intake) | **103** | [**41**](#intake-intake-fs-open) | - | - | [**23**](#intake-intake-f-read) | [**6**](#intake-intake-url-to-fs) | [**1**](#intake-intake-fs-isdir) | [**1**](#intake-intake-f-write) | - | [**3**](#intake-intake-fs-info) | [**1**](#intake-intake-f-seek) | - | - | - | [**3**](#intake-intake-fs-ls) | - | - | - | [**1**](#intake-intake-fs-glob) | - | - | - | - | [**6**](#intake-intake-open-files) | - | - | [**1**](#intake-intake-get-fs-token-paths) | - | [**4**](#intake-intake-fsspec-filesystem) | - | [**1**](#intake-intake-fs-get-file) | - | - | - | - | - | - | - | - | - | [**4**](#intake-intake-fs-open-local) | - | [**2**](#intake-intake-fs-open-files) | - | - | - | - | - | - | - | - | - | - | - | - | [**2**](#intake-intake-fs-cat-file) | [**2**](#intake-intake-fs-cat) | - | - | - | - | - | - | - | - | [**1**](#intake-intake-get-filesystem-class) |
 
 ---
 
 ## 🔍 Detailed Usage Breakdown by Repository
 
 ### [pytorch/pytorch](https://github.com/pytorch/pytorch)
-- **Files Scanned:** `2558` | **Files with Usages:** `17` | **Total Usages:** `53`
+- **Files Scanned:** `2558` | **Files with Usages:** `19` | **Total Usages:** `56`
 
-#### <a id="pytorch-pytorch-f-write"></a>🔹 `f.write` (13 occurrences)
+#### <a id="pytorch-pytorch-f-write"></a>🔹 `f.write` (14 occurrences)
 
 <details open>
-<summary><b>Click to expand/collapse 13 occurrences for <code>f.write</code> in pytorch/pytorch</b></summary>
+<summary><b>Click to expand/collapse 14 occurrences for <code>f.write</code> in pytorch/pytorch</b></summary>
 
 ##### 1. [torch/_logging/_internal.py](https://github.com/pytorch/pytorch/blob/main/torch/_logging/_internal.py#L1095) (Line 1095)
 - **Line Link:** https://github.com/pytorch/pytorch/blob/main/torch/_logging/_internal.py#L1095
@@ -150,7 +150,18 @@
                     )
 ```
 
-##### 7. [torch/utils/data/datapipes/utils/decoder.py](https://github.com/pytorch/pytorch/blob/main/torch/utils/data/datapipes/utils/decoder.py#L264) (Line 264)
+##### 7. [torch/onnx/_internal/torchscript_exporter/onnx_proto_utils.py](https://github.com/pytorch/pytorch/blob/main/torch/onnx/_internal/torchscript_exporter/onnx_proto_utils.py#L174) (Line 174)
+- **Line Link:** https://github.com/pytorch/pytorch/blob/main/torch/onnx/_internal/torchscript_exporter/onnx_proto_utils.py#L174
+- **Target Call:** `f.write`
+- **Context:** `_export_file`
+- **Arguments:** `model_bytes`
+- **Keywords:** `{}`
+
+```python
+        opened_file.write(model_bytes)
+```
+
+##### 8. [torch/utils/data/datapipes/utils/decoder.py](https://github.com/pytorch/pytorch/blob/main/torch/utils/data/datapipes/utils/decoder.py#L264) (Line 264)
 - **Line Link:** https://github.com/pytorch/pytorch/blob/main/torch/utils/data/datapipes/utils/decoder.py#L264
 - **Target Call:** `f.write`
 - **Context:** `videohandler`
@@ -161,7 +172,7 @@
             stream.write(data)
 ```
 
-##### 8. [torch/utils/data/datapipes/utils/decoder.py](https://github.com/pytorch/pytorch/blob/main/torch/utils/data/datapipes/utils/decoder.py#L287) (Line 287)
+##### 9. [torch/utils/data/datapipes/utils/decoder.py](https://github.com/pytorch/pytorch/blob/main/torch/utils/data/datapipes/utils/decoder.py#L287) (Line 287)
 - **Line Link:** https://github.com/pytorch/pytorch/blob/main/torch/utils/data/datapipes/utils/decoder.py#L287
 - **Target Call:** `f.write`
 - **Context:** `audiohandler`
@@ -172,7 +183,7 @@
             stream.write(data)
 ```
 
-##### 9. [torch/utils/show_pickle.py](https://github.com/pytorch/pytorch/blob/main/torch/utils/show_pickle.py#L31) (Line 31)
+##### 10. [torch/utils/show_pickle.py](https://github.com/pytorch/pytorch/blob/main/torch/utils/show_pickle.py#L31) (Line 31)
 - **Line Link:** https://github.com/pytorch/pytorch/blob/main/torch/utils/show_pickle.py#L31
 - **Target Call:** `f.write`
 - **Context:** `FakeObject.pp_format`
@@ -183,7 +194,7 @@
             stream.write(repr(obj))
 ```
 
-##### 10. [torch/utils/show_pickle.py](https://github.com/pytorch/pytorch/blob/main/torch/utils/show_pickle.py#L34) (Line 34)
+##### 11. [torch/utils/show_pickle.py](https://github.com/pytorch/pytorch/blob/main/torch/utils/show_pickle.py#L34) (Line 34)
 - **Line Link:** https://github.com/pytorch/pytorch/blob/main/torch/utils/show_pickle.py#L34
 - **Target Call:** `f.write`
 - **Context:** `FakeObject.pp_format`
@@ -194,7 +205,7 @@
             stream.write(f"{obj.module}.{obj.name}")
 ```
 
-##### 11. [torch/utils/show_pickle.py](https://github.com/pytorch/pytorch/blob/main/torch/utils/show_pickle.py#L38) (Line 38)
+##### 12. [torch/utils/show_pickle.py](https://github.com/pytorch/pytorch/blob/main/torch/utils/show_pickle.py#L38) (Line 38)
 - **Line Link:** https://github.com/pytorch/pytorch/blob/main/torch/utils/show_pickle.py#L38
 - **Target Call:** `f.write`
 - **Context:** `FakeObject.pp_format`
@@ -205,7 +216,7 @@
             stream.write(f"{obj.module}.{obj.name}()(state=\n")
 ```
 
-##### 12. [torch/utils/show_pickle.py](https://github.com/pytorch/pytorch/blob/main/torch/utils/show_pickle.py#L40) (Line 40)
+##### 13. [torch/utils/show_pickle.py](https://github.com/pytorch/pytorch/blob/main/torch/utils/show_pickle.py#L40) (Line 40)
 - **Line Link:** https://github.com/pytorch/pytorch/blob/main/torch/utils/show_pickle.py#L40
 - **Target Call:** `f.write`
 - **Context:** `FakeObject.pp_format`
@@ -216,7 +227,7 @@
             stream.write(" " * indent)
 ```
 
-##### 13. [torch/utils/show_pickle.py](https://github.com/pytorch/pytorch/blob/main/torch/utils/show_pickle.py#L42) (Line 42)
+##### 14. [torch/utils/show_pickle.py](https://github.com/pytorch/pytorch/blob/main/torch/utils/show_pickle.py#L42) (Line 42)
 - **Line Link:** https://github.com/pytorch/pytorch/blob/main/torch/utils/show_pickle.py#L42
 - **Target Call:** `f.write`
 - **Context:** `FakeObject.pp_format`
@@ -455,10 +466,10 @@
 
 </details>
 
-#### <a id="pytorch-pytorch-f-seek"></a>🔹 `f.seek` (2 occurrences)
+#### <a id="pytorch-pytorch-f-seek"></a>🔹 `f.seek` (3 occurrences)
 
 <details open>
-<summary><b>Click to expand/collapse 2 occurrences for <code>f.seek</code> in pytorch/pytorch</b></summary>
+<summary><b>Click to expand/collapse 3 occurrences for <code>f.seek</code> in pytorch/pytorch</b></summary>
 
 ##### 1. [torch/_dynamo/graph_region_tracker.py](https://github.com/pytorch/pytorch/blob/main/torch/_dynamo/graph_region_tracker.py#L117) (Line 117)
 - **Line Link:** https://github.com/pytorch/pytorch/blob/main/torch/_dynamo/graph_region_tracker.py#L117
@@ -480,6 +491,57 @@
 
 ```python
             self._stream.seek(0)
+```
+
+##### 3. [torch/serialization.py](https://github.com/pytorch/pytorch/blob/main/torch/serialization.py#L1586) (Line 1586)
+- **Line Link:** https://github.com/pytorch/pytorch/blob/main/torch/serialization.py#L1586
+- **Target Call:** `f.seek`
+- **Context:** `load`
+- **Arguments:** `orig_position`
+- **Keywords:** `{}`
+
+```python
+                    opened_file.seek(orig_position)
+```
+
+</details>
+
+#### <a id="pytorch-pytorch-f-tell"></a>🔹 `f.tell` (3 occurrences)
+
+<details open>
+<summary><b>Click to expand/collapse 3 occurrences for <code>f.tell</code> in pytorch/pytorch</b></summary>
+
+##### 1. [torch/distributed/checkpoint/filesystem.py](https://github.com/pytorch/pytorch/blob/main/torch/distributed/checkpoint/filesystem.py#L328) (Line 328)
+- **Line Link:** https://github.com/pytorch/pytorch/blob/main/torch/distributed/checkpoint/filesystem.py#L328
+- **Target Call:** `f.tell`
+- **Context:** `_write_item`
+- **Arguments:** ``
+- **Keywords:** `{}`
+
+```python
+    offset = stream.tell()
+```
+
+##### 2. [torch/distributed/checkpoint/filesystem.py](https://github.com/pytorch/pytorch/blob/main/torch/distributed/checkpoint/filesystem.py#L353) (Line 353)
+- **Line Link:** https://github.com/pytorch/pytorch/blob/main/torch/distributed/checkpoint/filesystem.py#L353
+- **Target Call:** `f.tell`
+- **Context:** `_write_item`
+- **Arguments:** ``
+- **Keywords:** `{}`
+
+```python
+        length = stream.tell() - offset
+```
+
+##### 3. [torch/serialization.py](https://github.com/pytorch/pytorch/blob/main/torch/serialization.py#L1570) (Line 1570)
+- **Line Link:** https://github.com/pytorch/pytorch/blob/main/torch/serialization.py#L1570
+- **Target Call:** `f.tell`
+- **Context:** `load`
+- **Arguments:** ``
+- **Keywords:** `{}`
+
+```python
+            orig_position = opened_file.tell()
 ```
 
 </details>
@@ -596,35 +658,6 @@
 
 ```python
         for file in self.fs.ls(self.path):
-```
-
-</details>
-
-#### <a id="pytorch-pytorch-f-tell"></a>🔹 `f.tell` (2 occurrences)
-
-<details open>
-<summary><b>Click to expand/collapse 2 occurrences for <code>f.tell</code> in pytorch/pytorch</b></summary>
-
-##### 1. [torch/distributed/checkpoint/filesystem.py](https://github.com/pytorch/pytorch/blob/main/torch/distributed/checkpoint/filesystem.py#L328) (Line 328)
-- **Line Link:** https://github.com/pytorch/pytorch/blob/main/torch/distributed/checkpoint/filesystem.py#L328
-- **Target Call:** `f.tell`
-- **Context:** `_write_item`
-- **Arguments:** ``
-- **Keywords:** `{}`
-
-```python
-    offset = stream.tell()
-```
-
-##### 2. [torch/distributed/checkpoint/filesystem.py](https://github.com/pytorch/pytorch/blob/main/torch/distributed/checkpoint/filesystem.py#L353) (Line 353)
-- **Line Link:** https://github.com/pytorch/pytorch/blob/main/torch/distributed/checkpoint/filesystem.py#L353
-- **Target Call:** `f.tell`
-- **Context:** `_write_item`
-- **Arguments:** ``
-- **Keywords:** `{}`
-
-```python
-        length = stream.tell() - offset
 ```
 
 </details>
@@ -810,7 +843,7 @@
 </details>
 
 ### [pandas-dev/pandas](https://github.com/pandas-dev/pandas)
-- **Files Scanned:** `297` | **Files with Usages:** `4` | **Total Usages:** `10`
+- **Files Scanned:** `300` | **Files with Usages:** `4` | **Total Usages:** `10`
 
 #### <a id="pandas-dev-pandas-fs-open"></a>🔹 `fs.open` (4 occurrences)
 
@@ -973,7 +1006,7 @@
 </details>
 
 ### [ray-project/ray](https://github.com/ray-project/ray)
-- **Files Scanned:** `2018` | **Files with Usages:** `15` | **Total Usages:** `34`
+- **Files Scanned:** `2023` | **Files with Usages:** `18` | **Total Usages:** `39`
 
 #### <a id="ray-project-ray-fs-open"></a>🔹 `fs.open` (5 occurrences)
 
@@ -1139,6 +1172,57 @@
 
 </details>
 
+#### <a id="ray-project-ray-fs-get"></a>🔹 `fs.get` (4 occurrences)
+
+<details open>
+<summary><b>Click to expand/collapse 4 occurrences for <code>fs.get</code> in ray-project/ray</b></summary>
+
+##### 1. [python/ray/data/_internal/datasource/lerobot_datasource.py](https://github.com/ray-project/ray/blob/master/python/ray/data/_internal/datasource/lerobot_datasource.py#L491) (Line 491)
+- **Line Link:** https://github.com/ray-project/ray/blob/master/python/ray/data/_internal/datasource/lerobot_datasource.py#L491
+- **Target Call:** `fs.get`
+- **Context:** `_load_lerobot_metadata`
+- **Arguments:** `f'{fs_root}/meta', os.path.join(local_root, 'meta')`
+- **Keywords:** `{'recursive': 'True'}`
+
+```python
+    fs.get(f"{fs_root}/meta", os.path.join(local_root, "meta"), recursive=True)
+```
+
+##### 2. [python/ray/data/datasource/path_util.py](https://github.com/ray-project/ray/blob/master/python/ray/data/datasource/path_util.py#L188) (Line 188)
+- **Line Link:** https://github.com/ray-project/ray/blob/master/python/ray/data/datasource/path_util.py#L188
+- **Target Call:** `fs.get`
+- **Context:** `_is_filesystem_compatible_with_scheme`
+- **Arguments:** `scheme.lower()`
+- **Keywords:** `{}`
+
+```python
+    expected_types = _SCHEME_TO_FS_TYPE_NAMES.get(scheme.lower())
+```
+
+##### 3. [rllib/algorithms/algorithm.py](https://github.com/ray-project/ray/blob/master/rllib/algorithms/algorithm.py#L4346) (Line 4346)
+- **Line Link:** https://github.com/ray-project/ray/blob/master/rllib/algorithms/algorithm.py#L4346
+- **Target Call:** `fs.get`
+- **Context:** `Algorithm._checkpoint_info_to_algorithm_state`
+- **Arguments:** `'format'`
+- **Keywords:** `{}`
+
+```python
+        if checkpoint_info.get("format") == "msgpack":
+```
+
+##### 4. [rllib/policy/policy.py](https://github.com/ray-project/ray/blob/master/rllib/policy/policy.py#L349) (Line 349)
+- **Line Link:** https://github.com/ray-project/ray/blob/master/rllib/policy/policy.py#L349
+- **Target Call:** `fs.get`
+- **Context:** `Policy.from_checkpoint`
+- **Arguments:** `'format'`
+- **Keywords:** `{}`
+
+```python
+            if checkpoint_info.get("format") == "msgpack":
+```
+
+</details>
+
 #### <a id="ray-project-ray-f-seek"></a>🔹 `f.seek` (4 occurrences)
 
 <details open>
@@ -1230,31 +1314,31 @@
 
 </details>
 
-#### <a id="ray-project-ray-fs-get"></a>🔹 `fs.get` (2 occurrences)
+#### <a id="ray-project-ray-f-close"></a>🔹 `f.close` (2 occurrences)
 
 <details open>
-<summary><b>Click to expand/collapse 2 occurrences for <code>fs.get</code> in ray-project/ray</b></summary>
+<summary><b>Click to expand/collapse 2 occurrences for <code>f.close</code> in ray-project/ray</b></summary>
 
-##### 1. [python/ray/data/_internal/datasource/lerobot_datasource.py](https://github.com/ray-project/ray/blob/master/python/ray/data/_internal/datasource/lerobot_datasource.py#L491) (Line 491)
-- **Line Link:** https://github.com/ray-project/ray/blob/master/python/ray/data/_internal/datasource/lerobot_datasource.py#L491
-- **Target Call:** `fs.get`
-- **Context:** `_load_lerobot_metadata`
-- **Arguments:** `f'{fs_root}/meta', os.path.join(local_root, 'meta')`
-- **Keywords:** `{'recursive': 'True'}`
-
-```python
-    fs.get(f"{fs_root}/meta", os.path.join(local_root, "meta"), recursive=True)
-```
-
-##### 2. [python/ray/data/datasource/path_util.py](https://github.com/ray-project/ray/blob/master/python/ray/data/datasource/path_util.py#L188) (Line 188)
-- **Line Link:** https://github.com/ray-project/ray/blob/master/python/ray/data/datasource/path_util.py#L188
-- **Target Call:** `fs.get`
-- **Context:** `_is_filesystem_compatible_with_scheme`
-- **Arguments:** `scheme.lower()`
+##### 1. [python/ray/data/_internal/datasource/webdataset_datasink.py](https://github.com/ray-project/ray/blob/master/python/ray/data/_internal/datasource/webdataset_datasink.py#L53) (Line 53)
+- **Line Link:** https://github.com/ray-project/ray/blob/master/python/ray/data/_internal/datasource/webdataset_datasink.py#L53
+- **Target Call:** `f.close`
+- **Context:** `WebDatasetDatasink.write_block_to_file`
+- **Arguments:** ``
 - **Keywords:** `{}`
 
 ```python
-    expected_types = _SCHEME_TO_FS_TYPE_NAMES.get(scheme.lower())
+        stream.close()
+```
+
+##### 2. [rllib/offline/json_reader.py](https://github.com/ray-project/ray/blob/master/rllib/offline/json_reader.py#L411) (Line 411)
+- **Line Link:** https://github.com/ray-project/ray/blob/master/rllib/offline/json_reader.py#L411
+- **Target Call:** `f.close`
+- **Context:** `JsonReader._next_line`
+- **Arguments:** ``
+- **Keywords:** `{}`
+
+```python
+                self.cur_file.close()
 ```
 
 </details>
@@ -1346,6 +1430,35 @@
 
 </details>
 
+#### <a id="ray-project-ray-f-readline"></a>🔹 `f.readline` (2 occurrences)
+
+<details open>
+<summary><b>Click to expand/collapse 2 occurrences for <code>f.readline</code> in ray-project/ray</b></summary>
+
+##### 1. [rllib/offline/json_reader.py](https://github.com/ray-project/ray/blob/master/rllib/offline/json_reader.py#L406) (Line 406)
+- **Line Link:** https://github.com/ray-project/ray/blob/master/rllib/offline/json_reader.py#L406
+- **Target Call:** `f.readline`
+- **Context:** `JsonReader._next_line`
+- **Arguments:** ``
+- **Keywords:** `{}`
+
+```python
+        line = self.cur_file.readline()
+```
+
+##### 2. [rllib/offline/json_reader.py](https://github.com/ray-project/ray/blob/master/rllib/offline/json_reader.py#L413) (Line 413)
+- **Line Link:** https://github.com/ray-project/ray/blob/master/rllib/offline/json_reader.py#L413
+- **Target Call:** `f.readline`
+- **Context:** `JsonReader._next_line`
+- **Arguments:** ``
+- **Keywords:** `{}`
+
+```python
+            line = self.cur_file.readline()
+```
+
+</details>
+
 #### <a id="ray-project-ray-f-writelines"></a>🔹 `f.writelines` (1 occurrence)
 
 <details open>
@@ -1400,24 +1513,6 @@
 
 </details>
 
-#### <a id="ray-project-ray-f-close"></a>🔹 `f.close` (1 occurrence)
-
-<details open>
-<summary><b>Click to expand/collapse 1 occurrence for <code>f.close</code> in ray-project/ray</b></summary>
-
-##### 1. [python/ray/data/_internal/datasource/webdataset_datasink.py](https://github.com/ray-project/ray/blob/master/python/ray/data/_internal/datasource/webdataset_datasink.py#L53) (Line 53)
-- **Line Link:** https://github.com/ray-project/ray/blob/master/python/ray/data/_internal/datasource/webdataset_datasink.py#L53
-- **Target Call:** `f.close`
-- **Context:** `WebDatasetDatasink.write_block_to_file`
-- **Arguments:** ``
-- **Keywords:** `{}`
-
-```python
-        stream.close()
-```
-
-</details>
-
 #### <a id="ray-project-ray-fsspec-filesystem"></a>🔹 `fsspec.filesystem` (1 occurrence)
 
 <details open>
@@ -1455,7 +1550,7 @@
 </details>
 
 ### [pola-rs/polars](https://github.com/pola-rs/polars)
-- **Files Scanned:** `207` | **Files with Usages:** `1` | **Total Usages:** `2`
+- **Files Scanned:** `207` | **Files with Usages:** `2` | **Total Usages:** `4`
 
 #### <a id="pola-rs-polars-fs-open"></a>🔹 `fs.open` (1 occurrence)
 
@@ -1493,8 +1588,44 @@
 
 </details>
 
+#### <a id="pola-rs-polars-f-tell"></a>🔹 `f.tell` (1 occurrence)
+
+<details open>
+<summary><b>Click to expand/collapse 1 occurrence for <code>f.tell</code> in pola-rs/polars</b></summary>
+
+##### 1. [py-polars/src/polars/io/ipc/functions.py](https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/ipc/functions.py#L156) (Line 156)
+- **Line Link:** https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/ipc/functions.py#L156
+- **Target Call:** `f.tell`
+- **Context:** `read_ipc`
+- **Arguments:** ``
+- **Keywords:** `{}`
+
+```python
+                    initial_pos = data.tell()
+```
+
+</details>
+
+#### <a id="pola-rs-polars-f-seek"></a>🔹 `f.seek` (1 occurrence)
+
+<details open>
+<summary><b>Click to expand/collapse 1 occurrence for <code>f.seek</code> in pola-rs/polars</b></summary>
+
+##### 1. [py-polars/src/polars/io/ipc/functions.py](https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/ipc/functions.py#L169) (Line 169)
+- **Line Link:** https://github.com/pola-rs/polars/blob/main/py-polars/src/polars/io/ipc/functions.py#L169
+- **Target Call:** `f.seek`
+- **Context:** `read_ipc`
+- **Arguments:** `initial_pos`
+- **Keywords:** `{}`
+
+```python
+                    data.seek(initial_pos)
+```
+
+</details>
+
 ### [Lightning-AI/pytorch-lightning](https://github.com/Lightning-AI/pytorch-lightning)
-- **Files Scanned:** `456` | **Files with Usages:** `30` | **Total Usages:** `112`
+- **Files Scanned:** `457` | **Files with Usages:** `31` | **Total Usages:** `113`
 
 #### <a id="lightning-ai-pytorch-lightning-fs-exists"></a>🔹 `fs.exists` (24 occurrences)
 
@@ -2443,6 +2574,68 @@
 
 </details>
 
+#### <a id="lightning-ai-pytorch-lightning-f-read"></a>🔹 `f.read` (5 occurrences)
+
+<details open>
+<summary><b>Click to expand/collapse 5 occurrences for <code>f.read</code> in Lightning-AI/pytorch-lightning</b></summary>
+
+##### 1. [.actions/assistant.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/.actions/assistant.py#L171) (Line 171)
+- **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/.actions/assistant.py#L171
+- **Target Call:** `f.read`
+- **Context:** `load_readme_description`
+- **Arguments:** ``
+- **Keywords:** `{}`
+
+```python
+        text = fo.read()
+```
+
+##### 2. [.actions/assistant.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/.actions/assistant.py#L411) (Line 411)
+- **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/.actions/assistant.py#L411
+- **Target Call:** `f.read`
+- **Context:** `AssistantCLI._replace_min`
+- **Arguments:** ``
+- **Keywords:** `{}`
+
+```python
+            req = fo.read().replace(">=", "==")
+```
+
+##### 3. [.actions/assistant.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/.actions/assistant.py#L512) (Line 512)
+- **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/.actions/assistant.py#L512
+- **Target Call:** `f.read`
+- **Context:** `AssistantCLI.convert_version2nightly`
+- **Arguments:** ``
+- **Keywords:** `{}`
+
+```python
+            version = fo.read().strip()
+```
+
+##### 4. [src/lightning/app/cli/cmd_init.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/cmd_init.py#L67) (Line 67)
+- **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/cmd_init.py#L67
+- **Target Call:** `f.read`
+- **Context:** `_make_resource`
+- **Arguments:** ``
+- **Keywords:** `{}`
+
+```python
+            content = fo.read().replace("placeholdername", name_for_files)
+```
+
+##### 5. [src/lightning/app/utilities/load_app.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/load_app.py#L160) (Line 160)
+- **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/utilities/load_app.py#L160
+- **Target Call:** `f.read`
+- **Context:** `_create_code`
+- **Arguments:** ``
+- **Keywords:** `{}`
+
+```python
+        filebody = f.read()
+```
+
+</details>
+
 #### <a id="lightning-ai-pytorch-lightning-fs-rm"></a>🔹 `fs.rm` (5 occurrences)
 
 <details open>
@@ -2563,57 +2756,6 @@
 
 ```python
         files = [os.path.basename(f["name"]) for f in fs.listdir(uri)]
-```
-
-</details>
-
-#### <a id="lightning-ai-pytorch-lightning-f-read"></a>🔹 `f.read` (4 occurrences)
-
-<details open>
-<summary><b>Click to expand/collapse 4 occurrences for <code>f.read</code> in Lightning-AI/pytorch-lightning</b></summary>
-
-##### 1. [.actions/assistant.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/.actions/assistant.py#L171) (Line 171)
-- **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/.actions/assistant.py#L171
-- **Target Call:** `f.read`
-- **Context:** `load_readme_description`
-- **Arguments:** ``
-- **Keywords:** `{}`
-
-```python
-        text = fo.read()
-```
-
-##### 2. [.actions/assistant.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/.actions/assistant.py#L411) (Line 411)
-- **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/.actions/assistant.py#L411
-- **Target Call:** `f.read`
-- **Context:** `AssistantCLI._replace_min`
-- **Arguments:** ``
-- **Keywords:** `{}`
-
-```python
-            req = fo.read().replace(">=", "==")
-```
-
-##### 3. [.actions/assistant.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/.actions/assistant.py#L512) (Line 512)
-- **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/.actions/assistant.py#L512
-- **Target Call:** `f.read`
-- **Context:** `AssistantCLI.convert_version2nightly`
-- **Arguments:** ``
-- **Keywords:** `{}`
-
-```python
-            version = fo.read().strip()
-```
-
-##### 4. [src/lightning/app/cli/cmd_init.py](https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/cmd_init.py#L67) (Line 67)
-- **Line Link:** https://github.com/Lightning-AI/pytorch-lightning/blob/main/src/lightning/app/cli/cmd_init.py#L67
-- **Target Call:** `f.read`
-- **Context:** `_make_resource`
-- **Arguments:** ``
-- **Keywords:** `{}`
-
-```python
-            content = fo.read().replace("placeholdername", name_for_files)
 ```
 
 </details>
@@ -4144,7 +4286,7 @@ No direct filesystem / fsspec usages detected in this target.
 </details>
 
 ### [mlflow/mlflow](https://github.com/mlflow/mlflow)
-- **Files Scanned:** `1303` | **Files with Usages:** `3` | **Total Usages:** `3`
+- **Files Scanned:** `1304` | **Files with Usages:** `3` | **Total Usages:** `3`
 
 #### <a id="mlflow-mlflow-f-read"></a>🔹 `f.read` (2 occurrences)
 
@@ -9064,7 +9206,7 @@ No direct filesystem / fsspec usages detected in this target.
 No direct filesystem / fsspec usages detected in this target.
 
 ### [modin-project/modin](https://github.com/modin-project/modin)
-- **Files Scanned:** `282` | **Files with Usages:** `7` | **Total Usages:** `43`
+- **Files Scanned:** `283` | **Files with Usages:** `7` | **Total Usages:** `43`
 
 #### <a id="modin-project-modin-url-to-fs"></a>🔹 `url_to_fs` (11 occurrences)
 
@@ -9629,7 +9771,7 @@ No direct filesystem / fsspec usages detected in this target.
 No direct filesystem / fsspec usages detected in this target.
 
 ### [feast-dev/feast](https://github.com/feast-dev/feast)
-- **Files Scanned:** `599` | **Files with Usages:** `10` | **Total Usages:** `29`
+- **Files Scanned:** `600` | **Files with Usages:** `10` | **Total Usages:** `29`
 
 #### <a id="feast-dev-feast-fs-get"></a>🔹 `fs.get` (9 occurrences)
 
@@ -10271,7 +10413,7 @@ No direct filesystem / fsspec usages detected in this target.
 </details>
 
 ### [pytorch/torchtitan](https://github.com/pytorch/torchtitan)
-- **Files Scanned:** `326` | **Files with Usages:** `5` | **Total Usages:** `18`
+- **Files Scanned:** `329` | **Files with Usages:** `5` | **Total Usages:** `18`
 
 #### <a id="pytorch-torchtitan-fs-join"></a>🔹 `fs.join` (8 occurrences)
 

@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Set
 
 from gcs_clients_optics.crawler.models import FsspecUsage, SPECIFIED_CACHE_KEYWORDS
+from gcs_clients_optics.crawler.symbol_indexer import RepoSymbolTable
 
 
 class InferredType(Enum):
@@ -157,11 +158,13 @@ class FsspecASTVisitor(ast.NodeVisitor):
         source_code: str,
         repo_url: Optional[str] = None,
         branch: str = "main",
+        repo_symbols: Optional[RepoSymbolTable] = None,
     ):
         self.file_path = file_path
         self.source_lines = source_code.splitlines()
         self.repo_url = repo_url
         self.branch = branch
+        self.repo_symbols = repo_symbols
         self.usages: List[FsspecUsage] = []
 
         self.current_class: Optional[str] = None
@@ -247,6 +250,8 @@ class FsspecASTVisitor(ast.NodeVisitor):
     def _is_fs_class_name(self, name: str) -> bool:
         """Check if a name represents a filesystem class."""
         imported = self.imports.get(name, name)
+        if self.repo_symbols and (self.repo_symbols.is_fs_class(name) or self.repo_symbols.is_fs_class(imported)):
+            return True
         return (
             name in self.filesystem_classes
             or imported in self.filesystem_classes
@@ -259,6 +264,13 @@ class FsspecASTVisitor(ast.NodeVisitor):
         imported = self.imports.get(name, name)
         last_seg = name.split(".")[-1]
         imported_last_seg = imported.split(".")[-1]
+        if self.repo_symbols and (
+            self.repo_symbols.is_fs_factory(name)
+            or self.repo_symbols.is_fs_factory(imported)
+            or self.repo_symbols.is_fs_factory(last_seg)
+            or self.repo_symbols.is_fs_factory(imported_last_seg)
+        ):
+            return True
         return (
             name in self.fs_factories
             or imported in self.fs_factories
@@ -277,6 +289,11 @@ class FsspecASTVisitor(ast.NodeVisitor):
         imported = self.imports.get(name, name)
         last_seg = name.split(".")[-1]
         imported_last_seg = imported.split(".")[-1]
+        if self.repo_symbols and (
+            self.repo_symbols.is_tuple_factory(name)
+            or self.repo_symbols.is_tuple_factory(imported)
+        ):
+            return True
         return (
             last_seg in ("url_to_fs", "get_fs_token_paths")
             or imported_last_seg in ("url_to_fs", "get_fs_token_paths")
@@ -287,6 +304,11 @@ class FsspecASTVisitor(ast.NodeVisitor):
         imported = self.imports.get(name, name)
         last_seg = name.split(".")[-1]
         imported_last_seg = imported.split(".")[-1]
+        if self.repo_symbols and (
+            self.repo_symbols.is_open_factory(name)
+            or self.repo_symbols.is_open_factory(imported)
+        ):
+            return True
         if last_seg in ("open_files", "open_local", "open_file", "OpenFile", "open_parquet_file"):
             return True
         if imported_last_seg in ("open_files", "open_local", "open_file", "OpenFile", "open_parquet_file"):
